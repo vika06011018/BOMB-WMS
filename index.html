@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f7fb">
+
+<title>BOMB WMS｜倉儲與資產管理系統</title>
+
+<style>
+:root{
+  --bg:#f5f7fb;
+  --panel:#ffffff;
+  --panel-2:#f8fafc;
+  --text:#172033;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --primary:#4f46e5;
+  --primary-soft:#eef2ff;
+  --success:#16a34a;
+  --warning:#d97706;
+  --danger:#dc2626;
+  --info:#0284c7;
+  --sidebar:#ffffff;
+  --shadow:0 8px 24px rgba(15,23,42,.06);
+}
+
+html[data-theme="dark"]{
+  --bg:#0f141b;
+  --panel:#171d26;
+  --panel-2:#1d2530;
+  --text:#e7edf5;
+  --muted:#9aa6b5;
+  --border:#2a3442;
+  --primary:#818cf8;
+  --primary-soft:#252b4a;
+  --sidebar:#131922;
+  --shadow:0 8px 24px rgba(0,0,0,.22);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  min-height:100%;
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    Arial,
+    sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+/* ===== Layout ===== */
+
+.app{
+  min-height:100vh;
+  display:flex;
+}
+
+.sidebar{
+  width:250px;
+  background:var(--sidebar);
+  border-right:1px solid var(--border);
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  display:flex;
+  flex-direction:column;
+  z-index:50;
+  transition:.25s ease;
+}
+
+.brand{
+  height:68px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 20px;
+  border-bottom:1px solid var(--border);
+}
+
+.brand-mark{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  font-size:14px;
+}
+
+.brand-text strong{
+  display:block;
+  font-size:16px;
+}
+
+.brand-text span{
+  display:block;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.nav{
+  flex:1;
+  padding:14px 10px 24px;
+  overflow:auto;
+}
+
+.nav-group-title{
+  padding:12px 12px 7px;
+  color:var(--muted);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.nav-item{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 12px;
+  margin:3px 0;
+  border-radius:10px;
+  text-align:left;
+}
+
+.nav-item:hover{
+  background:var(--panel-2);
+}
+
+.nav-item.active{
+  color:var(--primary);
+  background:var(--primary-soft);
+  font-weight:700;
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+}
+
+.sidebar-footer{
+  border-top:1px solid var(--border);
+  padding:14px;
+}
+
+.user-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--primary);
+  color:white;
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.user-info{
+  min-width:0;
+}
+
+.user-info strong{
+  display:block;
+  font-size:13px;
+}
+
+.user-info span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+.main{
+  flex:1;
+  min-width:0;
+  margin-left:250px;
+}
+
+.topbar{
+  height:68px;
+  background:var(--panel);
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:30;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:0 24px;
+}
+
+.topbar-left,
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.mobile-menu{
+  display:none;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--panel);
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+
+.icon-btn:hover{
+  background:var(--panel-2);
+}
+
+.notification-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#ef4444;
+  position:absolute;
+  right:7px;
+  top:7px;
+}
+
+.search-box{
+  width:min(420px,38vw);
+  height:40px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--panel-2);
+}
+
+.search-box input{
+  border:0;
+  outline:0;
+  background:transparent;
+  color:var(--text);
+  width:100%;
+}
+
+.content{
+  padding:24px;
+}
+
+/* ===== Header ===== */
+
+.page-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:22px;
+}
+
+.page-title h1{
+  margin:0;
+  font-size:26px;
+}
+
+.page-title p{
+  margin:7px 0 0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.header-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  min-height:40px;
+  padding:0 15px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--panel);
+  color:var(--text);
+  font-weight:700;
+}
+
+.btn:hover{
+  background:var(--panel-2);
+}
+
+.btn-primary{
+  border-color:var(--primary);
+  background:var(--primary);
+  color:#fff;
+}
+
+/* ===== Stats ===== */
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:14px;
+  margin-bottom:20px;
+}
+
+.stat-card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  box-shadow:var(--shadow);
+}
+
+.stat-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.stat-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:var(--panel-2);
+  display:grid;
+  place-items:center;
+}
+
+.stat-value{
+  margin-top:12px;
+  font-size:28px;
+  font-weight:800;
+}
+
+.stat-note{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ===== Cards ===== */
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(300px,.8fr);
+  gap:18px;
+}
+
+.card{
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.card-header{
+  padding:17px 18px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.card-header h2{
+  margin:0;
+  font-size:16px;
+}
+
+.card-header span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.card-body{
+  padding:18px;
+}
+
+/* ===== Status ===== */
+
+.status-list{
+  display:grid;
+  gap:11px;
+}
+
+.status-row{
+  display:grid;
+  grid-template-columns:110px 1fr 50px;
+  gap:10px;
+  align-items:center;
+}
+
+.status-name{
+  font-size:13px;
+}
+
+.progress{
+  height:9px;
+  border-radius:999px;
+  background:var(--panel-2);
+  overflow:hidden;
+}
+
+.progress-bar{
+  height:100%;
+  border-radius:999px;
+  background:var(--primary);
+}
+
+.progress-bar.success{
+  background:var(--success);
+}
+
+.progress-bar.warning{
+  background:var(--warning);
+}
+
+.progress-bar.danger{
+  background:var(--danger);
+}
+
+.status-number{
+  text-align:right;
+  font-size:13px;
+  font-weight:700;
+}
+
+/* ===== Alerts ===== */
+
+.alert-list{
+  display:grid;
+  gap:10px;
+}
+
+.alert-item{
+  border:1px solid var(--border);
+  border-radius:11px;
+  padding:12px;
+  display:flex;
+  gap:11px;
+}
+
+.alert-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:var(--panel-2);
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+}
+
+.alert-content{
+  min-width:0;
+}
+
+.alert-title{
+  font-size:13px;
+  font-weight:700;
+}
+
+.alert-desc{
+  color:var(--muted);
+  font-size:12px;
+  margin-top:4px;
+  line-height:1.5;
+}
+
+/* ===== Table ===== */
+
+.table-wrap{
+  width:100%;
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px;
+}
+
+th,
+td{
+  padding:13px 14px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:13px;
+}
+
+th{
+  color:var(--muted);
+  font-weight:700;
+  background:var(--panel-2);
+}
+
+tbody tr:hover{
+  background:var(--panel-2);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:0 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.badge-success{
+  color:#15803d;
+  background:#dcfce7;
+}
+
+.badge-warning{
+  color:#b45309;
+  background:#fef3c7;
+}
+
+.badge-danger{
+  color:#b91c1c;
+  background:#fee2e2;
+}
+
+.badge-info{
+  color:#0369a1;
+  background:#e0f2fe;
+}
+
+html[data-theme="dark"] .badge-success{
+  color:#86efac;
+  background:#143522;
+}
+
+html[data-theme="dark"] .badge-warning{
+  color:#fcd34d;
+  background:#3d2b12;
+}
+
+html[data-theme="dark"] .badge-danger{
+  color:#fca5a5;
+  background:#421b20;
+}
+
+html[data-theme="dark"] .badge-info{
+  color:#7dd3fc;
+  background:#153244;
+}
+
+/* ===== Quick actions ===== */
+
+.quick-actions{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+}
+
+.quick-action{
+  min-height:86px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+  color:var(--text);
+  padding:12px;
+  text-align:left;
+}
+
+.quick-action:hover{
+  background:var(--panel-2);
+}
+
+.quick-action strong{
+  display:block;
+  margin-top:7px;
+  font-size:13px;
+}
+
+.quick-action span{
+  display:block;
+  margin-top:4px;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* ===== Overlay ===== */
+
+.sidebar-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.38);
+  z-index:40;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:1200px){
+  .stats-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .quick-actions{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:900px){
+  .sidebar{
+    transform:translateX(-100%);
+  }
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .sidebar-overlay.show{
+    display:block;
+  }
+
+  .main{
+    margin-left:0;
+  }
+
+  .mobile-menu{
+    display:grid;
+  }
+
+  .dashboard-grid{
+    grid-template-columns:1fr;
+  }
+
+  .search-box{
+    width:min(360px,48vw);
+  }
+}
+
+@media(max-width:650px){
+  .topbar{
+    padding:0 14px;
+  }
+
+  .search-box{
+    display:none;
+  }
+
+  .content{
+    padding:16px;
+  }
+
+  .page-header{
+    flex-direction:column;
+  }
+
+  .header-actions{
+    width:100%;
+  }
+
+  .header-actions .btn{
+    flex:1;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .stat-card{
+    padding:14px;
+  }
+
+  .stat-value{
+    font-size:23px;
+  }
+
+  .quick-actions{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:430px){
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quick-actions{
+    grid-template-columns:1fr;
+  }
+
+  .page-title h1{
+    font-size:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-mark">B</div>
+
+      <div class="brand-text">
+        <strong>BOMB WMS</strong>
+        <span>Warehouse Management</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+
+      <div class="nav-group-title">總覽</div>
+
+      <button class="nav-item active">
+        <span class="nav-icon">▦</span>
+        <span>營運總覽</span>
+      </button>
+
+      <div class="nav-group-title">物品與資產</div>
+
+      <button class="nav-item">
+        <span class="nav-icon">▣</span>
+        <span>品項管理</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">▤</span>
+        <span>庫存管理</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">◆</span>
+        <span>資產管理</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">↓</span>
+        <span>入庫／驗收</span>
+      </button>
+
+      <div class="nav-group-title">異動管理</div>
+
+      <button class="nav-item">
+        <span class="nav-icon">⇄</span>
+        <span>調撥／配置</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">↔</span>
+        <span>借用／歸還</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>維修更換</span>
+      </button>
+
+      <div class="nav-group-title">機台與位置</div>
+
+      <button class="nav-item">
+        <span class="nav-icon">▥</span>
+        <span>機台管理</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">⌖</span>
+        <span>位置／倉架</span>
+      </button>
+
+      <div class="nav-group-title">管理作業</div>
+
+      <button class="nav-item">
+        <span class="nav-icon">✓</span>
+        <span>盤點管理</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">🛒</span>
+        <span>採購需求</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">🔔</span>
+        <span>通知中心</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">≡</span>
+        <span>異動日誌</span>
+      </button>
+
+      <div class="nav-group-title">系統管理</div>
+
+      <button class="nav-item">
+        <span class="nav-icon">♙</span>
+        <span>角色與權限</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">⇅</span>
+        <span>匯入／匯出</span>
+      </button>
+
+      <button class="nav-item">
+        <span class="nav-icon">⚙</span>
+        <span>系統設定</span>
+      </button>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-box">
+        <div class="avatar">OG</div>
+
+        <div class="user-info">
+          <strong>OG</strong>
+          <span>最高權限</span>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="icon-btn mobile-menu"
+          id="mobileMenuBtn"
+          aria-label="開啟選單"
+        >
+          ☰
+        </button>
+
+        <div class="search-box">
+          <span>⌕</span>
+          <input
+            type="search"
+            placeholder="搜尋品項、資產編號、序號、機台、倉架..."
+          >
+        </div>
+
+      </div>
+
+      <div class="topbar-right">
+
+        <button
+          class="icon-btn"
+          id="themeBtn"
+          aria-label="切換淺色深色"
+          title="切換淺色／深色"
+        >
+          ☾
+        </button>
+
+        <button
+          class="icon-btn"
+          aria-label="通知"
+          title="通知中心"
+        >
+          🔔
+          <span class="notification-dot"></span>
+        </button>
+
+      </div>
+
+    </header>
+
+    <!-- Content -->
+    <div class="content">
+
+      <section class="page-header">
+
+        <div class="page-title">
+          <h1>營運總覽</h1>
+          <p>公司物品、設備、資產與庫存目前概況</p>
+        </div>
+
+        <div class="header-actions">
+
+          <button class="btn">
+            重新整理
+          </button>
+
+          <button class="btn btn-primary">
+            ＋ 快速新增
+          </button>
+
+        </div>
+
+      </section>
+
+      <!-- Stats -->
+      <section class="stats-grid">
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">公司資產總數</span>
+            <span class="stat-icon">▦</span>
+          </div>
+
+          <div class="stat-value">286</div>
+          <div class="stat-note">目前公司持有資產</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">可用設備</span>
+            <span class="stat-icon">✓</span>
+          </div>
+
+          <div class="stat-value">148</div>
+          <div class="stat-note">可立即配置使用</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">使用中</span>
+            <span class="stat-icon">▶</span>
+          </div>
+
+          <div class="stat-value">96</div>
+          <div class="stat-note">員工／機台使用中</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">故障／維修</span>
+            <span class="stat-icon">⚠</span>
+          </div>
+
+          <div class="stat-value">12</div>
+          <div class="stat-note">待檢查或維修處理</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-head">
+            <span class="stat-label">庫存預警</span>
+            <span class="stat-icon">!</span>
+          </div>
+
+          <div class="stat-value">4</div>
+          <div class="stat-note">低於安全庫存</div>
+        </article>
+
+      </section>
+
+      <section class="dashboard-grid">
+
+        <div>
+
+          <!-- Status -->
+          <article class="card">
+
+            <div class="card-header">
+              <div>
+                <h2>資產狀態分布</h2>
+                <span>目前公司資產狀態</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+
+              <div class="status-list">
+
+                <div class="status-row">
+                  <div class="status-name">可用</div>
+                  <div class="progress">
+                    <div class="progress-bar success" style="width:78%"></div>
+                  </div>
+                  <div class="status-number">148</div>
+                </div>
+
+                <div class="status-row">
+                  <div class="status-name">使用中</div>
+                  <div class="progress">
+                    <div class="progress-bar" style="width:55%"></div>
+                  </div>
+                  <div class="status-number">96</div>
+                </div>
+
+                <div class="status-row">
+                  <div class="status-name">故障／待檢查</div>
+                  <div class="progress">
+                    <div class="progress-bar warning" style="width:18%"></div>
+                  </div>
+                  <div class="status-number">8</div>
+                </div>
+
+                <div class="status-row">
+                  <div class="status-name">維修中</div>
+                  <div class="progress">
+                    <div class="progress-bar danger" style="width:12%"></div>
+                  </div>
+                  <div class="status-number">4</div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <br>
+
+          <!-- Recent -->
+          <article class="card">
+
+            <div class="card-header">
+              <div>
+                <h2>最近異動</h2>
+                <span>最新物品與資產流向</span>
+              </div>
+
+              <button class="btn">查看全部</button>
+            </div>
+
+            <div class="table-wrap">
+
+              <table>
+
+                <thead>
+                  <tr>
+                    <th>時間</th>
+                    <th>異動類型</th>
+                    <th>品項／資產</th>
+                    <th>原位置</th>
+                    <th>新位置</th>
+                    <th>操作人</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+
+                  <tr>
+                    <td>09/25 13:10</td>
+                    <td><span class="badge badge-info">調撥</span></td>
+                    <td>Mini PC A005</td>
+                    <td>公司備品區</td>
+                    <td>維修部</td>
+                    <td>OG</td>
+                  </tr>
+
+                  <tr>
+                    <td>09/25 11:42</td>
+                    <td><span class="badge badge-success">入庫</span></td>
+                    <td>滑鼠 × 20</td>
+                    <td>－</td>
+                    <td>行政倉</td>
+                    <td>KEN</td>
+                  </tr>
+
+                  <tr>
+                    <td>09/25 10:18</td>
+                    <td><span class="badge badge-warning">維修更換</span></td>
+                    <td>Mini PC A012</td>
+                    <td>維修部</td>
+                    <td>小丑－1212</td>
+                    <td>RU</td>
+                  </tr>
+
+                  <tr>
+                    <td>09/25 09:25</td>
+                    <td><span class="badge badge-danger">故障</span></td>
+                    <td>Mini PC A003</td>
+                    <td>小丑－1212</td>
+                    <td>故障品區</td>
+                    <td>RU</td>
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </article>
+
+        </div>
+
+        <div>
+
+          <!-- Alerts -->
+          <article class="card">
+
+            <div class="card-header">
+              <div>
+                <h2>待處理／通知</h2>
+                <span>目前需要注意的事項</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+
+              <div class="alert-list">
+
+                <div class="alert-item">
+                  <div class="alert-icon">!</div>
+
+                  <div class="alert-content">
+                    <div class="alert-title">Mini PC 庫存不足</div>
+                    <div class="alert-desc">
+                      維修部可用備品 3 台，低於基本備品量 5 台。
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert-item">
+                  <div class="alert-icon">✓</div>
+
+                  <div class="alert-content">
+                    <div class="alert-title">待核准調撥</div>
+                    <div class="alert-desc">
+                      1 筆重要資產調撥正在等待處理。
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert-item">
+                  <div class="alert-icon">⚙</div>
+
+                  <div class="alert-content">
+                    <div class="alert-title">維修事後報備</div>
+                    <div class="alert-desc">
+                      小丑－1212 已完成 Mini PC 更換。
+                    </div>
+                  </div>
+                </div>
+
+                <div class="alert-item">
+                  <div class="alert-icon">▣</div>
+
+                  <div class="alert-content">
+                    <div class="alert-title">盤點差異</div>
+                    <div class="alert-desc">
+                      維修區滑鼠帳面 12，實際盤點 11。
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </article>
+
+          <br>
+
+          <!-- Quick actions -->
+          <article class="card">
+
+            <div class="card-header">
+              <div>
+                <h2>快速操作</h2>
+                <span>常用 WMS 作業</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+
+              <div class="quick-actions">
+
+                <button class="quick-action">
+                  <div>↓</div>
+                  <strong>新增入庫</strong>
+                  <span>建立到貨／驗收資料</span>
+                </button>
+
+                <button class="quick-action">
+                  <div>⇄</div>
+                  <strong>部門調撥</strong>
+                  <span>移轉部門或位置</span>
+                </button>
+
+                <button class="quick-action">
+                  <div>⚙</div>
+                  <strong>維修更換</strong>
+                  <span>設備更換後補登</span>
+                </button>
+
+                <button class="quick-action">
+                  <div>✓</div>
+                  <strong>開始盤點</strong>
+                  <span>進行現場數量確認</span>
+                </button>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+(function(){
+
+  const html=document.documentElement;
+  const sidebar=document.getElementById('sidebar');
+  const overlay=document.getElementById('sidebarOverlay');
+  const menuBtn=document.getElementById('mobileMenuBtn');
+  const themeBtn=document.getElementById('themeBtn');
+
+  /* ===== Theme ===== */
+
+  const savedTheme=localStorage.getItem('bomb-wms-theme');
+
+  if(savedTheme==='dark' || savedTheme==='light'){
+    html.dataset.theme=savedTheme;
+  }
+
+  function updateThemeIcon(){
+    themeBtn.textContent=
+      html.dataset.theme==='dark'
+        ? '☀'
+        : '☾';
+  }
+
+  updateThemeIcon();
+
+  themeBtn.addEventListener('click',()=>{
+    const next=
+      html.dataset.theme==='dark'
+        ? 'light'
+        : 'dark';
+
+    html.dataset.theme=next;
+
+    localStorage.setItem(
+      'bomb-wms-theme',
+      next
+    );
+
+    updateThemeIcon();
+  });
+
+  /* ===== Mobile Sidebar ===== */
+
+  function openSidebar(){
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+  }
+
+  function closeSidebar(){
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+  }
+
+  menuBtn.addEventListener('click',()=>{
+    if(sidebar.classList.contains('open')){
+      closeSidebar();
+    }else{
+      openSidebar();
+    }
+  });
+
+  overlay.addEventListener('click',closeSidebar);
+
+  /* ===== Prototype Nav ===== */
+
+  document.querySelectorAll('.nav-item').forEach(btn=>{
+
+    btn.addEventListener('click',()=>{
+
+      document
+        .querySelectorAll('.nav-item')
+        .forEach(item=>item.classList.remove('active'));
+
+      btn.classList.add('active');
+
+      if(window.innerWidth<=900){
+        closeSidebar();
+      }
+
+    });
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
