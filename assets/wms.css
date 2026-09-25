@@ -702,3 +702,38 @@ html[data-theme="dark"] .badge-info{
     font-size:22px;
   }
 }
+
+/* ===== Page switch ===== */
+
+.page-view{
+  display:none;
+}
+
+.page-view.active{
+  display:block;
+}
+
+
+/* ===== Sidebar scrollbar ===== */
+
+.nav{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(148,163,184,.35) transparent;
+}
+
+.nav::-webkit-scrollbar{
+  width:6px;
+}
+
+.nav::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.nav::-webkit-scrollbar-thumb{
+  background:rgba(148,163,184,.35);
+  border-radius:999px;
+}
+
+.nav::-webkit-scrollbar-thumb:hover{
+  background:rgba(148,163,184,.55);
+}
