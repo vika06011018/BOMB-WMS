@@ -29,27 +29,25 @@
 
       <div class="nav-group-title">總覽</div>
 
-      <button class="nav-item active">
-        <span class="nav-icon">▦</span>
-        <span>營運總覽</span>
-      </button>
+      <button class="nav-item active" data-page="dashboard">
+       <span class="nav-icon">▦</span>
+       <span>營運總覽</span>
+       </button>
 
-      <div class="nav-group-title">物品與資產</div>
+      <button class="nav-item" data-page="items">
+       <span class="nav-icon">▣</span>
+       <span>品項管理</span>
+       </button>
 
-      <button class="nav-item">
-        <span class="nav-icon">▣</span>
-        <span>品項管理</span>
-      </button>
+     <button class="nav-item" data-page="inventory">
+       <span class="nav-icon">▤</span>
+       <span>庫存管理</span>
+       </button>
 
-      <button class="nav-item">
-        <span class="nav-icon">▤</span>
-        <span>庫存管理</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">◆</span>
-        <span>資產管理</span>
-      </button>
+     <button class="nav-item" data-page="assets">
+       <span class="nav-icon">◆</span>
+       <span>資產管理</span>
+       </button>
 
       <button class="nav-item">
         <span class="nav-icon">↓</span>
@@ -193,8 +191,8 @@
 
     <!-- Content -->
     <div class="content">
-
-      <section class="page-header">
+    <div class="page-view active" id="page-dashboard">
+    <section class="page-header">
 
         <div class="page-title">
           <h1>營運總覽</h1>
@@ -519,9 +517,20 @@
 
       </section>
 
-    </div>
+</div> <!-- page-dashboard -->
 
-  </main>
+<div class="page-view" id="page-items">
+  <section class="page-header">
+    <div class="page-title">
+      <h1>品項管理</h1>
+      <p>管理公司物品、設備與耗材的基本資料</p>
+    </div>
+  </section>
+</div>
+
+</div> <!-- content -->
+
+</main>
 
 </div>
 
@@ -593,22 +602,32 @@
 
   document.querySelectorAll('.nav-item').forEach(btn=>{
 
-    btn.addEventListener('click',()=>{
+  btn.addEventListener('click',()=>{
 
-      document
-        .querySelectorAll('.nav-item')
-        .forEach(item=>item.classList.remove('active'));
+    const page=btn.dataset.page;
+    if(!page)return;
 
-      btn.classList.add('active');
+    document
+      .querySelectorAll('.nav-item')
+      .forEach(item=>item.classList.remove('active'));
 
-      if(window.innerWidth<=900){
-        closeSidebar();
-      }
+    btn.classList.add('active');
 
-    });
+    document
+      .querySelectorAll('.page-view')
+      .forEach(view=>view.classList.remove('active'));
+
+    document
+      .getElementById(`page-${page}`)
+      ?.classList.add('active');
+
+    if(window.innerWidth<=900){
+      closeSidebar();
+    }
 
   });
 
+});
 })();
 </script>
 
