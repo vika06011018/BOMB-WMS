@@ -604,14 +604,269 @@
   </article>
 </div>
 
-<div class="page-view" id="page-placeholder">
+<div class="page-view" id="page-assets">
   <section class="page-header">
     <div class="page-title">
-      <h1 id="placeholderTitle"></h1>
-      <p>此工作表正在建置中。</p>
+      <h1>資產管理</h1>
+      <p>逐台追蹤設備編號、使用狀態、保管人與所在位置</p>
     </div>
   </section>
-  <article class="card"><div class="card-body">這個功能尚未建立，現有資料與頁面不受影響。</div></article>
+
+  <article class="card">
+    <div class="card-header">
+      <div>
+        <h2>設備資產清單</h2>
+        <span>以下為展示資料；設備即使使用中或故障，仍列入公司資產</span>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>資產編號</th><th>品項編號</th><th>設備名稱</th>
+            <th>所屬部門</th><th>目前區域／位置</th><th>保管人</th>
+            <th>資產狀態</th><th>可用配置</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AST-0001</td><td>ITM-0001</td><td>Mini PC</td>
+            <td>辦公室部門</td><td>備品區／倉架 A-01</td><td>－</td>
+            <td><span class="badge badge-success">備品</span></td><td>是</td>
+          </tr>
+          <tr>
+            <td>AST-0002</td><td>ITM-0001</td><td>Mini PC</td>
+            <td>辦公室部門</td><td>機台區／機台 01</td><td>機台 01</td>
+            <td><span class="badge badge-info">使用中</span></td><td>否</td>
+          </tr>
+          <tr>
+            <td>AST-0003</td><td>ITM-0002</td><td>小螢幕</td>
+            <td>辦公室部門</td><td>備品區／待檢區</td><td>－</td>
+            <td><span class="badge badge-warning">待檢測</span></td><td>否</td>
+          </tr>
+          <tr>
+            <td>AST-0004</td><td>ITM-0001</td><td>Mini PC</td>
+            <td>辦公室部門</td><td>備品區／故障品區</td><td>－</td>
+            <td><span class="badge badge-danger">故障</span></td><td>否</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+</div>
+
+<div class="page-view" id="page-inbound">
+  <section class="page-header">
+    <div class="page-title"><h1>入庫／驗收</h1><p>記錄採購到貨、驗收結果及實際入庫位置</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>入庫與驗收紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>單號</th><th>日期</th><th>品項</th><th>數量</th><th>驗收結果</th><th>入庫部門／位置</th><th>經辦人</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>IN-0001</td><td>09/25</td><td>滑鼠</td><td>20 個</td><td>數量相符</td><td>辦公室部門／備品區・倉架 B-01</td><td>OG</td><td><span class="badge badge-success">已入庫</span></td></tr>
+          <tr><td>IN-0002</td><td>09/26</td><td>小螢幕</td><td>3 台</td><td>待功能檢測</td><td>辦公室部門／備品區・待檢區</td><td>KEN</td><td><span class="badge badge-warning">驗收中</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-transfer">
+  <section class="page-header">
+    <div class="page-title"><h1>調撥／配置</h1><p>追蹤部門與位置之間的設備及備品移動</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>調撥與配置紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>單號</th><th>品項／資產</th><th>原部門／位置</th><th>新部門／位置</th><th>數量</th><th>申請人</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>TR-0001</td><td>Mini PC AST-0002</td><td>辦公室部門／備品區</td><td>辦公室部門／機台區・機台 01</td><td>1 台</td><td>OG</td><td><span class="badge badge-success">已完成</span></td></tr>
+          <tr><td>TR-0002</td><td>鍵盤</td><td>辦公室部門／備品區</td><td>辦公室部門／辦公區</td><td>2 個</td><td>KEN</td><td><span class="badge badge-warning">待確認</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-borrow">
+  <section class="page-header">
+    <div class="page-title"><h1>借用／歸還</h1><p>管理設備借出、預計歸還與實際繳回</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>借用與歸還紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>借用單號</th><th>資產／品項</th><th>借用人</th><th>借出位置</th><th>借用日期</th><th>預計歸還</th><th>歸還日期</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>BR-0001</td><td>小螢幕 AST-0005</td><td>KEN</td><td>辦公室部門／備品區</td><td>09/25</td><td>10/02</td><td>－</td><td><span class="badge badge-info">借用中</span></td></tr>
+          <tr><td>BR-0002</td><td>滑鼠 × 1</td><td>RU</td><td>辦公室部門／備品區</td><td>09/23</td><td>09/27</td><td>09/27</td><td><span class="badge badge-success">已歸還</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-repair">
+  <section class="page-header">
+    <div class="page-title"><h1>維修更換</h1><p>記錄故障送修、檢測與備品替換</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>維修與更換紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>維修單號</th><th>故障資產</th><th>問題描述</th><th>目前位置</th><th>替換資產</th><th>負責人</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>RP-0001</td><td>Mini PC AST-0004</td><td>無法開機</td><td>備品區／故障品區</td><td>Mini PC AST-0001</td><td>RU</td><td><span class="badge badge-warning">待檢測</span></td></tr>
+          <tr><td>RP-0002</td><td>小螢幕 AST-0003</td><td>畫面閃爍</td><td>備品區／待檢區</td><td>－</td><td>KEN</td><td><span class="badge badge-warning">檢測中</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-machine">
+  <section class="page-header">
+    <div class="page-title"><h1>機台管理</h1><p>管理機台編號、所屬區域與配置設備</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>機台與設備配置</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>機台編號</th><th>部門</th><th>區域</th><th>位置</th><th>配置設備</th><th>負責人</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>MC-001</td><td>辦公室部門</td><td>機台區</td><td>機台 01</td><td>Mini PC AST-0002、小螢幕 AST-0006</td><td>RU</td><td><span class="badge badge-info">使用中</span></td></tr>
+          <tr><td>MC-002</td><td>辦公室部門</td><td>機台區</td><td>機台 02</td><td>Mini PC AST-0007</td><td>KEN</td><td><span class="badge badge-warning">待配置</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-racks">
+  <section class="page-header">
+    <div class="page-title"><h1>位置／倉架</h1><p>以部門、區域、倉架與層位定位物品</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>位置與倉架清單</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>位置編號</th><th>部門</th><th>區域</th><th>倉架／位置</th><th>層位</th><th>用途</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>LOC-A01-1</td><td>辦公室部門</td><td>備品區</td><td>倉架 A-01</td><td>第 1 層</td><td>Mini PC 備品</td><td><span class="badge badge-success">啟用</span></td></tr>
+          <tr><td>LOC-A02-2</td><td>辦公室部門</td><td>備品區</td><td>倉架 A-02</td><td>第 2 層</td><td>小螢幕備品</td><td><span class="badge badge-success">啟用</span></td></tr>
+          <tr><td>LOC-M01</td><td>辦公室部門</td><td>機台區</td><td>機台 01</td><td>－</td><td>機台設備</td><td><span class="badge badge-success">啟用</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-count">
+  <section class="page-header">
+    <div class="page-title"><h1>盤點管理</h1><p>核對帳面數量與現場實物並記錄差異</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>盤點任務與結果</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>盤點單號</th><th>範圍</th><th>品項</th><th>帳面數</th><th>實盤數</th><th>差異</th><th>負責人</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>CT-0001</td><td>辦公室部門／備品區</td><td>滑鼠</td><td>12 個</td><td>12 個</td><td>0</td><td>OG</td><td><span class="badge badge-success">已完成</span></td></tr>
+          <tr><td>CT-0002</td><td>辦公室部門／備品區</td><td>小螢幕</td><td>2 台</td><td>－</td><td>待確認</td><td>KEN</td><td><span class="badge badge-warning">盤點中</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-purchase">
+  <section class="page-header">
+    <div class="page-title"><h1>採購需求</h1><p>整理安全庫存預警及部門提出的採購申請</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>採購需求清單</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>需求單號</th><th>申請部門</th><th>品項</th><th>申請數量</th><th>需求原因</th><th>申請人</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>PR-0001</td><td>辦公室部門</td><td>小螢幕</td><td>3 台</td><td>可用數量低於安全庫存</td><td>OG</td><td><span class="badge badge-warning">待審核</span></td></tr>
+          <tr><td>PR-0002</td><td>總部</td><td>鍵盤</td><td>2 個</td><td>新增辦公位置</td><td>KEN</td><td><span class="badge badge-info">草稿</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-notifications">
+  <section class="page-header">
+    <div class="page-title"><h1>通知中心</h1><p>集中查看庫存預警、待確認作業及維修提醒</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>通知清單</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>時間</th><th>類型</th><th>通知內容</th><th>關聯單號</th><th>狀態</th></tr></thead>
+      <tbody>
+          <tr><td>09/28 09:00</td><td>庫存預警</td><td>小螢幕可用 2 台，低於安全庫存 3 台</td><td>ITM-0002</td><td><span class="badge badge-info">未讀</span></td></tr>
+          <tr><td>09/26 14:20</td><td>驗收提醒</td><td>小螢幕到貨，等待功能檢測</td><td>IN-0002</td><td><span class="badge badge-info">未讀</span></td></tr>
+          <tr><td>09/25 10:18</td><td>維修提醒</td><td>Mini PC AST-0004 待檢測</td><td>RP-0001</td><td><span class="badge badge-success">已讀</span></td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-log">
+  <section class="page-header">
+    <div class="page-title"><h1>異動日誌</h1><p>依時間保留設備、庫存及位置的變更紀錄</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>操作與異動紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>時間</th><th>動作</th><th>品項／資產</th><th>異動前</th><th>異動後</th><th>操作人</th><th>關聯單號</th></tr></thead>
+      <tbody>
+          <tr><td>09/25 13:10</td><td>配置</td><td>Mini PC AST-0002</td><td>備品區</td><td>機台區／機台 01</td><td>OG</td><td>TR-0001</td></tr>
+          <tr><td>09/25 11:42</td><td>入庫</td><td>滑鼠 × 20</td><td>待驗收</td><td>備品區／倉架 B-01</td><td>OG</td><td>IN-0001</td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-roles">
+  <section class="page-header">
+    <div class="page-title"><h1>角色與權限</h1><p>規劃不同角色可查看及處理的 WMS 作業</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>角色權限範例</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>角色</th><th>查看資料</th><th>品項／位置維護</th><th>入出庫與調撥</th><th>審核</th><th>系統設定</th></tr></thead>
+      <tbody>
+          <tr><td>最高權限</td><td>全部</td><td>可</td><td>可</td><td>可</td><td>可</td></tr>
+          <tr><td>部門主管</td><td>所屬部門</td><td>依授權</td><td>可</td><td>依授權</td><td>不可</td></tr>
+          <tr><td>一般使用者</td><td>授權範圍</td><td>不可</td><td>提出申請</td><td>不可</td><td>不可</td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-import">
+  <section class="page-header">
+    <div class="page-title"><h1>匯入／匯出</h1><p>規劃品項、庫存、資產及位置資料的匯整方式</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>資料範圍</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>資料類型</th><th>匯入欄位範例</th><th>匯出用途</th><th>目前階段</th></tr></thead>
+      <tbody>
+          <tr><td>品項資料</td><td>品項編號、名稱、類型、單位、安全庫存</td><td>品項清冊</td><td>畫面規劃</td></tr>
+          <tr><td>資產資料</td><td>資產編號、品項、部門、位置、狀態</td><td>設備盤點</td><td>畫面規劃</td></tr>
+          <tr><td>庫存資料</td><td>品項、部門、區域、位置、數量</td><td>庫存報表</td><td>畫面規劃</td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</div>
+
+<div class="page-view" id="page-settings">
+  <section class="page-header">
+    <div class="page-title"><h1>系統設定</h1><p>集中管理部門、區域與庫存作業規則</p></div>
+  </section>
+  <article class="card">
+    <div class="card-header"><div><h2>設定項目</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>設定</th><th>目前規劃</th><th>用途</th></tr></thead>
+      <tbody>
+          <tr><td>部門</td><td>總部、辦公室部門</td><td>管理資料歸屬與查詢範圍</td></tr>
+          <tr><td>辦公室部門區域</td><td>機台區、辦公區、備品區</td><td>管理實際存放位置</td></tr>
+          <tr><td>安全庫存</td><td>依品項設定</td><td>低庫存提醒與採購需求</td></tr>
+          <tr><td>通知與核准</td><td>依作業類型設定</td><td>入庫、借用、調撥等流程</td></tr>
+      </tbody>
+    </table></div>
+  </article>
 </div>
 
 </div> <!-- content -->
@@ -685,7 +940,6 @@
   const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
   const childTabs=[...document.querySelectorAll('.child-tab')];
   const subtabBar=document.querySelector('.sheet-subtabs');
-  const placeholder=document.getElementById('page-placeholder');
 
   function showPage(page, label, group){
     const mainTab=group
@@ -708,12 +962,7 @@
 
     document.querySelectorAll('.page-view').forEach(view=>view.classList.remove('active'));
     const view=document.getElementById(`page-${page}`);
-    if(view){
-      view.classList.add('active');
-    }else{
-      document.getElementById('placeholderTitle').textContent=label;
-      placeholder.classList.add('active');
-    }
+    if(view) view.classList.add('active');
     mainTab?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
   }
 
