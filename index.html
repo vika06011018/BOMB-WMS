@@ -46,7 +46,17 @@
           <span class="notification-dot"></span>
         </button>
 
-        <div class="avatar" title="展示帳號：OG（最高權限）" aria-label="展示帳號 OG，最高權限">OG</div>
+        <div class="account-area">
+          <button type="button" class="account-trigger" id="accountBtn" aria-expanded="false" aria-controls="accountPanel">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+            <span>OG</span><span class="account-role">最高權限</span>
+          </button>
+          <div class="account-panel" id="accountPanel" hidden>
+            <strong>OG</strong>
+            <span>最高權限 · 展示帳號</span>
+            <p>登入／登出功能尚未建立</p>
+          </div>
+        </div>
 
       </div>
 
@@ -592,6 +602,27 @@
     );
 
     updateThemeIcon();
+  });
+
+  /* ===== Account panel ===== */
+  const accountBtn=document.getElementById('accountBtn');
+  const accountPanel=document.getElementById('accountPanel');
+  accountBtn.addEventListener('click',()=>{
+    accountPanel.hidden=!accountPanel.hidden;
+    accountBtn.setAttribute('aria-expanded',String(!accountPanel.hidden));
+  });
+  document.addEventListener('click',event=>{
+    if(!event.target.closest('.account-area')){
+      accountPanel.hidden=true;
+      accountBtn.setAttribute('aria-expanded','false');
+    }
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'){
+      accountPanel.hidden=true;
+      accountBtn.setAttribute('aria-expanded','false');
+      accountBtn.focus();
+    }
   });
 
   /* ===== Worksheet navigation ===== */
