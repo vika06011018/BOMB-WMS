@@ -13,132 +13,6 @@
 
 <div class="app">
 
-  <!-- Sidebar -->
-  <aside class="sidebar" id="sidebar">
-
-    <div class="brand">
-      <div class="brand-mark">B</div>
-
-      <div class="brand-text">
-        <strong>BOMB WMS</strong>
-        <span>Warehouse Management</span>
-      </div>
-    </div>
-
-    <nav class="nav">
-
-      <div class="nav-group-title">總覽</div>
-
-      <button class="nav-item active" data-page="dashboard">
-       <span class="nav-icon">▦</span>
-       <span>營運總覽</span>
-       </button>
-
-      <button class="nav-item" data-page="items">
-       <span class="nav-icon">▣</span>
-       <span>品項管理</span>
-       </button>
-
-     <button class="nav-item" data-page="inventory">
-       <span class="nav-icon">▤</span>
-       <span>庫存管理</span>
-       </button>
-
-     <button class="nav-item" data-page="assets">
-       <span class="nav-icon">◆</span>
-       <span>資產管理</span>
-       </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">↓</span>
-        <span>入庫／驗收</span>
-      </button>
-
-      <div class="nav-group-title">異動管理</div>
-
-      <button class="nav-item">
-        <span class="nav-icon">⇄</span>
-        <span>調撥／配置</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">↔</span>
-        <span>借用／歸還</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">⚙</span>
-        <span>維修更換</span>
-      </button>
-
-      <div class="nav-group-title">機台與位置</div>
-
-      <button class="nav-item">
-        <span class="nav-icon">▥</span>
-        <span>機台管理</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">⌖</span>
-        <span>位置／倉架</span>
-      </button>
-
-      <div class="nav-group-title">管理作業</div>
-
-      <button class="nav-item">
-        <span class="nav-icon">✓</span>
-        <span>盤點管理</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">🛒</span>
-        <span>採購需求</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">🔔</span>
-        <span>通知中心</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">≡</span>
-        <span>異動日誌</span>
-      </button>
-
-      <div class="nav-group-title">系統管理</div>
-
-      <button class="nav-item">
-        <span class="nav-icon">♙</span>
-        <span>角色與權限</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">⇅</span>
-        <span>匯入／匯出</span>
-      </button>
-
-      <button class="nav-item">
-        <span class="nav-icon">⚙</span>
-        <span>系統設定</span>
-      </button>
-
-    </nav>
-
-    <div class="sidebar-footer">
-      <div class="user-box">
-        <div class="avatar">OG</div>
-
-        <div class="user-info">
-          <strong>OG</strong>
-          <span>最高權限</span>
-        </div>
-      </div>
-    </div>
-
-  </aside>
-
-  <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
   <!-- Main -->
   <main class="main">
 
@@ -146,23 +20,10 @@
     <header class="topbar">
 
       <div class="topbar-left">
-
-        <button
-          class="icon-btn mobile-menu"
-          id="mobileMenuBtn"
-          aria-label="開啟選單"
-        >
-          ☰
-        </button>
-
-        <div class="search-box">
-          <span>⌕</span>
-          <input
-            type="search"
-            placeholder="搜尋品項、資產編號、序號、機台、倉架..."
-          >
+        <div class="brand">
+          <div class="brand-mark">B</div>
+          <div class="brand-text"><strong>BOMB WMS</strong><span>Warehouse Management</span></div>
         </div>
-
       </div>
 
       <div class="topbar-right">
@@ -188,6 +49,43 @@
       </div>
 
     </header>
+
+    <!-- Excel-style worksheet tabs -->
+    <nav class="sheet-nav" aria-label="WMS 工作表">
+      <div class="sheet-tabs" aria-label="主要標籤">
+        <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true"><span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span><span>營運總覽</span></button>
+        <button type="button" class="sheet-tab" data-page="items" aria-selected="false"><span class="tab-icon" data-icon="items" aria-hidden="true"></span><span>品項管理</span></button>
+        <button type="button" class="sheet-tab" data-page="inventory" aria-selected="false"><span class="tab-icon" data-icon="inventory" aria-hidden="true"></span><span>庫存管理</span></button>
+        <button type="button" class="sheet-tab" data-page="assets" aria-selected="false"><span class="tab-icon" data-icon="assets" aria-hidden="true"></span><span>資產管理</span></button>
+        <button type="button" class="sheet-tab" data-page="inbound" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>入庫／驗收</span></button>
+        <button type="button" class="sheet-tab" data-group="movement" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>異動管理</span><span class="tab-chevron" aria-hidden="true">⌄</span></button>
+        <button type="button" class="sheet-tab" data-group="locations" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台與位置</span><span class="tab-chevron" aria-hidden="true">⌄</span></button>
+        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>管理作業</span><span class="tab-chevron" aria-hidden="true">⌄</span></button>
+        <button type="button" class="sheet-tab" data-group="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>系統管理</span><span class="tab-chevron" aria-hidden="true">⌄</span></button>
+      </div>
+      <div class="sheet-subtabs" hidden>
+      <div class="sheet-children" data-children="movement" aria-label="異動管理子標籤" hidden>
+        <button type="button" class="child-tab" data-page="transfer" data-parent="movement" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>調撥／配置</span></button>
+        <button type="button" class="child-tab" data-page="borrow" data-parent="movement" aria-selected="false"><span class="tab-icon" data-icon="borrow" aria-hidden="true"></span><span>借用／歸還</span></button>
+        <button type="button" class="child-tab" data-page="repair" data-parent="movement" aria-selected="false"><span class="tab-icon" data-icon="repair" aria-hidden="true"></span><span>維修更換</span></button>
+      </div>
+      <div class="sheet-children" data-children="locations" aria-label="機台與位置子標籤" hidden>
+        <button type="button" class="child-tab" data-page="machine" data-parent="locations" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台管理</span></button>
+        <button type="button" class="child-tab" data-page="racks" data-parent="locations" aria-selected="false"><span class="tab-icon" data-icon="racks" aria-hidden="true"></span><span>位置／倉架</span></button>
+      </div>
+      <div class="sheet-children" data-children="operations" aria-label="管理作業子標籤" hidden>
+        <button type="button" class="child-tab" data-page="count" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>盤點管理</span></button>
+        <button type="button" class="child-tab" data-page="purchase" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="purchase" aria-hidden="true"></span><span>採購需求</span></button>
+        <button type="button" class="child-tab" data-page="notifications" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="notifications" aria-hidden="true"></span><span>通知中心</span></button>
+        <button type="button" class="child-tab" data-page="log" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="log" aria-hidden="true"></span><span>異動日誌</span></button>
+      </div>
+      <div class="sheet-children" data-children="system" aria-label="系統管理子標籤" hidden>
+        <button type="button" class="child-tab" data-page="roles" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>角色與權限</span></button>
+        <button type="button" class="child-tab" data-page="import" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="import" aria-hidden="true"></span><span>匯入／匯出</span></button>
+        <button type="button" class="child-tab" data-page="settings" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="settings" aria-hidden="true"></span><span>系統設定</span></button>
+      </div>
+      </div>
+    </nav>
 
     <!-- Content -->
     <div class="content">
@@ -639,6 +537,16 @@
 
 </div>
 
+<div class="page-view" id="page-placeholder">
+  <section class="page-header">
+    <div class="page-title">
+      <h1 id="placeholderTitle"></h1>
+      <p>此工作表正在建置中。</p>
+    </div>
+  </section>
+  <article class="card"><div class="card-body">這個功能尚未建立，現有資料與頁面不受影響。</div></article>
+</div>
+
 </div> <!-- content -->
 
 </main>
@@ -649,9 +557,6 @@
 (function(){
 
   const html=document.documentElement;
-  const sidebar=document.getElementById('sidebar');
-  const overlay=document.getElementById('sidebarOverlay');
-  const menuBtn=document.getElementById('mobileMenuBtn');
   const themeBtn=document.getElementById('themeBtn');
 
   /* ===== Theme ===== */
@@ -687,58 +592,53 @@
     updateThemeIcon();
   });
 
-  /* ===== Mobile Sidebar ===== */
+  /* ===== Worksheet navigation ===== */
+  const directTabs=[...document.querySelectorAll('.sheet-tab[data-page]')];
+  const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
+  const childTabs=[...document.querySelectorAll('.child-tab')];
+  const subtabBar=document.querySelector('.sheet-subtabs');
+  const placeholder=document.getElementById('page-placeholder');
 
-  function openSidebar(){
-    sidebar.classList.add('open');
-    overlay.classList.add('show');
-  }
+  function showPage(page, label, group){
+    const mainTab=group
+      ? document.querySelector(`.sheet-tab[data-group="${group}"]`)
+      : directTabs.find(tab=>tab.dataset.page===page);
+    const childTab=group
+      ? childTabs.find(tab=>tab.dataset.parent===group && tab.dataset.page===page)
+      : null;
 
-  function closeSidebar(){
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-  }
+    [...directTabs,...groupTabs,...childTabs].forEach(tab=>{
+      const active=tab===mainTab || tab===childTab;
+      tab.classList.toggle('active',active);
+      tab.setAttribute('aria-selected',String(active));
+    });
 
-  menuBtn.addEventListener('click',()=>{
-    if(sidebar.classList.contains('open')){
-      closeSidebar();
+    document.querySelectorAll('.sheet-children').forEach(row=>{
+      row.hidden=row.dataset.children!==group;
+    });
+    subtabBar.hidden=!group;
+
+    document.querySelectorAll('.page-view').forEach(view=>view.classList.remove('active'));
+    const view=document.getElementById(`page-${page}`);
+    if(view){
+      view.classList.add('active');
     }else{
-      openSidebar();
+      document.getElementById('placeholderTitle').textContent=label;
+      placeholder.classList.add('active');
     }
-  });
+    mainTab?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
+  }
 
-  overlay.addEventListener('click',closeSidebar);
-
-  /* ===== Prototype Nav ===== */
-
-  document.querySelectorAll('.nav-item').forEach(btn=>{
-
-  btn.addEventListener('click',()=>{
-
-    const page=btn.dataset.page;
-    if(!page)return;
-
-    document
-      .querySelectorAll('.nav-item')
-      .forEach(item=>item.classList.remove('active'));
-
-    btn.classList.add('active');
-
-    document
-      .querySelectorAll('.page-view')
-      .forEach(view=>view.classList.remove('active'));
-
-    document
-      .getElementById(`page-${page}`)
-      ?.classList.add('active');
-
-    if(window.innerWidth<=900){
-      closeSidebar();
-    }
-
-  });
-
-});
+  directTabs.forEach(tab=>tab.addEventListener('click',()=>{
+    showPage(tab.dataset.page,tab.innerText.trim(),null);
+  }));
+  groupTabs.forEach(tab=>tab.addEventListener('click',()=>{
+    const child=childTabs.find(item=>item.dataset.parent===tab.dataset.group);
+    if(child)showPage(child.dataset.page,child.innerText.trim(),tab.dataset.group);
+  }));
+  childTabs.forEach(tab=>tab.addEventListener('click',()=>{
+    showPage(tab.dataset.page,tab.innerText.trim(),tab.dataset.parent);
+  }));
 
   /* ===== Item search and filters ===== */
 
@@ -769,9 +669,9 @@
   itemTypeFilter.addEventListener('change',filterItems);
   itemStatusFilter.addEventListener('change',filterItems);
 
-    /* ===== Sidebar icons ===== */
+    /* ===== Worksheet icons ===== */
 
-  const sidebarIconPaths=[
+  const tabIconPaths=[
     '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
     '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>',
     '<path d="M3 7h18M5 7V4h14v3M5 7v13h14V7M9 12h6"/>',
@@ -790,12 +690,14 @@
     '<path d="M7 3v12m0 0-4-4m4 4 4-4M17 21V9m0 0-4 4m4-4 4 4M3 20h8M13 4h8"/>',
     '<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1A7 7 0 0 0 14 5l-.4-2h-4L9.2 5a7 7 0 0 0-2.6 2l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.5 2.3-1A7 7 0 0 0 9.2 19l.4 2h4l.4-2a7 7 0 0 0 2.6-2l2.3 1 2-3.5-2-1.5a7 7 0 0 0 .1-1z"/>'
   ];
-
-  document.querySelectorAll('.nav-item .nav-icon').forEach((icon,index)=>{
+  const iconNames=["dashboard", "items", "inventory", "assets", "inbound", "transfer", "borrow", "repair", "machine", "racks", "count", "purchase", "notifications", "log", "roles", "import", "settings"];
+  document.querySelectorAll('[data-icon]').forEach(icon=>{
+    const path=tabIconPaths[iconNames.indexOf(icon.dataset.icon)];
+    if(!path)return;
     icon.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24"
       fill="none" stroke="currentColor" stroke-width="1.8"
       stroke-linecap="round" stroke-linejoin="round"
-      aria-hidden="true">${sidebarIconPaths[index]}</svg>`;
+      aria-hidden="true">${path}</svg>`;
   });
   
 })();
