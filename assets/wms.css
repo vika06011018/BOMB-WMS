@@ -737,3 +737,41 @@ html[data-theme="dark"] .badge-info{
 .nav::-webkit-scrollbar-thumb:hover{
   background:rgba(148,163,184,.55);
 }
+
+/* ===== Item search and filters ===== */
+
+.item-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  padding:16px 18px;
+  border-bottom:1px solid var(--border);
+}
+
+.item-toolbar input,
+.item-toolbar select{
+  min-height:40px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--panel);
+  color:var(--text);
+  font:inherit;
+}
+
+.item-toolbar input{
+  flex:1 1 240px;
+  min-width:0;
+}
+
+.item-toolbar select{
+  flex:0 1 150px;
+}
+
+@media(max-width:650px){
+  .item-toolbar input,
+  .item-toolbar select{
+    flex:1 1 100%;
+    width:100%;
+  }
+}
