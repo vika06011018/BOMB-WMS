@@ -937,6 +937,8 @@ html[data-theme="dark"] .badge-info{
 .wms-check-cell input:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
 .wms-qty-control{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .wms-qty-control input{width:76px;min-height:42px;padding:6px 8px;border:1px solid var(--border);border-radius:8px;background:var(--panel-2);color:var(--text);font:inherit;font-weight:700}
+.wms-qty-control input::-webkit-inner-spin-button,.wms-qty-control input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.wms-qty-control input[type=number]{appearance:textfield;-moz-appearance:textfield}
 #page-purchase td small{display:block;margin-top:4px;color:var(--muted);font-size:11px}
 @media(max-width:900px){
   #page-purchase .table-wrap{overflow:visible;padding:12px}
