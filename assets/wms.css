@@ -775,3 +775,88 @@ html[data-theme="dark"] .badge-info{
     width:100%;
   }
 }
+
+
+
+/* ===== Worksheet tabs ===== */
+.main{margin-left:0}
+.topbar .brand{height:68px;padding:0;border:0}
+.sheet-nav{
+  padding:16px 24px 0;
+  background:var(--bg);
+}
+.sheet-tabs,.sheet-children{
+  display:flex;
+  align-items:stretch;
+  gap:6px;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  scrollbar-color:var(--border) transparent;
+}
+.sheet-tabs{
+  border-bottom:1px solid var(--border);
+  padding-bottom:0;
+}
+.sheet-tab,.child-tab{
+  display:inline-flex;
+  flex:none;
+  align-items:center;
+  gap:8px;
+  min-height:48px;
+  padding:0 16px;
+  border:1px solid transparent;
+  border-radius:10px 10px 0 0;
+  background:var(--panel-2);
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.sheet-tab:hover,.child-tab:hover{color:var(--text);background:var(--panel)}
+.sheet-tab.active{
+  position:relative;
+  color:var(--primary);
+  background:var(--panel);
+  border-color:var(--border);
+  border-bottom-color:var(--panel);
+}
+.sheet-tab.active::after{
+  content:"";
+  position:absolute;
+  height:3px;
+  bottom:0;
+  left:13px;
+  right:13px;
+  border-radius:3px;
+  background:var(--primary);
+}
+.tab-icon{width:20px;height:20px;display:grid;place-items:center}
+.tab-chevron{font-size:18px;line-height:1}
+.sheet-subtabs{
+  padding:10px 12px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-top:0;
+  border-radius:0 0 12px 12px;
+}
+.child-tab{
+  min-height:40px;
+  border-radius:8px;
+  background:var(--panel-2);
+}
+.child-tab.active{color:#fff;background:var(--primary)}
+.sheet-subtabs[hidden],.sheet-children[hidden]{display:none}
+.sheet-tab:focus-visible,.child-tab:focus-visible{
+  outline:2px solid var(--primary);
+  outline-offset:-3px;
+}
+@media(max-width:900px){
+  .sheet-nav{padding:12px 16px 0}
+}
+@media(max-width:650px){
+  .topbar .brand-text span{display:none}
+  .topbar .brand{gap:9px}
+  .sheet-nav{padding:10px 12px 0}
+  .sheet-tab{min-height:44px;padding:0 12px}
+  .sheet-subtabs{padding:8px}
+}
