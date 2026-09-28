@@ -39,11 +39,11 @@
 
         <button
           class="icon-btn"
-          aria-label="通知"
+          type="button" data-action="go-notifications" aria-label="通知"
           title="通知中心"
         >
           🔔
-          <span class="notification-dot"></span>
+          <span class="notification-dot" id="notificationBadge"></span>
         </button>
 
         <div class="account-area">
@@ -66,13 +66,13 @@
     <nav class="sheet-nav" aria-label="WMS 工作表">
       <div class="sheet-tabs" aria-label="主要標籤">
         <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true"><span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span><span>營運總覽</span></button>
+        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>管理作業</span></button>
         <button type="button" class="sheet-tab" data-page="items" aria-selected="false"><span class="tab-icon" data-icon="items" aria-hidden="true"></span><span>品項管理</span></button>
         <button type="button" class="sheet-tab" data-page="inventory" aria-selected="false"><span class="tab-icon" data-icon="inventory" aria-hidden="true"></span><span>庫存管理</span></button>
         <button type="button" class="sheet-tab" data-page="assets" aria-selected="false"><span class="tab-icon" data-icon="assets" aria-hidden="true"></span><span>資產管理</span></button>
         <button type="button" class="sheet-tab" data-page="inbound" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>入庫／驗收</span></button>
         <button type="button" class="sheet-tab" data-group="movement" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>異動管理</span></button>
         <button type="button" class="sheet-tab" data-group="locations" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台與位置</span></button>
-        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>管理作業</span></button>
         <button type="button" class="sheet-tab" data-group="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>系統管理</span></button>
       </div>
       <div class="sheet-subtabs" hidden>
@@ -101,914 +101,64 @@
 
     <!-- Content -->
     <div class="content">
-    <div class="page-view active" id="page-dashboard">
-    <section class="page-header">
-
-        <div class="page-title">
-          <h1>營運總覽</h1>
-          <p>公司物品、設備、資產與庫存目前概況</p>
-        </div>
-
-        <div class="header-actions">
-
-          <button class="btn">
-            重新整理
-          </button>
-
-          <button class="btn btn-primary">
-            ＋ 快速新增
-          </button>
-
-        </div>
-
-      </section>
-
-      <!-- Stats -->
-      <section class="stats-grid">
-
-        <article class="stat-card">
-          <div class="stat-head">
-            <span class="stat-label">公司資產總數</span>
-            <span class="stat-icon">▦</span>
-          </div>
-
-          <div class="stat-value">286</div>
-          <div class="stat-note">目前公司持有資產</div>
-        </article>
-
-        <article class="stat-card">
-          <div class="stat-head">
-            <span class="stat-label">可用設備</span>
-            <span class="stat-icon">✓</span>
-          </div>
-
-          <div class="stat-value">148</div>
-          <div class="stat-note">可立即配置使用</div>
-        </article>
-
-        <article class="stat-card">
-          <div class="stat-head">
-            <span class="stat-label">使用中</span>
-            <span class="stat-icon">▶</span>
-          </div>
-
-          <div class="stat-value">96</div>
-          <div class="stat-note">員工／機台使用中</div>
-        </article>
-
-        <article class="stat-card">
-          <div class="stat-head">
-            <span class="stat-label">故障／維修</span>
-            <span class="stat-icon">⚠</span>
-          </div>
-
-          <div class="stat-value">12</div>
-          <div class="stat-note">待檢查或維修處理</div>
-        </article>
-
-        <article class="stat-card">
-          <div class="stat-head">
-            <span class="stat-label">庫存預警</span>
-            <span class="stat-icon">!</span>
-          </div>
-
-          <div class="stat-value">4</div>
-          <div class="stat-note">低於安全庫存</div>
-        </article>
-
-      </section>
-
-      <section class="dashboard-grid">
-
-        <div>
-
-          <!-- Status -->
-          <article class="card">
-
-            <div class="card-header">
-              <div>
-                <h2>資產狀態分布</h2>
-                <span>目前公司資產狀態</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-
-              <div class="status-list">
-
-                <div class="status-row">
-                  <div class="status-name">可用</div>
-                  <div class="progress">
-                    <div class="progress-bar success" style="width:78%"></div>
-                  </div>
-                  <div class="status-number">148</div>
-                </div>
-
-                <div class="status-row">
-                  <div class="status-name">使用中</div>
-                  <div class="progress">
-                    <div class="progress-bar" style="width:55%"></div>
-                  </div>
-                  <div class="status-number">96</div>
-                </div>
-
-                <div class="status-row">
-                  <div class="status-name">故障／待檢查</div>
-                  <div class="progress">
-                    <div class="progress-bar warning" style="width:18%"></div>
-                  </div>
-                  <div class="status-number">8</div>
-                </div>
-
-                <div class="status-row">
-                  <div class="status-name">維修中</div>
-                  <div class="progress">
-                    <div class="progress-bar danger" style="width:12%"></div>
-                  </div>
-                  <div class="status-number">4</div>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <br>
-
-          <!-- Recent -->
-          <article class="card">
-
-            <div class="card-header">
-              <div>
-                <h2>最近異動</h2>
-                <span>最新物品與資產流向</span>
-              </div>
-
-              <button class="btn">查看全部</button>
-            </div>
-
-            <div class="table-wrap">
-
-              <table>
-
-                <thead>
-                  <tr>
-                    <th>時間</th>
-                    <th>異動類型</th>
-                    <th>品項／資產</th>
-                    <th>原位置</th>
-                    <th>新位置</th>
-                    <th>操作人</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  <tr>
-                    <td>09/25 13:10</td>
-                    <td><span class="badge badge-info">調撥</span></td>
-                    <td>Mini PC A005</td>
-                    <td>公司備品區</td>
-                    <td>維修部</td>
-                    <td>OG</td>
-                  </tr>
-
-                  <tr>
-                    <td>09/25 11:42</td>
-                    <td><span class="badge badge-success">入庫</span></td>
-                    <td>滑鼠 × 20</td>
-                    <td>－</td>
-                    <td>行政倉</td>
-                    <td>KEN</td>
-                  </tr>
-
-                  <tr>
-                    <td>09/25 10:18</td>
-                    <td><span class="badge badge-warning">維修更換</span></td>
-                    <td>Mini PC A012</td>
-                    <td>維修部</td>
-                    <td>小丑－1212</td>
-                    <td>RU</td>
-                  </tr>
-
-                  <tr>
-                    <td>09/25 09:25</td>
-                    <td><span class="badge badge-danger">故障</span></td>
-                    <td>Mini PC A003</td>
-                    <td>小丑－1212</td>
-                    <td>故障品區</td>
-                    <td>RU</td>
-                  </tr>
-
-                </tbody>
-
-              </table>
-
-            </div>
-
-          </article>
-
-        </div>
-
-        <div>
-
-          <!-- Alerts -->
-          <article class="card">
-
-            <div class="card-header">
-              <div>
-                <h2>待處理／通知</h2>
-                <span>目前需要注意的事項</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-
-              <div class="alert-list">
-
-                <div class="alert-item">
-                  <div class="alert-icon">!</div>
-
-                  <div class="alert-content">
-                    <div class="alert-title">Mini PC 庫存不足</div>
-                    <div class="alert-desc">
-                      維修部可用備品 3 台，低於基本備品量 5 台。
-                    </div>
-                  </div>
-                </div>
-
-                <div class="alert-item">
-                  <div class="alert-icon">✓</div>
-
-                  <div class="alert-content">
-                    <div class="alert-title">待核准調撥</div>
-                    <div class="alert-desc">
-                      1 筆重要資產調撥正在等待處理。
-                    </div>
-                  </div>
-                </div>
-
-                <div class="alert-item">
-                  <div class="alert-icon">⚙</div>
-
-                  <div class="alert-content">
-                    <div class="alert-title">維修事後報備</div>
-                    <div class="alert-desc">
-                      小丑－1212 已完成 Mini PC 更換。
-                    </div>
-                  </div>
-                </div>
-
-                <div class="alert-item">
-                  <div class="alert-icon">▣</div>
-
-                  <div class="alert-content">
-                    <div class="alert-title">盤點差異</div>
-                    <div class="alert-desc">
-                      維修區滑鼠帳面 12，實際盤點 11。
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <br>
-
-          <!-- Quick actions -->
-          <article class="card">
-
-            <div class="card-header">
-              <div>
-                <h2>快速操作</h2>
-                <span>常用 WMS 作業</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-
-              <div class="quick-actions">
-
-                <button class="quick-action">
-                  <div>↓</div>
-                  <strong>新增入庫</strong>
-                  <span>建立到貨／驗收資料</span>
-                </button>
-
-                <button class="quick-action">
-                  <div>⇄</div>
-                  <strong>部門調撥</strong>
-                  <span>移轉部門或位置</span>
-                </button>
-
-                <button class="quick-action">
-                  <div>⚙</div>
-                  <strong>維修更換</strong>
-                  <span>設備更換後補登</span>
-                </button>
-
-                <button class="quick-action">
-                  <div>✓</div>
-                  <strong>開始盤點</strong>
-                  <span>進行現場數量確認</span>
-                </button>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-      </section>
-
-</div> <!-- page-dashboard -->
-
-<div class="page-view" id="page-items">
-
-  <section class="page-header">
-
-    <div class="page-title">
-      <h1>品項管理</h1>
-      <p>管理公司物品、設備與耗材的基本資料</p>
+      <div class="page-view active" id="page-dashboard"></div>
+      <div class="page-view" id="page-items"></div>
+      <div class="page-view" id="page-inventory"></div>
+      <div class="page-view" id="page-assets"></div>
+      <div class="page-view" id="page-inbound"></div>
+      <div class="page-view" id="page-transfer"></div>
+      <div class="page-view" id="page-borrow"></div>
+      <div class="page-view" id="page-repair"></div>
+      <div class="page-view" id="page-machine"></div>
+      <div class="page-view" id="page-racks"></div>
+      <div class="page-view" id="page-count"></div>
+      <div class="page-view" id="page-purchase"></div>
+      <div class="page-view" id="page-notifications"></div>
+      <div class="page-view" id="page-log"></div>
+      <div class="page-view" id="page-roles"></div>
+      <div class="page-view" id="page-import"></div>
+      <div class="page-view" id="page-settings"></div>
     </div>
-
-    <div class="header-actions">
-      <button class="btn">重新整理</button>
-      <button class="btn btn-primary">＋ 新增品項</button>
-    </div>
-
-  </section>
-
-  <article class="card">
-
-    <div class="card-header">
-      <div>
-        <h2>品項列表</h2>
-        <span>公司目前建立的物品與設備品項</span>
-      </div>
-    </div>
-
- <div class="item-toolbar">
-
-  <input
-    type="search"
-    id="itemSearch"
-    placeholder="搜尋品項編號或名稱..."
-  >
-
-  <select id="itemTypeFilter">
-    <option value="">全部類型</option>
-    <option value="設備">設備</option>
-    <option value="消耗品">消耗品</option>
-  </select>
-
-  <select id="itemStatusFilter">
-    <option value="">全部狀態</option>
-    <option value="啟用">啟用</option>
-    <option value="停用">停用</option>
-  </select>
-
+  </main>
 </div>
-    
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-          <tr>
-            <th>品項編號</th>
-            <th>品項名稱</th>
-            <th>類型</th>
-            <th>分類</th>
-            <th>單位</th>
-            <th>安全庫存</th>
-            <th>狀態</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <tr>
-            <td>ITM-0001</td>
-            <td>Mini PC</td>
-            <td>設備</td>
-            <td>電腦設備</td>
-            <td>台</td>
-            <td>5</td>
-            <td><span class="badge badge-success">啟用</span></td>
-            <td><button class="btn">查看</button></td>
-          </tr>
-
-          <tr>
-            <td>ITM-0002</td>
-            <td>小螢幕</td>
-            <td>設備</td>
-            <td>電腦周邊</td>
-            <td>台</td>
-            <td>3</td>
-            <td><span class="badge badge-success">啟用</span></td>
-            <td><button class="btn">查看</button></td>
-          </tr>
-
-          <tr>
-            <td>ITM-0003</td>
-            <td>滑鼠</td>
-            <td>消耗品</td>
-            <td>電腦周邊</td>
-            <td>個</td>
-            <td>10</td>
-            <td><span class="badge badge-success">啟用</span></td>
-            <td><button class="btn">查看</button></td>
-          </tr>
-
-          <tr>
-            <td>ITM-0004</td>
-            <td>鍵盤</td>
-            <td>消耗品</td>
-            <td>電腦周邊</td>
-            <td>個</td>
-            <td>5</td>
-            <td><span class="badge badge-success">啟用</span></td>
-            <td><button class="btn">查看</button></td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </article>
-
-</div>
-
-<div class="page-view" id="page-inventory">
-  <section class="page-header">
-    <div class="page-title">
-      <h1>庫存管理</h1>
-      <p>依部門、區域與位置查看設備及消耗品的現有數量</p>
-    </div>
-  </section>
-
-  <article class="card">
-    <div class="card-header">
-      <div>
-        <h2>各位置庫存</h2>
-        <span>以下為展示資料；後續會與品項、位置及入出庫紀錄連動</span>
-      </div>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>品項編號</th><th>品項名稱</th><th>類型</th>
-            <th>部門</th><th>區域</th><th>位置</th>
-            <th>在庫數量</th><th>可用數量</th><th>安全庫存</th><th>狀態</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ITM-0001</td><td>Mini PC</td><td>設備</td>
-            <td>辦公室部門</td><td>備品區</td><td>倉架 A-01</td>
-            <td>6 台</td><td>5 台</td><td>5 台</td>
-            <td><span class="badge badge-success">正常</span></td>
-          </tr>
-          <tr>
-            <td>ITM-0002</td><td>小螢幕</td><td>設備</td>
-            <td>辦公室部門</td><td>備品區</td><td>倉架 A-02</td>
-            <td>2 台</td><td>2 台</td><td>3 台</td>
-            <td><span class="badge badge-warning">低於安全庫存</span></td>
-          </tr>
-          <tr>
-            <td>ITM-0003</td><td>滑鼠</td><td>消耗品</td>
-            <td>辦公室部門</td><td>備品區</td><td>倉架 B-01</td>
-            <td>12 個</td><td>12 個</td><td>10 個</td>
-            <td><span class="badge badge-success">正常</span></td>
-          </tr>
-          <tr>
-            <td>ITM-0004</td><td>鍵盤</td><td>消耗品</td>
-            <td>辦公室部門</td><td>備品區</td><td>倉架 B-02</td>
-            <td>5 個</td><td>5 個</td><td>5 個</td>
-            <td><span class="badge badge-success">正常</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </article>
-</div>
-
-<div class="page-view" id="page-assets">
-  <section class="page-header">
-    <div class="page-title">
-      <h1>資產管理</h1>
-      <p>逐台追蹤設備編號、使用狀態、保管人與所在位置</p>
-    </div>
-  </section>
-
-  <article class="card">
-    <div class="card-header">
-      <div>
-        <h2>設備資產清單</h2>
-        <span>以下為展示資料；設備即使使用中或故障，仍列入公司資產</span>
-      </div>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>資產編號</th><th>品項編號</th><th>設備名稱</th>
-            <th>所屬部門</th><th>目前區域／位置</th><th>保管人</th>
-            <th>資產狀態</th><th>可用配置</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>AST-0001</td><td>ITM-0001</td><td>Mini PC</td>
-            <td>辦公室部門</td><td>備品區／倉架 A-01</td><td>－</td>
-            <td><span class="badge badge-success">備品</span></td><td>是</td>
-          </tr>
-          <tr>
-            <td>AST-0002</td><td>ITM-0001</td><td>Mini PC</td>
-            <td>辦公室部門</td><td>機台區／機台 01</td><td>機台 01</td>
-            <td><span class="badge badge-info">使用中</span></td><td>否</td>
-          </tr>
-          <tr>
-            <td>AST-0003</td><td>ITM-0002</td><td>小螢幕</td>
-            <td>辦公室部門</td><td>備品區／待檢區</td><td>－</td>
-            <td><span class="badge badge-warning">待檢測</span></td><td>否</td>
-          </tr>
-          <tr>
-            <td>AST-0004</td><td>ITM-0001</td><td>Mini PC</td>
-            <td>辦公室部門</td><td>備品區／故障品區</td><td>－</td>
-            <td><span class="badge badge-danger">故障</span></td><td>否</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </article>
-</div>
-
-<div class="page-view" id="page-inbound">
-  <section class="page-header">
-    <div class="page-title"><h1>入庫／驗收</h1><p>記錄採購到貨、驗收結果及實際入庫位置</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>入庫與驗收紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>單號</th><th>日期</th><th>品項</th><th>數量</th><th>驗收結果</th><th>入庫部門／位置</th><th>經辦人</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>IN-0001</td><td>09/25</td><td>滑鼠</td><td>20 個</td><td>數量相符</td><td>辦公室部門／備品區・倉架 B-01</td><td>OG</td><td><span class="badge badge-success">已入庫</span></td></tr>
-          <tr><td>IN-0002</td><td>09/26</td><td>小螢幕</td><td>3 台</td><td>待功能檢測</td><td>辦公室部門／備品區・待檢區</td><td>KEN</td><td><span class="badge badge-warning">驗收中</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-transfer">
-  <section class="page-header">
-    <div class="page-title"><h1>調撥／配置</h1><p>追蹤部門與位置之間的設備及備品移動</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>調撥與配置紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>單號</th><th>品項／資產</th><th>原部門／位置</th><th>新部門／位置</th><th>數量</th><th>申請人</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>TR-0001</td><td>Mini PC AST-0002</td><td>辦公室部門／備品區</td><td>辦公室部門／機台區・機台 01</td><td>1 台</td><td>OG</td><td><span class="badge badge-success">已完成</span></td></tr>
-          <tr><td>TR-0002</td><td>鍵盤</td><td>辦公室部門／備品區</td><td>辦公室部門／辦公區</td><td>2 個</td><td>KEN</td><td><span class="badge badge-warning">待確認</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-borrow">
-  <section class="page-header">
-    <div class="page-title"><h1>借用／歸還</h1><p>管理設備借出、預計歸還與實際繳回</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>借用與歸還紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>借用單號</th><th>資產／品項</th><th>借用人</th><th>借出位置</th><th>借用日期</th><th>預計歸還</th><th>歸還日期</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>BR-0001</td><td>小螢幕 AST-0005</td><td>KEN</td><td>辦公室部門／備品區</td><td>09/25</td><td>10/02</td><td>－</td><td><span class="badge badge-info">借用中</span></td></tr>
-          <tr><td>BR-0002</td><td>滑鼠 × 1</td><td>RU</td><td>辦公室部門／備品區</td><td>09/23</td><td>09/27</td><td>09/27</td><td><span class="badge badge-success">已歸還</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-repair">
-  <section class="page-header">
-    <div class="page-title"><h1>維修更換</h1><p>記錄故障送修、檢測與備品替換</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>維修與更換紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>維修單號</th><th>故障資產</th><th>問題描述</th><th>目前位置</th><th>替換資產</th><th>負責人</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>RP-0001</td><td>Mini PC AST-0004</td><td>無法開機</td><td>備品區／故障品區</td><td>Mini PC AST-0001</td><td>RU</td><td><span class="badge badge-warning">待檢測</span></td></tr>
-          <tr><td>RP-0002</td><td>小螢幕 AST-0003</td><td>畫面閃爍</td><td>備品區／待檢區</td><td>－</td><td>KEN</td><td><span class="badge badge-warning">檢測中</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-machine">
-  <section class="page-header">
-    <div class="page-title"><h1>機台管理</h1><p>管理機台編號、所屬區域與配置設備</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>機台與設備配置</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>機台編號</th><th>部門</th><th>區域</th><th>位置</th><th>配置設備</th><th>負責人</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>MC-001</td><td>辦公室部門</td><td>機台區</td><td>機台 01</td><td>Mini PC AST-0002、小螢幕 AST-0006</td><td>RU</td><td><span class="badge badge-info">使用中</span></td></tr>
-          <tr><td>MC-002</td><td>辦公室部門</td><td>機台區</td><td>機台 02</td><td>Mini PC AST-0007</td><td>KEN</td><td><span class="badge badge-warning">待配置</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-racks">
-  <section class="page-header">
-    <div class="page-title"><h1>位置／倉架</h1><p>以部門、區域、倉架與層位定位物品</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>位置與倉架清單</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>位置編號</th><th>部門</th><th>區域</th><th>倉架／位置</th><th>層位</th><th>用途</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>LOC-A01-1</td><td>辦公室部門</td><td>備品區</td><td>倉架 A-01</td><td>第 1 層</td><td>Mini PC 備品</td><td><span class="badge badge-success">啟用</span></td></tr>
-          <tr><td>LOC-A02-2</td><td>辦公室部門</td><td>備品區</td><td>倉架 A-02</td><td>第 2 層</td><td>小螢幕備品</td><td><span class="badge badge-success">啟用</span></td></tr>
-          <tr><td>LOC-M01</td><td>辦公室部門</td><td>機台區</td><td>機台 01</td><td>－</td><td>機台設備</td><td><span class="badge badge-success">啟用</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-count">
-  <section class="page-header">
-    <div class="page-title"><h1>盤點管理</h1><p>核對帳面數量與現場實物並記錄差異</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>盤點任務與結果</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>盤點單號</th><th>範圍</th><th>品項</th><th>帳面數</th><th>實盤數</th><th>差異</th><th>負責人</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>CT-0001</td><td>辦公室部門／備品區</td><td>滑鼠</td><td>12 個</td><td>12 個</td><td>0</td><td>OG</td><td><span class="badge badge-success">已完成</span></td></tr>
-          <tr><td>CT-0002</td><td>辦公室部門／備品區</td><td>小螢幕</td><td>2 台</td><td>－</td><td>待確認</td><td>KEN</td><td><span class="badge badge-warning">盤點中</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-purchase">
-  <section class="page-header">
-    <div class="page-title"><h1>採購需求</h1><p>整理安全庫存預警及部門提出的採購申請</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>採購需求清單</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>需求單號</th><th>申請部門</th><th>品項</th><th>申請數量</th><th>需求原因</th><th>申請人</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>PR-0001</td><td>辦公室部門</td><td>小螢幕</td><td>3 台</td><td>可用數量低於安全庫存</td><td>OG</td><td><span class="badge badge-warning">待審核</span></td></tr>
-          <tr><td>PR-0002</td><td>總部</td><td>鍵盤</td><td>2 個</td><td>新增辦公位置</td><td>KEN</td><td><span class="badge badge-info">草稿</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-notifications">
-  <section class="page-header">
-    <div class="page-title"><h1>通知中心</h1><p>集中查看庫存預警、待確認作業及維修提醒</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>通知清單</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>時間</th><th>類型</th><th>通知內容</th><th>關聯單號</th><th>狀態</th></tr></thead>
-      <tbody>
-          <tr><td>09/28 09:00</td><td>庫存預警</td><td>小螢幕可用 2 台，低於安全庫存 3 台</td><td>ITM-0002</td><td><span class="badge badge-info">未讀</span></td></tr>
-          <tr><td>09/26 14:20</td><td>驗收提醒</td><td>小螢幕到貨，等待功能檢測</td><td>IN-0002</td><td><span class="badge badge-info">未讀</span></td></tr>
-          <tr><td>09/25 10:18</td><td>維修提醒</td><td>Mini PC AST-0004 待檢測</td><td>RP-0001</td><td><span class="badge badge-success">已讀</span></td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-log">
-  <section class="page-header">
-    <div class="page-title"><h1>異動日誌</h1><p>依時間保留設備、庫存及位置的變更紀錄</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>操作與異動紀錄</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>時間</th><th>動作</th><th>品項／資產</th><th>異動前</th><th>異動後</th><th>操作人</th><th>關聯單號</th></tr></thead>
-      <tbody>
-          <tr><td>09/25 13:10</td><td>配置</td><td>Mini PC AST-0002</td><td>備品區</td><td>機台區／機台 01</td><td>OG</td><td>TR-0001</td></tr>
-          <tr><td>09/25 11:42</td><td>入庫</td><td>滑鼠 × 20</td><td>待驗收</td><td>備品區／倉架 B-01</td><td>OG</td><td>IN-0001</td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-roles">
-  <section class="page-header">
-    <div class="page-title"><h1>角色與權限</h1><p>規劃不同角色可查看及處理的 WMS 作業</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>角色權限範例</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>角色</th><th>查看資料</th><th>品項／位置維護</th><th>入出庫與調撥</th><th>審核</th><th>系統設定</th></tr></thead>
-      <tbody>
-          <tr><td>最高權限</td><td>全部</td><td>可</td><td>可</td><td>可</td><td>可</td></tr>
-          <tr><td>部門主管</td><td>所屬部門</td><td>依授權</td><td>可</td><td>依授權</td><td>不可</td></tr>
-          <tr><td>一般使用者</td><td>授權範圍</td><td>不可</td><td>提出申請</td><td>不可</td><td>不可</td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-import">
-  <section class="page-header">
-    <div class="page-title"><h1>匯入／匯出</h1><p>規劃品項、庫存、資產及位置資料的匯整方式</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>資料範圍</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>資料類型</th><th>匯入欄位範例</th><th>匯出用途</th><th>目前階段</th></tr></thead>
-      <tbody>
-          <tr><td>品項資料</td><td>品項編號、名稱、類型、單位、安全庫存</td><td>品項清冊</td><td>畫面規劃</td></tr>
-          <tr><td>資產資料</td><td>資產編號、品項、部門、位置、狀態</td><td>設備盤點</td><td>畫面規劃</td></tr>
-          <tr><td>庫存資料</td><td>品項、部門、區域、位置、數量</td><td>庫存報表</td><td>畫面規劃</td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-<div class="page-view" id="page-settings">
-  <section class="page-header">
-    <div class="page-title"><h1>系統設定</h1><p>集中管理部門、區域與庫存作業規則</p></div>
-  </section>
-  <article class="card">
-    <div class="card-header"><div><h2>設定項目</h2><span>展示資料；操作與資料連動將於後續階段加入</span></div></div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>設定</th><th>目前規劃</th><th>用途</th></tr></thead>
-      <tbody>
-          <tr><td>部門</td><td>總部、辦公室部門</td><td>管理資料歸屬與查詢範圍</td></tr>
-          <tr><td>辦公室部門區域</td><td>機台區、辦公區、備品區</td><td>管理實際存放位置</td></tr>
-          <tr><td>安全庫存</td><td>依品項設定</td><td>低庫存提醒與採購需求</td></tr>
-          <tr><td>通知與核准</td><td>依作業類型設定</td><td>入庫、借用、調撥等流程</td></tr>
-      </tbody>
-    </table></div>
-  </article>
-</div>
-
-</div> <!-- content -->
-
-</main>
-
-</div>
-
+<dialog id="wmsDialog" class="wms-dialog" aria-label="WMS 操作視窗"></dialog>
 <script>
 (function(){
-
   const html=document.documentElement;
   const themeBtn=document.getElementById('themeBtn');
+  const storedTheme=localStorage.getItem('bomb-wms-theme');
+  if(storedTheme==='dark'||storedTheme==='light')html.dataset.theme=storedTheme;
+  function themeIcon(){themeBtn.textContent=html.dataset.theme==='dark'?'☀':'☾'}
+  themeIcon();
+  themeBtn.addEventListener('click',()=>{html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';localStorage.setItem('bomb-wms-theme',html.dataset.theme);themeIcon()});
 
-  /* ===== Theme ===== */
-
-  const savedTheme=localStorage.getItem('bomb-wms-theme');
-
-  if(savedTheme==='dark' || savedTheme==='light'){
-    html.dataset.theme=savedTheme;
-  }
-
-  function updateThemeIcon(){
-    themeBtn.textContent=
-      html.dataset.theme==='dark'
-        ? '☀'
-        : '☾';
-  }
-
-  updateThemeIcon();
-
-  themeBtn.addEventListener('click',()=>{
-    const next=
-      html.dataset.theme==='dark'
-        ? 'light'
-        : 'dark';
-
-    html.dataset.theme=next;
-
-    localStorage.setItem(
-      'bomb-wms-theme',
-      next
-    );
-
-    updateThemeIcon();
-  });
-
-  /* ===== Account panel ===== */
   const accountBtn=document.getElementById('accountBtn');
   const accountPanel=document.getElementById('accountPanel');
-  accountBtn.addEventListener('click',()=>{
-    accountPanel.hidden=!accountPanel.hidden;
-    accountBtn.setAttribute('aria-expanded',String(!accountPanel.hidden));
-  });
-  document.addEventListener('click',event=>{
-    if(!event.target.closest('.account-area')){
-      accountPanel.hidden=true;
-      accountBtn.setAttribute('aria-expanded','false');
-    }
-  });
-  document.addEventListener('keydown',event=>{
-    if(event.key==='Escape'){
-      accountPanel.hidden=true;
-      accountBtn.setAttribute('aria-expanded','false');
-      accountBtn.focus();
-    }
-  });
+  accountBtn.addEventListener('click',()=>{accountPanel.hidden=!accountPanel.hidden;accountBtn.setAttribute('aria-expanded',String(!accountPanel.hidden))});
+  document.addEventListener('click',event=>{if(!event.target.closest('.account-area')){accountPanel.hidden=true;accountBtn.setAttribute('aria-expanded','false')}});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!accountPanel.hidden){accountPanel.hidden=true;accountBtn.setAttribute('aria-expanded','false');accountBtn.focus()}});
 
-  /* ===== Worksheet navigation ===== */
   const directTabs=[...document.querySelectorAll('.sheet-tab[data-page]')];
   const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
   const childTabs=[...document.querySelectorAll('.child-tab')];
   const subtabBar=document.querySelector('.sheet-subtabs');
-
-  function showPage(page, label, group){
-    const mainTab=group
-      ? document.querySelector(`.sheet-tab[data-group="${group}"]`)
-      : directTabs.find(tab=>tab.dataset.page===page);
-    const childTab=group
-      ? childTabs.find(tab=>tab.dataset.parent===group && tab.dataset.page===page)
-      : null;
-
-    [...directTabs,...groupTabs,...childTabs].forEach(tab=>{
-      const active=tab===mainTab || tab===childTab;
-      tab.classList.toggle('active',active);
-      tab.setAttribute('aria-selected',String(active));
-    });
-
-    document.querySelectorAll('.sheet-children').forEach(row=>{
-      row.hidden=row.dataset.children!==group;
-    });
+  let currentPage='dashboard';
+  function showPage(page,group){
+    const main=group?groupTabs.find(t=>t.dataset.group===group):directTabs.find(t=>t.dataset.page===page);
+    const child=group?childTabs.find(t=>t.dataset.parent===group&&t.dataset.page===page):null;
+    if(!main||!document.getElementById('page-'+page))return;
+    [...directTabs,...groupTabs,...childTabs].forEach(tab=>{const active=tab===main||tab===child;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active))});
+    document.querySelectorAll('.sheet-children').forEach(row=>row.hidden=row.dataset.children!==group);
     subtabBar.hidden=!group;
-
-    document.querySelectorAll('.page-view').forEach(view=>view.classList.remove('active'));
-    const view=document.getElementById(`page-${page}`);
-    if(view) view.classList.add('active');
-    mainTab?.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
+    document.querySelectorAll('.page-view').forEach(view=>view.classList.toggle('active',view.id==='page-'+page));
+    currentPage=page;
+    main.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
   }
+  directTabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page,null)));
+  groupTabs.forEach(t=>t.addEventListener('click',()=>{const child=childTabs.find(x=>x.dataset.parent===t.dataset.group);if(child)showPage(child.dataset.page,t.dataset.group)}));
+  childTabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page,t.dataset.parent)));
 
-  directTabs.forEach(tab=>tab.addEventListener('click',()=>{
-    showPage(tab.dataset.page,tab.innerText.trim(),null);
-  }));
-  groupTabs.forEach(tab=>tab.addEventListener('click',()=>{
-    const child=childTabs.find(item=>item.dataset.parent===tab.dataset.group);
-    if(child)showPage(child.dataset.page,child.innerText.trim(),tab.dataset.group);
-  }));
-  childTabs.forEach(tab=>tab.addEventListener('click',()=>{
-    showPage(tab.dataset.page,tab.innerText.trim(),tab.dataset.parent);
-  }));
-
-  /* ===== Item search and filters ===== */
-
-  const itemSearch=document.getElementById('itemSearch');
-  const itemTypeFilter=document.getElementById('itemTypeFilter');
-  const itemStatusFilter=document.getElementById('itemStatusFilter');
-
-  function filterItems(){
-    const keyword=itemSearch.value.trim().toLowerCase();
-    const type=itemTypeFilter.value;
-    const status=itemStatusFilter.value;
-
-    document.querySelectorAll('#page-items tbody tr').forEach(row=>{
-      const cells=row.querySelectorAll('td');
-      const matchesSearch=
-        cells[0].textContent.toLowerCase().includes(keyword) ||
-        cells[1].textContent.toLowerCase().includes(keyword);
-
-      row.hidden=!(
-        matchesSearch &&
-        (!type || cells[2].textContent.trim()===type) &&
-        (!status || cells[6].textContent.trim()===status)
-      );
-    });
-  }
-
-  itemSearch.addEventListener('input',filterItems);
-  itemTypeFilter.addEventListener('change',filterItems);
-  itemStatusFilter.addEventListener('change',filterItems);
-
-    /* ===== Worksheet icons ===== */
-
-  const tabIconPaths=[
+  const iconPaths=[
     '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
     '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>',
     '<path d="M3 7h18M5 7V4h14v3M5 7v13h14V7M9 12h6"/>',
@@ -1025,20 +175,137 @@
     '<path d="M7 3h10M7 7h10M7 11h10M7 15h10M7 19h10M3 3h.01M3 7h.01M3 11h.01M3 15h.01M3 19h.01"/>',
     '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0M18 8h4M20 6v4"/>',
     '<path d="M7 3v12m0 0-4-4m4 4 4-4M17 21V9m0 0-4 4m4-4 4 4M3 20h8M13 4h8"/>',
-    '<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1A7 7 0 0 0 14 5l-.4-2h-4L9.2 5a7 7 0 0 0-2.6 2l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.5 2.3-1A7 7 0 0 0 9.2 19l.4 2h4l.4-2a7 7 0 0 0 2.6-2l2.3 1 2-3.5-2-1.5a7 7 0 0 0 .1-1z"/>'
+    '<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1A7 7 0 0 0 14 5l-.4-2h-4L9.2 5a7 7 0 0 0-2.6 2l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 .1-1z"/>'
   ];
-  const iconNames=["dashboard", "items", "inventory", "assets", "inbound", "transfer", "borrow", "repair", "machine", "racks", "count", "purchase", "notifications", "log", "roles", "import", "settings"];
-  document.querySelectorAll('[data-icon]').forEach(icon=>{
-    const path=tabIconPaths[iconNames.indexOf(icon.dataset.icon)];
-    if(!path)return;
-    icon.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="1.8"
-      stroke-linecap="round" stroke-linejoin="round"
-      aria-hidden="true">${path}</svg>`;
+  const iconNames=['dashboard','items','inventory','assets','inbound','transfer','borrow','repair','machine','racks','count','purchase','notifications','log','roles','import','settings'];
+  document.querySelectorAll('[data-icon]').forEach(icon=>{const path=iconPaths[iconNames.indexOf(icon.dataset.icon)];if(path)icon.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+path+'</svg>'});
+
+  const KEY='bomb-wms-prototype-v2';
+  const seed=()=>({version:2,
+    items:[
+      {id:'ITM-0001',name:'Mini PC',type:'設備',category:'電腦設備',unit:'台',safety:1,enabled:true},
+      {id:'ITM-0002',name:'小螢幕',type:'設備',category:'電腦周邊',unit:'台',safety:2,enabled:true},
+      {id:'ITM-0003',name:'滑鼠',type:'消耗品',category:'電腦周邊',unit:'個',safety:10,enabled:true},
+      {id:'ITM-0004',name:'鍵盤',type:'消耗品',category:'電腦周邊',unit:'個',safety:5,enabled:true}
+    ],
+    locations:[
+      {id:'LOC-A01',department:'辦公室部門',area:'備品區',spot:'倉架 A-01／第 1 層'},
+      {id:'LOC-A02',department:'辦公室部門',area:'備品區',spot:'倉架 A-02／第 2 層'},
+      {id:'LOC-B01',department:'辦公室部門',area:'備品區',spot:'倉架 B-01／第 1 層'},
+      {id:'LOC-B02',department:'辦公室部門',area:'備品區',spot:'倉架 B-02／第 2 層'},
+      {id:'LOC-M01',department:'辦公室部門',area:'機台區',spot:'機台 01'},
+      {id:'LOC-O01',department:'辦公室部門',area:'辦公區',spot:'辦公桌 01'},
+      {id:'LOC-H01',department:'總部',area:'辦公區',spot:'辦公桌 H-01'},
+      {id:'LOC-R01',department:'辦公室部門',area:'備品區',spot:'待檢／維修區'},
+      {id:'LOC-F01',department:'辦公室部門',area:'備品區',spot:'故障品區'}
+    ],
+    assets:[
+      {id:'AST-0001',itemId:'ITM-0001',locationId:'LOC-A01',status:'可用',holder:''},
+      {id:'AST-0002',itemId:'ITM-0001',locationId:'LOC-M01',status:'使用中',holder:'機台 01'},
+      {id:'AST-0003',itemId:'ITM-0002',locationId:'LOC-R01',status:'待檢測',holder:''},
+      {id:'AST-0004',itemId:'ITM-0001',locationId:'LOC-F01',status:'故障',holder:''},
+      {id:'AST-0005',itemId:'ITM-0002',locationId:'LOC-A02',status:'可用',holder:''}
+    ],
+    stock:[{itemId:'ITM-0003',locationId:'LOC-B01',qty:12},{itemId:'ITM-0004',locationId:'LOC-B02',qty:5}],
+    inbound:[],transfers:[],borrows:[],repairs:[],counts:[],purchases:[],logs:[]
   });
-  
+  let db;
+  try{db=JSON.parse(localStorage.getItem(KEY)||'null');if(!db||db.version!==2)db=seed()}catch(e){db=seed()}
+  function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+  function E(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function item(id){return db.items.find(x=>x.id===id)}
+  function loc(id){return db.locations.find(x=>x.id===id)}
+  function asset(id){return db.assets.find(x=>x.id===id)}
+  function labelLoc(id){const x=loc(id);return x?`${x.department}／${x.area}／${x.spot}`:'－'}
+  function itemName(id){return item(id)?.name||id}
+  function stamp(){return new Date().toLocaleString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})}
+  function code(prefix,collection){let n=collection.reduce((max,x)=>Math.max(max,Number(x.id.split('-')[1])||0),0)+1;return prefix+'-'+String(n).padStart(4,'0')}
+  function log(action,subject,from,to,ref=''){db.logs.unshift({id:code('LG',db.logs),time:stamp(),action,subject,from,to,who:'OG',ref})}
+  function available(id){const x=item(id);return x?.type==='設備'?db.assets.filter(a=>a.itemId===id&&a.status==='可用').length:db.stock.filter(r=>r.itemId===id).reduce((n,r)=>n+r.qty,0)}
+  function warnings(){return db.items.filter(x=>x.enabled&&available(x.id)<x.safety)}
+  function badge(value){const color={'可用':'success','正常':'success','已完成':'success','已歸還':'success','已入庫':'success','已核准':'success','啟用':'success','使用中':'info','借用中':'info','待處理':'warning','待審核':'warning','待檢測':'warning','維修中':'warning','低於安全庫存':'warning','故障':'danger','待報廢':'danger'}[value]||'info';return `<span class="badge badge-${color}">${E(value)}</span>`}
+  function cell(value){return `<td>${E(value)}</td>`}
+  function button(action,text,id='',extra=''){return `<button type="button" class="btn wms-small-btn" data-action="${E(action)}" data-id="${E(id)}" ${extra}>${E(text)}</button>`}
+  function row(cells){return '<tr>'+cells.join('')+'</tr>'}
+  function table(id,heads,rows){return `<div class="table-wrap"><table><thead><tr>${heads.map(h=>`<th>${E(h)}</th>`).join('')}</tr></thead><tbody id="${id}">${rows||`<tr><td colspan="${heads.length}" class="wms-empty">尚無資料</td></tr>`}</tbody></table></div>`}
+  function header(title,desc,actions=''){return `<section class="page-header"><div class="page-title"><h1>${E(title)}</h1><p>${E(desc)}</p></div><div class="header-actions">${actions}</div></section>`}
+  function card(title,sub,body){return `<article class="card"><div class="card-header"><div><h2>${E(title)}</h2><span>${E(sub)}</span></div></div>${body}</article>`}
+  function page(key,title,desc,heads,rows,actions='',sub='資料儲存在目前瀏覽器'){document.getElementById('page-'+key).innerHTML=header(title,desc,actions)+card(title+'清單',sub,table('rows-'+key,heads,rows))}
+  function choices(items,show){return items.map(x=>({value:x.id,label:show(x)}))}
+  function optionsHtml(values,selected=''){return values.map(v=>`<option value="${E(v.value)}" ${String(v.value)===String(selected)?'selected':''}>${E(v.label)}</option>`).join('')}
+  function locationOptions(){return choices(db.locations,x=>labelLoc(x.id))}
+  function itemOptions(type){return choices(db.items.filter(x=>x.enabled&&(!type||x.type===type)),x=>`${x.id} ${x.name}`)}
+  function assetOptions(predicate=()=>true){return choices(db.assets.filter(predicate),a=>`${a.id} ${itemName(a.itemId)}（${a.status}・${labelLoc(a.locationId)}）`)}
+  function field(name,label,type='text',values=[],value='',required=true){return {name,label,type,values,value,required}}
+  const dialog=document.getElementById('wmsDialog');
+  let submitDialog=null;
+  function form(title,fields,submit){
+    const controls=fields.map(f=>`<label class="wms-field"><span>${E(f.label)}</span>${f.type==='select'?`<select name="${E(f.name)}" ${f.required?'required':''}><option value="">請選擇</option>${optionsHtml(f.values,f.value)}</select>`:`<input name="${E(f.name)}" type="${E(f.type)}" value="${E(f.value)}" ${f.type==='number'?'min="0" step="1"':''} ${f.required?'required':''}>`}</label>`).join('');
+    dialog.innerHTML=`<form id="wmsForm"><h2>${E(title)}</h2><div class="wms-form-grid">${controls}</div><p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">取消</button><button type="submit" class="btn btn-primary">儲存</button></div></form>`;
+    submitDialog=submit;dialog.showModal();
+  }
+  dialog.addEventListener('submit',event=>{event.preventDefault();if(!submitDialog)return;const values=Object.fromEntries(new FormData(event.target));try{submitDialog(values);dialog.close();submitDialog=null;save()}catch(e){document.getElementById('formError').textContent=e.message||'資料無法儲存'}});
+  dialog.addEventListener('close',()=>submitDialog=null);
+  function requirePositive(value){const n=Number(value);if(!Number.isSafeInteger(n)||n<1)throw Error('數量必須是正整數');return n}
+  function requireNonnegative(value){const n=Number(value);if(!Number.isSafeInteger(n)||n<0)throw Error('數量必須是零或正整數');return n}
+  function ensureDifferent(a,b){if(a===b)throw Error('原位置與新位置不能相同')}
+  function addItem(){form('新增品項',[field('name','品項名稱'),field('type','類型','select',[{value:'設備',label:'設備'},{value:'消耗品',label:'消耗品'}]),field('category','分類'),field('unit','單位'),field('safety','安全庫存','number',[],0)],v=>{const id=code('ITM',db.items);db.items.push({id,name:v.name.trim(),type:v.type,category:v.category.trim(),unit:v.unit.trim(),safety:requireNonnegative(v.safety),enabled:true});log('新增品項',`${id} ${v.name}`,'－','品項清單',id)})}
+  function editItem(id){const x=item(id);if(!x)return;form('編輯品項 '+id,[field('name','品項名稱','text',[],x.name),field('category','分類','text',[],x.category),field('unit','單位','text',[],x.unit),field('safety','安全庫存','number',[],x.safety),field('enabled','狀態','select',[{value:'true',label:'啟用'},{value:'false',label:'停用'}],String(x.enabled))],v=>{const before=x.name;x.name=v.name.trim();x.category=v.category.trim();x.unit=v.unit.trim();x.safety=requireNonnegative(v.safety);x.enabled=v.enabled==='true';log('編輯品項',id,before,x.name,id)})}
+  function inbound(){form('新增入庫／驗收',[field('itemId','品項','select',itemOptions()),field('qty','驗收合格數量','number'),field('locationId','入庫位置','select',locationOptions()),field('purchaseId','關聯已核准採購單（選填）','select',choices(db.purchases.filter(p=>['已核准','部分入庫'].includes(p.status)),p=>`${p.id} ${itemName(p.itemId)} × ${p.qty-(p.received||0)}`),'',false),field('note','驗收備註','text',[],'合格',false)],v=>{const qty=requirePositive(v.qty),x=item(v.itemId),l=loc(v.locationId);if(!x||!l||!x.enabled)throw Error('請選擇有效品項及位置');const purchase=db.purchases.find(p=>p.id===v.purchaseId);if(v.purchaseId&&(!purchase||purchase.itemId!==x.id||!['已核准','部分入庫'].includes(purchase.status)||qty>purchase.qty-(purchase.received||0)))throw Error('關聯採購單的品項或剩餘數量不符');if(x.type==='設備'){for(let i=0;i<qty;i++)db.assets.push({id:code('AST',db.assets),itemId:x.id,locationId:l.id,status:'可用',holder:''})}else{let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}stock.qty+=qty}const id=code('IN',db.inbound);db.inbound.unshift({id,time:stamp(),itemId:x.id,qty,locationId:l.id,note:v.note.trim(),purchaseId:v.purchaseId,who:'OG'});if(purchase){purchase.received=(purchase.received||0)+qty;purchase.status=purchase.received>=purchase.qty?'已入庫':'部分入庫'}log('入庫',`${x.name} × ${qty}`,'－',labelLoc(l.id),id)})}
+  function transferAsset(){form('調撥設備',[field('assetId','設備資產','select',assetOptions(a=>a.status==='可用'||a.status==='使用中')),field('to','新位置','select',locationOptions())],v=>{const a=asset(v.assetId),dest=loc(v.to);if(!a||!dest||!['可用','使用中'].includes(a.status))throw Error('設備不可調撥');ensureDifferent(a.locationId,dest.id);const from=labelLoc(a.locationId),id=code('TR',db.transfers);a.locationId=dest.id;a.status=dest.area==='機台區'?'使用中':'可用';a.holder=a.status==='使用中'?dest.spot:'';db.transfers.unshift({id,time:stamp(),subject:`${a.id} ${itemName(a.itemId)}`,from,to:labelLoc(dest.id),qty:1,who:'OG'});log('調撥',a.id,from,labelLoc(dest.id),id)})}
+  function transferStock(){form('調撥消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('from','原位置','select',locationOptions()),field('to','新位置','select',locationOptions()),field('qty','數量','number')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId),source=db.stock.find(r=>r.itemId===v.itemId&&r.locationId===v.from),dest=loc(v.to);if(!x||x.type!=='消耗品'||!dest)throw Error('請選擇有效品項與位置');ensureDifferent(v.from,v.to);if(!source||source.qty<qty)throw Error('原位置數量不足');source.qty-=qty;let target=db.stock.find(r=>r.itemId===x.id&&r.locationId===dest.id);if(!target){target={itemId:x.id,locationId:dest.id,qty:0};db.stock.push(target)}target.qty+=qty;const id=code('TR',db.transfers),from=labelLoc(v.from),to=labelLoc(dest.id);db.transfers.unshift({id,time:stamp(),subject:x.name,from,to,qty,who:'OG'});log('調撥',`${x.name} × ${qty}`,from,to,id)})}
+  function borrow(){form('借用設備',[field('assetId','可用設備','select',assetOptions(a=>a.status==='可用')),field('holder','借用人'),field('due','預計歸還日期','date')],v=>{const a=asset(v.assetId);if(!a||a.status!=='可用')throw Error('設備目前不可借用');const id=code('BR',db.borrows);a.status='借用中';a.holder=v.holder.trim();db.borrows.unshift({id,time:stamp(),assetId:a.id,holder:a.holder,from:labelLoc(a.locationId),due:v.due,returned:'',status:'借用中'});log('借用',a.id,labelLoc(a.locationId),a.holder,id)})}
+  function returnAsset(id){const b=db.borrows.find(x=>x.id===id),a=b&&asset(b.assetId);if(!b||!a||b.status!=='借用中')return;b.status='已歸還';b.returned=stamp();a.status='可用';a.holder='';log('歸還',a.id,b.holder,labelLoc(a.locationId),id);save()}
+  function repair(){form('新增維修紀錄',[field('assetId','設備資產','select',assetOptions(a=>a.status!=='借用中'&&a.status!=='維修中')),field('issue','故障／檢測原因')],v=>{const a=asset(v.assetId);if(!a)throw Error('資產不存在');const id=code('RP',db.repairs);const from=labelLoc(a.locationId);a.status='維修中';a.holder='';a.locationId='LOC-R01';db.repairs.unshift({id,time:stamp(),assetId:a.id,issue:v.issue.trim(),location:from,status:'維修中'});log('送修',a.id,from,labelLoc(a.locationId),id)})}
+  function replaceAsset(){form('故障設備更換',[field('faultyId','故障／待檢設備','select',assetOptions(a=>['故障','待檢測','維修中'].includes(a.status))),field('replacementId','可用替換設備','select',assetOptions(a=>a.status==='可用')),field('to','替換後使用位置','select',locationOptions()),field('issue','更換原因')],v=>{const old=asset(v.faultyId),next=asset(v.replacementId),dest=loc(v.to);if(!old||!next||!dest||old.id===next.id||old.itemId!==next.itemId||next.status!=='可用'||!['故障','待檢測','維修中'].includes(old.status))throw Error('請選擇相同品項的故障設備與可用備品');const from=labelLoc(next.locationId),id=code('RP',db.repairs);old.status='維修中';old.holder='';old.locationId='LOC-R01';next.locationId=dest.id;next.status=dest.area==='機台區'?'使用中':'可用';next.holder=next.status==='使用中'?dest.spot:'';db.repairs.unshift({id,time:stamp(),assetId:old.id,issue:`${v.issue.trim()}；以 ${next.id} 更換`,location:labelLoc(dest.id),status:'維修中'});log('維修更換',`${old.id} → ${next.id}`,from,labelLoc(dest.id),id)})}
+  function finishRepair(id){const r=db.repairs.find(x=>x.id===id),a=r&&asset(r.assetId);if(!r||!a||r.status!=='維修中')return;r.status='已完成';a.status='可用';log('維修完成',a.id,'維修中',labelLoc(a.locationId),id);save()}
+  function countStock(){form('盤點消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('locationId','盤點位置','select',locationOptions()),field('actual','現場實盤數','number')],v=>{const x=item(v.itemId),l=loc(v.locationId),actual=requireNonnegative(v.actual);if(!x||x.type!=='消耗品'||!l)throw Error('請選擇有效品項及位置');let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}const before=stock.qty,id=code('CT',db.counts);stock.qty=actual;db.counts.unshift({id,time:stamp(),itemId:x.id,locationId:l.id,before,actual,diff:actual-before,who:'OG'});log('盤點',x.name,`${before} ${x.unit}`,`${actual} ${x.unit}`,id)})}
+  function purchase(){form('新增採購需求',[field('department','申請部門','select',[{value:'總部',label:'總部'},{value:'辦公室部門',label:'辦公室部門'}]),field('itemId','品項','select',itemOptions()),field('qty','需求數量','number'),field('reason','需求原因')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId);if(!x)throw Error('品項不存在');const id=code('PR',db.purchases);db.purchases.unshift({id,time:stamp(),department:v.department,itemId:x.id,qty,reason:v.reason.trim(),who:'OG',status:'待審核'});log('採購需求',`${x.name} × ${qty}`,'－',v.department,id)})}
+  function approve(id){const p=db.purchases.find(x=>x.id===id);if(!p||p.status!=='待審核')return;p.status='已核准';log('核准採購',`${itemName(p.itemId)} × ${p.qty}`,'待審核','已核准',id);save()}
+  function addLocation(){form('新增位置',[field('department','部門','select',[{value:'總部',label:'總部'},{value:'辦公室部門',label:'辦公室部門'}]),field('area','區域'),field('spot','位置／倉架及層位')],v=>{if(db.locations.some(x=>x.department===v.department&&x.area===v.area.trim()&&x.spot===v.spot.trim()))throw Error('相同位置已存在');const id=code('LOC',db.locations);db.locations.push({id,department:v.department,area:v.area.trim(),spot:v.spot.trim()});log('新增位置',id,'－',labelLoc(id),id)})}
+  function formatRows(list,columns){return list.length?list.map(x=>row(columns.map(f=>f(x)))).join(''):''}
+  function renderAll(){
+    const actions=(...pairs)=>pairs.map(([name,title])=>button(name,title)).join(' ');
+    const itemRows=formatRows(db.items,[x=>cell(x.id),x=>cell(x.name),x=>cell(x.type),x=>cell(x.category),x=>cell(x.unit),x=>cell(x.safety),x=>`<td>${badge(x.enabled?'啟用':'停用')}</td>`,x=>`<td>${button('edit-item','編輯',x.id)}</td>`]);
+    page('items','品項管理','公司物品與設備的基本資料',['品項編號','品項名稱','類型','分類','單位','安全庫存','狀態','操作'],itemRows,actions(['refresh','重新整理'],['new-item','＋ 新增品項']));
+    document.getElementById('page-items').querySelector('.card-header').insertAdjacentHTML('afterend','<div class="item-toolbar"><input id="itemSearch" type="search" placeholder="搜尋品項編號或名稱..."><select id="itemTypeFilter"><option value="">全部類型</option><option>設備</option><option>消耗品</option></select><select id="itemStatusFilter"><option value="">全部狀態</option><option>啟用</option><option>停用</option></select></div>');
+    const inv=[];
+    db.items.forEach(x=>{const amount=available(x.id),low=amount<x.safety;db.locations.forEach(l=>{let total,free;if(x.type==='設備'){const assets=db.assets.filter(a=>a.itemId===x.id&&a.locationId===l.id);total=assets.length;free=assets.filter(a=>a.status==='可用').length}else{total=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id)?.qty||0;free=total}if(total>0)inv.push({x,l,total,free,low})})});
+    page('inventory','庫存管理','依部門、區域及位置查看現有數量',['品項','類型','部門','區域','位置','在庫／資產數','可用數','全公司安全庫存','狀態'],formatRows(inv,[r=>cell(r.x.id+' '+r.x.name),r=>cell(r.x.type),r=>cell(r.l.department),r=>cell(r.l.area),r=>cell(r.l.spot),r=>cell(r.total+' '+r.x.unit),r=>cell(r.free+' '+r.x.unit),r=>cell(r.x.safety+' '+r.x.unit),r=>`<td>${badge(r.low?'低於安全庫存':'正常')}</td>`]),actions(['new-inbound','＋ 新增入庫'],['new-transfer-stock','調撥耗材']),'安全庫存依品項計算全公司可用數；設備非可用狀態仍計入資產數');
+    page('assets','資產管理','逐台追蹤設備、保管人及位置',['資產編號','品項','部門','區域／位置','保管人','狀態','可用配置'],formatRows(db.assets,[a=>cell(a.id),a=>cell(itemName(a.itemId)),a=>cell(loc(a.locationId)?.department||'－'),a=>cell((loc(a.locationId)?.area||'－')+'／'+(loc(a.locationId)?.spot||'－')),a=>cell(a.holder||'－'),a=>`<td>${badge(a.status)}</td>`,a=>cell(a.status==='可用'?'是':'否')]),actions(['new-transfer-asset','調撥設備'],['new-borrow','借用設備'],['new-repair','送修設備']));
+    page('inbound','入庫／驗收','驗收合格後才增加庫存或建立設備資產',['單號','時間','品項','數量','驗收備註','入庫位置','操作人','狀態'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(r.time),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+item(r.itemId)?.unit),r=>cell((r.note||'－')+(r.purchaseId?'／'+r.purchaseId:'')),r=>cell(labelLoc(r.locationId)),r=>cell(r.who),r=>`<td>${badge('已入庫')}</td>`]),actions(['new-inbound','＋ 新增入庫']));
+    page('transfer','調撥／配置','設備及消耗品跨位置移動會同步更新庫存',['單號','時間','品項／資產','原位置','新位置','數量','操作人'],formatRows(db.transfers,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.qty),r=>cell(r.who)]),actions(['new-transfer-asset','調撥設備'],['new-transfer-stock','調撥耗材']));
+    page('borrow','借用／歸還','借出設備不列入可用數，歸還後恢復',['借用單號','設備','借用人','借出位置','借用日期','預計歸還','實際歸還','狀態','操作'],formatRows(db.borrows,[r=>cell(r.id),r=>cell(r.assetId+' '+itemName(asset(r.assetId)?.itemId)),r=>cell(r.holder),r=>cell(r.from),r=>cell(r.time),r=>cell(r.due),r=>cell(r.returned||'－'),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='借用中'?button('return-asset','歸還',r.id):'－'}</td>`]),actions(['new-borrow','＋ 新增借用']));
+    page('repair','維修更換','故障設備送修期間不列入可用數',['維修單號','時間','資產','問題說明','原位置／使用位置','狀態','操作'],formatRows(db.repairs,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.assetId),r=>cell(r.issue),r=>cell(r.location),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='維修中'?button('finish-repair','完成維修',r.id):'－'}</td>`]),actions(['new-repair','＋ 新增維修'],['new-replacement','更換備品']));
+    const machines=db.locations.filter(l=>l.area==='機台區');
+    page('machine','機台管理','機台位置與目前配置的設備',['位置編號','部門','機台位置','配置設備','狀態'],formatRows(machines,[l=>cell(l.id),l=>cell(l.department),l=>cell(l.spot),l=>cell(db.assets.filter(a=>a.locationId===l.id&&a.status==='使用中').map(a=>a.id+' '+itemName(a.itemId)).join('、')||'尚未配置'),l=>`<td>${badge('啟用')}</td>`]),actions(['new-location','＋ 新增機台位置']));
+    page('racks','位置／倉架','部門 → 區域 → 位置／倉架；移動時選取同一份位置資料',['位置編號','部門','區域','位置／倉架及層位','設備資產數','消耗品數'],formatRows(db.locations,[l=>cell(l.id),l=>cell(l.department),l=>cell(l.area),l=>cell(l.spot),l=>cell(db.assets.filter(a=>a.locationId===l.id).length),l=>cell(db.stock.filter(r=>r.locationId===l.id).reduce((n,r)=>n+r.qty,0))]),actions(['new-location','＋ 新增位置']));
+    page('count','盤點管理','現場數量與帳面數比較後更新消耗品庫存',['盤點單號','時間','範圍','品項','帳面數','實盤數','差異','操作人'],formatRows(db.counts,[r=>cell(r.id),r=>cell(r.time),r=>cell(labelLoc(r.locationId)),r=>cell(itemName(r.itemId)),r=>cell(r.before),r=>cell(r.actual),r=>cell(r.diff),r=>cell(r.who)]),actions(['new-count','＋ 開始盤點']));
+    page('purchase','採購需求','需求提出與核准分開；核准後仍需到貨驗收入庫',['需求單號','時間','申請部門','品項','數量','原因','狀態','操作'],formatRows(db.purchases,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.department),r=>cell(itemName(r.itemId)),r=>cell(r.qty),r=>cell(r.reason),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='待審核'?button('approve-purchase','核准',r.id):'－'}</td>`]),actions(['new-purchase','＋ 新增需求']));
+    const notes=[...warnings().map(x=>({type:'庫存預警',text:`${x.name} 可用 ${available(x.id)} ${x.unit}，低於安全庫存 ${x.safety} ${x.unit}`,ref:x.id})),...db.purchases.filter(p=>p.status==='待審核').map(p=>({type:'待審核採購',text:`${p.department} 申請 ${itemName(p.itemId)} × ${p.qty}`,ref:p.id})),...db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).map(a=>({type:'設備狀態',text:`${a.id} ${itemName(a.itemId)}：${a.status}`,ref:a.id}))];
+    page('notifications','通知中心','依最新庫存、採購及設備狀態即時計算提醒',['類型','通知內容','關聯編號','狀態'],formatRows(notes,[n=>cell(n.type),n=>cell(n.text),n=>cell(n.ref),n=>`<td>${badge('待處理')}</td>`]));
+    page('log','異動日誌','記錄本機展示資料的操作人、前後狀態與關聯單號',['時間','動作','品項／資產','異動前','異動後','操作人','關聯單號'],formatRows(db.logs,[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who),r=>cell(r.ref||'－')]));
+    page('roles','角色與權限','權限表為規劃草稿；展示帳號尚無登入驗證',['角色','查看資料','品項／位置維護','入出庫／調撥','核准','系統設定'],row(['最高權限','全部','可','可','可','可'].map(cell))+row(['部門主管','所屬部門','依授權','可','依授權','不可'].map(cell))+row(['一般使用者','授權範圍','不可','提出申請','不可','不可'].map(cell)));
+    page('import','匯入／匯出','以 JSON 備份或還原目前瀏覽器的展示資料',['項目','用途','資料格式'],row(['匯出資料','保存品項、位置、資產、庫存及異動紀錄','JSON'].map(cell))+row(['匯入資料','還原相同格式的備份檔','JSON'].map(cell)),actions(['export','下載備份'],['import','匯入備份']));
+    const departments=['總部','辦公室部門'];
+    page('settings','系統設定','目前展示資料使用此分類與規則',['設定','目前內容','用途'],row(['部門',departments.join('、'),'物品、資產與位置的歸屬'].map(cell))+row(['辦公室部門區域','機台區、辦公區、備品區','管理實際位置'].map(cell))+row(['安全庫存','依品項設定；全公司可用數低於門檻即提醒','通知中心與採購需求'].map(cell))+row(['資料保存','目前瀏覽器 localStorage','重新開啟仍保留；可匯出備份'].map(cell)));
+    const total=db.assets.length,ready=db.assets.filter(a=>a.status==='可用').length,using=db.assets.filter(a=>['使用中','借用中'].includes(a.status)).length,repairing=db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).length,low=warnings().length;
+    const stats=[['公司資產總數',total,'已登錄設備資產'],['可用設備',ready,'可立即配置'],['使用中／借用中',using,'目前不可配置'],['故障／維修',repairing,'待檢測或處理'],['庫存預警',low,'低於安全庫存的品項']].map(([name,value,note])=>`<article class="stat-card"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon">▦</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
+    const recent=formatRows(db.logs.slice(0,5),[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who)]);
+    const alerts=notes.slice(0,5).map(n=>`<div class="alert-item"><div class="alert-icon">!</div><div class="alert-content"><div class="alert-title">${E(n.type)}</div><div class="alert-desc">${E(n.text)}</div></div></div>`).join('')||'<p class="wms-empty">目前沒有待處理提醒</p>';
+    document.getElementById('page-dashboard').innerHTML=header('營運總覽','公司設備與庫存目前概況',actions(['refresh','重新整理'],['new-item','＋ 新增品項']))+`<section class="stats-grid">${stats}</section><section class="dashboard-grid"><div>${card('資產狀態分布','以目前資產資料計算',`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`)}<br>${card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent))}<div class="wms-card-footer">${button('go-log','查看全部')}</div></div><div>${card('待處理／通知','與目前資料連動',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`)}<br>${card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','新增入庫'],['new-transfer-asset','調撥設備'],['new-purchase','採購需求'],['new-count','開始盤點']].map(([a,t])=>button(a,t)).join('')}</div>`)}</div></section>`;
+    const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
+    filterItems();
+  }
+  function filterItems(){const search=document.getElementById('itemSearch'),type=document.getElementById('itemTypeFilter'),status=document.getElementById('itemStatusFilter');if(!search)return;const q=search.value.trim().toLowerCase();document.querySelectorAll('#rows-items tr').forEach(tr=>{const t=tr.querySelectorAll('td');if(!t.length)return;tr.hidden=!((t[0].textContent.toLowerCase().includes(q)||t[1].textContent.toLowerCase().includes(q))&&(!type.value||t[2].textContent===type.value)&&(!status.value||t[6].textContent===status.value))})}
+  document.addEventListener('input',e=>{if(e.target.id==='itemSearch')filterItems()});
+  document.addEventListener('change',e=>{if(['itemTypeFilter','itemStatusFilter'].includes(e.target.id))filterItems()});
+  function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BOMB-WMS-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+  function importData(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;try{const value=JSON.parse(await file.text());if(value.version!==2||!['items','locations','assets','stock','inbound','transfers','borrows','repairs','counts','purchases','logs'].every(k=>Array.isArray(value[k])))throw Error('備份檔格式不符');if(!confirm('匯入會覆蓋目前瀏覽器的 WMS 展示資料，確定繼續？'))return;db=value;save()}catch(e){alert('匯入失敗：'+e.message)}});input.click()}
+  const handlers={'new-item':addItem,'new-inbound':inbound,'new-transfer-asset':transferAsset,'new-transfer-stock':transferStock,'new-borrow':borrow,'new-repair':repair,'new-replacement':replaceAsset,'new-count':countStock,'new-purchase':purchase,'new-location':addLocation,'refresh':renderAll,'go-log':()=>showPage('log','operations'),'go-notifications':()=>showPage('notifications','operations'),'export':exportData,'import':importData,'close-dialog':()=>dialog.close()};
+  document.addEventListener('click',e=>{const target=e.target.closest('[data-action]');if(!target)return;const action=target.dataset.action,id=target.dataset.id;if(handlers[action])handlers[action]();else if(action==='edit-item')editItem(id);else if(action==='return-asset')returnAsset(id);else if(action==='finish-repair')finishRepair(id);else if(action==='approve-purchase')approve(id)});
+  renderAll();
 })();
 </script>
-
 </body>
 </html>
