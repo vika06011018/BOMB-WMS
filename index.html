@@ -544,6 +544,28 @@
       </div>
     </div>
 
+ <div class="item-toolbar">
+
+  <input
+    type="search"
+    id="itemSearch"
+    placeholder="搜尋品項編號或名稱..."
+  >
+
+  <select id="itemTypeFilter">
+    <option value="">全部類型</option>
+    <option value="設備">設備</option>
+    <option value="消耗品">消耗品</option>
+  </select>
+
+  <select id="itemStatusFilter">
+    <option value="">全部狀態</option>
+    <option value="啟用">啟用</option>
+    <option value="停用">停用</option>
+  </select>
+
+</div>
+    
     <div class="table-wrap">
 
       <table>
@@ -717,6 +739,36 @@
   });
 
 });
+
+  /* ===== Item search and filters ===== */
+
+  const itemSearch=document.getElementById('itemSearch');
+  const itemTypeFilter=document.getElementById('itemTypeFilter');
+  const itemStatusFilter=document.getElementById('itemStatusFilter');
+
+  function filterItems(){
+    const keyword=itemSearch.value.trim().toLowerCase();
+    const type=itemTypeFilter.value;
+    const status=itemStatusFilter.value;
+
+    document.querySelectorAll('#page-items tbody tr').forEach(row=>{
+      const cells=row.querySelectorAll('td');
+      const matchesSearch=
+        cells[0].textContent.toLowerCase().includes(keyword) ||
+        cells[1].textContent.toLowerCase().includes(keyword);
+
+      row.hidden=!(
+        matchesSearch &&
+        (!type || cells[2].textContent.trim()===type) &&
+        (!status || cells[6].textContent.trim()===status)
+      );
+    });
+  }
+
+  itemSearch.addEventListener('input',filterItems);
+  itemTypeFilter.addEventListener('change',filterItems);
+  itemStatusFilter.addEventListener('change',filterItems);
+  
 })();
 </script>
 
