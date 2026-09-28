@@ -860,3 +860,49 @@ html[data-theme="dark"] .badge-info{
   .sheet-tab{min-height:44px;padding:0 12px}
   .sheet-subtabs{padding:8px}
 }
+
+/* ===== Account control ===== */
+.account-area{position:relative}
+.account-trigger{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:0 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--panel);
+  color:var(--text);
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.account-trigger:hover,.account-trigger[aria-expanded="true"]{
+  background:var(--panel-2);
+  border-color:var(--primary);
+}
+.account-trigger:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.account-role{padding-left:8px;border-left:1px solid var(--border);color:var(--muted);font-weight:500}
+.account-panel{
+  position:absolute;
+  top:calc(100% + 9px);
+  right:0;
+  z-index:35;
+  width:235px;
+  padding:16px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:var(--panel);
+  box-shadow:var(--shadow);
+}
+.account-panel[hidden]{display:none}
+.account-panel strong{display:block;font-size:15px}
+.account-panel span{display:block;margin-top:4px;color:var(--muted);font-size:12px}
+.account-panel p{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+@media(max-width:650px){.account-role{display:none}}
+@media(max-width:380px){
+  .topbar .brand-mark{width:32px;height:32px}
+  .topbar .brand-text strong{font-size:13px}
+  .topbar-right{gap:5px}
+  .account-trigger{padding:0 8px}
+}
