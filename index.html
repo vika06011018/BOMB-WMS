@@ -21,7 +21,8 @@
   #page-dashboard .wms-kpi--order{--kpi-accent:#9970d8;--kpi-tint:rgba(153,112,216,.14)}
   #page-dashboard .wms-kpi .stat-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
   #page-dashboard .wms-kpi .stat-label{font-size:14px;font-weight:650}
-  #page-dashboard .wms-kpi .stat-icon{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:var(--kpi-tint);color:var(--kpi-accent);font-size:18px;font-weight:700}
+  #page-dashboard .wms-kpi .stat-icon{display:grid;place-items:center;width:48px;height:48px;flex:0 0 48px;border:1px solid color-mix(in srgb,var(--kpi-accent) 18%,transparent);border-radius:14px;background:var(--kpi-tint);color:var(--kpi-accent)}
+  #page-dashboard .wms-kpi .stat-icon svg{display:block;width:26px;height:26px}
   #page-dashboard .wms-kpi .stat-value{margin-top:8px;font-size:36px;line-height:1.1;font-weight:760;letter-spacing:-.035em}
   #page-dashboard .wms-kpi .stat-note{margin-top:7px;color:var(--dash-muted);font-size:12px;line-height:1.45}
   #page-dashboard .dashboard-grid>div{display:flex;flex-direction:column;gap:16px;min-width:0}
@@ -32,9 +33,72 @@
   #page-dashboard .dashboard-grid .wms-card-footer{border-top:1px solid var(--dash-border)}
   #page-dashboard .dashboard-grid .alert-list{display:grid;gap:9px}
   #page-dashboard .dashboard-grid .alert-item{margin:0;border-radius:12px}
+  #page-dashboard .dashboard-grid .alert-icon{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px}
+  #page-dashboard .dashboard-grid .alert-icon svg{display:block;width:19px;height:19px}
   @media(max-width:1000px){#page-dashboard .wms-dashboard-focus{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media(max-width:520px){#page-dashboard .wms-dashboard-focus{gap:10px}#page-dashboard .wms-dashboard-focus .wms-kpi{min-height:136px;padding:14px}#page-dashboard .wms-kpi .stat-value{font-size:30px}#page-dashboard .wms-kpi .stat-label{font-size:13px}}
   @media(prefers-reduced-motion:reduce){#page-dashboard .wms-dashboard-focus .wms-kpi{transition:none}}
+
+  /* 圓角重疊書籤與首頁工作區 */
+  .wms-book-nav{display:block!important;padding:10px 16px 0!important;background:transparent!important;border:0!important}
+  .wms-book-nav .sheet-tabs{display:flex!important;align-items:flex-end!important;min-height:66px;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin;padding:11px 4px 0!important;gap:0!important}
+  .wms-book-nav .sheet-tab{--book-fill:#f8fafc;--book-line:#cad5e2;position:relative!important;isolation:isolate;display:flex!important;align-items:center;justify-content:center;flex:0 0 auto!important;min-width:163px;height:53px!important;margin:0 -19px 0 0!important;padding:0 32px 0 17px!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;color:#4b5f75!important;font-size:14px!important;font-weight:650!important;white-space:nowrap;transform:none;transition:transform .16s ease,color .16s ease}
+  .wms-book-nav .sheet-tab:nth-child(1){z-index:7}.wms-book-nav .sheet-tab:nth-child(2){z-index:6}.wms-book-nav .sheet-tab:nth-child(3){z-index:5}.wms-book-nav .sheet-tab:nth-child(4){z-index:4}.wms-book-nav .sheet-tab:nth-child(5){z-index:3}.wms-book-nav .sheet-tab:nth-child(6){z-index:2}.wms-book-nav .sheet-tab:nth-child(7){z-index:1}
+  .wms-book-nav .sheet-tab:hover{--book-fill:#eaf3fc;transform:translateY(-2px)}
+  .wms-book-nav .sheet-tab.active{--book-fill:#1267ad;--book-line:#1267ad;z-index:20!important;color:#fff!important;transform:translateY(-7px)}
+  .wms-book-nav .sheet-tab:focus-visible{outline:2px solid #38a4ee!important;outline-offset:-3px}
+  .wms-book-nav .sheet-tab .wms-book-shape{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 1px 1px rgba(36,59,82,.11))}
+  .wms-book-nav .sheet-tab .wms-book-shape path{fill:var(--book-fill);stroke:var(--book-line);stroke-width:1.5;vector-effect:non-scaling-stroke}
+  .wms-book-nav .sheet-tab>span:not(.tab-icon){position:relative;z-index:1}
+  .wms-book-nav .sheet-subtabs{margin:0!important;padding:5px 10px!important;border:1px solid #dbe5ef;border-top:0;border-radius:0 0 10px 10px;background:#f6f9fc}
+  .wms-book-nav .sheet-subtabs[hidden],.wms-book-nav .sheet-children[hidden]{display:none!important}
+  .wms-book-nav .sheet-children{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+  .wms-book-nav .child-tab{border-radius:9px!important}
+  .wms-nav-favorites{display:flex;align-items:center;gap:6px;min-height:44px;padding:5px 10px;border:1px solid #dbe5ef;border-radius:0 0 10px 10px;background:#f6f9fc;overflow-x:auto;scrollbar-width:thin}
+  .wms-book-nav .sheet-subtabs:not([hidden])+.wms-nav-favorites{border-top:0}
+  .wms-nav-favorites>strong{flex:0 0 auto;margin-right:9px;color:#1267ad;font-size:13px}
+  .wms-nav-favorites button{flex:0 0 auto;padding:6px 11px;border:0;border-radius:8px;background:transparent;color:#526780;font:inherit;font-size:13px;cursor:pointer}
+  .wms-nav-favorites button:hover,.wms-nav-favorites button:focus-visible{background:#e5eef8;color:#1267ad}
+  #page-dashboard .wms-home-customize{border:1px solid var(--dash-border);border-radius:10px;background:var(--dash-surface);color:#256596;font-weight:650;cursor:pointer}
+  #page-dashboard .wms-dashboard-focus{margin-bottom:18px}
+  #page-dashboard .wms-dashboard-workspace{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:16px;align-items:start}
+  #page-dashboard .wms-dashboard-column{display:grid;gap:16px;min-width:0}
+  #page-dashboard .wms-dashboard-column .card{overflow:hidden;border:1px solid var(--dash-border);border-radius:16px;background:var(--dash-surface);box-shadow:var(--dash-shadow)}
+  #page-dashboard .wms-dashboard-column .card-header{padding:17px 19px}
+  #page-dashboard .wms-dashboard-column .card-body{padding:16px 19px}
+  #page-dashboard .wms-task-list{display:grid}
+  #page-dashboard .wms-task-row{display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:62px;padding:10px 0;border-top:1px solid var(--dash-border)}
+  #page-dashboard .wms-task-row:first-child{border-top:0}
+  #page-dashboard .wms-task-detail{min-width:0;line-height:1.45;overflow-wrap:anywhere}
+  #page-dashboard .wms-task-tag{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:4px 9px;border-radius:9px;font-size:12px;font-weight:700;white-space:nowrap}
+  #page-dashboard .wms-task-tag--inspection{background:#fff1de;color:#9c5b12}
+  #page-dashboard .wms-task-tag--order{background:#efe6fa;color:#7143a3}
+  #page-dashboard .wms-task-tag--stock{background:#fde7e9;color:#af3b4d}
+  #page-dashboard .wms-task-tag--asset{background:#e6eff9;color:#386794}
+  #page-dashboard .wms-task-row .wms-small-btn{white-space:nowrap}
+  #page-dashboard .wms-dashboard-column .status-list{display:grid;gap:15px}
+  #page-dashboard .wms-dashboard-column .quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #page-dashboard .wms-dashboard-column .quick-actions button{width:100%}
+  #page-dashboard .wms-dashboard-column .alert-item{margin:0}
+  #page-dashboard .wms-dashboard-column .alert-list{display:grid;gap:8px}
+  html[data-theme="dark"] .wms-book-nav .sheet-tab{--book-fill:#253449;--book-line:#41556e;color:#c3d4e8!important}
+  html[data-theme="dark"] .wms-book-nav .sheet-tab:hover{--book-fill:#324963}
+  html[data-theme="dark"] .wms-book-nav .sheet-tab.active{--book-fill:#287aca;--book-line:#287aca;color:#fff!important}
+  html[data-theme="dark"] .wms-book-nav .sheet-subtabs,html[data-theme="dark"] .wms-nav-favorites{background:#202e40;border-color:#35485d}
+  html[data-theme="dark"] .wms-nav-favorites>strong{color:#8cc6fb}
+  html[data-theme="dark"] .wms-nav-favorites button{color:#c3d4e8}
+  html[data-theme="dark"] .wms-nav-favorites button:hover,html[data-theme="dark"] .wms-nav-favorites button:focus-visible{background:#304761;color:#fff}
+  html[data-theme="dark"] #page-dashboard .wms-home-customize{color:#a2d4ff}
+  html[data-theme="dark"] #page-dashboard .wms-task-tag--inspection{background:#4b3826;color:#f4bf73}
+  html[data-theme="dark"] #page-dashboard .wms-task-tag--order{background:#3b3157;color:#d1b8ff}
+  html[data-theme="dark"] #page-dashboard .wms-task-tag--stock{background:#512d38;color:#ffabb3}
+  html[data-theme="dark"] #page-dashboard .wms-task-tag--asset{background:#263e56;color:#a6cfff}
+  .wms-customize-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 15px;margin:8px 0 15px}
+  .wms-customize-grid label{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #dbe5ef;border-radius:9px;cursor:pointer}
+  .wms-customize-grid input{width:17px;height:17px;accent-color:#1267ad}
+  @media(max-width:900px){#page-dashboard .wms-dashboard-workspace{grid-template-columns:1fr}}
+  @media(max-width:600px){.wms-book-nav{padding:6px 8px 0!important}.wms-book-nav .sheet-tab{min-width:147px;height:48px!important;font-size:13px!important}#page-dashboard .wms-task-row{grid-template-columns:80px minmax(0,1fr)}#page-dashboard .wms-task-row .wms-small-btn{grid-column:2;justify-self:start}.wms-customize-grid{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){.wms-book-nav .sheet-tab{transition:none}}
 </style>
 </head>
 
@@ -91,42 +155,50 @@
 
     </header>
 
-    <!-- Excel-style worksheet tabs -->
-    <nav class="sheet-nav" aria-label="WMS 工作表">
+    <!-- WMS 工作區書籤 -->
+    <nav class="sheet-nav wms-book-nav" aria-label="WMS 工作區">
       <div class="sheet-tabs" aria-label="主要標籤">
-        <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true"><span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span><span>營運總覽</span></button>
-        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>管理作業</span></button>
-        <button type="button" class="sheet-tab" data-page="items" aria-selected="false"><span class="tab-icon" data-icon="items" aria-hidden="true"></span><span>品項管理</span></button>
-        <button type="button" class="sheet-tab" data-page="inventory" aria-selected="false"><span class="tab-icon" data-icon="inventory" aria-hidden="true"></span><span>庫存管理</span></button>
-        <button type="button" class="sheet-tab" data-page="inbound" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>到貨登記</span></button>
-        <button type="button" class="sheet-tab" data-page="inspection" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>驗收</span></button>
-        <button type="button" class="sheet-tab" data-page="assets" aria-selected="false"><span class="tab-icon" data-icon="assets" aria-hidden="true"></span><span>資產管理</span></button>
-        <button type="button" class="sheet-tab" data-group="movement" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>異動管理</span></button>
-        <button type="button" class="sheet-tab" data-group="locations" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台與位置</span></button>
-        <button type="button" class="sheet-tab" data-group="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>系統管理</span></button>
+        <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true"><span>營運總覽</span></button>
+        <button type="button" class="sheet-tab" data-group="catalog" aria-selected="false"><span>品項與庫存</span></button>
+        <button type="button" class="sheet-tab" data-group="procurement" aria-selected="false"><span>採購與驗收</span></button>
+        <button type="button" class="sheet-tab" data-group="assets" aria-selected="false"><span>資產與設備</span></button>
+        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span>異動與盤點</span></button>
+        <button type="button" class="sheet-tab" data-group="reports" aria-selected="false"><span>報表與紀錄</span></button>
+        <button type="button" class="sheet-tab" data-group="system" aria-selected="false"><span>系統設定</span></button>
       </div>
       <div class="sheet-subtabs" hidden>
-      <div class="sheet-children" data-children="movement" aria-label="異動管理子標籤" hidden>
-        <button type="button" class="child-tab" data-page="transfer" data-parent="movement" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>調撥／配置</span></button>
-        <button type="button" class="child-tab" data-page="borrow" data-parent="movement" aria-selected="false"><span class="tab-icon" data-icon="borrow" aria-hidden="true"></span><span>借用／歸還</span></button>
-        <button type="button" class="child-tab" data-page="repair" data-parent="movement" aria-selected="false"><span class="tab-icon" data-icon="repair" aria-hidden="true"></span><span>維修更換</span></button>
+        <div class="sheet-children" data-children="catalog" aria-label="品項與庫存子標籤" hidden>
+          <button type="button" class="child-tab" data-page="items" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="items" aria-hidden="true"></span><span>品項管理</span></button>
+          <button type="button" class="child-tab" data-page="inventory" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="inventory" aria-hidden="true"></span><span>庫存管理</span></button>
+          <button type="button" class="child-tab" data-page="racks" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="racks" aria-hidden="true"></span><span>位置／倉架</span></button>
+        </div>
+        <div class="sheet-children" data-children="procurement" aria-label="採購與驗收子標籤" hidden>
+          <button type="button" class="child-tab" data-page="purchase" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="purchase" aria-hidden="true"></span><span>採購需求</span></button>
+          <button type="button" class="child-tab" data-page="inbound" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>到貨登記</span></button>
+          <button type="button" class="child-tab" data-page="inspection" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>驗收</span></button>
+        </div>
+        <div class="sheet-children" data-children="assets" aria-label="資產與設備子標籤" hidden>
+          <button type="button" class="child-tab" data-page="assets" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="assets" aria-hidden="true"></span><span>資產管理</span></button>
+          <button type="button" class="child-tab" data-page="machine" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台管理</span></button>
+          <button type="button" class="child-tab" data-page="repair" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="repair" aria-hidden="true"></span><span>維修更換</span></button>
+        </div>
+        <div class="sheet-children" data-children="operations" aria-label="異動與盤點子標籤" hidden>
+          <button type="button" class="child-tab" data-page="transfer" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>調撥／配置</span></button>
+          <button type="button" class="child-tab" data-page="borrow" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="borrow" aria-hidden="true"></span><span>借用／歸還</span></button>
+          <button type="button" class="child-tab" data-page="count" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>盤點管理</span></button>
+        </div>
+        <div class="sheet-children" data-children="reports" aria-label="報表與紀錄子標籤" hidden>
+          <button type="button" class="child-tab" data-page="reports" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span><span>摘要報表</span></button>
+          <button type="button" class="child-tab" data-page="log" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="log" aria-hidden="true"></span><span>異動日誌</span></button>
+          <button type="button" class="child-tab" data-page="notifications" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="notifications" aria-hidden="true"></span><span>通知中心</span></button>
+        </div>
+        <div class="sheet-children" data-children="system" aria-label="系統設定子標籤" hidden>
+          <button type="button" class="child-tab" data-page="roles" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>角色與權限</span></button>
+          <button type="button" class="child-tab" data-page="import" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="import" aria-hidden="true"></span><span>匯入／匯出</span></button>
+          <button type="button" class="child-tab" data-page="settings" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="settings" aria-hidden="true"></span><span>系統設定</span></button>
+        </div>
       </div>
-      <div class="sheet-children" data-children="locations" aria-label="機台與位置子標籤" hidden>
-        <button type="button" class="child-tab" data-page="machine" data-parent="locations" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台管理</span></button>
-        <button type="button" class="child-tab" data-page="racks" data-parent="locations" aria-selected="false"><span class="tab-icon" data-icon="racks" aria-hidden="true"></span><span>位置／倉架</span></button>
-      </div>
-      <div class="sheet-children" data-children="operations" aria-label="管理作業子標籤" hidden>
-        <button type="button" class="child-tab" data-page="count" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>盤點管理</span></button>
-        <button type="button" class="child-tab" data-page="purchase" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="purchase" aria-hidden="true"></span><span>採購需求</span></button>
-        <button type="button" class="child-tab" data-page="notifications" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="notifications" aria-hidden="true"></span><span>通知中心</span></button>
-        <button type="button" class="child-tab" data-page="log" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="log" aria-hidden="true"></span><span>異動日誌</span></button>
-      </div>
-      <div class="sheet-children" data-children="system" aria-label="系統管理子標籤" hidden>
-        <button type="button" class="child-tab" data-page="roles" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>角色與權限</span></button>
-        <button type="button" class="child-tab" data-page="import" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="import" aria-hidden="true"></span><span>匯入／匯出</span></button>
-        <button type="button" class="child-tab" data-page="settings" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="settings" aria-hidden="true"></span><span>系統設定</span></button>
-      </div>
-      </div>
+      <div class="wms-nav-favorites" id="wmsFavorites" aria-label="我的常用"></div>
     </nav>
 
     <!-- Content -->
@@ -146,6 +218,7 @@
       <div class="page-view" id="page-purchase"></div>
       <div class="page-view" id="page-notifications"></div>
       <div class="page-view" id="page-log"></div>
+      <div class="page-view" id="page-reports"></div>
       <div class="page-view" id="page-roles"></div>
       <div class="page-view" id="page-import"></div>
       <div class="page-view" id="page-settings"></div>
@@ -173,8 +246,10 @@
   const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
   const childTabs=[...document.querySelectorAll('.child-tab')];
   const subtabBar=document.querySelector('.sheet-subtabs');
+  const pageGroups={items:'catalog',inventory:'catalog',racks:'catalog',purchase:'procurement',inbound:'procurement',inspection:'procurement',assets:'assets',machine:'assets',repair:'assets',transfer:'operations',borrow:'operations',count:'operations',reports:'reports',log:'reports',notifications:'reports',roles:'system',import:'system',settings:'system'};
+  document.querySelectorAll('.wms-book-nav .sheet-tab').forEach(tab=>tab.insertAdjacentHTML('afterbegin','<svg class="wms-book-shape" viewBox="0 0 180 54" preserveAspectRatio="none" aria-hidden="true"><path d="M8 1H149Q155 1 158 8L179 45Q183 53 172 53H8Q1 53 1 46V9Q1 1 8 1Z"/></svg>'));
   let currentPage='dashboard';
-  function showPage(page,group){
+  function showPage(page,group=pageGroups[page]||null){
     const main=group?groupTabs.find(t=>t.dataset.group===group):directTabs.find(t=>t.dataset.page===page);
     const child=group?childTabs.find(t=>t.dataset.parent===group&&t.dataset.page===page):null;
     if(!main||!document.getElementById('page-'+page))return;
@@ -188,6 +263,7 @@
   directTabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page,null)));
   groupTabs.forEach(t=>t.addEventListener('click',()=>{const child=childTabs.find(x=>x.dataset.parent===t.dataset.group);if(child)showPage(child.dataset.page,t.dataset.group)}));
   childTabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page,t.dataset.parent)));
+  document.getElementById('wmsFavorites').addEventListener('click',e=>{const tab=e.target.closest('[data-favorite-page]');if(tab)showPage(tab.dataset.favoritePage)});
 
   const iconPaths=[
     '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
@@ -244,6 +320,26 @@
   try{db=JSON.parse(localStorage.getItem(KEY)||'null');if(!db||db.version!==2)db=seed()}catch(e){db=seed()}
   function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
   function E(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  const DASH_PREF_KEY='bomb-wms-dashboard-prefs-v1';
+  const favoriteChoices=[['purchase','採購需求'],['inbound','到貨登記'],['inspection','驗收'],['inventory','庫存查詢'],['count','盤點管理'],['assets','資產管理'],['transfer','調撥配置'],['borrow','借用歸還'],['repair','維修更換'],['log','異動日誌']];
+  const widgetChoices=[['tasks','今日待辦'],['equipment','設備概況'],['quick','快速操作'],['alerts','異常與提醒'],['recent','最近異動']];
+  const defaultPrefs={favorites:['purchase','inbound','inspection','inventory','count'],widgets:['tasks','equipment','quick','alerts','recent']};
+  let dashboardPrefs=(()=>{try{const saved=JSON.parse(localStorage.getItem(DASH_PREF_KEY)||'null');if(saved&&Array.isArray(saved.favorites)&&Array.isArray(saved.widgets))return {favorites:saved.favorites.filter(x=>favoriteChoices.some(([key])=>key===x)).slice(0,5),widgets:saved.widgets.filter(x=>widgetChoices.some(([key])=>key===x))}}catch(e){}return {...defaultPrefs}})();
+  if(!dashboardPrefs.favorites.length)dashboardPrefs.favorites=[...defaultPrefs.favorites];
+  if(!dashboardPrefs.widgets.length)dashboardPrefs.widgets=[...defaultPrefs.widgets];
+  function renderFavorites(){document.getElementById('wmsFavorites').innerHTML='<strong>我的常用</strong>'+dashboardPrefs.favorites.map(key=>{const label=favoriteChoices.find(([id])=>id===key)?.[1]||key;return `<button type="button" data-favorite-page="${E(key)}">${E(label)}</button>`}).join('')}
+  function customizeHome(){
+    const section=(title,choices,selected,prefix)=>`<h3>${E(title)}</h3><div class="wms-customize-grid">${choices.map(([key,label])=>`<label><input type="checkbox" name="${prefix}${E(key)}" ${selected.includes(key)?'checked':''}><span>${E(label)}</span></label>`).join('')}</div>`;
+    dialog.innerHTML=`<form id="wmsForm"><h2>自訂首頁</h2><p>選擇首頁區塊與最多五個常用捷徑；設定保存在目前瀏覽器。</p>${section('首頁區塊',widgetChoices,dashboardPrefs.widgets,'widget_')}${section('我的常用',favoriteChoices,dashboardPrefs.favorites,'favorite_')}<p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">取消</button><button type="submit" class="btn btn-primary">儲存</button></div></form>`;
+    submitDialog=values=>{
+      const favorites=favoriteChoices.map(([key])=>key).filter(key=>values['favorite_'+key]);
+      const widgets=widgetChoices.map(([key])=>key).filter(key=>values['widget_'+key]);
+      if(!favorites.length||favorites.length>5)throw Error('常用捷徑請選擇一到五個');
+      if(!widgets.length)throw Error('至少保留一個首頁區塊');
+      dashboardPrefs={favorites,widgets};localStorage.setItem(DASH_PREF_KEY,JSON.stringify(dashboardPrefs));renderFavorites();
+    };
+    dialog.showModal();
+  }
   function item(id){return db.items.find(x=>x.id===id)}
   function loc(id){return db.locations.find(x=>x.id===id)}
   function asset(id){return db.assets.find(x=>x.id===id)}
@@ -358,6 +454,7 @@
   function formatRows(list,columns){return list.length?list.map(x=>row(columns.map(f=>f(x)))).join(''):''}
   function renderAll(){
     syncAutoPurchases();
+    renderFavorites();
     const actions=(...pairs)=>pairs.map(([name,title])=>button(name,title)).join(' ');
     const itemRows=formatRows(db.items,[x=>cell(x.id),x=>cell(x.name),x=>cell(x.type),x=>cell(x.category),x=>cell(x.unit),x=>cell(x.safety),x=>`<td>${badge(x.enabled?'啟用':'停用')}</td>`,x=>`<td>${button('edit-item','編輯',x.id)}</td>`]);
     page('items','品項管理','公司物品與設備的基本資料',['品項編號','品項名稱','類型','分類','單位','安全庫存','狀態','操作'],itemRows,actions(['refresh','重新整理'],['new-item','＋ 新增品項']));
@@ -403,10 +500,36 @@
     const todayStocked=db.inbound.filter(r=>Number(r.accepted)>0&&String(r.inspectedAt||'').split(' ')[0]===today).length;
     const awaitingInspection=db.inbound.filter(r=>r.status==='待驗收').length;
     const pendingOrders=db.purchases.filter(p=>p.status==='待叫貨').length;
-    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單','arrival','↓'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存','stocked','✓'],['待驗收',awaitingInspection,'到貨後尚未完成驗收','inspection','◷'],['待叫貨',pendingOrders,'等待採購人員叫貨','order','!']].map(([name,value,note,kind,icon])=>`<article class="stat-card wms-kpi wms-kpi--${kind}"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon" aria-hidden="true">${icon}</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
+    const reportData=[['品項總數',db.items.filter(x=>x.enabled).length,'目前啟用品項'],['消耗品在庫數',db.stock.reduce((sum,x)=>sum+Number(x.qty||0),0),'各位置數量合計'],['設備資產數',total,'包含使用中及維修中的設備'],['可用設備數',ready,'可供配置的設備'],['待驗收單數',awaitingInspection,'尚未計入庫存'],['待叫貨需求數',pendingOrders,'採購需求待處理'],['低庫存品項數',warnings().length,'低於安全庫存']];
+    page('reports','摘要報表','依目前瀏覽器資料即時計算作業摘要',['項目','數量','計算說明'],reportData.map(([name,value,note])=>row([cell(name),cell(value),cell(note)])).join(''),actions(['refresh','重新整理']),'目前瀏覽器的展示資料；後續可與 ERP 報表介接');
+    const dashboardIcon=paths=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths}</svg>`;
+    const dashboardIcons={
+      arrival:dashboardIcon('<path d="M3 15v5h18v-5"/><path d="M12 3v11m0 0-4-4m4 4 4-4"/>'),
+      stocked:dashboardIcon('<path d="M4 8.5 12 4l8 4.5v9L12 22l-8-4.5z"/><path d="m4 8.5 8 4.5 8-4.5M12 13v9"/><path d="m8.5 17 1.5 1.5 3-3"/>'),
+      inspection:dashboardIcon('<rect x="5" y="5" width="14" height="17" rx="2"/><path d="M9 5V3h6v2M9 10h6M9 14h3"/><circle cx="16" cy="17" r="3"/><path d="M16 15.5V17l1 1"/>'),
+      order:dashboardIcon('<path d="M4 4h2l2 11h11l2-8H7"/><path d="M9 11h8M10 18h.01M18 18h.01"/><circle cx="10" cy="19" r="1"/><circle cx="18" cy="19" r="1"/>')
+    };
+    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單','arrival'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存','stocked'],['待驗收',awaitingInspection,'到貨後尚未完成驗收','inspection'],['待叫貨',pendingOrders,'等待採購人員叫貨','order']].map(([name,value,note,kind])=>`<article class="stat-card wms-kpi wms-kpi--${kind}"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon" aria-hidden="true">${dashboardIcons[kind]}</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
+    const tasks=[
+      ...db.inbound.filter(r=>r.status==='待驗收').map(r=>({kind:'inspection',label:'待驗收',detail:`${itemName(r.itemId)} × ${r.qty}`,action:'go-inspection',button:'前往驗收'})),
+      ...db.purchases.filter(p=>p.status==='待叫貨').map(p=>({kind:'order',label:'待叫貨',detail:`${itemName(p.itemId)} × ${p.qty}`,action:'go-purchase',button:'前往採購'})),
+      ...warnings().map(x=>({kind:'stock',label:'庫存提醒',detail:`${x.name} 可用 ${available(x.id)} ${x.unit}，低於安全庫存`,action:'go-inventory',button:'查看庫存'})),
+      ...db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).map(a=>({kind:'asset',label:'設備狀態',detail:`${a.id} ${itemName(a.itemId)}：${a.status}`,action:'go-assets',button:'查看資產'}))
+    ];
+    const taskBody=tasks.length?tasks.slice(0,5).map(t=>`<div class="wms-task-row"><span class="wms-task-tag wms-task-tag--${E(t.kind)}">${E(t.label)}</span><span class="wms-task-detail">${E(t.detail)}</span>${button(t.action,t.button)}</div>`).join(''):'<p class="wms-empty">目前沒有待辦事項</p>';
+    const warningIcon=dashboardIcon('<path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5m0 3h.01"/>');
+    const alerts=notes.slice(0,5).map(n=>`<div class="alert-item"><div class="alert-icon" aria-hidden="true">${warningIcon}</div><div class="alert-content"><div class="alert-title">${E(n.type)}</div><div class="alert-desc">${E(n.text)}</div></div></div>`).join('')||'<p class="wms-empty">目前沒有待處理提醒</p>';
     const recent=formatRows(db.logs.slice(0,5),[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who)]);
-    const alerts=notes.slice(0,5).map(n=>`<div class="alert-item"><div class="alert-icon">!</div><div class="alert-content"><div class="alert-title">${E(n.type)}</div><div class="alert-desc">${E(n.text)}</div></div></div>`).join('')||'<p class="wms-empty">目前沒有待處理提醒</p>';
-    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今日作業與公司庫存概況',actions(['refresh','重新整理']))+`<div class="wms-dashboard-section-title"><h2>今日作業</h2><p>顯示目前瀏覽器中的作業資料</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><div class="wms-dashboard-section-title"><h2>設備與提醒</h2><p>設備總數 ${total} 台・可用 ${ready} 台</p></div><section class="dashboard-grid"><div>${card('設備狀態','依目前登錄的設備計算',`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`)}<br>${card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)}</div><div>${card('異常與提醒','低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`)}<br>${card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-transfer-asset','調撥設備'],['new-purchase','採購需求'],['new-count','開始盤點']].map(([a,t])=>button(a,t)).join('')}</div>`)}</div></section>`;
+    const widgets={
+      tasks:card('今日待辦','驗收、叫貨與庫存提醒',`<div class="card-body wms-task-list">${taskBody}</div>`),
+      equipment:card('設備概況',`設備總數 ${total} 台・可用 ${ready} 台`,`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`),
+      quick:card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-purchase','新增需求'],['new-count','開始盤點'],['new-transfer-asset','調撥設備']].map(([a,t])=>button(a,t)).join('')}</div>`),
+      alerts:card('異常與提醒','低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`),
+      recent:card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)
+    };
+    const showWidget=key=>dashboardPrefs.widgets.includes(key)?widgets[key]:'';
+    const left=showWidget('tasks')+showWidget('recent'),right=showWidget('equipment')+showWidget('quick')+showWidget('alerts');
+    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-dashboard-section-title"><h2>今日作業</h2><p>資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><section class="wms-dashboard-workspace">${left?`<div class="wms-dashboard-column">${left}</div>`:''}${right?`<div class="wms-dashboard-column">${right}</div>`:''}</section>`;
     const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
     filterItems();
   }
@@ -415,7 +538,7 @@
   document.addEventListener('change',e=>{if(['itemTypeFilter','itemStatusFilter'].includes(e.target.id))filterItems();if(e.target.dataset.action==='order-qty'){try{updateOrderQty(e.target.dataset.id,e.target.value)}catch(error){alert(error.message);renderAll()}}});
   function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BOMB-WMS-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
   function importData(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;try{const value=JSON.parse(await file.text());if(value.version!==2||!['items','locations','assets','stock','inbound','transfers','borrows','repairs','counts','purchases','logs'].every(k=>Array.isArray(value[k])))throw Error('備份檔格式不符');if(!confirm('匯入會覆蓋目前瀏覽器的 WMS 展示資料，確定繼續？'))return;db=value;save()}catch(e){alert('匯入失敗：'+e.message)}});input.click()}
-  const handlers={'new-item':addItem,'new-inbound':inbound,'new-transfer-asset':transferAsset,'new-transfer-stock':transferStock,'new-borrow':borrow,'new-repair':repair,'new-replacement':replaceAsset,'new-count':countStock,'new-purchase':purchase,'new-location':addLocation,'refresh':renderAll,'go-log':()=>showPage('log','operations'),'go-notifications':()=>showPage('notifications','operations'),'export':exportData,'import':importData,'close-dialog':()=>dialog.close()};
+  const handlers={'new-item':addItem,'new-inbound':inbound,'new-transfer-asset':transferAsset,'new-transfer-stock':transferStock,'new-borrow':borrow,'new-repair':repair,'new-replacement':replaceAsset,'new-count':countStock,'new-purchase':purchase,'new-location':addLocation,'refresh':renderAll,'go-log':()=>showPage('log'),'go-notifications':()=>showPage('notifications'),'go-inspection':()=>showPage('inspection'),'go-purchase':()=>showPage('purchase'),'go-inventory':()=>showPage('inventory'),'go-assets':()=>showPage('assets'),'customize-home':customizeHome,'export':exportData,'import':importData,'close-dialog':()=>dialog.close()};
   document.addEventListener('click',e=>{const target=e.target.closest('[data-action]');if(!target)return;const action=target.dataset.action,id=target.dataset.id;if(handlers[action])handlers[action]();else if(action==='edit-item')editItem(id);else if(action==='return-asset')returnAsset(id);else if(action==='finish-repair')finishRepair(id);else if(action==='approve-purchase')approve(id);else if(action==='inspect-inbound')inspectInbound(id);else if(action==='toggle-order')setOrderDecision(id,'ordered',target.checked);else if(action==='toggle-no-order')setOrderDecision(id,'no-order',target.checked)});
   renderAll();
 })();
