@@ -56,7 +56,7 @@
   .wms-book-nav .sheet-children{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
   .wms-book-nav .child-tab{border-radius:9px!important}
   .wms-nav-favorites{display:flex;align-items:center;gap:6px;min-height:44px;padding:5px 10px;border:1px solid #dbe5ef;border-radius:0 0 10px 10px;background:#f6f9fc;overflow-x:auto;scrollbar-width:thin}
-  .wms-book-nav .sheet-subtabs:not([hidden])+.wms-nav-favorites{border-top:0}
+  .wms-book-nav .sheet-subtabs[hidden]+.wms-nav-favorites{border-top:0}
   .wms-nav-favorites>strong{flex:0 0 auto;margin-right:9px;color:#1267ad;font-size:13px}
   .wms-nav-favorites button{flex:0 0 auto;padding:6px 11px;border:0;border-radius:8px;background:transparent;color:#526780;font:inherit;font-size:13px;cursor:pointer}
   .wms-nav-favorites button:hover,.wms-nav-favorites button:focus-visible{background:#e5eef8;color:#1267ad}
@@ -69,695 +69,177 @@
   #page-dashboard .wms-org-card{margin:0 0 18px;padding:17px 19px;border:1px solid var(--dash-border);border-radius:16px;background:var(--dash-surface);box-shadow:var(--dash-shadow)}
   #page-dashboard .wms-org-card h2{margin:0 0 5px;font-size:17px}
   #page-dashboard .wms-org-card>p{margin:0 0 13px;color:var(--dash-muted);font-size:13px}
-  #page-dashboard .wms-org-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  #page-dashboard .wms-org-unit{padding:13px;border:1px solid var(--dash-border);border-radius:12px;min-width:0}
-  #page-dashboard .wms-org-unit[hidden]{display:none}
-  #page-dashboard .wms-org-unit h3{margin:0 0 8px;font-size:15px}
-  #page-dashboard .wms-org-place{margin:7px 0;line-height:1.55}
-  #page-dashboard .wms-org-place b{font-size:13px}
-  #page-dashboard .wms-org-place small{display:block;color:var(--dash-muted)}
-  @media(max-width:700px){#page-dashboard .wms-org-grid{grid-template-columns:1fr}}
-  #page-dashboard .wms-dashboard-workspace{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:16px;align-items:start}
-  #page-dashboard .wms-dashboard-column{display:grid;gap:16px;min-width:0}
-  #page-dashboard .wms-dashboard-column .card{overflow:hidden;border:1px solid var(--dash-border);border-radius:16px;background:var(--dash-surface);box-shadow:var(--dash-shadow)}
-  #page-dashboard .wms-dashboard-column .card-header{padding:17px 19px}
-  #page-dashboard .wms-dashboard-column .card-body{padding:16px 19px}
-  #page-dashboard .wms-task-list{display:grid}
-  #page-dashboard .wms-task-row{display:grid;grid-template-columns:88px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:62px;padding:10px 0;border-top:1px solid var(--dash-border)}
-  #page-dashboard .wms-task-row:first-child{border-top:0}
-  #page-dashboard .wms-task-detail{min-width:0;line-height:1.45;overflow-wrap:anywhere}
-  #page-dashboard .wms-task-tag{display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:4px 9px;border-radius:9px;font-size:12px;font-weight:700;white-space:nowrap}
-  #page-dashboard .wms-task-tag--inspection{background:#fff1de;color:#9c5b12}
-  #page-dashboard .wms-task-tag--order{background:#efe6fa;color:#7143a3}
-  #page-dashboard .wms-task-tag--stock{background:#fde7e9;color:#af3b4d}
-  #page-dashboard .wms-task-tag--asset{background:#e6eff9;color:#386794}
-  #page-dashboard .wms-task-row .wms-small-btn{white-space:nowrap}
-  #page-dashboard .wms-dashboard-column .status-list{display:grid;gap:15px}
-  #page-dashboard .wms-dashboard-column .quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  #page-dashboard .wms-dashboard-column .quick-actions button{width:100%}
-  #page-dashboard .wms-dashboard-column .alert-item{margin:0}
-  #page-dashboard .wms-dashboard-column .alert-list{display:grid;gap:8px}
-  html[data-theme="dark"] .wms-book-nav .sheet-tab{--book-fill:#253449;--book-line:#41556e;color:#c3d4e8!important}
-  html[data-theme="dark"] .wms-book-nav .sheet-tab:hover{--book-fill:#324963}
-  html[data-theme="dark"] .wms-book-nav .sheet-tab.active{--book-fill:#3279b4;--book-line:#3279b4;color:#fff!important}
-  html[data-theme="dark"] .wms-book-nav .sheet-subtabs,html[data-theme="dark"] .wms-nav-favorites{background:#202e40;border-color:#35485d}
-  html[data-theme="dark"] .wms-nav-favorites>strong{color:#8cc6fb}
-  html[data-theme="dark"] .wms-nav-favorites button{color:#c3d4e8}
-  html[data-theme="dark"] .wms-nav-favorites button:hover,html[data-theme="dark"] .wms-nav-favorites button:focus-visible{background:#304761;color:#fff}
-  html[data-theme="dark"] #page-dashboard .wms-home-customize{color:#a2d4ff}
-  html[data-theme="dark"] #page-dashboard .wms-task-tag--inspection{background:#4b3826;color:#f4bf73}
-  html[data-theme="dark"] #page-dashboard .wms-task-tag--order{background:#3b3157;color:#d1b8ff}
-  html[data-theme="dark"] #page-dashboard .wms-task-tag--stock{background:#512d38;color:#ffabb3}
-  html[data-theme="dark"] #page-dashboard .wms-task-tag--asset{background:#263e56;color:#a6cfff}
-  .wms-customize-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 15px;margin:8px 0 15px}
-  .wms-customize-grid label{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #dbe5ef;border-radius:9px;cursor:pointer}
-  .wms-customize-grid input{width:17px;height:17px;accent-color:#1267ad}
-  #page-dashboard .wms-favorites-list{display:flex;flex-wrap:wrap;gap:8px}
-  #page-dashboard .wms-favorites-list button{padding:9px 12px;border:1px solid var(--dash-border);border-radius:10px;background:var(--dash-surface);color:inherit;font:inherit;cursor:pointer}
-  #page-dashboard .wms-favorites-list button:hover{border-color:#3279b4;color:#3279b4}
-  #page-dashboard .wms-dashboard-workspace.is-single{grid-template-columns:minmax(0,1fr)}
-  .wms-layout-list{display:grid;gap:8px;margin:8px 0 18px}
-  .wms-layout-row{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1px solid #dbe5ef;border-radius:10px}
-  .wms-layout-row>label{display:flex;align-items:center;gap:8px;flex:1;min-width:0;font-weight:600}
-  .wms-layout-row input{width:17px;height:17px;accent-color:#1267ad}
-  .wms-layout-row select,.wms-layout-row button{border:1px solid #cbd9e8;border-radius:8px;background:var(--dash-surface,#fff);color:inherit;padding:6px;cursor:pointer}
-  .wms-layout-row button{min-width:34px}
-  .wms-layout-row button:disabled{opacity:.4;cursor:default}
-  html[data-theme="dark"] .wms-layout-row{border-color:#41556e}
-  @media(max-width:520px){.wms-layout-row{flex-wrap:wrap}.wms-layout-row>label{flex-basis:100%}}
-  @media(max-width:900px){#page-dashboard .wms-dashboard-workspace{grid-template-columns:1fr}}
-  @media(max-width:600px){.wms-book-nav{padding:6px 8px 0!important}.wms-book-nav .sheet-tab{min-width:147px;height:48px!important;font-size:13px!important}#page-dashboard .wms-task-row{grid-template-columns:80px minmax(0,1fr)}#page-dashboard .wms-task-row .wms-small-btn{grid-column:2;justify-self:start}.wms-customize-grid{grid-template-columns:1fr}}
-  @media(prefers-reduced-motion:reduce){.wms-book-nav .sheet-tab{transition:none}}
-</style>
-</head>
 
-<body>
-
-<div class="app">
-
-  <!-- Main -->
-  <main class="main">
-
-    <!-- Topbar -->
-    <header class="topbar">
-
-      <div class="topbar-left">
-        <div class="brand">
-          <div class="brand-mark">B</div>
-          <div class="brand-text"><strong>BOMB WMS</strong><span>Warehouse Management</span></div>
-        </div>
-      </div>
-
-      <div class="topbar-right">
-
-        <button
-          class="icon-btn"
-          id="themeBtn"
-          aria-label="切換淺色深色"
-          title="切換淺色／深色"
-        >
-          ☾
-        </button>
-
-        <button
-          class="icon-btn"
-          type="button" data-action="go-notifications" aria-label="通知"
-          title="通知中心"
-        >
-          🔔
-          <span class="notification-dot" id="notificationBadge"></span>
-        </button>
-
-        <div class="account-area">
-          <button type="button" class="account-trigger" id="accountBtn" aria-expanded="false" aria-controls="accountPanel">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-            <span>OG</span><span class="account-role">最高權限</span>
-          </button>
-          <div class="account-panel" id="accountPanel" hidden>
-            <strong>OG</strong>
-            <span>最高權限 · 展示帳號</span>
-            <p>登入／登出功能尚未建立</p>
-          </div>
-        </div>
-
-      </div>
-
-    </header>
-
-    <!-- WMS 工作區書籤 -->
-    <nav class="sheet-nav wms-book-nav" aria-label="WMS 工作區">
-      <div class="sheet-tabs" aria-label="主要標籤">
-        <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true"><span>營運總覽</span></button>
-        <button type="button" class="sheet-tab" data-group="catalog" aria-selected="false"><span>品項與庫存</span></button>
-        <button type="button" class="sheet-tab" data-group="procurement" aria-selected="false"><span>採購與驗收</span></button>
-        <button type="button" class="sheet-tab" data-group="assets" aria-selected="false"><span>資產與設備</span></button>
-        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span>異動與盤點</span></button>
-        <button type="button" class="sheet-tab" data-group="reports" aria-selected="false"><span>報表與紀錄</span></button>
-        <button type="button" class="sheet-tab" data-group="system" aria-selected="false"><span>系統設定</span></button>
-      </div>
-      <div class="sheet-subtabs" hidden>
-        <div class="sheet-children" data-children="catalog" aria-label="品項與庫存子標籤" hidden>
-          <button type="button" class="child-tab" data-page="items" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="items" aria-hidden="true"></span><span>品項管理</span></button>
-          <button type="button" class="child-tab" data-page="inventory" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="inventory" aria-hidden="true"></span><span>庫存管理</span></button>
-          <button type="button" class="child-tab" data-page="racks" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="racks" aria-hidden="true"></span><span>位置／倉架</span></button>
-        </div>
-        <div class="sheet-children" data-children="procurement" aria-label="採購與驗收子標籤" hidden>
-          <button type="button" class="child-tab" data-page="purchase" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="purchase" aria-hidden="true"></span><span>採購需求</span></button>
-          <button type="button" class="child-tab" data-page="inbound" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>到貨登記</span></button>
-          <button type="button" class="child-tab" data-page="inspection" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>驗收</span></button>
-        </div>
-        <div class="sheet-children" data-children="assets" aria-label="資產與設備子標籤" hidden>
-          <button type="button" class="child-tab" data-page="assets" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="assets" aria-hidden="true"></span><span>資產管理</span></button>
-          <button type="button" class="child-tab" data-page="machine" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台管理</span></button>
-          <button type="button" class="child-tab" data-page="repair" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="repair" aria-hidden="true"></span><span>維修更換</span></button>
-        </div>
-        <div class="sheet-children" data-children="operations" aria-label="異動與盤點子標籤" hidden>
-          <button type="button" class="child-tab" data-page="transfer" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>調撥／配置</span></button>
-          <button type="button" class="child-tab" data-page="borrow" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="borrow" aria-hidden="true"></span><span>借用／歸還</span></button>
-          <button type="button" class="child-tab" data-page="count" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>盤點管理</span></button>
-        </div>
-        <div class="sheet-children" data-children="reports" aria-label="報表與紀錄子標籤" hidden>
-          <button type="button" class="child-tab" data-page="reports" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span><span>摘要報表</span></button>
-          <button type="button" class="child-tab" data-page="log" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="log" aria-hidden="true"></span><span>異動日誌</span></button>
-          <button type="button" class="child-tab" data-page="notifications" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="notifications" aria-hidden="true"></span><span>通知中心</span></button>
-        </div>
-        <div class="sheet-children" data-children="system" aria-label="系統設定子標籤" hidden>
-          <button type="button" class="child-tab" data-page="roles" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>角色與權限</span></button>
-          <button type="button" class="child-tab" data-page="import" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="import" aria-hidden="true"></span><span>匯入／匯出</span></button>
-          <button type="button" class="child-tab" data-page="settings" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="settings" aria-hidden="true"></span><span>系統設定</span></button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Content -->
-    <div class="content">
-      <div class="page-view active" id="page-dashboard"></div>
-      <div class="page-view" id="page-items"></div>
-      <div class="page-view" id="page-inventory"></div>
-      <div class="page-view" id="page-assets"></div>
-      <div class="page-view" id="page-inbound"></div>
-      <div class="page-view" id="page-inspection"></div>
-      <div class="page-view" id="page-transfer"></div>
-      <div class="page-view" id="page-borrow"></div>
-      <div class="page-view" id="page-repair"></div>
-      <div class="page-view" id="page-machine"></div>
-      <div class="page-view" id="page-racks"></div>
-      <div class="page-view" id="page-count"></div>
-      <div class="page-view" id="page-purchase"></div>
-      <div class="page-view" id="page-notifications"></div>
-      <div class="page-view" id="page-log"></div>
-      <div class="page-view" id="page-reports"></div>
-      <div class="page-view" id="page-roles"></div>
-      <div class="page-view" id="page-import"></div>
-      <div class="page-view" id="page-settings"></div>
-    </div>
-  </main>
-</div>
-<dialog id="wmsDialog" class="wms-dialog" aria-label="WMS 操作視窗"></dialog>
-<script>
-(function(){
-  const html=document.documentElement;
-  const themeBtn=document.getElementById('themeBtn');
-  const storedTheme=localStorage.getItem('bomb-wms-theme');
-  if(storedTheme==='dark'||storedTheme==='light')html.dataset.theme=storedTheme;
-  function themeIcon(){themeBtn.textContent=html.dataset.theme==='dark'?'☀':'☾'}
-  themeIcon();
-  themeBtn.addEventListener('click',()=>{html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';localStorage.setItem('bomb-wms-theme',html.dataset.theme);themeIcon()});
-
-  const accountBtn=document.getElementById('accountBtn');
-  const accountPanel=document.getElementById('accountPanel');
-  accountBtn.addEventListener('click',()=>{accountPanel.hidden=!accountPanel.hidden;accountBtn.setAttribute('aria-expanded',String(!accountPanel.hidden))});
-  document.addEventListener('click',event=>{if(!event.target.closest('.account-area')){accountPanel.hidden=true;accountBtn.setAttribute('aria-expanded','false')}});
-  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!accountPanel.hidden){accountPanel.hidden=true;accountBtn.setAttribute('aria-expanded','false');accountBtn.focus()}});
-
-  const directTabs=[...document.querySelectorAll('.sheet-tab[data-page]')];
-  const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
-  const childTabs=[...document.querySelectorAll('.child-tab')];
-  const subtabBar=document.querySelector('.sheet-subtabs');
-  const pageGroups={items:'catalog',inventory:'catalog',racks:'catalog',purchase:'procurement',inbound:'procurement',inspection:'procurement',assets:'assets',machine:'assets',repair:'assets',transfer:'operations',borrow:'operations',count:'operations',reports:'reports',log:'reports',notifications:'reports',roles:'system',import:'system',settings:'system'};
-  document.querySelectorAll('.wms-book-nav .sheet-tab').forEach(tab=>tab.insertAdjacentHTML('afterbegin','<svg class="wms-book-shape" viewBox="0 0 180 54" preserveAspectRatio="none" aria-hidden="true"><path d="M8 1H149Q155 1 158 8L179 45Q183 53 172 53H8Q1 53 1 46V9Q1 1 8 1Z"/></svg>'));
-  let currentPage='dashboard';
-  function showPage(page,group=pageGroups[page]||null){
-    const main=group?groupTabs.find(t=>t.dataset.group===group):directTabs.find(t=>t.dataset.page===page);
-    const child=group?childTabs.find(t=>t.dataset.parent===group&&t.dataset.page===page):null;
-    if(!main||!document.getElementById('page-'+page))return;
-    [...directTabs,...groupTabs,...childTabs].forEach(tab=>{const active=tab===main||tab===child;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active))});
-    document.querySelectorAll('.sheet-children').forEach(row=>row.hidden=row.dataset.children!==group);
-    subtabBar.hidden=!group;
-    document.querySelectorAll('.page-view').forEach(view=>view.classList.toggle('active',view.id==='page-'+page));
-    currentPage=page;
-    main.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
+  /* ==========================================================================
+     BOMB-WMS 頂部導覽列高質感修訂 (SaaS Polish - 磨砂玻璃與階層優化)
+     ========================================================================== */
+  .wms-top-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85); /* 輕微透明底色 */
+    backdrop-filter: blur(12px); /* 磨砂玻璃濾鏡 */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    font-family: system-ui, -apple-system, sans-serif;
   }
-  directTabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page,null)));
-  groupTabs.forEach(t=>t.addEventListener('click',()=>{const child=childTabs.find(x=>x.dataset.parent===t.dataset.group);if(child)showPage(child.dataset.page,t.dataset.group)}));
-  childTabs.forEach(t=>t.addEventListener('click',()=>showPage(t.dataset.page,t.dataset.parent)));
-  document.addEventListener('click',e=>{const tab=e.target.closest('[data-favorite-page]');if(tab)showPage(tab.dataset.favoritePage)});
-
-  const iconPaths=[
-    '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
-    '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/>',
-    '<path d="M3 7h18M5 7V4h14v3M5 7v13h14V7M9 12h6"/>',
-    '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/>',
-    '<path d="M12 3v12m0 0-4-4m4 4 4-4M4 17h16v4H4z"/>',
-    '<path d="M4 7h15m0 0-4-4m4 4-4 4M20 17H5m0 0 4-4m-4 4 4 4"/>',
-    '<path d="M8 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3m8-14h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3M8 12h8m0 0-3-3m3 3-3 3"/>',
-    '<path d="M14 4a5 5 0 0 0-6 6L4 14l6 6 4-4a5 5 0 0 0 6-6l-4 4-4-4 4-4z"/>',
-    '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10M15 10v10"/>',
-    '<path d="M12 3 3 8v8l9 5 9-5V8zM3 8l9 5 9-5M12 13v8"/>',
-    '<path d="M4 7h3l2 2 4-4M4 16h3l2 2 4-4M16 7h4M16 16h4"/>',
-    '<path d="M3 5h2l2 11h11l3-8H6M9 21h.01M18 21h.01"/>',
-    '<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/>',
-    '<path d="M7 3h10M7 7h10M7 11h10M7 15h10M7 19h10M3 3h.01M3 7h.01M3 11h.01M3 15h.01M3 19h.01"/>',
-    '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0M18 8h4M20 6v4"/>',
-    '<path d="M7 3v12m0 0-4-4m4 4 4-4M17 21V9m0 0-4 4m4-4 4 4M3 20h8M13 4h8"/>',
-    '<circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.5-2.3 1A7 7 0 0 0 14 5l-.4-2h-4L9.2 5a7 7 0 0 0-2.6 2l-2.3-1-2 3.5 2 1.5a7 7 0 0 0 .1-1z"/>'
-  ];
-  const iconNames=['dashboard','items','inventory','assets','inbound','transfer','borrow','repair','machine','racks','count','purchase','notifications','log','roles','import','settings'];
-  document.querySelectorAll('[data-icon]').forEach(icon=>{const path=iconPaths[iconNames.indexOf(icon.dataset.icon)];if(path)icon.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+path+'</svg>'});
-
-  const KEY='bomb-wms-prototype-v2';
-  const seed=()=>({version:2,
-    items:[
-      {id:'ITM-0001',name:'Mini PC',type:'設備',category:'電腦設備',unit:'台',safety:1,enabled:true},
-      {id:'ITM-0002',name:'小螢幕',type:'設備',category:'電腦周邊',unit:'台',safety:2,enabled:true},
-      {id:'ITM-0003',name:'滑鼠',type:'消耗品',category:'電腦周邊',unit:'個',safety:10,enabled:true},
-      {id:'ITM-0004',name:'鍵盤',type:'消耗品',category:'電腦周邊',unit:'個',safety:5,enabled:true}
-    ],
-    locations:[
-      {id:'LOC-A01',department:'辦公室部門',area:'備品區',spot:'倉架 A-01／第 1 層'},
-      {id:'LOC-A02',department:'辦公室部門',area:'備品區',spot:'倉架 A-02／第 2 層'},
-      {id:'LOC-B01',department:'辦公室部門',area:'備品區',spot:'倉架 B-01／第 1 層'},
-      {id:'LOC-B02',department:'辦公室部門',area:'備品區',spot:'倉架 B-02／第 2 層'},
-      {id:'LOC-M01',department:'辦公室部門',area:'機台區',spot:'機台 01'},
-      {id:'LOC-O01',department:'辦公室部門',area:'辦公區',spot:'辦公桌 01'},
-      {id:'LOC-H01',department:'總部',area:'辦公區',spot:'辦公桌 H-01'},
-      {id:'LOC-R01',department:'辦公室部門',area:'備品區',spot:'待檢／維修區'},
-      {id:'LOC-F01',department:'辦公室部門',area:'備品區',spot:'故障品區'}
-    ],
-    assets:[
-      {id:'AST-0001',itemId:'ITM-0001',locationId:'LOC-A01',status:'可用',holder:''},
-      {id:'AST-0002',itemId:'ITM-0001',locationId:'LOC-M01',status:'使用中',holder:'機台 01'},
-      {id:'AST-0003',itemId:'ITM-0002',locationId:'LOC-R01',status:'待檢測',holder:''},
-      {id:'AST-0004',itemId:'ITM-0001',locationId:'LOC-F01',status:'故障',holder:''},
-      {id:'AST-0005',itemId:'ITM-0002',locationId:'LOC-A02',status:'可用',holder:''}
-    ],
-    stock:[{itemId:'ITM-0003',locationId:'LOC-B01',qty:12},{itemId:'ITM-0004',locationId:'LOC-B02',qty:5}],
-    inbound:[],transfers:[],borrows:[],repairs:[],counts:[],purchases:[],logs:[]
-  });
-  let db;
-  try{db=JSON.parse(localStorage.getItem(KEY)||'null');if(!db||db.version!==2)db=seed()}catch(e){db=seed()}
-  const ORG_TREE={
-    '總部':{'倉庫':['待驗區','待上架區','退貨區','報廢區','維修區','庫存區'],'辦公室':['BOSS室','會議室'],'作業區':['洗牌房','棚區1(真人)','棚區2(RB)','棚區3(MBL)']},
-    '企劃部':{'辦公室':['辦公區','吧檯'],'機台區':['倉架位置（第1層／第2層）','維修區']}
-  };
-  function normalizeLocations(){
-    db.locations.forEach(l=>{
-      if(l.department==='辦公室部門')l.department='企劃部';
-      if(!l.site)l.site=l.department==='總部'?'辦公室':l.area==='辦公區'?'辦公室':'機台區';
-    });
-    db.purchases.forEach(p=>{if(p.department==='辦公室部門')p.department='企劃部'});
-    localStorage.setItem(KEY,JSON.stringify(db));
+  html[data-theme="dark"] .wms-top-navbar {
+    background: rgba(23, 30, 41, 0.85);
+    border-bottom: 1px solid #2d394b;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
   }
-  normalizeLocations();
-  const HOME_SCOPE_KEY='bomb-wms-home-scope-v1';
-  let homeScope=['全部','總部','企劃部'].includes(localStorage.getItem(HOME_SCOPE_KEY))?localStorage.getItem(HOME_SCOPE_KEY):'全部';
-  const inScope=department=>homeScope==='全部'||department===homeScope;
-
-  function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
-  function E(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-  const DASH_PREF_KEY='bomb-wms-dashboard-prefs-v1';
-  const favoriteChoices=[['purchase','採購需求'],['inbound','到貨登記'],['inspection','驗收'],['inventory','庫存查詢'],['count','盤點管理'],['assets','資產管理'],['transfer','調撥配置'],['borrow','借用歸還'],['repair','維修更換'],['log','異動日誌']];
-  const widgetChoices=[['tasks','今日待辦'],['favorites','我的常用'],['equipment','設備概況'],['quick','快速操作'],['alerts','異常與提醒'],['recent','最近異動']];
-  const defaultPrefs={favorites:['purchase','inbound','inspection','inventory','count'],widgets:['tasks','recent','favorites','equipment','quick','alerts'],columns:{tasks:'left',recent:'left',favorites:'right',equipment:'right',quick:'right',alerts:'right'}};
-  let dashboardPrefs=(()=>{try{const saved=JSON.parse(localStorage.getItem(DASH_PREF_KEY)||'null');if(saved&&Array.isArray(saved.favorites)&&Array.isArray(saved.widgets)){
-    const allowed=widgetChoices.map(([key])=>key);
-    const widgets=[...new Set(saved.widgets.filter(x=>allowed.includes(x)))];
-    if(!saved.columns&&!widgets.includes('favorites'))widgets.push('favorites');
-    const columns=Object.fromEntries(allowed.map(key=>[key,saved.columns?.[key]==='left'||saved.columns?.[key]==='right'?saved.columns[key]:defaultPrefs.columns[key]]));
-    return {favorites:[...new Set(saved.favorites.filter(x=>favoriteChoices.some(([key])=>key===x)))].slice(0,5),widgets,columns};
-  }}catch(e){}return {favorites:[...defaultPrefs.favorites],widgets:[...defaultPrefs.widgets],columns:{...defaultPrefs.columns}}})();
-  if(!dashboardPrefs.favorites.length)dashboardPrefs.favorites=[...defaultPrefs.favorites];
-  if(!dashboardPrefs.widgets.length)dashboardPrefs.widgets=[...defaultPrefs.widgets];
-  function renderFavorites(){return dashboardPrefs.favorites.map(key=>{const label=favoriteChoices.find(([id])=>id===key)?.[1]||key;return `<button type="button" data-favorite-page="${E(key)}">${E(label)}</button>`}).join('')}
-  function customizeHome(){
-    const ordered=[...new Set([...dashboardPrefs.widgets,...widgetChoices.map(([key])=>key)])];
-    const favoriteGrid=`<h3>我的常用</h3><div class="wms-customize-grid">${favoriteChoices.map(([key,label])=>`<label><input type="checkbox" name="favorite_${E(key)}" ${dashboardPrefs.favorites.includes(key)?'checked':''}><span>${E(label)}</span></label>`).join('')}</div>`;
-    const rows=ordered.map(key=>{
-      const label=widgetChoices.find(([id])=>id===key)?.[1]||key;
-      const side=dashboardPrefs.columns[key]||defaultPrefs.columns[key];
-      return `<div class="wms-layout-row" data-widget="${E(key)}"><label><input type="checkbox" name="widget_${E(key)}" ${dashboardPrefs.widgets.includes(key)?'checked':''}><span>${E(label)}</span></label><select aria-label="${E(label)}所在欄位"><option value="left" ${side==='left'?'selected':''}>左欄</option><option value="right" ${side==='right'?'selected':''}>右欄</option></select><button type="button" data-move="up" aria-label="${E(label)}上移">↑</button><button type="button" data-move="down" aria-label="${E(label)}下移">↓</button></div>`;
-    }).join('');
-    dialog.innerHTML=`<form id="wmsForm"><h2>自訂首頁</h2><p>勾選要顯示的視窗，選左欄或右欄，再用箭頭調整各欄順序；設定保存在目前瀏覽器。</p><h3>首頁視窗</h3><div class="wms-layout-list">${rows}</div>${favoriteGrid}<p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">取消</button><button type="submit" class="btn btn-primary">儲存</button></div></form>`;
-    const list=dialog.querySelector('.wms-layout-list');
-    const updateArrows=()=>{[...list.children].forEach((row,i,all)=>{row.querySelector('[data-move="up"]').disabled=i===0;row.querySelector('[data-move="down"]').disabled=i===all.length-1})};
-    list.addEventListener('click',event=>{
-      const button=event.target.closest('[data-move]');if(!button)return;
-      const row=button.closest('[data-widget]');
-      if(button.dataset.move==='up'&&row.previousElementSibling)list.insertBefore(row,row.previousElementSibling);
-      if(button.dataset.move==='down'&&row.nextElementSibling)list.insertBefore(row.nextElementSibling,row);
-      updateArrows();button.focus();
-    });
-    updateArrows();
-    submitDialog=values=>{
-      const favorites=favoriteChoices.map(([key])=>key).filter(key=>values['favorite_'+key]);
-      const allRows=[...list.querySelectorAll('[data-widget]')];
-      const widgets=allRows.filter(row=>values['widget_'+row.dataset.widget]).map(row=>row.dataset.widget);
-      const columns=Object.fromEntries(allRows.map(row=>[row.dataset.widget,row.querySelector('select').value]));
-      if(!favorites.length||favorites.length>5)throw Error('常用捷徑請選擇一到五個');
-      if(!widgets.length)throw Error('至少保留一個首頁視窗');
-      dashboardPrefs={favorites,widgets,columns};localStorage.setItem(DASH_PREF_KEY,JSON.stringify(dashboardPrefs));renderFavorites();
-    };
-    dialog.showModal();
+  .navbar-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 70px; /* 增加高度建立呼吸感 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
   }
-  function item(id){return db.items.find(x=>x.id===id)}
-  function loc(id){return db.locations.find(x=>x.id===id)}
-  function asset(id){return db.assets.find(x=>x.id===id)}
-  function labelLoc(id){const x=loc(id);return x?`${x.department}／${x.site||'未分類'}／${x.area}／${x.spot}`:'－'}
-  function itemName(id){return item(id)?.name||id}
-  function stamp(){return new Date().toLocaleString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})}
-  function code(prefix,collection){let n=collection.reduce((max,x)=>Math.max(max,Number(x.id.split('-')[1])||0),0)+1;return prefix+'-'+String(n).padStart(4,'0')}
-  function log(action,subject,from,to,ref=''){db.logs.unshift({id:code('LG',db.logs),time:stamp(),action,subject,from,to,who:'OG',ref})}
-  function available(id){const x=item(id);return x?.type==='設備'?db.assets.filter(a=>a.itemId===id&&a.status==='可用').length:db.stock.filter(r=>r.itemId===id).reduce((n,r)=>n+r.qty,0)}
-  function warnings(){return db.items.filter(x=>x.enabled&&available(x.id)<x.safety)}
-  function syncAutoPurchases(){
-    let changed=false;
-    const open=['待叫貨','已叫貨','無須叫貨','待審核','已核准','部分入庫'];
-    for(const x of db.items){
-      const shortage=x.enabled?Math.max(0,x.safety-available(x.id)):0;
-      const pending=db.purchases.find(p=>p.itemId===x.id&&open.includes(p.status));
-      if(x.enabled&&shortage>0&&!pending){
-        const locationId=db.assets.find(a=>a.itemId===x.id)?.locationId||db.stock.find(r=>r.itemId===x.id)?.locationId;
-        const id=code('PR',db.purchases);
-        db.purchases.unshift({id,time:stamp(),department:loc(locationId)?.department||'企劃部',itemId:x.id,qty:shortage,received:0,reason:`低於安全庫存（目前可用 ${available(x.id)}，門檻 ${x.safety}）`,who:'系統',source:'低庫存自動產生',status:'待叫貨'});
-        log('低庫存產生需求',`${x.name} × ${shortage}`,'－','待叫貨',id);changed=true;
-      }else if(pending?.source==='低庫存自動產生'&&pending.status==='待叫貨'){
-        if(shortage===0){pending.status='已解除';log('解除低庫存需求',x.name,'待叫貨','已解除',pending.id);changed=true}
-        else if(!pending.qtyManual&&pending.qty!==shortage){pending.qty=shortage;pending.reason=`低於安全庫存（目前可用 ${available(x.id)}，門檻 ${x.safety}）`;changed=true}
-      }
-    }
-    if(changed)localStorage.setItem(KEY,JSON.stringify(db));
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  function badge(value){const color={'可用':'success','正常':'success','已完成':'success','已歸還':'success','已入庫':'success','已核准':'success','已入庫':'success','已解除':'success','無須叫貨':'info','待驗收':'warning','部分驗收':'warning','驗收不合格':'danger','啟用':'success','使用中':'info','借用中':'info','待處理':'warning','待審核':'warning','待叫貨':'warning','部分入庫':'warning','待檢測':'warning','維修中':'warning','低於安全庫存':'warning','故障':'danger','待報廢':'danger'}[value]||'info';return `<span class="badge badge-${color}">${E(value)}</span>`}
-  function cell(value){return `<td>${E(value)}</td>`}
-  function button(action,text,id='',extra=''){return `<button type="button" class="btn wms-small-btn" data-action="${E(action)}" data-id="${E(id)}" ${extra}>${E(text)}</button>`}
-  function row(cells){return '<tr>'+cells.join('')+'</tr>'}
-  function table(id,heads,rows){return `<div class="table-wrap"><table><thead><tr>${heads.map(h=>`<th>${E(h)}</th>`).join('')}</tr></thead><tbody id="${id}">${rows||`<tr><td colspan="${heads.length}" class="wms-empty">尚無資料</td></tr>`}</tbody></table></div>`}
-  function header(title,desc,actions=''){return `<section class="page-header"><div class="page-title"><h1>${E(title)}</h1><p>${E(desc)}</p></div><div class="header-actions">${actions}</div></section>`}
-  function card(title,sub,body){return `<article class="card"><div class="card-header"><div><h2>${E(title)}</h2><span>${E(sub)}</span></div></div>${body}</article>`}
-  function page(key,title,desc,heads,rows,actions='',sub='資料儲存在目前瀏覽器'){document.getElementById('page-'+key).innerHTML=header(title,desc,actions)+card(title+'清單',sub,table('rows-'+key,heads,rows))}
-  function choices(items,show){return items.map(x=>({value:x.id,label:show(x)}))}
-  function optionsHtml(values,selected=''){return values.map(v=>`<option value="${E(v.value)}" ${String(v.value)===String(selected)?'selected':''}>${E(v.label)}</option>`).join('')}
-  function locationOptions(){return choices(db.locations,x=>labelLoc(x.id))}
-  function itemOptions(type){return choices(db.items.filter(x=>x.enabled&&(!type||x.type===type)),x=>`${x.id} ${x.name}`)}
-  function assetOptions(predicate=()=>true){return choices(db.assets.filter(predicate),a=>`${a.id} ${itemName(a.itemId)}（${a.status}・${labelLoc(a.locationId)}）`)}
-  function field(name,label,type='text',values=[],value='',required=true){return {name,label,type,values,value,required}}
-  const dialog=document.getElementById('wmsDialog');
-  let submitDialog=null;
-  function form(title,fields,submit){
-    const controls=fields.map(f=>`<label class="wms-field"><span>${E(f.label)}</span>${f.type==='select'?`<select name="${E(f.name)}" ${f.required?'required':''}><option value="">請選擇</option>${optionsHtml(f.values,f.value)}</select>`:`<input name="${E(f.name)}" type="${E(f.type)}" value="${E(f.value)}" ${f.type==='number'?'min="0" step="1"':''} ${f.required?'required':''}>`}</label>`).join('');
-    dialog.innerHTML=`<form id="wmsForm"><h2>${E(title)}</h2><div class="wms-form-grid">${controls}</div><p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">取消</button><button type="submit" class="btn btn-primary">儲存</button></div></form>`;
-    submitDialog=submit;dialog.showModal();
+  .brand-logo {
+    font-size: 24px;
   }
-  dialog.addEventListener('submit',event=>{event.preventDefault();if(!submitDialog)return;const values=Object.fromEntries(new FormData(event.target));try{submitDialog(values);dialog.close();submitDialog=null;save()}catch(e){document.getElementById('formError').textContent=e.message||'資料無法儲存'}});
-  dialog.addEventListener('close',()=>submitDialog=null);
-  function requirePositive(value){const n=Number(value);if(!Number.isSafeInteger(n)||n<1)throw Error('數量必須是正整數');return n}
-  function requireNonnegative(value){const n=Number(value);if(!Number.isSafeInteger(n)||n<0)throw Error('數量必須是零或正整數');return n}
-  function ensureDifferent(a,b){if(a===b)throw Error('原位置與新位置不能相同')}
-  function addItem(){form('新增品項',[field('name','品項名稱'),field('type','類型','select',[{value:'設備',label:'設備'},{value:'消耗品',label:'消耗品'}]),field('category','分類'),field('unit','單位'),field('safety','安全庫存','number',[],0)],v=>{const id=code('ITM',db.items);db.items.push({id,name:v.name.trim(),type:v.type,category:v.category.trim(),unit:v.unit.trim(),safety:requireNonnegative(v.safety),enabled:true});log('新增品項',`${id} ${v.name}`,'－','品項清單',id)})}
-  function editItem(id){const x=item(id);if(!x)return;form('編輯品項 '+id,[field('name','品項名稱','text',[],x.name),field('category','分類','text',[],x.category),field('unit','單位','text',[],x.unit),field('safety','安全庫存','number',[],x.safety),field('enabled','狀態','select',[{value:'true',label:'啟用'},{value:'false',label:'停用'}],String(x.enabled))],v=>{const before=x.name;x.name=v.name.trim();x.category=v.category.trim();x.unit=v.unit.trim();x.safety=requireNonnegative(v.safety);x.enabled=v.enabled==='true';log('編輯品項',id,before,x.name,id)})}
-  function inbound(){form('登記到貨',[field('itemId','品項','select',itemOptions()),field('qty','到貨數量','number'),field('locationId','驗收後預計入庫位置','select',locationOptions()),field('purchaseId','關聯待到貨採購單（選填）','select',choices(db.purchases.filter(p=>['已核准','已叫貨','部分入庫'].includes(p.status)),p=>`${p.id} ${itemName(p.itemId)} × ${p.qty-(p.received||0)}`),'',false),field('note','到貨備註','text',[],'',false)],v=>{
-    const qty=requirePositive(v.qty),x=item(v.itemId),l=loc(v.locationId),purchase=db.purchases.find(p=>p.id===v.purchaseId);
-    if(!x||!l||!x.enabled)throw Error('請選擇有效品項及位置');
-    const pending=db.inbound.filter(r=>r.purchaseId===v.purchaseId&&r.status==='待驗收').reduce((n,r)=>n+r.qty,0);
-    if(v.purchaseId&&(!purchase||purchase.itemId!==x.id||!['已核准','已叫貨','部分入庫'].includes(purchase.status)||qty>purchase.qty-(purchase.received||0)-pending))throw Error('關聯採購單的品項或待驗收數量不符');
-    const id=code('IN',db.inbound);
-    db.inbound.unshift({id,time:stamp(),itemId:x.id,qty,accepted:0,locationId:l.id,note:v.note.trim(),purchaseId:v.purchaseId,who:'OG',status:'待驗收'});
-    log('到貨登記',`${x.name} × ${qty}`,'－','待驗收',id)
-  })}
-  function inspectInbound(id){
-    const record=db.inbound.find(r=>r.id===id);
-    if(!record||record.status!=='待驗收')return;
-    form('到貨驗收 '+id,[field('accepted','驗收合格數量','number',[],record.qty),field('note','驗收結果備註','text',[],record.note||'',false)],v=>{
-      const accepted=requireNonnegative(v.accepted);
-      if(accepted>record.qty)throw Error('合格數量不可超過到貨數量');
-      const x=item(record.itemId),l=loc(record.locationId);
-      if(!x||!l)throw Error('品項或位置不存在');
-      if(accepted>0){
-        if(x.type==='設備')for(let i=0;i<accepted;i++)db.assets.push({id:code('AST',db.assets),itemId:x.id,locationId:l.id,status:'可用',holder:''});
-        else{let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}stock.qty+=accepted}
-      }
-      record.accepted=accepted;record.inspectedAt=stamp();record.note=v.note.trim();
-      record.status=accepted===0?'驗收不合格':accepted===record.qty?'已入庫':'部分驗收';
-      const purchase=db.purchases.find(p=>p.id===record.purchaseId);
-      if(purchase&&accepted>0){purchase.received=(purchase.received||0)+accepted;purchase.status=purchase.received>=purchase.qty?'已入庫':'部分入庫'}
-      log('驗收入庫',`${x.name} 到貨 ${record.qty}／合格 ${accepted}`,'待驗收',record.status,id)
-    })
+  .brand-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
   }
-  function transferAsset(){form('調撥設備',[field('assetId','設備資產','select',assetOptions(a=>a.status==='可用'||a.status==='使用中')),field('to','新位置','select',locationOptions())],v=>{const a=asset(v.assetId),dest=loc(v.to);if(!a||!dest||!['可用','使用中'].includes(a.status))throw Error('設備不可調撥');ensureDifferent(a.locationId,dest.id);const from=labelLoc(a.locationId),id=code('TR',db.transfers);a.locationId=dest.id;a.status=dest.site==='機台區'?'使用中':'可用';a.holder=a.status==='使用中'?dest.spot:'';db.transfers.unshift({id,time:stamp(),subject:`${a.id} ${itemName(a.itemId)}`,from,to:labelLoc(dest.id),qty:1,who:'OG'});log('調撥',a.id,from,labelLoc(dest.id),id)})}
-  function transferStock(){form('調撥消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('from','原位置','select',locationOptions()),field('to','新位置','select',locationOptions()),field('qty','數量','number')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId),source=db.stock.find(r=>r.itemId===v.itemId&&r.locationId===v.from),dest=loc(v.to);if(!x||x.type!=='消耗品'||!dest)throw Error('請選擇有效品項與位置');ensureDifferent(v.from,v.to);if(!source||source.qty<qty)throw Error('原位置數量不足');source.qty-=qty;let target=db.stock.find(r=>r.itemId===x.id&&r.locationId===dest.id);if(!target){target={itemId:x.id,locationId:dest.id,qty:0};db.stock.push(target)}target.qty+=qty;const id=code('TR',db.transfers),from=labelLoc(v.from),to=labelLoc(dest.id);db.transfers.unshift({id,time:stamp(),subject:x.name,from,to,qty,who:'OG'});log('調撥',`${x.name} × ${qty}`,from,to,id)})}
-  function borrow(){form('借用設備',[field('assetId','可用設備','select',assetOptions(a=>a.status==='可用')),field('holder','借用人'),field('due','預計歸還日期','date')],v=>{const a=asset(v.assetId);if(!a||a.status!=='可用')throw Error('設備目前不可借用');const id=code('BR',db.borrows);a.status='借用中';a.holder=v.holder.trim();db.borrows.unshift({id,time:stamp(),assetId:a.id,holder:a.holder,from:labelLoc(a.locationId),due:v.due,returned:'',status:'借用中'});log('借用',a.id,labelLoc(a.locationId),a.holder,id)})}
-  function returnAsset(id){const b=db.borrows.find(x=>x.id===id),a=b&&asset(b.assetId);if(!b||!a||b.status!=='借用中')return;b.status='已歸還';b.returned=stamp();a.status='可用';a.holder='';log('歸還',a.id,b.holder,labelLoc(a.locationId),id);save()}
-  function repair(){form('新增維修紀錄',[field('assetId','設備資產','select',assetOptions(a=>a.status!=='借用中'&&a.status!=='維修中')),field('issue','故障／檢測原因')],v=>{const a=asset(v.assetId);if(!a)throw Error('資產不存在');const id=code('RP',db.repairs);const from=labelLoc(a.locationId);a.status='維修中';a.holder='';a.locationId='LOC-R01';db.repairs.unshift({id,time:stamp(),assetId:a.id,issue:v.issue.trim(),location:from,status:'維修中'});log('送修',a.id,from,labelLoc(a.locationId),id)})}
-  function replaceAsset(){form('故障設備更換',[field('faultyId','故障／待檢設備','select',assetOptions(a=>['故障','待檢測','維修中'].includes(a.status))),field('replacementId','可用替換設備','select',assetOptions(a=>a.status==='可用')),field('to','替換後使用位置','select',locationOptions()),field('issue','更換原因')],v=>{const old=asset(v.faultyId),next=asset(v.replacementId),dest=loc(v.to);if(!old||!next||!dest||old.id===next.id||old.itemId!==next.itemId||next.status!=='可用'||!['故障','待檢測','維修中'].includes(old.status))throw Error('請選擇相同品項的故障設備與可用備品');const from=labelLoc(next.locationId),id=code('RP',db.repairs);old.status='維修中';old.holder='';old.locationId='LOC-R01';next.locationId=dest.id;next.status=dest.site==='機台區'?'使用中':'可用';next.holder=next.status==='使用中'?dest.spot:'';db.repairs.unshift({id,time:stamp(),assetId:old.id,issue:`${v.issue.trim()}；以 ${next.id} 更換`,location:labelLoc(dest.id),status:'維修中'});log('維修更換',`${old.id} → ${next.id}`,from,labelLoc(dest.id),id)})}
-  function finishRepair(id){const r=db.repairs.find(x=>x.id===id),a=r&&asset(r.assetId);if(!r||!a||r.status!=='維修中')return;r.status='已完成';a.status='可用';log('維修完成',a.id,'維修中',labelLoc(a.locationId),id);save()}
-  function countStock(){form('盤點消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('locationId','盤點位置','select',locationOptions()),field('actual','現場實盤數','number')],v=>{const x=item(v.itemId),l=loc(v.locationId),actual=requireNonnegative(v.actual);if(!x||x.type!=='消耗品'||!l)throw Error('請選擇有效品項及位置');let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}const before=stock.qty,id=code('CT',db.counts);stock.qty=actual;db.counts.unshift({id,time:stamp(),itemId:x.id,locationId:l.id,before,actual,diff:actual-before,who:'OG'});log('盤點',x.name,`${before} ${x.unit}`,`${actual} ${x.unit}`,id)})}
-  function purchase(){form('新增採購需求',[field('department','申請部門','select',[{value:'總部',label:'總部'},{value:'企劃部',label:'企劃部'}]),field('itemId','品項','select',itemOptions()),field('qty','需求數量','number'),field('reason','需求原因')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId);if(!x)throw Error('品項不存在');if(db.purchases.some(p=>p.itemId===x.id&&['待叫貨','已叫貨','無須叫貨','待審核','已核准','部分入庫'].includes(p.status)))throw Error('此品項已有未完成的採購需求，請先查看清單');const id=code('PR',db.purchases);db.purchases.unshift({id,time:stamp(),department:v.department,itemId:x.id,qty,reason:v.reason.trim(),who:'OG',source:'人工申請',status:'待審核'});log('採購需求',`${x.name} × ${qty}`,'－',v.department,id)})}
-  function setOrderDecision(id,kind,checked){
-    const p=db.purchases.find(x=>x.id===id);
-    if(!p||!['待叫貨','已核准','已叫貨','無須叫貨'].includes(p.status))return;
-    const before=p.status;
-    p.status=checked?(kind==='no-order'?'無須叫貨':'已叫貨'):(p.source==='低庫存自動產生'?'待叫貨':'已核准');
-    if(before!==p.status){log('叫貨狀態',`${itemName(p.itemId)} × ${p.qty}`,before,p.status,id);save()}
+  .brand-title {
+    font-size: 16px;
+    font-weight: 750;
+    color: #1e293b;
+    letter-spacing: .02em;
+    margin: 0 !important;
   }
-  function updateOrderQty(id,value){
-    const p=db.purchases.find(x=>x.id===id);
-    if(!p||!['待叫貨','已核准','已叫貨'].includes(p.status))return;
-    const next=requirePositive(value);
-    if(next<(p.received||0))throw Error('數量不能小於已驗收數量');
-    if(next===p.qty)return;
-    const before=p.qty;p.qty=next;p.qtyManual=true;
-    log('修改叫貨數量',itemName(p.itemId),String(before),String(next),id);save();
+  html[data-theme="dark"] .brand-title {
+    color: #fff;
   }
-  function approve(id){const p=db.purchases.find(x=>x.id===id);if(!p||p.status!=='待審核')return;p.status='已核准';log('核准採購',`${itemName(p.itemId)} × ${p.qty}`,'待審核','已核准',id);save()}
-  function addLocation(){
-    form('新增位置',[
-      field('department','管理單位','select',Object.keys(ORG_TREE).map(value=>({value,label:value}))),
-      field('site','地點','select',[...new Set(Object.values(ORG_TREE).flatMap(group=>Object.keys(group)))].map(value=>({value,label:value}))),
-      field('area','區域','select',[...new Set(Object.values(ORG_TREE).flatMap(group=>Object.values(group).flat()))].map(value=>({value,label:value}))),
-      field('spot','實際位置／架位／層位')
-    ],v=>{
-      if(!ORG_TREE[v.department]?.[v.site]?.includes(v.area))throw Error('管理單位、地點與區域不相符');
-      const spot=v.spot.trim();if(!spot)throw Error('請填寫實際位置');
-      if(db.locations.some(x=>x.department===v.department&&x.site===v.site&&x.area===v.area&&x.spot===spot))throw Error('相同位置已存在');
-      const id=code('LOC',db.locations);db.locations.push({id,department:v.department,site:v.site,area:v.area,spot});
-      log('新增位置',id,'－',labelLoc(id),id);
-    });
+  .brand-subtitle {
+    font-size: 11px;
+    color: var(--dash-muted);
+    font-weight: 400;
+    margin-top: 2px;
   }
-
-  function formatRows(list,columns){return list.length?list.map(x=>row(columns.map(f=>f(x)))).join(''):''}
-  function renderAll(){
-    syncAutoPurchases();
-    renderFavorites();
-    const actions=(...pairs)=>pairs.map(([name,title])=>button(name,title)).join(' ');
-    const itemRows=formatRows(db.items,[x=>cell(x.id),x=>cell(x.name),x=>cell(x.type),x=>cell(x.category),x=>cell(x.unit),x=>cell(x.safety),x=>`<td>${badge(x.enabled?'啟用':'停用')}</td>`,x=>`<td>${button('edit-item','編輯',x.id)}</td>`]);
-    page('items','品項管理','公司物品與設備的基本資料',['品項編號','品項名稱','類型','分類','單位','安全庫存','狀態','操作'],itemRows,actions(['refresh','重新整理'],['new-item','＋ 新增品項']));
-    document.getElementById('page-items').querySelector('.card-header').insertAdjacentHTML('afterend','<div class="item-toolbar"><input id="itemSearch" type="search" placeholder="搜尋品項編號或名稱..."><select id="itemTypeFilter"><option value="">全部類型</option><option>設備</option><option>消耗品</option></select><select id="itemStatusFilter"><option value="">全部狀態</option><option>啟用</option><option>停用</option></select></div>');
-    const inv=[];
-    db.items.forEach(x=>{const amount=available(x.id),low=amount<x.safety;db.locations.forEach(l=>{let total,free;if(x.type==='設備'){const assets=db.assets.filter(a=>a.itemId===x.id&&a.locationId===l.id);total=assets.length;free=assets.filter(a=>a.status==='可用').length}else{total=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id)?.qty||0;free=total}if(total>0)inv.push({x,l,total,free,low})})});
-    page('inventory','庫存管理','依部門、區域及位置查看現有數量',['品項','類型','管理單位','地點','區域','位置','在庫／資產數','可用數','全公司安全庫存','狀態'],formatRows(inv,[r=>cell(r.x.id+' '+r.x.name),r=>cell(r.x.type),r=>cell(r.l.department),r=>cell(r.l.site||'未分類'),r=>cell(r.l.area),r=>cell(r.l.spot),r=>cell(r.total+' '+r.x.unit),r=>cell(r.free+' '+r.x.unit),r=>cell(r.x.safety+' '+r.x.unit),r=>`<td>${badge(r.low?'低於安全庫存':'正常')}</td>`]),actions(['new-inbound','＋ 到貨登記'],['new-transfer-stock','調撥耗材']),'安全庫存依品項計算全公司可用數；設備非可用狀態仍計入資產數');
-    page('assets','資產管理','逐台追蹤設備、保管人及位置',['資產編號','品項','部門','區域／位置','保管人','狀態','可用配置'],formatRows(db.assets,[a=>cell(a.id),a=>cell(itemName(a.itemId)),a=>cell(loc(a.locationId)?.department||'－'),a=>cell((loc(a.locationId)?.area||'－')+'／'+(loc(a.locationId)?.spot||'－')),a=>cell(a.holder||'－'),a=>`<td>${badge(a.status)}</td>`,a=>cell(a.status==='可用'?'是':'否')]),actions(['new-transfer-asset','調撥設備'],['new-borrow','借用設備'],['new-repair','送修設備']));
-    page('inbound','到貨登記','到貨先登記，驗收合格後才計入庫存',['單號','時間','品項','到貨數量','關聯採購單','預計位置','狀態'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(r.time),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+(item(r.itemId)?.unit||'')),r=>cell(r.purchaseId||'－'),r=>cell(labelLoc(r.locationId)),r=>`<td>${badge(r.status||'已入庫')}</td>`]),actions(['new-inbound','＋ 登記到貨']));
-    page('inspection','驗收','確認合格數量後，庫存與採購需求才會更新',['單號','品項','到貨數量','合格數量','驗收結果','備註','操作'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+(item(r.itemId)?.unit||'')),r=>cell(r.status==='待驗收'?'－':(r.accepted??r.qty)+' '+(item(r.itemId)?.unit||'')),r=>`<td>${badge(r.status||'已入庫')}</td>`,r=>cell(r.note||'－'),r=>`<td>${r.status==='待驗收'?button('inspect-inbound','開始驗收',r.id):'－'}</td>`]));
-    page('transfer','調撥／配置','設備及消耗品跨位置移動會同步更新庫存',['單號','時間','品項／資產','原位置','新位置','數量','操作人'],formatRows(db.transfers,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.qty),r=>cell(r.who)]),actions(['new-transfer-asset','調撥設備'],['new-transfer-stock','調撥耗材']));
-    page('borrow','借用／歸還','借出設備不列入可用數，歸還後恢復',['借用單號','設備','借用人','借出位置','借用日期','預計歸還','實際歸還','狀態','操作'],formatRows(db.borrows,[r=>cell(r.id),r=>cell(r.assetId+' '+itemName(asset(r.assetId)?.itemId)),r=>cell(r.holder),r=>cell(r.from),r=>cell(r.time),r=>cell(r.due),r=>cell(r.returned||'－'),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='借用中'?button('return-asset','歸還',r.id):'－'}</td>`]),actions(['new-borrow','＋ 新增借用']));
-    page('repair','維修更換','故障設備送修期間不列入可用數',['維修單號','時間','資產','問題說明','原位置／使用位置','狀態','操作'],formatRows(db.repairs,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.assetId),r=>cell(r.issue),r=>cell(r.location),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='維修中'?button('finish-repair','完成維修',r.id):'－'}</td>`]),actions(['new-repair','＋ 新增維修'],['new-replacement','更換備品']));
-    const machines=db.locations.filter(l=>l.site==='機台區'&&['機台區','倉架位置（第1層／第2層）'].includes(l.area));
-    page('machine','機台管理','機台位置與目前配置的設備',['位置編號','部門','機台位置','配置設備','狀態'],formatRows(machines,[l=>cell(l.id),l=>cell(l.department),l=>cell(l.spot),l=>cell(db.assets.filter(a=>a.locationId===l.id&&a.status==='使用中').map(a=>a.id+' '+itemName(a.itemId)).join('、')||'尚未配置'),l=>`<td>${badge('啟用')}</td>`]),actions(['new-location','＋ 新增機台位置']));
-    page('racks','位置／倉架','管理單位 → 地點 → 區域 → 實際位置；移動時選取同一份位置資料',['位置編號','管理單位','地點','區域','實際位置','設備資產數','消耗品數'],formatRows(db.locations,[l=>cell(l.id),l=>cell(l.department),l=>cell(l.site||'未分類'),l=>cell(l.area),l=>cell(l.spot),l=>cell(db.assets.filter(a=>a.locationId===l.id).length),l=>cell(db.stock.filter(r=>r.locationId===l.id).reduce((n,r)=>n+r.qty,0))]),actions(['new-location','＋ 新增位置']));
-    page('count','盤點管理','現場數量與帳面數比較後更新消耗品庫存',['盤點單號','時間','範圍','品項','帳面數','實盤數','差異','操作人'],formatRows(db.counts,[r=>cell(r.id),r=>cell(r.time),r=>cell(labelLoc(r.locationId)),r=>cell(itemName(r.itemId)),r=>cell(r.before),r=>cell(r.actual),r=>cell(r.diff),r=>cell(r.who)]),actions(['new-count','＋ 開始盤點']));
-    const orderCell=(r,kind)=>{
-      const terminal=['待審核','部分入庫','已入庫','已解除','驗收不合格'].includes(r.status);
-      const checked=kind==='ordered'?['已叫貨','部分入庫','已入庫'].includes(r.status):r.status==='無須叫貨';
-      return `<td data-label="${kind==='ordered'?'已叫貨':'無須叫貨'}"><label class="wms-check-cell"><input type="checkbox" data-action="${kind==='ordered'?'toggle-order':'toggle-no-order'}" data-id="${E(r.id)}" ${checked?'checked':''} ${terminal?'disabled':''} aria-label="${E(itemName(r.itemId))} ${kind==='ordered'?'已叫貨':'無須叫貨'}"></label></td>`;
-    };
-    const purchaseRows=db.purchases.length?db.purchases.map(r=>`<tr>
-      <td data-label="品項"><strong>${E(itemName(r.itemId))}</strong><small>${E(r.id)}</small></td>
-      <td data-label="叫貨數量"><label class="wms-qty-control"><input type="number" min="1" step="1" value="${E(r.qty)}" data-action="order-qty" data-id="${E(r.id)}" ${['待審核','部分入庫','已入庫','已解除','無須叫貨'].includes(r.status)?'disabled':''} aria-label="${E(itemName(r.itemId))} 叫貨數量"><span>${E(item(r.itemId)?.unit||'')}</span></label></td>
-      ${orderCell(r,'ordered')}${orderCell(r,'no-order')}
-      <td data-label="狀態">${badge(r.status)}</td>
-      <td data-label="來源／部門">${E(r.source||'人工申請')}<small>${E(r.department)}</small></td>
-      <td data-label="原因">${E(r.reason)}</td>
-      <td data-label="操作">${r.status==='待審核'?button('approve-purchase','核准',r.id):'－'}</td>
-    </tr>`).join(''):'';
-    page('purchase','採購需求','低庫存自動列入；調整數量後選已叫貨或無須叫貨',['品項','叫貨數量','已叫貨','無須叫貨','狀態','來源／部門','原因','操作'],purchaseRows,actions(['new-purchase','＋ 新增需求']),'勾選只儲存在目前裝置的瀏覽器；到貨後請先登記，再到驗收頁面確認');
-    const notes=[...warnings().map(x=>({type:'庫存預警',text:`${x.name} 可用 ${available(x.id)} ${x.unit}，低於安全庫存 ${x.safety} ${x.unit}`,ref:x.id})),...db.purchases.filter(p=>['待審核','待叫貨'].includes(p.status)).map(p=>({type:p.status==='待叫貨'?'待叫貨':'待審核採購',text:`${p.department} 申請 ${itemName(p.itemId)} × ${p.qty}`,ref:p.id})),...db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).map(a=>({type:'設備狀態',text:`${a.id} ${itemName(a.itemId)}：${a.status}`,ref:a.id}))];
-    page('notifications','通知中心','依最新庫存、採購及設備狀態即時計算提醒',['類型','通知內容','關聯編號','狀態'],formatRows(notes,[n=>cell(n.type),n=>cell(n.text),n=>cell(n.ref),n=>`<td>${badge('待處理')}</td>`]));
-    page('log','異動日誌','記錄本機展示資料的操作人、前後狀態與關聯單號',['時間','動作','品項／資產','異動前','異動後','操作人','關聯單號'],formatRows(db.logs,[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who),r=>cell(r.ref||'－')]));
-    page('roles','角色與權限','權限表為規劃草稿；展示帳號尚無登入驗證',['角色','查看資料','品項／位置維護','入出庫／調撥','核准','系統設定'],row(['最高權限（OG）','總部＋企劃部全部','可','可','可','可'].map(cell))+row(['部門主管','所屬部門','依授權','可','依授權','不可'].map(cell))+row(['一般使用者','授權範圍','不可','提出申請','不可','不可'].map(cell)));
-    page('import','匯入／匯出','下載範本並批次上傳 Excel，或用 JSON 備份與還原目前瀏覽器資料',['項目','用途','資料格式'],row(['匯出資料','保存品項、位置、資產、庫存及異動紀錄','JSON'].map(cell))+row(['Excel 批次匯入','依範本檢查品項、位置、期初庫存與設備，確認後替換展示資料','XLSX'].map(cell))+row(['匯入資料','還原相同格式的備份檔','JSON'].map(cell)),actions(['download-excel-template','下載 Excel 範本'],['import-excel','上傳 Excel 範本'],['export','下載 JSON 備份'],['import','匯入 JSON 備份']));
-    page('settings','系統設定','目前展示資料使用此分類與規則',['設定','目前內容','用途'],row(['管理單位',Object.keys(ORG_TREE).join('、'),'物品、資產與位置的歸屬'].map(cell))+row(['地點層級','總部：倉庫／辦公室／作業區；企劃部：辦公室／機台區','管理實際位置'].map(cell))+row(['安全庫存','依品項設定；全公司可用數低於門檻即提醒','通知中心與採購需求'].map(cell))+row(['資料保存','目前瀏覽器 localStorage','重新開啟仍保留；可匯出備份'].map(cell)));
-    const total=db.assets.length,ready=db.assets.filter(a=>a.status==='可用').length,using=db.assets.filter(a=>['使用中','借用中'].includes(a.status)).length,repairing=db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).length;
-    const today=stamp().split(' ')[0];
-    const scopedInbound=db.inbound.filter(r=>inScope(loc(r.locationId)?.department));
-    const scopedPurchases=db.purchases.filter(p=>inScope(p.department));
-    const scopedAssets=db.assets.filter(a=>inScope(loc(a.locationId)?.department));
-    const todayArrivals=scopedInbound.filter(r=>String(r.time||'').split(' ')[0]===today).length;
-    const todayStocked=scopedInbound.filter(r=>Number(r.accepted)>0&&String(r.inspectedAt||'').split(' ')[0]===today).length;
-    const awaitingInspection=scopedInbound.filter(r=>r.status==='待驗收').length;
-    const pendingOrders=scopedPurchases.filter(p=>p.status==='待叫貨').length;
-    const reportData=[['品項總數',db.items.filter(x=>x.enabled).length,'目前啟用品項'],['消耗品在庫數',db.stock.reduce((sum,x)=>sum+Number(x.qty||0),0),'各位置數量合計'],['設備資產數',total,'包含使用中及維修中的設備'],['可用設備數',ready,'可供配置的設備'],['待驗收單數',db.inbound.filter(r=>r.status==='待驗收').length,'尚未計入庫存'],['待叫貨需求數',db.purchases.filter(p=>p.status==='待叫貨').length,'採購需求待處理'],['低庫存品項數',warnings().length,'低於安全庫存']];
-    page('reports','摘要報表','依目前瀏覽器資料即時計算作業摘要',['項目','數量','計算說明'],reportData.map(([name,value,note])=>row([cell(name),cell(value),cell(note)])).join(''),actions(['refresh','重新整理']),'目前瀏覽器的展示資料；後續可與 ERP 報表介接');
-    const dashboardIcon=paths=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths}</svg>`;
-    const dashboardIcons={
-      arrival:dashboardIcon('<path d="M3 15v5h18v-5"/><path d="M12 3v11m0 0-4-4m4 4 4-4"/>'),
-      stocked:dashboardIcon('<path d="M4 8.5 12 4l8 4.5v9L12 22l-8-4.5z"/><path d="m4 8.5 8 4.5 8-4.5M12 13v9"/><path d="m8.5 17 1.5 1.5 3-3"/>'),
-      inspection:dashboardIcon('<rect x="5" y="5" width="14" height="17" rx="2"/><path d="M9 5V3h6v2M9 10h6M9 14h3"/><circle cx="16" cy="17" r="3"/><path d="M16 15.5V17l1 1"/>'),
-      order:dashboardIcon('<path d="M4 4h2l2 11h11l2-8H7"/><path d="M9 11h8M10 18h.01M18 18h.01"/><circle cx="10" cy="19" r="1"/><circle cx="18" cy="19" r="1"/>')
-    };
-    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單','arrival'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存','stocked'],['待驗收',awaitingInspection,'到貨後尚未完成驗收','inspection'],['待叫貨',pendingOrders,'等待採購人員叫貨','order']].map(([name,value,note,kind])=>`<article class="stat-card wms-kpi wms-kpi--${kind}"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon" aria-hidden="true">${dashboardIcons[kind]}</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
-    const tasks=[
-      ...scopedInbound.filter(r=>r.status==='待驗收').map(r=>({kind:'inspection',label:'待驗收',detail:`${itemName(r.itemId)} × ${r.qty}`,action:'go-inspection',button:'前往驗收'})),
-      ...scopedPurchases.filter(p=>p.status==='待叫貨').map(p=>({kind:'order',label:'待叫貨',detail:`${itemName(p.itemId)} × ${p.qty}`,action:'go-purchase',button:'前往採購'})),
-      ...warnings().map(x=>({kind:'stock',label:'全公司庫存提醒',detail:`${x.name} 可用 ${available(x.id)} ${x.unit}，低於安全庫存`,action:'go-inventory',button:'查看庫存'})),
-      ...scopedAssets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).map(a=>({kind:'asset',label:'設備狀態',detail:`${a.id} ${itemName(a.itemId)}：${a.status}`,action:'go-assets',button:'查看資產'}))
-    ];
-    const scopeTotal=scopedAssets.length,scopeReady=scopedAssets.filter(a=>a.status==='可用').length,scopeUsing=scopedAssets.filter(a=>['使用中','借用中'].includes(a.status)).length,scopeRepairing=scopedAssets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).length;
-    const taskBody=tasks.length?tasks.slice(0,5).map(t=>`<div class="wms-task-row"><span class="wms-task-tag wms-task-tag--${E(t.kind)}">${E(t.label)}</span><span class="wms-task-detail">${E(t.detail)}</span>${button(t.action,t.button)}</div>`).join(''):'<p class="wms-empty">目前沒有待辦事項</p>';
-    const warningIcon=dashboardIcon('<path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 9v5m0 3h.01"/>');
-    const alerts=notes.slice(0,5).map(n=>`<div class="alert-item"><div class="alert-icon" aria-hidden="true">${warningIcon}</div><div class="alert-content"><div class="alert-title">${E(n.type)}</div><div class="alert-desc">${E(n.text)}</div></div></div>`).join('')||'<p class="wms-empty">目前沒有待處理提醒</p>';
-    const recent=formatRows(db.logs.slice(0,5),[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who)]);
-    const widgets={
-      tasks:card('今日待辦','驗收、叫貨與庫存提醒',`<div class="card-body wms-task-list">${taskBody}</div>`),
-      favorites:card('我的常用','自行挑選常用功能',`<div class="card-body wms-favorites-list">${renderFavorites()}</div>`),
-      equipment:card('設備概況',`設備總數 ${scopeTotal} 台・可用 ${scopeReady} 台`,`<div class="card-body"><div class="status-list">${[['可用',scopeReady,'success'],['使用中／借用中',scopeUsing,''],['故障／待檢測／維修中',scopeRepairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${scopeTotal?Math.round(v/scopeTotal*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`),
-      quick:card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-purchase','新增需求'],['new-count','開始盤點'],['new-transfer-asset','調撥設備']].map(([a,t])=>button(a,t)).join('')}</div>`),
-      alerts:card('異常與提醒','全公司低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`),
-      recent:card('最近異動','全公司最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)
-    };
-    const left=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]==='left'&&widgets[key]).map(key=>widgets[key]).join('');
-    const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(key=>widgets[key]).join('');
-    const scopeButtons=['全部','總部','企劃部'].map(name=>`<button type="button" data-action="set-home-scope" data-id="${E(name)}" class="${homeScope===name?'active':''}" aria-pressed="${homeScope===name}">${E(name)}</button>`).join('');
-    const orgCards=Object.entries(ORG_TREE).map(([unit,sites])=>`<div class="wms-org-unit" ${inScope(unit)?'':'hidden'}><h3>${E(unit)}</h3>${Object.entries(sites).map(([site,areas])=>`<div class="wms-org-place"><b>${E(site)}</b><small>${E(areas.join('・'))}</small></div>`).join('')}</div>`).join('');
-    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-scope-bar"><strong>管理範圍</strong>${scopeButtons}</div><section class="wms-org-card"><h2>地點與區域</h2><p>OG 可查看並管理全部範圍；目前為單機展示資料</p><div class="wms-org-grid">${orgCards}</div><div style="margin-top:12px">${button('go-racks','管理位置')}</div></section><div class="wms-dashboard-section-title"><h2>今日作業</h2><p>${E(homeScope)}・資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><section class="wms-dashboard-workspace ${left&&right?'':'is-single'}">${left?`<div class="wms-dashboard-column">${left}</div>`:''}${right?`<div class="wms-dashboard-column">${right}</div>`:''}</section>`;
-    const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
-    filterItems();
+  .nav-center {
+    flex: 0 1 400px;
+    margin: 0 20px;
   }
-  function filterItems(){const search=document.getElementById('itemSearch'),type=document.getElementById('itemTypeFilter'),status=document.getElementById('itemStatusFilter');if(!search)return;const q=search.value.trim().toLowerCase();document.querySelectorAll('#rows-items tr').forEach(tr=>{const t=tr.querySelectorAll('td');if(!t.length)return;tr.hidden=!((t[0].textContent.toLowerCase().includes(q)||t[1].textContent.toLowerCase().includes(q))&&(!type.value||t[2].textContent===type.value)&&(!status.value||t[6].textContent===status.value))})}
-  document.addEventListener('input',e=>{if(e.target.id==='itemSearch')filterItems()});
-  document.addEventListener('change',e=>{if(['itemTypeFilter','itemStatusFilter'].includes(e.target.id))filterItems();if(e.target.dataset.action==='order-qty'){try{updateOrderQty(e.target.dataset.id,e.target.value)}catch(error){alert(error.message);renderAll()}}});
-  function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BOMB-WMS-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-  const WMS_TEMPLATE_BASE64='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';
-  function downloadExcelTemplate(){
-    const raw=atob(WMS_TEMPLATE_BASE64),bytes=new Uint8Array(raw.length);
-    for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
-    const url=URL.createObjectURL(new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
-    const link=document.createElement('a');link.href=url;link.download='BOMB_WMS_批次匯入範本.xlsx';link.click();
-    setTimeout(()=>URL.revokeObjectURL(url),1000);
+  .search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
   }
-  // Read the four data sheets from the BOMB WMS template without an external script.
-  async function readWmsWorkbook(file){
-    if(file.size>20*1024*1024)throw Error('Excel 檔案超過 20 MB');
-    const bytes=new Uint8Array(await file.arrayBuffer()),view=new DataView(bytes.buffer);
-    const u16=p=>view.getUint16(p,true),u32=p=>view.getUint32(p,true);
-    let end=-1;
-    for(let p=bytes.length-22;p>=Math.max(0,bytes.length-65557);p--)if(u32(p)===0x06054b50){end=p;break}
-    if(end<0)throw Error('不是有效的 XLSX 檔案');
-    const decoder=new TextDecoder(),files=new Map();
-    let ptr=u32(end+16);
-    for(let i=0;i<u16(end+10);i++){
-      if(u32(ptr)!==0x02014b50)throw Error('Excel 壓縮結構不完整');
-      const method=u16(ptr+10),size=u32(ptr+20),unpacked=u32(ptr+24),nameLen=u16(ptr+28),extra=u16(ptr+30),comment=u16(ptr+32),offset=u32(ptr+42);
-      const name=decoder.decode(bytes.slice(ptr+46,ptr+46+nameLen));
-      files.set(name,{method,size,unpacked,offset});ptr+=46+nameLen+extra+comment;
-    }
-    async function readXml(path){
-      const entry=files.get(path);if(!entry)throw Error('Excel 缺少工作表檔案：'+path);
-      if(entry.unpacked>40*1024*1024)throw Error('工作表資料過大');
-      const start=entry.offset;
-      if(u32(start)!==0x04034b50)throw Error('Excel 資料區損壞');
-      const pos=start+30+u16(start+26)+u16(start+28);
-      let data=bytes.slice(pos,pos+entry.size);
-      if(data.length!==entry.size)throw Error('Excel 檔案不完整');
-      if(entry.method===8)data=new Uint8Array(await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer());
-      else if(entry.method!==0)throw Error('Excel 使用未支援的壓縮格式');
-      const xml=new DOMParser().parseFromString(decoder.decode(data),'application/xml');
-      if(xml.getElementsByTagName('parsererror').length)throw Error('Excel 工作表 XML 無法讀取');
-      return xml;
-    }
-    const nodes=(xml,name)=>[...xml.getElementsByTagNameNS('*',name)];
-    const workbook=await readXml('xl/workbook.xml'),rels=await readXml('xl/_rels/workbook.xml.rels');
-    const relation=new Map(nodes(rels,'Relationship').map(n=>[n.getAttribute('Id'),n.getAttribute('Target')]));
-    const sheetFiles=new Map(nodes(workbook,'sheet').map(n=>{
-      const id=n.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id')||n.getAttribute('r:id');
-      const path=relation.get(id)||'';
-      return [n.getAttribute('name'),path.startsWith('/')?path.slice(1):path.startsWith('xl/')?path:'xl/'+path];
-    }));
-    let strings=[];
-    if(files.has('xl/sharedStrings.xml')){
-      const xml=await readXml('xl/sharedStrings.xml');
-      strings=nodes(xml,'si').map(si=>nodes(si,'t').map(t=>t.textContent).join(''));
-    }
-    async function sheet(name,headers){
-      const path=sheetFiles.get(name);if(!path)throw Error('缺少「'+name+'」工作表');
-      const xml=await readXml(path),rows=[];
-      for(const row of nodes(xml,'row')){
-        const cells=[];
-        for(const c of nodes(row,'c')){
-          const address=c.getAttribute('r')||'',letters=address.match(/^[A-Z]+/)?.[0];
-          if(!letters)continue;
-          let col=0;for(const ch of letters)col=col*26+ch.charCodeAt(0)-64;
-          const type=c.getAttribute('t'),v=nodes(c,'v')[0]?.textContent||'';
-          cells[col-1]=type==='s'?strings[Number(v)]||'':type==='inlineStr'?nodes(c,'t').map(t=>t.textContent).join(''):v;
-        }
-        if(cells.some(v=>String(v??'').trim()))rows.push({line:Number(row.getAttribute('r')),cells});
-      }
-      const head=rows.shift();
-      if(!head||headers.some((h,i)=>String(head.cells[i]??'').trim()!==h))throw Error('「'+name+'」欄位與範本不同，請使用下載的新版範本');
-      if(rows.length>10000)throw Error('「'+name+'」超過 10000 筆');
-      return rows.map(({line,cells})=>({line,cells:cells.map(v=>String(v??'').trim())}));
-    }
-    const itemRows=await sheet('品項主檔',['品項編號＊','品項名稱＊','類型＊','分類＊','單位＊','安全庫存＊','啟用狀態＊','圖片網址（選填）']);
-    const locationRows=await sheet('位置主檔',['位置編號＊','管理單位＊','地點＊','區域＊','實際位置／架位／層位＊']);
-    const stockRows=await sheet('消耗品期初',['品項編號＊','位置編號＊','期初數量＊']);
-    const assetRows=await sheet('設備資產',['資產編號＊','品項編號＊','位置編號＊','設備狀態＊','保管人（選填）']);
-    const fail=(tab,line,message)=>{throw Error(`${tab}第 ${line} 列：${message}`)};
-    const required=(value,tab,line,label)=>{if(!value)fail(tab,line,label+'不可空白');return value};
-    const whole=(value,tab,line,label)=>{if(!/^(0|[1-9]\d*)$/.test(value)||!Number.isSafeInteger(Number(value)))fail(tab,line,label+'須為非負整數');return Number(value)};
-    const unique=(id,set,tab,line)=>{if(set.has(id))fail(tab,line,'編號重複：'+id);set.add(id)};
-    const itemIds=new Set(),locationIds=new Set(),assetIds=new Set(),stockKeys=new Set();
-    const items=itemRows.map(({line,cells:c})=>{
-      const tab='品項主檔',id=required(c[0],tab,line,'品項編號');unique(id,itemIds,tab,line);
-      if(!['消耗品','設備'].includes(c[2]))fail(tab,line,'類型只能是消耗品或設備');
-      if(!['啟用','停用'].includes(c[6]))fail(tab,line,'啟用狀態只能是啟用或停用');
-      return {id,name:required(c[1],tab,line,'品項名稱'),type:c[2],category:required(c[3],tab,line,'分類'),unit:required(c[4],tab,line,'單位'),safety:whole(c[5],tab,line,'安全庫存'),enabled:c[6]==='啟用',imageUrl:c[7]||''};
-    });
-    const itemMap=new Map(items.map(x=>[x.id,x]));
-    const locations=locationRows.map(({line,cells:c})=>{
-      const tab='位置主檔',id=required(c[0],tab,line,'位置編號');unique(id,locationIds,tab,line);
-      if(!ORG_TREE[c[1]]?.[c[2]]?.includes(c[3]))fail(tab,line,'管理單位／地點／區域的組合不正確');
-      return {id,department:c[1],site:c[2],area:c[3],spot:required(c[4],tab,line,'實際位置')};
-    });
-    const stock=stockRows.map(({line,cells:c})=>{
-      const tab='消耗品期初',x=itemMap.get(c[0]);
-      if(!x||x.type!=='消耗品')fail(tab,line,'品項編號須對應消耗品');
-      if(!locationIds.has(c[1]))fail(tab,line,'位置編號不存在');
-      const key=c[0]+'\u0000'+c[1];unique(key,stockKeys,tab,line);
-      return {itemId:c[0],locationId:c[1],qty:whole(c[2],tab,line,'期初數量')};
-    });
-    const statuses=['可用','使用中','借用中','故障','待檢測','維修中','待報廢'];
-    const assets=assetRows.map(({line,cells:c})=>{
-      const tab='設備資產',id=required(c[0],tab,line,'資產編號');unique(id,assetIds,tab,line);
-      if(itemMap.get(c[1])?.type!=='設備')fail(tab,line,'品項編號須對應設備');
-      if(!locationIds.has(c[2]))fail(tab,line,'位置編號不存在');
-      if(!statuses.includes(c[3]))fail(tab,line,'設備狀態不在允許清單');
-      return {id,itemId:c[1],locationId:c[2],status:c[3],holder:c[4]||''};
-    });
-    if(!items.length||!locations.length)throw Error('品項主檔與位置主檔至少各填一筆');
-    return {version:2,items,locations,stock,assets,inbound:[],transfers:[],borrows:[],repairs:[],counts:[],purchases:[],logs:[]};
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 14px;
   }
-  function importExcel(){
-    if(typeof DecompressionStream==='undefined'){alert('此瀏覽器不支援讀取 XLSX，請改用最新版 Chrome 或 Edge');return}
-    const input=document.createElement('input');input.type='file';input.accept='.xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-    input.addEventListener('change',async()=>{
-      const file=input.files?.[0];if(!file)return;
-      try{
-        const next=await readWmsWorkbook(file);
-        const summary=`品項 ${next.items.length} 筆、位置 ${next.locations.length} 筆、消耗品期初 ${next.stock.length} 筆、設備 ${next.assets.length} 台`;
-        if(!confirm(`檢查通過：${summary}\n\n確定以 Excel 資料替換目前瀏覽器的 WMS 展示資料？原資料會先下載 JSON 備份，並留一份在此瀏覽器。`))return;
-        localStorage.setItem('bomb-wms-preimport-backup-v1',JSON.stringify(db));
-        next.logs.push({id:'LG-0001',time:stamp(),action:'Excel批次匯入',subject:summary,from:'原資料已備份',to:'新展示資料',who:'OG',ref:''});
-        localStorage.setItem(KEY,JSON.stringify(next));
-        exportData();db=next;renderAll();
-        alert('匯入完成：'+summary);
-      }catch(error){alert('Excel 匯入失敗：'+(error.message||error))}
-    });
-    input.click();
-  }
-  function importData(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;try{const value=JSON.parse(await file.text());if(value.version!==2||!['items','locations','assets','stock','inbound','transfers','borrows','repairs','counts','purchases','logs'].every(k=>Array.isArray(value[k])))throw Error('備份檔格式不符');if(!confirm('匯入會覆蓋目前瀏覽器的 WMS 展示資料，確定繼續？'))return;db=value;normalizeLocations();save()}catch(e){alert('匯入失敗：'+e.message)}});input.click()}
-  const handlers={'new-item':addItem,'new-inbound':inbound,'new-transfer-asset':transferAsset,'new-transfer-stock':transferStock,'new-borrow':borrow,'new-repair':repair,'new-replacement':replaceAsset,'new-count':countStock,'new-purchase':purchase,'new-location':addLocation,'refresh':renderAll,'go-log':()=>showPage('log'),'go-notifications':()=>showPage('notifications'),'go-inspection':()=>showPage('inspection'),'go-purchase':()=>showPage('purchase'),'go-inventory':()=>showPage('inventory'),'go-assets':()=>showPage('assets'),'customize-home':customizeHome,'go-racks':()=>showPage('racks'),'set-home-scope':id=>{if(['全部','總部','企劃部'].includes(id)){homeScope=id;localStorage.setItem(HOME_SCOPE_KEY,id);renderAll()}},'export':exportData,'import':importData,'import-excel':importExcel,'download-excel-template':downloadExcelTemplate,'close-dialog':()=>dialog.close()};
-  document.addEventListener('click',e=>{const target=e.target.closest('[data-action]');if(!target)return;const action=target.dataset.action,id=target.dataset.id;if(handlers[action])handlers[action](id);else if(action==='edit-item')editItem(id);else if(action==='return-asset')returnAsset(id);else if(action==='finish-repair')finishRepair(id);else if(action==='approve-purchase')approve(id);else if(action==='inspect-inbound')inspectInbound(id);else if(action==='toggle-order')setOrderDecision(id,'ordered',target.checked);else if(action==='toggle-no-order')setOrderDecision(id,'no-order',target.checked)});
-  renderAll();
-})();
-</script>
-</body>
-</html>
+  .nav-search-input {
+    width: 100%;
+padding: 10px 16px 10px 40px;
+font-size: 13px;
+background-color: rgba(241, 245, 249, 0.6);
+border: 1px solid var(--dash-border);
+border-radius: 10px;
+color: inherit;
+box-sizing: border-box;
+transition: all 0.2s ease;
+}
+html[data-theme="dark"] .nav-search-input {
+background-color: rgba(45, 57, 75, 0.4);
+}
+.nav-search-input:focus {
+outline: none;
+background-color: var(--dash-surface);
+border-color: #246da8;
+box-shadow: 0 0 0 3px rgba(36, 109, 168, 0.15);
+}
+.nav-right {
+display: flex;
+align-items: center;
+gap: 20px;
+}
+.nav-notification-btn {
+position: relative;
+background: none;
+border: none;
+cursor: pointer;
+padding: 8px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background-color 0.2s;
+}
+.nav-notification-btn:hover {
+background-color: rgba(241, 245, 249, 0.8);
+}
+html[data-theme="dark"] .nav-notification-btn:hover {
+background-color: rgba(45, 57, 75, 0.8);
+}
+.notification-badge {
+position: absolute;
+top: 4px;
+right: 4px;
+background-color: #ef4444;
+color: white;
+font-size: 10px;
+font-weight: 700;
+border-radius: 50%;
+width: 15px;
+height: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.user-profile-card {
+display: flex;
+align-items: center;
+gap: 10px;
+background: rgba(241, 245, 249, 0.8);
+padding: 6px 14px 6px 8px;
+border-radius: 30px;
+border: 1px solid var(--dash-border);
+}
+html[data-theme="dark"] .user-profile-card {
+background: rgba(45, 57, 75, 0.5);
+}
+.user-avatar {
+width: 32px;
+height: 32px;
+background-color: #246da8;
+color: white;
+font-weight: 700;
+font-size: 12px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.user-meta {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+.user-role {
+font-size: 12px;
+font-weight: 700;
+color: inherit;
+line-height: 1.2;
+}
+.user-status-tag {
+font-size: 10px;
+color: var(--dash-muted);
+line-height: 1.2;
+margin-top: 1px;
+}
