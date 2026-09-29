@@ -7,6 +7,18 @@
 
 <title>BOMB WMS｜倉儲與資產管理系統</title>
 <link rel="stylesheet" href="assets/wms.css">
+<style>
+  #page-dashboard .wms-dashboard-section-title{margin:22px 0 12px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  #page-dashboard .wms-dashboard-section-title h2{margin:0;font-size:18px;font-weight:700}
+  #page-dashboard .wms-dashboard-section-title p{margin:0;font-size:13px;opacity:.72}
+  #page-dashboard .wms-dashboard-focus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0 0 22px}
+  #page-dashboard .wms-dashboard-focus .stat-card{min-width:0;border-top:3px solid #7978ee}
+  #page-dashboard .wms-dashboard-focus .stat-card:nth-child(2){border-top-color:#29a474}
+  #page-dashboard .wms-dashboard-focus .stat-card:nth-child(3){border-top-color:#e69b32}
+  #page-dashboard .wms-dashboard-focus .stat-card:nth-child(4){border-top-color:#dd6a7f}
+  @media(max-width:900px){#page-dashboard .wms-dashboard-focus{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:520px){#page-dashboard .wms-dashboard-focus{grid-template-columns:1fr 1fr;gap:10px}#page-dashboard .wms-dashboard-focus .stat-card{padding:14px}}
+</style>
 </head>
 
 <body>
@@ -368,17 +380,16 @@
     page('import','匯入／匯出','以 JSON 備份或還原目前瀏覽器的展示資料',['項目','用途','資料格式'],row(['匯出資料','保存品項、位置、資產、庫存及異動紀錄','JSON'].map(cell))+row(['匯入資料','還原相同格式的備份檔','JSON'].map(cell)),actions(['export','下載備份'],['import','匯入備份']));
     const departments=['總部','辦公室部門'];
     page('settings','系統設定','目前展示資料使用此分類與規則',['設定','目前內容','用途'],row(['部門',departments.join('、'),'物品、資產與位置的歸屬'].map(cell))+row(['辦公室部門區域','機台區、辦公區、備品區','管理實際位置'].map(cell))+row(['安全庫存','依品項設定；全公司可用數低於門檻即提醒','通知中心與採購需求'].map(cell))+row(['資料保存','目前瀏覽器 localStorage','重新開啟仍保留；可匯出備份'].map(cell)));
-    const total=db.assets.length,ready=db.assets.filter(a=>a.status==='可用').length,using=db.assets.filter(a=>['使用中','借用中'].includes(a.status)).length,repairing=db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).length,low=warnings().length;
+    const total=db.assets.length,ready=db.assets.filter(a=>a.status==='可用').length,using=db.assets.filter(a=>['使用中','借用中'].includes(a.status)).length,repairing=db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).length;
     const today=stamp().split(' ')[0];
     const todayArrivals=db.inbound.filter(r=>String(r.time||'').split(' ')[0]===today).length;
     const todayStocked=db.inbound.filter(r=>Number(r.accepted)>0&&String(r.inspectedAt||'').split(' ')[0]===today).length;
     const awaitingInspection=db.inbound.filter(r=>r.status==='待驗收').length;
     const pendingOrders=db.purchases.filter(p=>p.status==='待叫貨').length;
-    const activePurchases=db.purchases.filter(p=>['待審核','待叫貨','已叫貨','已核准','部分入庫'].includes(p.status)).length;
-    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單'],['今日驗收入庫',todayStocked,'今天驗收合格並計入庫存的單據'],['待驗收',awaitingInspection,'到貨後尚未完成驗收'],['待叫貨',pendingOrders,'尚未勾選已叫貨的採購需求'],['待處理採購',activePurchases,'尚未完成的採購需求'],['公司資產總數',total,'已登錄設備資產'],['可用設備',ready,'可立即配置'],['使用中／借用中',using,'目前不可配置'],['故障／維修',repairing,'待檢測或處理'],['庫存預警',low,'低於安全庫存的品項']].map(([name,value,note])=>`<article class="stat-card"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon">▦</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
+    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存'],['待驗收',awaitingInspection,'到貨後尚未完成驗收'],['待叫貨',pendingOrders,'等待採購人員叫貨']].map(([name,value,note])=>`<article class="stat-card"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon">▦</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
     const recent=formatRows(db.logs.slice(0,5),[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who)]);
     const alerts=notes.slice(0,5).map(n=>`<div class="alert-item"><div class="alert-icon">!</div><div class="alert-content"><div class="alert-title">${E(n.type)}</div><div class="alert-desc">${E(n.text)}</div></div></div>`).join('')||'<p class="wms-empty">目前沒有待處理提醒</p>';
-    document.getElementById('page-dashboard').innerHTML=header('營運總覽','公司設備與庫存目前概況',actions(['refresh','重新整理'],['new-item','＋ 新增品項']))+`<section class="stats-grid">${stats}</section><section class="dashboard-grid"><div>${card('資產狀態分布','以目前資產資料計算',`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`)}<br>${card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent))}<div class="wms-card-footer">${button('go-log','查看全部')}</div></div><div>${card('待處理／通知','與目前資料連動',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`)}<br>${card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-transfer-asset','調撥設備'],['new-purchase','採購需求'],['new-count','開始盤點']].map(([a,t])=>button(a,t)).join('')}</div>`)}</div></section>`;
+    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今日作業與公司庫存概況',actions(['refresh','重新整理']))+`<div class="wms-dashboard-section-title"><h2>今日作業</h2><p>顯示目前瀏覽器中的作業資料</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><div class="wms-dashboard-section-title"><h2>設備與提醒</h2><p>設備總數 ${total} 台・可用 ${ready} 台</p></div><section class="dashboard-grid"><div>${card('設備狀態','依目前登錄的設備計算',`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`)}<br>${card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent))}<div class="wms-card-footer">${button('go-log','查看全部')}</div></div><div>${card('異常與提醒','低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`)}<br>${card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-transfer-asset','調撥設備'],['new-purchase','採購需求'],['new-count','開始盤點']].map(([a,t])=>button(a,t)).join('')}</div>`)}</div></section>`;
     const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
     filterItems();
   }
