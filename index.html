@@ -8,16 +8,33 @@
 <title>BOMB WMS｜倉儲與資產管理系統</title>
 <link rel="stylesheet" href="assets/wms.css">
 <style>
-  #page-dashboard .wms-dashboard-section-title{margin:22px 0 12px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-  #page-dashboard .wms-dashboard-section-title h2{margin:0;font-size:18px;font-weight:700}
-  #page-dashboard .wms-dashboard-section-title p{margin:0;font-size:13px;opacity:.72}
-  #page-dashboard .wms-dashboard-focus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0 0 22px}
-  #page-dashboard .wms-dashboard-focus .stat-card{min-width:0;border-top:3px solid #7978ee}
-  #page-dashboard .wms-dashboard-focus .stat-card:nth-child(2){border-top-color:#29a474}
-  #page-dashboard .wms-dashboard-focus .stat-card:nth-child(3){border-top-color:#e69b32}
-  #page-dashboard .wms-dashboard-focus .stat-card:nth-child(4){border-top-color:#dd6a7f}
-  @media(max-width:900px){#page-dashboard .wms-dashboard-focus{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:520px){#page-dashboard .wms-dashboard-focus{grid-template-columns:1fr 1fr;gap:10px}#page-dashboard .wms-dashboard-focus .stat-card{padding:14px}}
+  #page-dashboard{--dash-surface:#fff;--dash-border:#e2e8f0;--dash-muted:#64748b;--dash-shadow:0 10px 28px rgba(25,42,75,.05)}
+  html[data-theme="dark"] #page-dashboard{--dash-surface:#171e29;--dash-border:#2d394b;--dash-muted:#9bb0cc;--dash-shadow:0 12px 30px rgba(0,0,0,.11)}
+  #page-dashboard .wms-dashboard-section-title{margin:24px 0 14px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  #page-dashboard .wms-dashboard-section-title h2{margin:0;font-size:18px;font-weight:750;letter-spacing:.02em}
+  #page-dashboard .wms-dashboard-section-title p{margin:0;color:var(--dash-muted);font-size:13px}
+  #page-dashboard .wms-dashboard-focus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0 0 26px}
+  #page-dashboard .wms-dashboard-focus .wms-kpi{--kpi-accent:#6275dc;--kpi-tint:rgba(98,117,220,.13);position:relative;isolation:isolate;min-width:0;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;padding:19px 20px;border:1px solid var(--dash-border);border-radius:18px;background:linear-gradient(145deg,var(--kpi-tint),transparent 62%),var(--dash-surface);box-shadow:var(--dash-shadow);transition:transform .18s ease,box-shadow .18s ease}
+  #page-dashboard .wms-dashboard-focus .wms-kpi:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(25,42,75,.12)}
+  #page-dashboard .wms-kpi--stocked{--kpi-accent:#1eaa78;--kpi-tint:rgba(30,170,120,.12)}
+  #page-dashboard .wms-kpi--inspection{--kpi-accent:#d8962d;--kpi-tint:rgba(216,150,45,.14)}
+  #page-dashboard .wms-kpi--order{--kpi-accent:#9970d8;--kpi-tint:rgba(153,112,216,.14)}
+  #page-dashboard .wms-kpi .stat-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  #page-dashboard .wms-kpi .stat-label{font-size:14px;font-weight:650}
+  #page-dashboard .wms-kpi .stat-icon{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:11px;background:var(--kpi-tint);color:var(--kpi-accent);font-size:18px;font-weight:700}
+  #page-dashboard .wms-kpi .stat-value{margin-top:8px;font-size:36px;line-height:1.1;font-weight:760;letter-spacing:-.035em}
+  #page-dashboard .wms-kpi .stat-note{margin-top:7px;color:var(--dash-muted);font-size:12px;line-height:1.45}
+  #page-dashboard .dashboard-grid>div{display:flex;flex-direction:column;gap:16px;min-width:0}
+  #page-dashboard .dashboard-grid>div>br{display:none}
+  #page-dashboard .dashboard-grid .card{overflow:hidden;border:1px solid var(--dash-border);border-radius:18px;background:var(--dash-surface);box-shadow:var(--dash-shadow)}
+  #page-dashboard .dashboard-grid .card-header{padding:17px 19px}
+  #page-dashboard .dashboard-grid .card-body{padding:18px 19px}
+  #page-dashboard .dashboard-grid .wms-card-footer{border-top:1px solid var(--dash-border)}
+  #page-dashboard .dashboard-grid .alert-list{display:grid;gap:9px}
+  #page-dashboard .dashboard-grid .alert-item{margin:0;border-radius:12px}
+  @media(max-width:1000px){#page-dashboard .wms-dashboard-focus{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:520px){#page-dashboard .wms-dashboard-focus{gap:10px}#page-dashboard .wms-dashboard-focus .wms-kpi{min-height:136px;padding:14px}#page-dashboard .wms-kpi .stat-value{font-size:30px}#page-dashboard .wms-kpi .stat-label{font-size:13px}}
+  @media(prefers-reduced-motion:reduce){#page-dashboard .wms-dashboard-focus .wms-kpi{transition:none}}
 </style>
 </head>
 
@@ -386,10 +403,10 @@
     const todayStocked=db.inbound.filter(r=>Number(r.accepted)>0&&String(r.inspectedAt||'').split(' ')[0]===today).length;
     const awaitingInspection=db.inbound.filter(r=>r.status==='待驗收').length;
     const pendingOrders=db.purchases.filter(p=>p.status==='待叫貨').length;
-    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存'],['待驗收',awaitingInspection,'到貨後尚未完成驗收'],['待叫貨',pendingOrders,'等待採購人員叫貨']].map(([name,value,note])=>`<article class="stat-card"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon">▦</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
+    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單','arrival','↓'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存','stocked','✓'],['待驗收',awaitingInspection,'到貨後尚未完成驗收','inspection','◷'],['待叫貨',pendingOrders,'等待採購人員叫貨','order','!']].map(([name,value,note,kind,icon])=>`<article class="stat-card wms-kpi wms-kpi--${kind}"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon" aria-hidden="true">${icon}</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
     const recent=formatRows(db.logs.slice(0,5),[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who)]);
     const alerts=notes.slice(0,5).map(n=>`<div class="alert-item"><div class="alert-icon">!</div><div class="alert-content"><div class="alert-title">${E(n.type)}</div><div class="alert-desc">${E(n.text)}</div></div></div>`).join('')||'<p class="wms-empty">目前沒有待處理提醒</p>';
-    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今日作業與公司庫存概況',actions(['refresh','重新整理']))+`<div class="wms-dashboard-section-title"><h2>今日作業</h2><p>顯示目前瀏覽器中的作業資料</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><div class="wms-dashboard-section-title"><h2>設備與提醒</h2><p>設備總數 ${total} 台・可用 ${ready} 台</p></div><section class="dashboard-grid"><div>${card('設備狀態','依目前登錄的設備計算',`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`)}<br>${card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent))}<div class="wms-card-footer">${button('go-log','查看全部')}</div></div><div>${card('異常與提醒','低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`)}<br>${card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-transfer-asset','調撥設備'],['new-purchase','採購需求'],['new-count','開始盤點']].map(([a,t])=>button(a,t)).join('')}</div>`)}</div></section>`;
+    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今日作業與公司庫存概況',actions(['refresh','重新整理']))+`<div class="wms-dashboard-section-title"><h2>今日作業</h2><p>顯示目前瀏覽器中的作業資料</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><div class="wms-dashboard-section-title"><h2>設備與提醒</h2><p>設備總數 ${total} 台・可用 ${ready} 台</p></div><section class="dashboard-grid"><div>${card('設備狀態','依目前登錄的設備計算',`<div class="card-body"><div class="status-list">${[['可用',ready,'success'],['使用中／借用中',using,''],['故障／待檢測／維修中',repairing,'warning']].map(([n,v,c])=>`<div class="status-row"><div class="status-name">${n}</div><div class="progress"><div class="progress-bar ${c}" style="width:${total?Math.round(v/total*100):0}%"></div></div><div class="status-number">${v}</div></div>`).join('')}</div></div>`)}<br>${card('最近異動','最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)}</div><div>${card('異常與提醒','低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`)}<br>${card('快速操作','常用 WMS 作業',`<div class="card-body quick-actions">${[['new-inbound','到貨登記'],['new-transfer-asset','調撥設備'],['new-purchase','採購需求'],['new-count','開始盤點']].map(([a,t])=>button(a,t)).join('')}</div>`)}</div></section>`;
     const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
     filterItems();
   }
