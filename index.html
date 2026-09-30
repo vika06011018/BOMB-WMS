@@ -607,6 +607,69 @@
   @media(max-width:520px){#wmsDialog .wms-home-editor{padding:18px}#wmsDialog .wms-home-editor .wms-layout-row>label{flex-basis:100%}#wmsDialog .wms-home-editor .wms-layout-row select{flex:1}#page-dashboard .wms-home-arrange select{width:100%}}
   @media(prefers-reduced-motion:reduce){#page-dashboard .wms-dashboard-column{transition:none}}
 
+  /* 全站原生控制項：包含展開的下拉選單與日期選擇器 */
+  html{color-scheme:light}
+  html[data-theme="dark"]{color-scheme:dark}
+  .app select,.wms-dialog select{color-scheme:inherit}
+  .app select option,.app select optgroup,.wms-dialog select option,.wms-dialog select optgroup{background:var(--home-panel);color:var(--home-ink)}
+  .app input:not([type="checkbox"]):not([type="radio"]),.app select,.app textarea{color:var(--home-ink)}
+  .app .item-toolbar input,.app .item-toolbar select{background:var(--home-field);border-color:var(--home-line)}
+  .app input::placeholder,.app textarea::placeholder{color:var(--home-muted);opacity:1}
+  #page-dashboard .wms-widget-menu>summary:focus-visible{outline:2px solid var(--home-accent);outline-offset:2px}
+  #page-dashboard .wms-home-arrange select:disabled{opacity:.65;cursor:default}
+
+  /* 所有 WMS 作業視窗共用同一組主題與表單樣式 */
+  #wmsDialog{box-sizing:border-box;width:min(680px,calc(100vw - 28px));max-width:calc(100vw - 28px);max-height:calc(100dvh - 40px);margin:auto;padding:0;border:1px solid var(--home-line);border-radius:20px;background:var(--home-panel);color:var(--home-ink);box-shadow:0 24px 80px rgba(0,0,0,.3);overflow:auto;scrollbar-width:thin;scrollbar-color:var(--home-scroll) transparent;color-scheme:light}
+  html[data-theme="dark"] #wmsDialog{color-scheme:dark}
+  #wmsDialog::backdrop{background:rgba(9,18,30,.5);backdrop-filter:blur(5px)}
+  #wmsDialog::-webkit-scrollbar{width:6px;height:6px}
+  #wmsDialog::-webkit-scrollbar-thumb{background:var(--home-scroll);border-radius:8px}
+  #wmsDialog #wmsForm{box-sizing:border-box;padding:24px;margin:0;min-width:0}
+  #wmsDialog #wmsForm h2{margin:0 0 20px;color:var(--home-ink);font-size:21px;line-height:1.4;overflow-wrap:anywhere}
+  #wmsDialog #wmsForm h3{color:var(--home-ink)}
+  #wmsDialog .wms-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  #wmsDialog .wms-field{display:flex;flex-direction:column;gap:8px;min-width:0;margin:0;color:var(--home-ink);font-size:13px;font-weight:600}
+  #wmsDialog .wms-field>span{line-height:1.5;overflow-wrap:anywhere}
+  #wmsDialog input:not([type="checkbox"]):not([type="radio"]),#wmsDialog select,#wmsDialog textarea{box-sizing:border-box;width:100%;min-width:0;min-height:42px;padding:10px 12px;border:1px solid var(--home-line);border-radius:10px;background:var(--home-field);color:var(--home-ink);box-shadow:none;font:inherit;font-size:14px;line-height:1.4;color-scheme:inherit}
+  #wmsDialog textarea{min-height:100px;resize:vertical}
+  #wmsDialog input::placeholder,#wmsDialog textarea::placeholder{color:var(--home-muted);opacity:1}
+  #wmsDialog input:focus-visible,#wmsDialog select:focus-visible,#wmsDialog textarea:focus-visible{outline:2px solid var(--home-accent);outline-offset:2px;border-color:var(--home-accent)}
+  #wmsDialog .wms-dialog-actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;padding-top:18px;margin-top:24px;border-top:1px solid var(--home-line)}
+  #wmsDialog .wms-dialog-actions .btn{min-height:40px;padding:9px 20px;border:1px solid var(--home-line);border-radius:10px;background:var(--home-field);color:var(--home-ink);font:inherit;font-size:14px;cursor:pointer}
+  #wmsDialog .wms-dialog-actions .btn:hover{background:var(--home-tint)}
+  #wmsDialog .wms-dialog-actions .btn-primary{background:#246da8;border-color:#246da8;color:#fff}
+  #wmsDialog .wms-dialog-actions .btn-primary:hover{background:#1e5e93}
+  #wmsDialog button:focus-visible{outline:2px solid var(--home-accent);outline-offset:2px}
+  #wmsDialog #formError{margin:14px 0 0;color:#b83249;font-size:13px;line-height:1.6}
+  html[data-theme="dark"] #wmsDialog #formError{color:#ff9baa}
+  #wmsDialog .wms-home-editor .wms-layout-row select{width:auto;min-height:34px}
+  #wmsDialog .wms-home-editor .wms-layout-row button{min-height:34px}
+  @media(max-width:520px){#wmsDialog #wmsForm{padding:18px}#wmsDialog .wms-form-grid{grid-template-columns:1fr}#wmsDialog .wms-home-editor .wms-layout-row select{flex:1}}
+
+  /* 拖曳方向、底部落點與流暢回饋 */
+  html.wms-drag-active,html.wms-drag-active *{cursor:grabbing!important;user-select:none!important}
+  html.wms-drag-active{scroll-behavior:auto!important}
+  #page-dashboard .wms-home-widget.is-dragging{opacity:.32;outline:1px dashed var(--home-accent)}
+  #page-dashboard .wms-home-widget.is-drop-after::after{content:"";position:absolute;bottom:-10px;left:0;right:0;height:3px;border-radius:4px;background:var(--home-accent);pointer-events:none}
+  #page-dashboard .wms-home-widget.is-drop-before::before{pointer-events:none}
+  #page-dashboard .wms-dashboard-column{padding-bottom:32px}
+  #page-dashboard .wms-drag-preview{position:fixed;top:0;left:0;z-index:1000;display:flex;flex-direction:column;gap:6px;max-width:260px;padding:14px 18px;border:1px solid var(--home-accent);border-radius:12px;background:var(--home-panel);color:var(--home-ink);box-shadow:0 14px 35px rgba(0,0,0,.22);pointer-events:none;will-change:transform}
+  #page-dashboard .wms-drag-preview strong{font-size:14px}
+  #page-dashboard .wms-drag-preview span{font-size:12px;color:var(--home-muted)}
+
+  #page-dashboard .wms-home-widget{display:flex;flex-direction:column;max-width:100%;box-sizing:border-box;padding-bottom:12px}
+  #page-dashboard .wms-widget-tools{flex:0 0 auto}
+  #page-dashboard .wms-home-widget>.card{min-width:0}
+  #page-dashboard .wms-home-widget.is-sized>.card,#page-dashboard .wms-home-widget.is-expanded>.card{flex:1;min-height:0;overflow:auto;scrollbar-width:thin;scrollbar-color:var(--home-scroll) transparent}
+  #page-dashboard .wms-widget-resize{position:absolute;bottom:3px;right:4px;display:grid;place-items:center;width:24px;height:24px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--home-muted);font-size:15px;cursor:nwse-resize;touch-action:none;z-index:2}
+  #page-dashboard .wms-widget-resize:hover{background:var(--home-tint);color:var(--home-accent)}
+  #page-dashboard .wms-widget-resize:focus-visible{outline:2px solid var(--home-accent)}
+  #page-dashboard .wms-home-widget.is-expanded{position:fixed;top:var(--expanded-top,100px);bottom:20px;left:20px;right:20px;z-index:80;width:auto!important;height:auto!important;max-width:none;box-shadow:0 0 0 100vmax rgba(5,12,22,.5),0 20px 60px rgba(0,0,0,.25)}
+  #page-dashboard .wms-home-widget.is-collapsed{height:auto!important}
+  #page-dashboard .wms-home-widget.is-collapsed>.card,#page-dashboard .wms-home-widget.is-collapsed>.wms-widget-resize,#page-dashboard .wms-home-widget.is-expanded>.wms-widget-resize{display:none}
+  html.wms-resize-active,html.wms-resize-active *{cursor:nwse-resize!important;user-select:none!important}
+  @media(max-width:520px){#page-dashboard .wms-home-widget.is-expanded{left:10px;right:10px;bottom:10px}}
+
 </style>
 </head>
 
@@ -916,12 +979,217 @@
       order.splice(last+1,0,key);
     }
     dashboardPrefs.widgets=order;
-    saveDashboardLayout();
+    applyDashboardOrder();
+  }
+  const HOME_SIZE_KEY='bomb-wms-home-widget-sizes-v1';
+  let homeSizes={};
+  try{
+    const stored=JSON.parse(localStorage.getItem(HOME_SIZE_KEY)||'{}');
+    widgetChoices.forEach(([key])=>{
+      const size=stored?.[key];
+      if(size&&Number.isFinite(size.width)&&Number.isFinite(size.height))homeSizes[key]={width:Math.max(250,Math.min(1800,size.width)),height:Math.max(150,Math.min(1400,size.height))};
+    });
+  }catch(e){}
+  function bindDashboardSizing(workspace){
+    function writeSize(frame,width,height){
+      const maxWidth=frame.parentElement.clientWidth-8;
+      const size={width:Math.max(Math.min(250,maxWidth),Math.min(maxWidth,width)),height:Math.max(150,Math.min(1400,height))};
+      frame.classList.add('is-sized');frame.style.width=size.width+'px';frame.style.height=size.height+'px';
+      return size;
+    }
+    workspace.querySelectorAll('[data-home-widget]').forEach(frame=>{
+      const key=frame.dataset.homeWidget;
+      if(homeSizes[key])writeSize(frame,homeSizes[key].width,homeSizes[key].height);
+      const grip=document.createElement('button');grip.type='button';grip.className='wms-widget-resize';grip.dataset.homeResize='';
+      grip.setAttribute('aria-label','調整視窗大小，拖曳或使用方向鍵');grip.title='拖曳調整大小';grip.textContent='◢';frame.append(grip);
+      grip.addEventListener('keydown',event=>{
+        if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)||frame.classList.contains('is-expanded')||frame.classList.contains('is-collapsed'))return;
+        event.preventDefault();const rect=frame.getBoundingClientRect();
+        homeSizes[key]=writeSize(frame,rect.width+(event.key==='ArrowRight'?20:event.key==='ArrowLeft'?-20:0),rect.height+(event.key==='ArrowDown'?20:event.key==='ArrowUp'?-20:0));
+        localStorage.setItem(HOME_SIZE_KEY,JSON.stringify(homeSizes));
+      });
+      grip.addEventListener('pointerdown',event=>{
+        if(event.button!==0||frame.classList.contains('is-expanded')||frame.classList.contains('is-collapsed'))return;
+        event.preventDefault();event.stopPropagation();
+        const rect=frame.getBoundingClientRect(),origin={x:event.clientX,y:event.clientY};
+        const previous={width:frame.style.width,height:frame.style.height,sized:frame.classList.contains('is-sized')};
+        let pending={width:rect.width,height:rect.height},size=null,raf=0;
+        function paint(){raf=0;size=writeSize(frame,pending.width,pending.height)}
+        function move(e){if(e.pointerId!==event.pointerId)return;pending={width:rect.width+e.clientX-origin.x,height:rect.height+e.clientY-origin.y};if(!raf)raf=requestAnimationFrame(paint)}
+        function finish(e){
+          if(e.pointerId!==event.pointerId)return;
+          cancelAnimationFrame(raf);
+          if(e.type==='pointerup'){paint();homeSizes[key]=size;localStorage.setItem(HOME_SIZE_KEY,JSON.stringify(homeSizes))}
+          else{frame.style.width=previous.width;frame.style.height=previous.height;frame.classList.toggle('is-sized',previous.sized)}
+          document.documentElement.classList.remove('wms-resize-active');
+          grip.removeEventListener('pointermove',move);grip.removeEventListener('pointerup',finish);grip.removeEventListener('pointercancel',finish);
+          if(grip.hasPointerCapture(event.pointerId))grip.releasePointerCapture(event.pointerId);
+        }
+        document.documentElement.classList.add('wms-resize-active');grip.setPointerCapture(event.pointerId);
+        grip.addEventListener('pointermove',move);grip.addEventListener('pointerup',finish);grip.addEventListener('pointercancel',finish);
+      });
+    });
+  }
+  function toggleDashboardSize(frame,command){
+    if(command==='expand'){
+      const expanded=!frame.classList.contains('is-expanded');
+      document.querySelectorAll('.wms-home-widget.is-expanded').forEach(other=>{
+        other.classList.remove('is-expanded');other.querySelector('[data-home-command="expand"]').textContent='放大視窗';
+      });
+      frame.classList.toggle('is-expanded',expanded);
+      if(expanded){
+        frame.classList.remove('is-collapsed');frame.querySelector('[data-home-command="collapse"]').textContent='收合視窗';
+        const top=document.querySelector('.wms-saas-navbar')?.getBoundingClientRect().bottom||0;
+        frame.style.setProperty('--expanded-top',Math.max(12,Math.min(top+12,window.innerHeight-180))+'px');
+      }
+      frame.querySelector('[data-home-command="expand"]').textContent=expanded?'還原大小':'放大視窗';
+    }
+    if(command==='collapse'){
+      frame.classList.remove('is-expanded');frame.querySelector('[data-home-command="expand"]').textContent='放大視窗';
+      const collapsed=frame.classList.toggle('is-collapsed');frame.querySelector('[data-home-command="collapse"]').textContent=collapsed?'展開內容':'收合視窗';
+    }
+    if(command==='reset-size'){
+      frame.classList.remove('is-sized','is-expanded','is-collapsed');frame.style.width='';frame.style.height='';
+      delete homeSizes[frame.dataset.homeWidget];localStorage.setItem(HOME_SIZE_KEY,JSON.stringify(homeSizes));
+      frame.querySelector('[data-home-command="expand"]').textContent='放大視窗';frame.querySelector('[data-home-command="collapse"]').textContent='收合視窗';
+    }
+    frame.querySelector('details')?.removeAttribute('open');
+  }
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape')document.querySelectorAll('.wms-home-widget.is-expanded').forEach(frame=>toggleDashboardSize(frame,'expand'));
+  });
+  function applyDashboardOrder(){
+    localStorage.setItem(DASH_PREF_KEY,JSON.stringify(dashboardPrefs));
+    const workspace=document.querySelector('#page-dashboard .wms-dashboard-workspace');
+    if(!workspace)return;
+    const frames=new Map([...workspace.querySelectorAll('[data-home-widget]')].map(frame=>[frame.dataset.homeWidget,frame]));
+    workspace.querySelectorAll('[data-home-column]').forEach(column=>{
+      column.querySelector('.wms-empty-column')?.remove();
+      const side=column.dataset.homeColumn;
+      dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]===side).forEach(key=>{
+        const frame=frames.get(key);if(!frame)return;
+        column.append(frame);
+        frame.querySelector('details')?.removeAttribute('open');
+        const changeSide=frame.querySelector('[data-home-command="side"]');
+        if(changeSide)changeSide.textContent='⇄ 移到'+(side==='left'?'右':'左')+'欄';
+      });
+      if(!column.querySelector('[data-home-widget]')){
+        const empty=document.createElement('div');empty.className='wms-empty-column';
+        empty.textContent='拖移視窗到'+(side==='left'?'左':'右')+'欄';column.append(empty);
+      }
+    });
+  }
+  function dashboardDropBefore(cards,y){
+    return cards.find(card=>y<card.top+card.height/2)?.key||null;
+  }
+  function bindDashboardDrag(workspace,handle){
+    handle.addEventListener('pointerdown',event=>{
+      if(event.button!==0||workspace.dataset.dragging==='true'||handle.closest('[data-home-widget]').classList.contains('is-expanded'))return;
+      event.preventDefault();
+      const frame=handle.closest('[data-home-widget]'),key=frame.dataset.homeWidget;
+      const origin={x:event.clientX,y:event.clientY};
+      let point={...origin},active=false,target=null,ghost=null,raf=0,previousTime=0;
+      let markedColumn=null,markedCard=null,markedClass='';
+      const scrollables=[];
+      for(let parent=workspace.parentElement;parent;parent=parent.parentElement){
+        if(parent.scrollHeight>parent.clientHeight&&/(auto|scroll)/.test(getComputedStyle(parent).overflowY))scrollables.push(parent);
+      }
+      if(document.scrollingElement&&!scrollables.includes(document.scrollingElement))scrollables.push(document.scrollingElement);
+      function clearMarker(){
+        markedColumn?.classList.remove('is-drop-column');
+        if(markedClass)markedCard?.classList.remove(markedClass);
+        markedColumn=markedCard=null;markedClass='';
+      }
+      function updateTarget(){
+        const area=workspace.getBoundingClientRect();
+        if(point.x<area.left-24||point.x>area.right+24||point.y<area.top-80||point.y>area.bottom+160){clearMarker();target=null;return;}
+        const columns=[...workspace.querySelectorAll('[data-home-column]')];
+        const column=columns.reduce((best,current)=>{
+          const rect=current.getBoundingClientRect();
+          const distance=point.x<rect.left?rect.left-point.x:point.x>rect.right?point.x-rect.right:0;
+          const vertical=point.y<rect.top?rect.top-point.y:point.y>rect.bottom?point.y-rect.bottom:0;
+          const score=distance*10000+vertical;
+          return !best||score<best.score?{element:current,score}:best;
+        },null)?.element;
+        if(!column){clearMarker();target=null;return;}
+        const cards=[...column.querySelectorAll('[data-home-widget]')].filter(card=>card!==frame);
+        const before=dashboardDropBefore(cards.map(card=>{const rect=card.getBoundingClientRect();return {key:card.dataset.homeWidget,top:rect.top,height:rect.height}}),point.y);
+        const marker=before?cards.find(card=>card.dataset.homeWidget===before):cards[cards.length-1];
+        const markerClass=before?'is-drop-before':'is-drop-after';
+        target={side:column.dataset.homeColumn,before};
+        if(markedColumn!==column||markedCard!==marker||markedClass!==markerClass){
+          clearMarker();markedColumn=column;markedCard=marker;markedClass=markerClass;
+          markedColumn.classList.add('is-drop-column');markedCard?.classList.add(markedClass);
+        }
+      }
+      function autoScroll(delta){
+        const topbar=document.querySelector('.wms-saas-navbar');
+        const toolbarBottom=topbar?.getBoundingClientRect().bottom||0;
+        for(const parent of scrollables){
+          const isPage=parent===document.scrollingElement;
+          const rect=isPage?{top:0,bottom:window.innerHeight,left:0,right:window.innerWidth}:parent.getBoundingClientRect();
+          if(point.x<rect.left||point.x>rect.right)continue;
+          const top=Math.max(rect.top,toolbarBottom)+64,bottom=Math.min(rect.bottom,window.innerHeight)-64;
+          let speed=0;
+          if(point.y<top)speed=-Math.min(1,(top-point.y)/64);
+          else if(point.y>bottom)speed=Math.min(1,(point.y-bottom)/64);
+          const old=parent.scrollTop;
+          if(speed)parent.scrollTop+=speed*650*delta/1000;
+          if(parent.scrollTop!==old)break;
+        }
+      }
+      function tick(time){
+        if(!active)return;
+        const delta=previousTime?Math.min(32,time-previousTime):16;previousTime=time;
+        ghost.style.transform=`translate3d(${point.x+14}px,${point.y+14}px,0)`;
+        autoScroll(delta);updateTarget();raf=requestAnimationFrame(tick);
+      }
+      function start(){
+        active=true;workspace.dataset.dragging='true';
+        workspace.querySelectorAll('details[open]').forEach(menu=>menu.removeAttribute('open'));
+        frame.classList.add('is-dragging');
+        document.documentElement.classList.add('wms-drag-active');
+        ghost=document.createElement('div');ghost.className='wms-drag-preview';ghost.setAttribute('aria-hidden','true');
+        const name=document.createElement('strong');name.textContent=widgetChoices.find(([id])=>id===key)?.[1]||key;
+        const note=document.createElement('span');note.textContent='放開以移動到標示位置';ghost.append(name,note);
+        document.getElementById('page-dashboard').append(ghost);
+        raf=requestAnimationFrame(tick);
+      }
+      function move(e){
+        if(e.pointerId!==event.pointerId)return;
+        point={x:e.clientX,y:e.clientY};
+        if(!active&&Math.hypot(point.x-origin.x,point.y-origin.y)>=6)start();
+      }
+      function finish(e){
+        if(e.pointerId!==event.pointerId)return;
+        if(active&&e.type==='pointerup'){point={x:e.clientX,y:e.clientY};updateTarget();}
+        const destination=target;
+        active=false;cancelAnimationFrame(raf);clearMarker();ghost?.remove();
+        frame.classList.remove('is-dragging');document.documentElement.classList.remove('wms-drag-active');
+        delete workspace.dataset.dragging;
+        document.removeEventListener('pointermove',move);
+        document.removeEventListener('pointerup',finish);
+        document.removeEventListener('pointercancel',finish);
+        document.removeEventListener('keydown',escape);
+        window.removeEventListener('blur',cancel);
+        if(workspace.hasPointerCapture(event.pointerId))workspace.releasePointerCapture(event.pointerId);
+        if(e.type==='pointerup'&&destination)moveDashboardWidget(key,destination.side,destination.before);
+      }
+      function cancel(){finish({pointerId:event.pointerId,type:'pointercancel'})}
+      function escape(e){if(e.key==='Escape'){e.preventDefault();cancel()}}
+      workspace.setPointerCapture(event.pointerId);
+      document.addEventListener('pointermove',move);
+      document.addEventListener('pointerup',finish);
+      document.addEventListener('pointercancel',finish);
+      document.addEventListener('keydown',escape);
+      window.addEventListener('blur',cancel);
+    });
   }
   function bindDashboardWorkspace(){
     const home=document.getElementById('page-dashboard');
     const workspace=home.querySelector('.wms-dashboard-workspace');
     if(!workspace)return;
+    bindDashboardSizing(workspace);
     home.querySelector('[data-home-add]')?.addEventListener('change',event=>{
       const key=event.target.value;
       if(!widgetChoices.some(([id])=>id===key)||dashboardPrefs.widgets.includes(key))return;
@@ -942,6 +1210,7 @@
       const control=event.target.closest('[data-home-command]');if(!control)return;
       const frame=control.closest('[data-home-widget]'),key=frame.dataset.homeWidget;
       const side=dashboardPrefs.columns[key],command=control.dataset.homeCommand;
+      if(['expand','collapse','reset-size'].includes(command)){toggleDashboardSize(frame,command);return;}
       if(command==='hide'){
         if(dashboardPrefs.widgets.length===1){customizeHome();return;}
         dashboardPrefs.widgets=dashboardPrefs.widgets.filter(id=>id!==key);saveDashboardLayout();return;
@@ -952,42 +1221,9 @@
       if(command==='up'&&i>0)moveDashboardWidget(key,side,siblings[i-1]);
       if(command==='down'&&i<siblings.length-1)moveDashboardWidget(key,side,siblings[i+2]||null);
     });
-    workspace.querySelectorAll('[data-home-drag]').forEach(handle=>{
-      handle.addEventListener('pointerdown',event=>{
-        if(event.button!==0)return;
-        const frame=handle.closest('[data-home-widget]'),key=frame.dataset.homeWidget;
-        const origin={x:event.clientX,y:event.clientY};let active=false,target=null;
-        handle.setPointerCapture(event.pointerId);
-        const clear=()=>workspace.querySelectorAll('.is-drop-column,.is-drop-before,.is-dragging').forEach(el=>el.classList.remove('is-drop-column','is-drop-before','is-dragging'));
-        const move=e=>{
-          if(e.pointerId!==event.pointerId)return;
-          if(!active&&Math.hypot(e.clientX-origin.x,e.clientY-origin.y)<8)return;
-          active=true;clear();frame.classList.add('is-dragging');
-          const hit=document.elementFromPoint(e.clientX,e.clientY);
-          const column=hit?.closest('[data-home-column]');
-          target=null;
-          if(column&&workspace.contains(column)){
-            column.classList.add('is-drop-column');
-            const before=[...column.querySelectorAll('[data-home-widget]')].find(el=>el!==frame&&e.clientY<el.getBoundingClientRect().top+el.getBoundingClientRect().height/2);
-            before?.classList.add('is-drop-before');
-            target={side:column.dataset.homeColumn,before:before?.dataset.homeWidget||null};
-          }
-        };
-        const finish=e=>{
-          if(e.pointerId!==event.pointerId)return;
-          handle.removeEventListener('pointermove',move);
-          handle.removeEventListener('pointerup',finish);
-          handle.removeEventListener('pointercancel',finish);
-          if(handle.hasPointerCapture(event.pointerId))handle.releasePointerCapture(event.pointerId);
-          clear();
-          if(e.type==='pointerup'&&active&&target)moveDashboardWidget(key,target.side,target.before);
-        };
-        handle.addEventListener('pointermove',move);
-        handle.addEventListener('pointerup',finish);
-        handle.addEventListener('pointercancel',finish);
-      });
-    });
+    workspace.querySelectorAll('[data-home-drag]').forEach(handle=>bindDashboardDrag(workspace,handle));
   }
+
   function customizeHome(){
     const ordered=[...new Set([...dashboardPrefs.widgets,...widgetChoices.map(([key])=>key)])];
     const favoriteGrid=`<h3>我的常用</h3><div class="wms-customize-grid">${favoriteChoices.map(([key,label])=>`<label><input type="checkbox" name="favorite_${E(key)}" ${dashboardPrefs.favorites.includes(key)?'checked':''}><span>${E(label)}</span></label>`).join('')}</div>`;
@@ -1223,11 +1459,11 @@
       alerts:card('異常與提醒','全公司低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`),
       recent:card('最近異動','全公司最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)
     };
-    const renderHomeWidget=key=>`<section class="wms-home-widget" data-home-widget="${E(key)}"><div class="wms-widget-tools"><button type="button" data-home-drag aria-label="拖移${E(widgetChoices.find(([id])=>id===key)?.[1]||key)}，也可用右側選單移動" title="拖移視窗">⠿</button><select class="wms-widget-kind" data-home-kind aria-label="切換視窗內容">${widgetChoices.map(([id,label])=>`<option value="${E(id)}" ${id===key?'selected':''}>${E(label)}</option>`).join('')}</select><details class="wms-widget-menu"><summary aria-label="視窗操作" title="視窗操作">···</summary><div><button type="button" data-home-command="up">↑ 上移</button><button type="button" data-home-command="down">↓ 下移</button><button type="button" data-home-command="side">⇄ 移到${dashboardPrefs.columns[key]==='left'?'右':'左'}欄</button><button type="button" data-home-command="hide">隱藏視窗</button></div></details></div>${widgets[key]}</section>`;
+    const renderHomeWidget=key=>`<section class="wms-home-widget" data-home-widget="${E(key)}"><div class="wms-widget-tools"><button type="button" data-home-drag aria-label="拖移${E(widgetChoices.find(([id])=>id===key)?.[1]||key)}，也可用右側選單移動" title="拖移視窗">⠿</button><select class="wms-widget-kind" data-home-kind aria-label="切換視窗內容">${widgetChoices.map(([id,label])=>`<option value="${E(id)}" ${id===key?'selected':''}>${E(label)}</option>`).join('')}</select><details class="wms-widget-menu"><summary aria-label="視窗操作" title="視窗操作">···</summary><div><button type="button" data-home-command="expand">放大視窗</button><button type="button" data-home-command="collapse">收合視窗</button><button type="button" data-home-command="reset-size">重設大小</button><button type="button" data-home-command="up">↑ 上移</button><button type="button" data-home-command="down">↓ 下移</button><button type="button" data-home-command="side">⇄ 移到${dashboardPrefs.columns[key]==='left'?'右':'左'}欄</button><button type="button" data-home-command="hide">隱藏視窗</button></div></details></div>${widgets[key]}</section>`;
     const left=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]==='left'&&widgets[key]).map(renderHomeWidget).join('');
     const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(renderHomeWidget).join('');
     const hiddenWidgets=widgetChoices.filter(([key])=>!dashboardPrefs.widgets.includes(key));
-    const arrange=`<div class="wms-home-arrange"><p>拖曳視窗左上角移動位置；點選標題可切換內容，右側選單可調整或隱藏。位置自動儲存在目前瀏覽器。</p><select data-home-add aria-label="新增首頁視窗" ${hiddenWidgets.length?'':'disabled'}><option value="">${hiddenWidgets.length?'＋ 新增視窗':'全部視窗已顯示'}</option>${hiddenWidgets.map(([key,label])=>`<option value="${E(key)}">${E(label)}</option>`).join('')}</select></div>`;
+    const arrange=`<div class="wms-home-arrange"><p>拖曳視窗左上角移動位置；點選標題可切換內容，右側選單可調整或隱藏。拖曳右下角可調整大小；位置與尺寸自動儲存在目前瀏覽器。</p><select data-home-add aria-label="新增首頁視窗" ${hiddenWidgets.length?'':'disabled'}><option value="">${hiddenWidgets.length?'＋ 新增視窗':'全部視窗已顯示'}</option>${hiddenWidgets.map(([key,label])=>`<option value="${E(key)}">${E(label)}</option>`).join('')}</select></div>`;
     const scopeButtons=['全部','總部','企劃部'].map(name=>`<button type="button" data-action="set-home-scope" data-id="${E(name)}" class="${homeScope===name?'active':''}" aria-pressed="${homeScope===name}">${E(name)}</button>`).join('');
     const orgCards=Object.entries(ORG_TREE).map(([unit,sites])=>`<div class="wms-org-unit" ${inScope(unit)?'':'hidden'}><h3>${E(unit)}</h3>${Object.entries(sites).map(([site,areas])=>`<div class="wms-org-place"><b>${E(site)}</b><small>${E(areas.join('・'))}</small></div>`).join('')}</div>`).join('');
     document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-scope-bar"><strong>管理範圍</strong>${scopeButtons}</div><section class="wms-org-card"><h2>地點與區域</h2><p>OG 可查看並管理全部範圍；目前為單機展示資料</p><div class="wms-org-grid">${orgCards}</div><div style="margin-top:12px">${button('go-racks','管理位置')}</div></section><div class="wms-dashboard-section-title"><h2>今日作業</h2><p>${E(homeScope)}・資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section>${arrange}<section class="wms-dashboard-workspace"><div class="wms-dashboard-column" data-home-column="left">${left||'<div class="wms-empty-column">拖移視窗到左欄</div>'}</div><div class="wms-dashboard-column" data-home-column="right">${right||'<div class="wms-empty-column">拖移視窗到右欄</div>'}</div></section>`;
