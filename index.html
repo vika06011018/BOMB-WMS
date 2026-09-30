@@ -671,6 +671,24 @@
   @media(max-width:520px){#page-dashboard .wms-home-widget.is-expanded{left:10px;right:10px;bottom:10px}}
 
 </style>
+
+<style id="wms-integration-style">
+.page-view tr[hidden]{display:none!important}
+.wms-unit-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0 18px;padding:12px 16px;border:1px solid var(--home-line);border-radius:14px;background:var(--home-panel);color:var(--home-ink)}
+.wms-unit-bar select{padding:8px 12px;border-radius:9px;border:1px solid var(--home-line);background:var(--home-field);color:var(--home-ink);font:inherit}.wms-unit-bar small{color:var(--home-muted)}
+.wms-work-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin:14px 0 20px}.wms-work-summary article{padding:16px;border:1px solid var(--home-line);background:var(--home-panel);border-radius:14px;color:var(--home-ink)}.wms-work-summary strong{display:block;font-size:27px;margin:8px 0}.wms-work-summary small{color:var(--home-muted)}
+.wms-count-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;max-height:55vh;overflow:auto;padding:8px 2px}.wms-count-item{padding:14px;border:1px solid var(--home-line);border-radius:12px;background:var(--home-panel);color:var(--home-ink)}.wms-count-item input{width:100%;box-sizing:border-box;min-height:44px;margin-top:8px;background:var(--home-field);border:1px solid var(--home-line);border-radius:9px;padding:8px;color:var(--home-ink);font:inherit}.wms-count-item small{display:block;margin:6px 0;color:var(--home-muted)}
+.wms-work-note{padding:12px 16px;border-radius:12px;line-height:1.7;background:var(--home-tint);color:var(--home-ink);margin:12px 0}.wms-work-note p{margin:0}.wms-work-note .btn{margin:5px 5px 0 0}#wmsDialog textarea{box-sizing:border-box;width:100%;min-height:120px;padding:10px;background:var(--home-field);border:1px solid var(--home-line);color:var(--home-ink);border-radius:9px;font:inherit}.wms-form-grid .wms-field{min-width:0}
+</style>
+
+<style id="wms-freecanvas-style">
+#page-dashboard .wms-free-canvas{position:relative;display:block;min-height:260px;isolation:isolate;border-radius:16px}
+#page-dashboard .wms-free-canvas>.wms-home-widget{position:absolute;min-width:220px;max-width:100%;margin:0;transition:none}
+#page-dashboard .wms-widget-kind{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;flex:1;padding:0 2px}
+#page-dashboard .wms-home-widget.is-free-moving{z-index:30;box-shadow:0 12px 36px rgba(0,0,0,.28);outline:2px solid var(--home-accent)}
+#page-dashboard .wms-free-canvas>.wms-home-widget.is-expanded{position:fixed;left:20px!important;right:20px!important;top:var(--expanded-top,100px)!important;bottom:20px;z-index:80}
+@media(max-width:720px){#page-dashboard .wms-free-canvas{display:grid;gap:16px;height:auto!important}#page-dashboard .wms-free-canvas>.wms-home-widget{position:relative;left:auto!important;top:auto!important;width:100%!important;min-width:0}#page-dashboard [data-home-drag]{display:none}#page-dashboard .wms-free-canvas>.wms-home-widget.is-expanded{position:fixed;left:10px!important;right:10px!important;top:var(--expanded-top,100px)!important;width:auto!important;bottom:10px}}
+</style>
 </head>
 
 <body>
@@ -788,6 +806,7 @@
         </div>
         <div class="sheet-children" data-children="procurement" aria-label="採購與驗收子標籤" hidden>
           <button type="button" class="child-tab" data-page="purchase" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="purchase" aria-hidden="true"></span><span>採購需求</span></button>
+          <button type="button" class="child-tab" data-page="putaway" data-parent="procurement" aria-selected="false"><span>上架入庫</span></button>
           <button type="button" class="child-tab" data-page="inbound" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>到貨登記</span></button>
           <button type="button" class="child-tab" data-page="inspection" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>驗收</span></button>
         </div>
@@ -797,6 +816,8 @@
           <button type="button" class="child-tab" data-page="repair" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="repair" aria-hidden="true"></span><span>維修更換</span></button>
         </div>
         <div class="sheet-children" data-children="operations" aria-label="異動與盤點子標籤" hidden>
+          <button type="button" class="child-tab" data-page="requisition" data-parent="operations" aria-selected="false"><span>部門申領</span></button>
+          <button type="button" class="child-tab" data-page="lifecycle" data-parent="operations" aria-selected="false"><span>領用／回收／報廢</span></button>
           <button type="button" class="child-tab" data-page="transfer" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>調撥／配置</span></button>
           <button type="button" class="child-tab" data-page="borrow" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="borrow" aria-hidden="true"></span><span>借用／歸還</span></button>
           <button type="button" class="child-tab" data-page="count" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>盤點管理</span></button>
@@ -834,6 +855,9 @@
       <div class="page-view" id="page-reports"></div>
       <div class="page-view" id="page-roles"></div>
       <div class="page-view" id="page-import"></div>
+      <div class="page-view" id="page-requisition"></div>
+      <div class="page-view" id="page-putaway"></div>
+      <div class="page-view" id="page-lifecycle"></div>
       <div class="page-view" id="page-settings"></div>
     </div>
   </main>
@@ -859,7 +883,7 @@
   const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
   const childTabs=[...document.querySelectorAll('.child-tab')];
   const subtabBar=document.querySelector('.sheet-subtabs');
-  const pageGroups={items:'catalog',inventory:'catalog',racks:'catalog',purchase:'procurement',inbound:'procurement',inspection:'procurement',assets:'assets',machine:'assets',repair:'assets',transfer:'operations',borrow:'operations',count:'operations',reports:'reports',log:'reports',notifications:'reports',roles:'system',import:'system',settings:'system'};
+  const pageGroups={requisition:'operations',putaway:'procurement',lifecycle:'operations',items:'catalog',inventory:'catalog',racks:'catalog',purchase:'procurement',inbound:'procurement',inspection:'procurement',assets:'assets',machine:'assets',repair:'assets',transfer:'operations',borrow:'operations',count:'operations',reports:'reports',log:'reports',notifications:'reports',roles:'system',import:'system',settings:'system'};
   document.querySelectorAll('.wms-book-nav .sheet-tab').forEach(tab=>tab.insertAdjacentHTML('afterbegin','<svg class="wms-book-shape" viewBox="0 0 180 54" preserveAspectRatio="none" aria-hidden="true"><path d="M8 1H149Q155 1 158 8L179 45Q183 53 172 53H8Q1 53 1 46V9Q1 1 8 1Z"/></svg>'));
   let currentPage='dashboard';
   function showPage(page,group=pageGroups[page]||null){
@@ -931,10 +955,11 @@
   });
   let db;
   try{db=JSON.parse(localStorage.getItem(KEY)||'null');if(!db||db.version!==2)db=seed()}catch(e){db=seed()}
-  const ORG_TREE={
+  const DEFAULT_ORG_TREE={
     '總部':{'倉庫':['待驗區','待上架區','退貨區','報廢區','維修區','庫存區'],'辦公室':['BOSS室','會議室'],'作業區':['洗牌房','棚區1(真人)','棚區2(RB)','棚區3(MBL)']},
     '企劃部':{'辦公室':['辦公區','吧檯'],'機台區':['倉架位置（第1層／第2層）','維修區']}
   };
+  let ORG_TREE=db.organization||structuredClone(DEFAULT_ORG_TREE);
   function normalizeLocations(){
     db.locations.forEach(l=>{
       if(l.department==='辦公室部門')l.department='企劃部';
@@ -948,10 +973,10 @@
   let homeScope=['全部','總部','企劃部'].includes(localStorage.getItem(HOME_SCOPE_KEY))?localStorage.getItem(HOME_SCOPE_KEY):'全部';
   const inScope=department=>homeScope==='全部'||department===homeScope;
 
-  function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+  function save(){captureInventory();localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
   function E(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   const DASH_PREF_KEY='bomb-wms-dashboard-prefs-v1';
-  const favoriteChoices=[['purchase','採購需求'],['inbound','到貨登記'],['inspection','驗收'],['inventory','庫存查詢'],['count','盤點管理'],['assets','資產管理'],['transfer','調撥配置'],['borrow','借用歸還'],['repair','維修更換'],['log','異動日誌']];
+  const favoriteChoices=[['requisition','部門申領'],['putaway','上架入庫'],['lifecycle','領用回收'],['purchase','採購需求'],['inbound','到貨登記'],['inspection','驗收'],['inventory','庫存查詢'],['count','盤點管理'],['assets','資產管理'],['transfer','調撥配置'],['borrow','借用歸還'],['repair','維修更換'],['log','異動日誌']];
   const widgetChoices=[['tasks','今日待辦'],['favorites','我的常用'],['equipment','設備概況'],['quick','快速操作'],['alerts','異常與提醒'],['recent','最近異動']];
   const defaultPrefs={favorites:['purchase','inbound','inspection','inventory','count'],widgets:['tasks','recent','favorites','equipment','quick','alerts'],columns:{tasks:'left',recent:'left',favorites:'right',equipment:'right',quick:'right',alerts:'right'}};
   let dashboardPrefs=(()=>{try{const saved=JSON.parse(localStorage.getItem(DASH_PREF_KEY)||'null');if(saved&&Array.isArray(saved.favorites)&&Array.isArray(saved.widgets)){
@@ -1082,7 +1107,7 @@
   function dashboardDropBefore(cards,y){
     return cards.find(card=>y<card.top+card.height/2)?.key||null;
   }
-  function bindDashboardDrag(workspace,handle){
+  function legacyBindDashboardDrag(workspace,handle){
     handle.addEventListener('pointerdown',event=>{
       if(event.button!==0||workspace.dataset.dragging==='true'||handle.closest('[data-home-widget]').classList.contains('is-expanded'))return;
       event.preventDefault();
@@ -1185,7 +1210,7 @@
       window.addEventListener('blur',cancel);
     });
   }
-  function bindDashboardWorkspace(){
+  function legacyBindDashboardWorkspace(){
     const home=document.getElementById('page-dashboard');
     const workspace=home.querySelector('.wms-dashboard-workspace');
     if(!workspace)return;
@@ -1262,9 +1287,9 @@
   function stamp(){return new Date().toLocaleString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false})}
   function code(prefix,collection){let n=collection.reduce((max,x)=>Math.max(max,Number(x.id.split('-')[1])||0),0)+1;return prefix+'-'+String(n).padStart(4,'0')}
   function log(action,subject,from,to,ref=''){db.logs.unshift({id:code('LG',db.logs),time:stamp(),action,subject,from,to,who:'OG',ref})}
-  function available(id){const x=item(id);return x?.type==='設備'?db.assets.filter(a=>a.itemId===id&&a.status==='可用').length:db.stock.filter(r=>r.itemId===id).reduce((n,r)=>n+r.qty,0)}
-  function warnings(){return db.items.filter(x=>x.enabled&&available(x.id)<x.safety)}
-  function syncAutoPurchases(){
+  function legacyAvailable(id){const x=item(id);return x?.type==='設備'?db.assets.filter(a=>a.itemId===id&&a.status==='可用').length:db.stock.filter(r=>r.itemId===id).reduce((n,r)=>n+r.qty,0)}
+  function warnings(){return db.items.filter(x=>x.enabled&&!db.rules.some(r=>r.itemId===x.id)&&available(x.id)<x.safety)}
+  function legacySyncAutoPurchases(){
     let changed=false;
     const open=['待叫貨','已叫貨','無須叫貨','待審核','已核准','部分入庫'];
     for(const x of db.items){
@@ -1312,9 +1337,9 @@
   function editItem(id){const x=item(id);if(!x)return;form('編輯品項 '+id,[field('name','品項名稱','text',[],x.name),field('category','分類','text',[],x.category),field('unit','單位','text',[],x.unit),field('safety','安全庫存','number',[],x.safety),field('enabled','狀態','select',[{value:'true',label:'啟用'},{value:'false',label:'停用'}],String(x.enabled))],v=>{const before=x.name;x.name=v.name.trim();x.category=v.category.trim();x.unit=v.unit.trim();x.safety=requireNonnegative(v.safety);x.enabled=v.enabled==='true';log('編輯品項',id,before,x.name,id)})}
   function inbound(){form('登記到貨',[field('itemId','品項','select',itemOptions()),field('qty','到貨數量','number'),field('locationId','驗收後預計入庫位置','select',locationOptions()),field('purchaseId','關聯待到貨採購單（選填）','select',choices(db.purchases.filter(p=>['已核准','已叫貨','部分入庫'].includes(p.status)),p=>`${p.id} ${itemName(p.itemId)} × ${p.qty-(p.received||0)}`),'',false),field('note','到貨備註','text',[],'',false)],v=>{
     const qty=requirePositive(v.qty),x=item(v.itemId),l=loc(v.locationId),purchase=db.purchases.find(p=>p.id===v.purchaseId);
-    if(!x||!l||!x.enabled)throw Error('請選擇有效品項及位置');
-    const pending=db.inbound.filter(r=>r.purchaseId===v.purchaseId&&r.status==='待驗收').reduce((n,r)=>n+r.qty,0);
-    if(v.purchaseId&&(!purchase||purchase.itemId!==x.id||!['已核准','已叫貨','部分入庫'].includes(purchase.status)||qty>purchase.qty-(purchase.received||0)-pending))throw Error('關聯採購單的品項或待驗收數量不符');
+    if(!x||!l||!x.enabled||!allowedItem(x,l.department))throw Error('請選擇有效品項及位置');
+    const pending=db.inbound.filter(r=>r.purchaseId===v.purchaseId&&['待驗收','待上架'].includes(r.status)).reduce((n,r)=>n+(r.status==='待上架'?r.accepted:r.qty),0);
+    if(v.purchaseId&&(!purchase||purchase.itemId!==x.id||purchase.department!==l.department||!['已核准','已叫貨','部分入庫'].includes(purchase.status)||qty>purchase.qty-(purchase.received||0)-pending))throw Error('關聯採購單的品項或待驗收數量不符');
     const id=code('IN',db.inbound);
     db.inbound.unshift({id,time:stamp(),itemId:x.id,qty,accepted:0,locationId:l.id,note:v.note.trim(),purchaseId:v.purchaseId,who:'OG',status:'待驗收'});
     log('到貨登記',`${x.name} × ${qty}`,'－','待驗收',id)
@@ -1327,26 +1352,20 @@
       if(accepted>record.qty)throw Error('合格數量不可超過到貨數量');
       const x=item(record.itemId),l=loc(record.locationId);
       if(!x||!l)throw Error('品項或位置不存在');
-      if(accepted>0){
-        if(x.type==='設備')for(let i=0;i<accepted;i++)db.assets.push({id:code('AST',db.assets),itemId:x.id,locationId:l.id,status:'可用',holder:''});
-        else{let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}stock.qty+=accepted}
-      }
       record.accepted=accepted;record.inspectedAt=stamp();record.note=v.note.trim();
-      record.status=accepted===0?'驗收不合格':accepted===record.qty?'已入庫':'部分驗收';
-      const purchase=db.purchases.find(p=>p.id===record.purchaseId);
-      if(purchase&&accepted>0){purchase.received=(purchase.received||0)+accepted;purchase.status=purchase.received>=purchase.qty?'已入庫':'部分入庫'}
-      log('驗收入庫',`${x.name} 到貨 ${record.qty}／合格 ${accepted}`,'待驗收',record.status,id)
+      record.status=accepted===0?'驗收不合格':'待上架';
+      record.rejected=record.qty-accepted;log('到貨驗收',`${x.name} 到貨 ${record.qty}／合格 ${accepted}`,'待驗收',record.status,id)
     })
   }
-  function transferAsset(){form('調撥設備',[field('assetId','設備資產','select',assetOptions(a=>a.status==='可用'||a.status==='使用中')),field('to','新位置','select',locationOptions())],v=>{const a=asset(v.assetId),dest=loc(v.to);if(!a||!dest||!['可用','使用中'].includes(a.status))throw Error('設備不可調撥');ensureDifferent(a.locationId,dest.id);const from=labelLoc(a.locationId),id=code('TR',db.transfers);a.locationId=dest.id;a.status=dest.site==='機台區'?'使用中':'可用';a.holder=a.status==='使用中'?dest.spot:'';db.transfers.unshift({id,time:stamp(),subject:`${a.id} ${itemName(a.itemId)}`,from,to:labelLoc(dest.id),qty:1,who:'OG'});log('調撥',a.id,from,labelLoc(dest.id),id)})}
-  function transferStock(){form('調撥消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('from','原位置','select',locationOptions()),field('to','新位置','select',locationOptions()),field('qty','數量','number')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId),source=db.stock.find(r=>r.itemId===v.itemId&&r.locationId===v.from),dest=loc(v.to);if(!x||x.type!=='消耗品'||!dest)throw Error('請選擇有效品項與位置');ensureDifferent(v.from,v.to);if(!source||source.qty<qty)throw Error('原位置數量不足');source.qty-=qty;let target=db.stock.find(r=>r.itemId===x.id&&r.locationId===dest.id);if(!target){target={itemId:x.id,locationId:dest.id,qty:0};db.stock.push(target)}target.qty+=qty;const id=code('TR',db.transfers),from=labelLoc(v.from),to=labelLoc(dest.id);db.transfers.unshift({id,time:stamp(),subject:x.name,from,to,qty,who:'OG'});log('調撥',`${x.name} × ${qty}`,from,to,id)})}
+  function legacyTransferAsset(){form('調撥設備',[field('assetId','設備資產','select',assetOptions(a=>a.status==='可用'||a.status==='使用中')),field('to','新位置','select',locationOptions())],v=>{const a=asset(v.assetId),dest=loc(v.to);if(!a||!dest||!['可用','使用中'].includes(a.status))throw Error('設備不可調撥');ensureDifferent(a.locationId,dest.id);const from=labelLoc(a.locationId),id=code('TR',db.transfers);a.locationId=dest.id;a.status=dest.site==='機台區'?'使用中':'可用';a.holder=a.status==='使用中'?dest.spot:'';db.transfers.unshift({id,time:stamp(),subject:`${a.id} ${itemName(a.itemId)}`,from,to:labelLoc(dest.id),qty:1,who:'OG'});log('調撥',a.id,from,labelLoc(dest.id),id)})}
+  function legacyTransferStock(){form('調撥消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('from','原位置','select',locationOptions()),field('to','新位置','select',locationOptions()),field('qty','數量','number')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId),source=db.stock.find(r=>r.itemId===v.itemId&&r.locationId===v.from),dest=loc(v.to);if(!x||x.type!=='消耗品'||!dest)throw Error('請選擇有效品項與位置');ensureDifferent(v.from,v.to);if(!source||source.qty<qty)throw Error('原位置數量不足');source.qty-=qty;let target=db.stock.find(r=>r.itemId===x.id&&r.locationId===dest.id);if(!target){target={itemId:x.id,locationId:dest.id,qty:0};db.stock.push(target)}target.qty+=qty;const id=code('TR',db.transfers),from=labelLoc(v.from),to=labelLoc(dest.id);db.transfers.unshift({id,time:stamp(),subject:x.name,from,to,qty,who:'OG'});log('調撥',`${x.name} × ${qty}`,from,to,id)})}
   function borrow(){form('借用設備',[field('assetId','可用設備','select',assetOptions(a=>a.status==='可用')),field('holder','借用人'),field('due','預計歸還日期','date')],v=>{const a=asset(v.assetId);if(!a||a.status!=='可用')throw Error('設備目前不可借用');const id=code('BR',db.borrows);a.status='借用中';a.holder=v.holder.trim();db.borrows.unshift({id,time:stamp(),assetId:a.id,holder:a.holder,from:labelLoc(a.locationId),due:v.due,returned:'',status:'借用中'});log('借用',a.id,labelLoc(a.locationId),a.holder,id)})}
-  function returnAsset(id){const b=db.borrows.find(x=>x.id===id),a=b&&asset(b.assetId);if(!b||!a||b.status!=='借用中')return;b.status='已歸還';b.returned=stamp();a.status='可用';a.holder='';log('歸還',a.id,b.holder,labelLoc(a.locationId),id);save()}
-  function repair(){form('新增維修紀錄',[field('assetId','設備資產','select',assetOptions(a=>a.status!=='借用中'&&a.status!=='維修中')),field('issue','故障／檢測原因')],v=>{const a=asset(v.assetId);if(!a)throw Error('資產不存在');const id=code('RP',db.repairs);const from=labelLoc(a.locationId);a.status='維修中';a.holder='';a.locationId='LOC-R01';db.repairs.unshift({id,time:stamp(),assetId:a.id,issue:v.issue.trim(),location:from,status:'維修中'});log('送修',a.id,from,labelLoc(a.locationId),id)})}
-  function replaceAsset(){form('故障設備更換',[field('faultyId','故障／待檢設備','select',assetOptions(a=>['故障','待檢測','維修中'].includes(a.status))),field('replacementId','可用替換設備','select',assetOptions(a=>a.status==='可用')),field('to','替換後使用位置','select',locationOptions()),field('issue','更換原因')],v=>{const old=asset(v.faultyId),next=asset(v.replacementId),dest=loc(v.to);if(!old||!next||!dest||old.id===next.id||old.itemId!==next.itemId||next.status!=='可用'||!['故障','待檢測','維修中'].includes(old.status))throw Error('請選擇相同品項的故障設備與可用備品');const from=labelLoc(next.locationId),id=code('RP',db.repairs);old.status='維修中';old.holder='';old.locationId='LOC-R01';next.locationId=dest.id;next.status=dest.site==='機台區'?'使用中':'可用';next.holder=next.status==='使用中'?dest.spot:'';db.repairs.unshift({id,time:stamp(),assetId:old.id,issue:`${v.issue.trim()}；以 ${next.id} 更換`,location:labelLoc(dest.id),status:'維修中'});log('維修更換',`${old.id} → ${next.id}`,from,labelLoc(dest.id),id)})}
-  function finishRepair(id){const r=db.repairs.find(x=>x.id===id),a=r&&asset(r.assetId);if(!r||!a||r.status!=='維修中')return;r.status='已完成';a.status='可用';log('維修完成',a.id,'維修中',labelLoc(a.locationId),id);save()}
-  function countStock(){form('盤點消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('locationId','盤點位置','select',locationOptions()),field('actual','現場實盤數','number')],v=>{const x=item(v.itemId),l=loc(v.locationId),actual=requireNonnegative(v.actual);if(!x||x.type!=='消耗品'||!l)throw Error('請選擇有效品項及位置');let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}const before=stock.qty,id=code('CT',db.counts);stock.qty=actual;db.counts.unshift({id,time:stamp(),itemId:x.id,locationId:l.id,before,actual,diff:actual-before,who:'OG'});log('盤點',x.name,`${before} ${x.unit}`,`${actual} ${x.unit}`,id)})}
-  function purchase(){form('新增採購需求',[field('department','申請部門','select',[{value:'總部',label:'總部'},{value:'企劃部',label:'企劃部'}]),field('itemId','品項','select',itemOptions()),field('qty','需求數量','number'),field('reason','需求原因')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId);if(!x)throw Error('品項不存在');if(db.purchases.some(p=>p.itemId===x.id&&['待叫貨','已叫貨','無須叫貨','待審核','已核准','部分入庫'].includes(p.status)))throw Error('此品項已有未完成的採購需求，請先查看清單');const id=code('PR',db.purchases);db.purchases.unshift({id,time:stamp(),department:v.department,itemId:x.id,qty,reason:v.reason.trim(),who:'OG',source:'人工申請',status:'待審核'});log('採購需求',`${x.name} × ${qty}`,'－',v.department,id)})}
+  function legacyReturnAsset(id){const b=db.borrows.find(x=>x.id===id),a=b&&asset(b.assetId);if(!b||!a||b.status!=='借用中')return;b.status='已歸還';b.returned=stamp();a.status='可用';a.holder='';log('歸還',a.id,b.holder,labelLoc(a.locationId),id);save()}
+  function legacyRepair(){form('新增維修紀錄',[field('assetId','設備資產','select',assetOptions(a=>a.status!=='借用中'&&a.status!=='維修中')),field('issue','故障／檢測原因')],v=>{const a=asset(v.assetId);if(!a)throw Error('資產不存在');const id=code('RP',db.repairs);const from=labelLoc(a.locationId);a.status='維修中';a.holder='';a.locationId='LOC-R01';db.repairs.unshift({id,time:stamp(),assetId:a.id,issue:v.issue.trim(),location:from,status:'維修中'});log('送修',a.id,from,labelLoc(a.locationId),id)})}
+  function legacyReplaceAsset(){form('故障設備更換',[field('faultyId','故障／待檢設備','select',assetOptions(a=>['故障','待檢測','維修中'].includes(a.status))),field('replacementId','可用替換設備','select',assetOptions(a=>a.status==='可用')),field('to','替換後使用位置','select',locationOptions()),field('issue','更換原因')],v=>{const old=asset(v.faultyId),next=asset(v.replacementId),dest=loc(v.to);if(!old||!next||!dest||old.id===next.id||old.itemId!==next.itemId||next.status!=='可用'||!['故障','待檢測','維修中'].includes(old.status))throw Error('請選擇相同品項的故障設備與可用備品');const from=labelLoc(next.locationId),id=code('RP',db.repairs);old.status='維修中';old.holder='';old.locationId='LOC-R01';next.locationId=dest.id;next.status=dest.site==='機台區'?'使用中':'可用';next.holder=next.status==='使用中'?dest.spot:'';db.repairs.unshift({id,time:stamp(),assetId:old.id,issue:`${v.issue.trim()}；以 ${next.id} 更換`,location:labelLoc(dest.id),status:'維修中'});log('維修更換',`${old.id} → ${next.id}`,from,labelLoc(dest.id),id)})}
+  function legacyFinishRepair(id){const r=db.repairs.find(x=>x.id===id),a=r&&asset(r.assetId);if(!r||!a||r.status!=='維修中')return;r.status='已完成';a.status='可用';log('維修完成',a.id,'維修中',labelLoc(a.locationId),id);save()}
+  function legacyCountStock(){form('盤點消耗品',[field('itemId','消耗品','select',itemOptions('消耗品')),field('locationId','盤點位置','select',locationOptions()),field('actual','現場實盤數','number')],v=>{const x=item(v.itemId),l=loc(v.locationId),actual=requireNonnegative(v.actual);if(!x||x.type!=='消耗品'||!l)throw Error('請選擇有效品項及位置');let stock=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id);if(!stock){stock={itemId:x.id,locationId:l.id,qty:0};db.stock.push(stock)}const before=stock.qty,id=code('CT',db.counts);stock.qty=actual;db.counts.unshift({id,time:stamp(),itemId:x.id,locationId:l.id,before,actual,diff:actual-before,who:'OG'});log('盤點',x.name,`${before} ${x.unit}`,`${actual} ${x.unit}`,id)})}
+  function legacyPurchase(){form('新增採購需求',[field('department','申請部門','select',[{value:'總部',label:'總部'},{value:'企劃部',label:'企劃部'}]),field('itemId','品項','select',itemOptions()),field('qty','需求數量','number'),field('reason','需求原因')],v=>{const qty=requirePositive(v.qty),x=item(v.itemId);if(!x)throw Error('品項不存在');if(db.purchases.some(p=>p.itemId===x.id&&['待叫貨','已叫貨','無須叫貨','待審核','已核准','部分入庫'].includes(p.status)))throw Error('此品項已有未完成的採購需求，請先查看清單');const id=code('PR',db.purchases);db.purchases.unshift({id,time:stamp(),department:v.department,itemId:x.id,qty,reason:v.reason.trim(),who:'OG',source:'人工申請',status:'待審核'});log('採購需求',`${x.name} × ${qty}`,'－',v.department,id)})}
   function setOrderDecision(id,kind,checked){
     const p=db.purchases.find(x=>x.id===id);
     if(!p||!['待叫貨','已核准','已叫貨','無須叫貨'].includes(p.status))return;
@@ -1380,7 +1399,7 @@
   }
 
   function formatRows(list,columns){return list.length?list.map(x=>row(columns.map(f=>f(x)))).join(''):''}
-  function renderAll(){
+  function renderLegacyAll(){
     syncAutoPurchases();
     renderFavorites();
     const actions=(...pairs)=>pairs.map(([name,title])=>button(name,title)).join(' ');
@@ -1391,8 +1410,8 @@
     db.items.forEach(x=>{const amount=available(x.id),low=amount<x.safety;db.locations.forEach(l=>{let total,free;if(x.type==='設備'){const assets=db.assets.filter(a=>a.itemId===x.id&&a.locationId===l.id);total=assets.length;free=assets.filter(a=>a.status==='可用').length}else{total=db.stock.find(r=>r.itemId===x.id&&r.locationId===l.id)?.qty||0;free=total}if(total>0)inv.push({x,l,total,free,low})})});
     page('inventory','庫存管理','依部門、區域及位置查看現有數量',['品項','類型','管理單位','地點','區域','位置','在庫／資產數','可用數','全公司安全庫存','狀態'],formatRows(inv,[r=>cell(r.x.id+' '+r.x.name),r=>cell(r.x.type),r=>cell(r.l.department),r=>cell(r.l.site||'未分類'),r=>cell(r.l.area),r=>cell(r.l.spot),r=>cell(r.total+' '+r.x.unit),r=>cell(r.free+' '+r.x.unit),r=>cell(r.x.safety+' '+r.x.unit),r=>`<td>${badge(r.low?'低於安全庫存':'正常')}</td>`]),actions(['new-inbound','＋ 到貨登記'],['new-transfer-stock','調撥耗材']),'安全庫存依品項計算全公司可用數；設備非可用狀態仍計入資產數');
     page('assets','資產管理','逐台追蹤設備、保管人及位置',['資產編號','品項','部門','區域／位置','保管人','狀態','可用配置'],formatRows(db.assets,[a=>cell(a.id),a=>cell(itemName(a.itemId)),a=>cell(loc(a.locationId)?.department||'－'),a=>cell((loc(a.locationId)?.area||'－')+'／'+(loc(a.locationId)?.spot||'－')),a=>cell(a.holder||'－'),a=>`<td>${badge(a.status)}</td>`,a=>cell(a.status==='可用'?'是':'否')]),actions(['new-transfer-asset','調撥設備'],['new-borrow','借用設備'],['new-repair','送修設備']));
-    page('inbound','到貨登記','到貨先登記，驗收合格後才計入庫存',['單號','時間','品項','到貨數量','關聯採購單','預計位置','狀態'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(r.time),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+(item(r.itemId)?.unit||'')),r=>cell(r.purchaseId||'－'),r=>cell(labelLoc(r.locationId)),r=>`<td>${badge(r.status||'已入庫')}</td>`]),actions(['new-inbound','＋ 登記到貨']));
-    page('inspection','驗收','確認合格數量後，庫存與採購需求才會更新',['單號','品項','到貨數量','合格數量','驗收結果','備註','操作'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+(item(r.itemId)?.unit||'')),r=>cell(r.status==='待驗收'?'－':(r.accepted??r.qty)+' '+(item(r.itemId)?.unit||'')),r=>`<td>${badge(r.status||'已入庫')}</td>`,r=>cell(r.note||'－'),r=>`<td>${r.status==='待驗收'?button('inspect-inbound','開始驗收',r.id):'－'}</td>`]));
+    page('inbound','到貨登記','到貨登記 → 驗收 → 確認上架後計入庫存',['單號','時間','品項','到貨數量','關聯採購單','預計位置','狀態'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(r.time),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+(item(r.itemId)?.unit||'')),r=>cell(r.purchaseId||'－'),r=>cell(labelLoc(r.locationId)),r=>`<td>${badge(r.status||'已入庫')}</td>`]),actions(['new-inbound','＋ 登記到貨']));
+    page('inspection','驗收','確認合格數量後轉待上架；不立即增加可用庫存',['單號','品項','到貨數量','合格數量','驗收結果','備註','操作'],formatRows(db.inbound,[r=>cell(r.id),r=>cell(itemName(r.itemId)),r=>cell(r.qty+' '+(item(r.itemId)?.unit||'')),r=>cell(r.status==='待驗收'?'－':(r.accepted??r.qty)+' '+(item(r.itemId)?.unit||'')),r=>`<td>${badge(r.status||'已入庫')}</td>`,r=>cell(r.note||'－'),r=>`<td>${r.status==='待驗收'?button('inspect-inbound','開始驗收',r.id):'－'}</td>`]));
     page('transfer','調撥／配置','設備及消耗品跨位置移動會同步更新庫存',['單號','時間','品項／資產','原位置','新位置','數量','操作人'],formatRows(db.transfers,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.qty),r=>cell(r.who)]),actions(['new-transfer-asset','調撥設備'],['new-transfer-stock','調撥耗材']));
     page('borrow','借用／歸還','借出設備不列入可用數，歸還後恢復',['借用單號','設備','借用人','借出位置','借用日期','預計歸還','實際歸還','狀態','操作'],formatRows(db.borrows,[r=>cell(r.id),r=>cell(r.assetId+' '+itemName(asset(r.assetId)?.itemId)),r=>cell(r.holder),r=>cell(r.from),r=>cell(r.time),r=>cell(r.due),r=>cell(r.returned||'－'),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='借用中'?button('return-asset','歸還',r.id):'－'}</td>`]),actions(['new-borrow','＋ 新增借用']));
     page('repair','維修更換','故障設備送修期間不列入可用數',['維修單號','時間','資產','問題說明','原位置／使用位置','狀態','操作'],formatRows(db.repairs,[r=>cell(r.id),r=>cell(r.time),r=>cell(r.assetId),r=>cell(r.issue),r=>cell(r.location),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${r.status==='維修中'?button('finish-repair','完成維修',r.id):'－'}</td>`]),actions(['new-repair','＋ 新增維修'],['new-replacement','更換備品']));
@@ -1415,7 +1434,8 @@
       <td data-label="操作">${r.status==='待審核'?button('approve-purchase','核准',r.id):'－'}</td>
     </tr>`).join(''):'';
     page('purchase','採購需求','低庫存自動列入；調整數量後選已叫貨或無須叫貨',['品項','叫貨數量','已叫貨','無須叫貨','狀態','來源／部門','原因','操作'],purchaseRows,actions(['new-purchase','＋ 新增需求']),'勾選只儲存在目前裝置的瀏覽器；到貨後請先登記，再到驗收頁面確認');
-    const notes=[...warnings().map(x=>({type:'庫存預警',text:`${x.name} 可用 ${available(x.id)} ${x.unit}，低於安全庫存 ${x.safety} ${x.unit}`,ref:x.id})),...db.purchases.filter(p=>['待審核','待叫貨'].includes(p.status)).map(p=>({type:p.status==='待叫貨'?'待叫貨':'待審核採購',text:`${p.department} 申請 ${itemName(p.itemId)} × ${p.qty}`,ref:p.id})),...db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).map(a=>({type:'設備狀態',text:`${a.id} ${itemName(a.itemId)}：${a.status}`,ref:a.id}))];
+    const allNotes=[...warnings().map(x=>({type:'庫存預警',text:`${x.name} 可用 ${available(x.id)} ${x.unit}，低於安全庫存 ${x.safety} ${x.unit}`,ref:x.id})),...db.purchases.filter(p=>['待審核','待叫貨'].includes(p.status)).map(p=>({type:p.status==='待叫貨'?'待叫貨':'待審核採購',text:`${p.department} 申請 ${itemName(p.itemId)} × ${p.qty}`,ref:p.id})),...db.assets.filter(a=>['故障','待檢測','維修中'].includes(a.status)).map(a=>({type:'設備狀態',text:`${a.id} ${itemName(a.itemId)}：${a.status}`,ref:a.id}))];
+    const notes=allNotes.filter(n=>{const p=db.purchases.find(p=>p.id===n.ref),a=asset(n.ref);return p?inScope(p.department):a?inScope(loc(a.locationId)?.department):true});
     page('notifications','通知中心','依最新庫存、採購及設備狀態即時計算提醒',['類型','通知內容','關聯編號','狀態'],formatRows(notes,[n=>cell(n.type),n=>cell(n.text),n=>cell(n.ref),n=>`<td>${badge('待處理')}</td>`]));
     page('log','異動日誌','記錄本機展示資料的操作人、前後狀態與關聯單號',['時間','動作','品項／資產','異動前','異動後','操作人','關聯單號'],formatRows(db.logs,[r=>cell(r.time),r=>cell(r.action),r=>cell(r.subject),r=>cell(r.from),r=>cell(r.to),r=>cell(r.who),r=>cell(r.ref||'－')]));
     page('roles','角色與權限','權限表為規劃草稿；展示帳號尚無登入驗證',['角色','查看資料','品項／位置維護','入出庫／調撥','核准','系統設定'],row(['最高權限（OG）','總部＋企劃部全部','可','可','可','可'].map(cell))+row(['部門主管','所屬部門','依授權','可','依授權','不可'].map(cell))+row(['一般使用者','授權範圍','不可','提出申請','不可','不可'].map(cell)));
@@ -1427,10 +1447,10 @@
     const scopedPurchases=db.purchases.filter(p=>inScope(p.department));
     const scopedAssets=db.assets.filter(a=>inScope(loc(a.locationId)?.department));
     const todayArrivals=scopedInbound.filter(r=>String(r.time||'').split(' ')[0]===today).length;
-    const todayStocked=scopedInbound.filter(r=>Number(r.accepted)>0&&String(r.inspectedAt||'').split(' ')[0]===today).length;
+    const todayStocked=scopedInbound.filter(r=>Number(r.accepted)>0&&r.status==='已入庫'&&String(r.putawayAt||r.inspectedAt||'').split(' ')[0]===today).length;
     const awaitingInspection=scopedInbound.filter(r=>r.status==='待驗收').length;
     const pendingOrders=scopedPurchases.filter(p=>p.status==='待叫貨').length;
-    const reportData=[['品項總數',db.items.filter(x=>x.enabled).length,'目前啟用品項'],['消耗品在庫數',db.stock.reduce((sum,x)=>sum+Number(x.qty||0),0),'各位置數量合計'],['設備資產數',total,'包含使用中及維修中的設備'],['可用設備數',ready,'可供配置的設備'],['待驗收單數',db.inbound.filter(r=>r.status==='待驗收').length,'尚未計入庫存'],['待叫貨需求數',db.purchases.filter(p=>p.status==='待叫貨').length,'採購需求待處理'],['低庫存品項數',warnings().length,'低於安全庫存']];
+    const reportData=[['品項總數',db.items.filter(x=>x.enabled).length,'目前啟用品項'],['有庫存的儲位品項筆數',db.stock.filter(x=>x.qty>0).length,'不同單位不合併數量'],['設備資產數',total,'包含使用中及維修中的設備'],['可用設備數',ready,'可供配置的設備'],['待驗收單數',db.inbound.filter(r=>r.status==='待驗收').length,'尚未計入庫存'],['待叫貨需求數',db.purchases.filter(p=>p.status==='待叫貨').length,'採購需求待處理'],['低庫存品項數',warnings().length,'低於安全庫存']];
     page('reports','摘要報表','依目前瀏覽器資料即時計算作業摘要',['項目','數量','計算說明'],reportData.map(([name,value,note])=>row([cell(name),cell(value),cell(note)])).join(''),actions(['refresh','重新整理']),'目前瀏覽器的展示資料；後續可與 ERP 報表介接');
     const dashboardIcon=paths=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${paths}</svg>`;
     const dashboardIcons={
@@ -1439,7 +1459,7 @@
       inspection:dashboardIcon('<rect x="5" y="5" width="14" height="17" rx="2"/><path d="M9 5V3h6v2M9 10h6M9 14h3"/><circle cx="16" cy="17" r="3"/><path d="M16 15.5V17l1 1"/>'),
       order:dashboardIcon('<path d="M4 4h2l2 11h11l2-8H7"/><path d="M9 11h8M10 18h.01M18 18h.01"/><circle cx="10" cy="19" r="1"/><circle cx="18" cy="19" r="1"/>')
     };
-    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單','arrival'],['今日驗收入庫',todayStocked,'驗收合格並計入庫存','stocked'],['待驗收',awaitingInspection,'到貨後尚未完成驗收','inspection'],['待叫貨',pendingOrders,'等待採購人員叫貨','order']].map(([name,value,note,kind])=>`<article class="stat-card wms-kpi wms-kpi--${kind}"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon" aria-hidden="true">${dashboardIcons[kind]}</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
+    const stats=[['今日到貨登記',todayArrivals,'今天建立的到貨單','arrival'],['今日上架入庫',todayStocked,'已確認上架並計入庫存','stocked'],['待驗收',awaitingInspection,'到貨後尚未完成驗收','inspection'],['待叫貨',pendingOrders,'等待採購人員叫貨','order']].map(([name,value,note,kind])=>`<article class="stat-card wms-kpi wms-kpi--${kind}"><div class="stat-head"><span class="stat-label">${E(name)}</span><span class="stat-icon" aria-hidden="true">${dashboardIcons[kind]}</span></div><div class="stat-value">${value}</div><div class="stat-note">${E(note)}</div></article>`).join('');
     const tasks=[
       ...scopedInbound.filter(r=>r.status==='待驗收').map(r=>({kind:'inspection',label:'待驗收',detail:`${itemName(r.itemId)} × ${r.qty}`,action:'go-inspection',button:'前往驗收'})),
       ...scopedPurchases.filter(p=>p.status==='待叫貨').map(p=>({kind:'order',label:'待叫貨',detail:`${itemName(p.itemId)} × ${p.qty}`,action:'go-purchase',button:'前往採購'})),
@@ -1459,19 +1479,19 @@
       alerts:card('異常與提醒','全公司低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`),
       recent:card('最近異動','全公司最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)
     };
-    const renderHomeWidget=key=>`<section class="wms-home-widget" data-home-widget="${E(key)}"><div class="wms-widget-tools"><button type="button" data-home-drag aria-label="拖移${E(widgetChoices.find(([id])=>id===key)?.[1]||key)}，也可用右側選單移動" title="拖移視窗">⠿</button><select class="wms-widget-kind" data-home-kind aria-label="切換視窗內容">${widgetChoices.map(([id,label])=>`<option value="${E(id)}" ${id===key?'selected':''}>${E(label)}</option>`).join('')}</select><details class="wms-widget-menu"><summary aria-label="視窗操作" title="視窗操作">···</summary><div><button type="button" data-home-command="expand">放大視窗</button><button type="button" data-home-command="collapse">收合視窗</button><button type="button" data-home-command="reset-size">重設大小</button><button type="button" data-home-command="up">↑ 上移</button><button type="button" data-home-command="down">↓ 下移</button><button type="button" data-home-command="side">⇄ 移到${dashboardPrefs.columns[key]==='left'?'右':'左'}欄</button><button type="button" data-home-command="hide">隱藏視窗</button></div></details></div>${widgets[key]}</section>`;
+    const renderHomeWidget=key=>`<section class="wms-home-widget" data-home-widget="${E(key)}"><div class="wms-widget-tools"><button type="button" data-home-drag aria-label="拖移${E(widgetChoices.find(([id])=>id===key)?.[1]||key)}，桌機可用方向鍵微調" title="拖移視窗">⠿</button><strong class="wms-widget-kind">${E(widgetChoices.find(([id])=>id===key)?.[1]||key)}</strong><details class="wms-widget-menu"><summary aria-label="視窗操作" title="視窗操作">···</summary><div><button type="button" data-home-command="expand">放大視窗</button><button type="button" data-home-command="collapse">收合視窗</button><button type="button" data-home-command="reset-size">重設大小</button><button type="button" data-home-command="hide">隱藏視窗</button></div></details></div>${widgets[key]}</section>`;
     const left=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]==='left'&&widgets[key]).map(renderHomeWidget).join('');
     const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(renderHomeWidget).join('');
     const hiddenWidgets=widgetChoices.filter(([key])=>!dashboardPrefs.widgets.includes(key));
-    const arrange=`<div class="wms-home-arrange"><p>拖曳視窗左上角移動位置；點選標題可切換內容，右側選單可調整或隱藏。拖曳右下角可調整大小；位置與尺寸自動儲存在目前瀏覽器。</p><select data-home-add aria-label="新增首頁視窗" ${hiddenWidgets.length?'':'disabled'}><option value="">${hiddenWidgets.length?'＋ 新增視窗':'全部視窗已顯示'}</option>${hiddenWidgets.map(([key,label])=>`<option value="${E(key)}">${E(label)}</option>`).join('')}</select></div>`;
-    const scopeButtons=['全部','總部','企劃部'].map(name=>`<button type="button" data-action="set-home-scope" data-id="${E(name)}" class="${homeScope===name?'active':''}" aria-pressed="${homeScope===name}">${E(name)}</button>`).join('');
+    const arrange=`<div class="wms-home-arrange"><p>桌機／大平板：拖曳左上角，自由放在左側、中間或右側；右下角調整大小。位置自動儲存；手機／窄螢幕改為直排。</p><div>${button('customize-home','新增／隱藏視窗')} ${button('reset-home-positions','重新排列')}</div></div>`;
+    const scopeButtons=['全部',...Object.keys(ORG_TREE)].map(name=>`<button type="button" data-action="set-home-scope" data-id="${E(name)}" class="${homeScope===name?'active':''}" aria-pressed="${homeScope===name}">${E(name)}</button>`).join('');
     const orgCards=Object.entries(ORG_TREE).map(([unit,sites])=>`<div class="wms-org-unit" ${inScope(unit)?'':'hidden'}><h3>${E(unit)}</h3>${Object.entries(sites).map(([site,areas])=>`<div class="wms-org-place"><b>${E(site)}</b><small>${E(areas.join('・'))}</small></div>`).join('')}</div>`).join('');
     document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-scope-bar"><strong>管理範圍</strong>${scopeButtons}</div><section class="wms-org-card"><h2>地點與區域</h2><p>OG 可查看並管理全部範圍；目前為單機展示資料</p><div class="wms-org-grid">${orgCards}</div><div style="margin-top:12px">${button('go-racks','管理位置')}</div></section><div class="wms-dashboard-section-title"><h2>今日作業</h2><p>${E(homeScope)}・資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section>${arrange}<section class="wms-dashboard-workspace"><div class="wms-dashboard-column" data-home-column="left">${left||'<div class="wms-empty-column">拖移視窗到左欄</div>'}</div><div class="wms-dashboard-column" data-home-column="right">${right||'<div class="wms-empty-column">拖移視窗到右欄</div>'}</div></section>`;
     bindDashboardWorkspace();
     const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
     filterItems();
   }
-  function filterItems(){const search=document.getElementById('itemSearch'),type=document.getElementById('itemTypeFilter'),status=document.getElementById('itemStatusFilter');if(!search)return;const q=search.value.trim().toLowerCase();document.querySelectorAll('#rows-items tr').forEach(tr=>{const t=tr.querySelectorAll('td');if(!t.length)return;tr.hidden=!((t[0].textContent.toLowerCase().includes(q)||t[1].textContent.toLowerCase().includes(q))&&(!type.value||t[2].textContent===type.value)&&(!status.value||t[6].textContent===status.value))})}
+  function filterItems(){const search=document.getElementById('itemSearch'),type=document.getElementById('itemTypeFilter'),status=document.getElementById('itemStatusFilter');if(!search)return;const q=search.value.trim().toLowerCase();document.querySelectorAll('#rows-items tr').forEach(tr=>{const t=tr.querySelectorAll('td');if(!t.length)return;tr.hidden=!((homeScope==='全部'||allowedItem(item(t[0].textContent),homeScope))&&(t[0].textContent.toLowerCase().includes(q)||t[1].textContent.toLowerCase().includes(q))&&(!type.value||t[2].textContent===type.value)&&(!status.value||t[6].textContent===status.value))})}
   document.addEventListener('input',e=>{if(e.target.id==='itemSearch')filterItems()});
   document.addEventListener('change',e=>{if(['itemTypeFilter','itemStatusFilter'].includes(e.target.id))filterItems();if(e.target.dataset.action==='order-qty'){try{updateOrderQty(e.target.dataset.id,e.target.value)}catch(error){alert(error.message);renderAll()}}});
   function exportData(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='BOMB-WMS-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
@@ -1596,15 +1616,319 @@
         localStorage.setItem('bomb-wms-preimport-backup-v1',JSON.stringify(db));
         next.logs.push({id:'LG-0001',time:stamp(),action:'Excel批次匯入',subject:summary,from:'原資料已備份',to:'新展示資料',who:'OG',ref:''});
         localStorage.setItem(KEY,JSON.stringify(next));
-        exportData();db=next;renderAll();
+        exportData();db=next;inventorySnapshot=null;normalizeLocations();save();
         alert('匯入完成：'+summary);
       }catch(error){alert('Excel 匯入失敗：'+(error.message||error))}
     });
     input.click();
   }
-  function importData(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;try{const value=JSON.parse(await file.text());if(value.version!==2||!['items','locations','assets','stock','inbound','transfers','borrows','repairs','counts','purchases','logs'].every(k=>Array.isArray(value[k])))throw Error('備份檔格式不符');if(!confirm('匯入會覆蓋目前瀏覽器的 WMS 展示資料，確定繼續？'))return;db=value;normalizeLocations();save()}catch(e){alert('匯入失敗：'+e.message)}});input.click()}
-  const handlers={'new-item':addItem,'new-inbound':inbound,'new-transfer-asset':transferAsset,'new-transfer-stock':transferStock,'new-borrow':borrow,'new-repair':repair,'new-replacement':replaceAsset,'new-count':countStock,'new-purchase':purchase,'new-location':addLocation,'refresh':renderAll,'go-log':()=>showPage('log'),'go-notifications':()=>showPage('notifications'),'go-inspection':()=>showPage('inspection'),'go-purchase':()=>showPage('purchase'),'go-inventory':()=>showPage('inventory'),'go-assets':()=>showPage('assets'),'customize-home':customizeHome,'go-racks':()=>showPage('racks'),'set-home-scope':id=>{if(['全部','總部','企劃部'].includes(id)){homeScope=id;localStorage.setItem(HOME_SCOPE_KEY,id);renderAll()}},'export':exportData,'import':importData,'import-excel':importExcel,'download-excel-template':downloadExcelTemplate,'close-dialog':()=>dialog.close()};
+  function importData(){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.addEventListener('change',async()=>{const file=input.files?.[0];if(!file)return;try{const value=JSON.parse(await file.text());if(value.version!==2||!['items','locations','assets','stock','inbound','transfers','borrows','repairs','counts','purchases','logs'].every(k=>Array.isArray(value[k])))throw Error('備份檔格式不符');if(!confirm('匯入會覆蓋目前瀏覽器的 WMS 展示資料，確定繼續？'))return;db=value;inventorySnapshot=null;normalizeLocations();save()}catch(e){alert('匯入失敗：'+e.message)}});input.click()}
+  /* BOMB WMS integration schema v1: additive migration, no fabricated stock. */
+  let inventorySnapshot=null;
+  function prepareIntegration(){
+    for(const key of ['rules','requisitions','workflows','inventoryEvents'])if(!Array.isArray(db[key]))db[key]=[];
+    db.integrationVersion=1;
+    if(!db.organization)db.organization=structuredClone(DEFAULT_ORG_TREE);
+    ORG_TREE=db.organization;
+    // Include existing imported locations in the editable organization definition.
+    db.locations.forEach(l=>{const unit=l.department,site=l.site||'未分類';if(!ORG_TREE[unit])ORG_TREE[unit]={};if(!ORG_TREE[unit][site])ORG_TREE[unit][site]=[];if(!ORG_TREE[unit][site].includes(l.area))ORG_TREE[unit][site].push(l.area)});
+    if(!db.connections)db.connections={erp:'',hr:'',companyCode:'',note:''};
+    if(!['全部',...Object.keys(ORG_TREE)].includes(homeScope))homeScope='全部';
+    if(!inventorySnapshot)inventorySnapshot=inventoryState();
+  }
+  function inventoryState(){
+    const result={};
+    db.stock.forEach(r=>result['stock|'+r.itemId+'|'+r.locationId]={qty:Number(r.qty),status:'在庫'});
+    db.assets.forEach(a=>result['asset|'+a.id]={qty:1,itemId:a.itemId,locationId:a.locationId,status:a.status,holder:a.holder||''});
+    return result;
+  }
+  function captureInventory(){
+    prepareIntegration();const next=inventoryState();
+    for(const key of new Set([...Object.keys(inventorySnapshot),...Object.keys(next)])){
+      const before=inventorySnapshot[key]||null,after=next[key]||null;
+      if(JSON.stringify(before)!==JSON.stringify(after))db.inventoryEvents.unshift({id:code('EV',db.inventoryEvents),time:stamp(),key,before,after,who:'OG',ref:db.logs[0]?.ref||'',action:db.logs[0]?.action||'庫存異動'});
+    }
+    inventorySnapshot=next;
+  }
+  const units=()=>Object.keys(ORG_TREE).map(value=>({value,label:value}));
+  const matchUnit=l=>!!l&&inScope(l.department);
+  const unitLocations=unit=>choices(db.locations.filter(l=>!unit||l.department===unit),l=>labelLoc(l.id));
+  const ruleFor=(itemId,department)=>db.rules.find(r=>r.itemId===itemId&&r.department===department);
+  const allowedItem=(x,department)=>x&&(!x.allowedDepartments?.length||x.allowedDepartments.includes(department));
+  const openReq=r=>!['已完成','已取消','已駁回'].includes(r.status);
+  function reserved(itemId,locationId,except=''){
+    return db.requisitions.filter(r=>r.id!==except&&r.itemId===itemId&&r.sourceId===locationId&&r.status==='待取貨').reduce((n,r)=>n+r.qty,0)+db.workflows.filter(r=>r.id!==except&&!r.assetId&&r.itemId===itemId&&r.locationId===locationId&&r.status==='待交接').reduce((n,r)=>n+r.qty,0);
+  }
+  function onHand(itemId,department){
+    const x=item(itemId);
+    if(x?.type==='設備')return db.assets.filter(a=>a.itemId===itemId&&a.status==='可用'&&(!department||loc(a.locationId)?.department===department)).length;
+    return db.stock.filter(r=>r.itemId===itemId&&(!department||loc(r.locationId)?.department===department)).reduce((n,r)=>n+r.qty,0);
+  }
+  function departmentAvailable(itemId,department){return Math.max(0,onHand(itemId,department)-db.locations.filter(l=>!department||l.department===department).reduce((n,l)=>n+reserved(itemId,l.id),0))}
+  function available(id){return departmentAvailable(id)}
+  function amountAt(itemId,locationId){return db.stock.find(r=>r.itemId===itemId&&r.locationId===locationId)?.qty||0}
+  function freeAt(itemId,locationId,except=''){return Math.max(0,amountAt(itemId,locationId)-reserved(itemId,locationId,except))}
+  function changeStock(itemId,locationId,delta){
+    if(!loc(locationId)||item(itemId)?.type!=='消耗品')throw Error('品項或位置無效');
+    let stock=db.stock.find(r=>r.itemId===itemId&&r.locationId===locationId);
+    if(!stock){stock={itemId,locationId,qty:0};db.stock.push(stock)}
+    if(!Number.isSafeInteger(stock.qty+delta)||stock.qty+delta<0)throw Error('庫存不足或數量無效');stock.qty+=delta;
+  }
+  function syncAutoPurchases(){
+    prepareIntegration();let changed=false;
+    // New department rules override global legacy safety for that item.
+    const legacyItems=db.items.filter(x=>!db.rules.some(r=>r.itemId===x.id));
+    const original=db.items;db.items=legacyItems;try{legacySyncAutoPurchases()}finally{db.items=original}
+    db.rules.forEach(r=>{
+      const x=item(r.itemId);if(!x?.enabled||!r.enabled)return;
+      if(departmentAvailable(r.itemId,r.department)>r.threshold&&r.suppressAuto){r.suppressAuto=false;changed=true}
+      if(r.suppressAuto)return;
+      const qty=departmentAvailable(r.itemId,r.department),pending=db.requisitions.some(q=>q.itemId===r.itemId&&q.department===r.department&&openReq(q));
+      if(qty<=r.threshold&&!pending&&r.route==='內部申領'){
+        db.requisitions.unshift({id:code('REQ',db.requisitions),itemId:x.id,department:r.department,supplyDepartment:r.supplyDepartment,sourceId:'',destinationId:r.locationId||'',qty:r.fixedQty*r.packSize,packs:r.fixedQty,packUnit:r.packUnit,packSize:r.packSize,who:'系統',time:stamp(),status:'草稿',reason:`低庫存：可用 ${qty} ${x.unit}；門檻 ${r.threshold} ${x.unit}`,ruleId:r.id});changed=true;
+      }
+      const purchasePending=db.purchases.some(p=>p.itemId===x.id&&p.department===r.department&&['待審核','待叫貨','已核准','已叫貨','部分入庫','無須叫貨'].includes(p.status));
+      if(qty<=r.threshold&&r.route==='外部採購'&&!purchasePending){const id=code('PR',db.purchases);db.purchases.unshift({id,itemId:x.id,department:r.department,qty:r.fixedQty*r.packSize,received:0,time:stamp(),who:'系統',source:'部門補貨規則',status:'待叫貨',reason:`${r.department} 可用 ${qty} ${x.unit}；每次 ${r.fixedQty} ${r.packUnit}`});log('部門低庫存需求',x.name,'－','待叫貨',id);changed=true}
+    });
+    if(changed)localStorage.setItem(KEY,JSON.stringify(db));
+  }
+  function editRule(id){
+    const r=db.rules.find(x=>x.id===id)||{};
+    form(r.id?'修改盤點與補貨規則':'新增盤點與補貨規則',[
+      field('itemId','品項','select',itemOptions(),r.itemId),field('department','庫存所屬部門','select',units(),r.department||'企劃部'),
+      field('locationId','指定盤點／上架位置（選填）','select',unitLocations(),r.locationId||'',false),field('supplier','廠商／品牌（選填）','text',[],r.supplier||'',false),field('provider','提供處（選填）','text',[],r.provider||'',false),
+      field('route','補貨方式','select',['內部申領','外部採購','只提醒'].map(value=>({value,label:value})),r.route||'內部申領'),field('supplyDepartment','供應部門（內部申領必填）','select',units(),r.supplyDepartment||'總部',false),
+      field('threshold','補貨門檻（基本單位；小於或等於提醒）','number',[],r.threshold??0),field('packUnit','申請／包裝單位','text',[],r.packUnit||'箱'),field('packSize','每包裝含多少基本單位','number',[],r.packSize||1),field('fixedQty','固定補貨量（包裝單位）','number',[],r.fixedQty||1),
+      field('schedule','盤點週期','select',['每月','每週','不定期'].map(value=>({value,label:value})),r.schedule||'每月'),field('monthDay','每月盤點日（1～31）','number',[],r.monthDay||25),field('weekday','每週申請日','select',[{value:'1',label:'星期一'},{value:'2',label:'星期二'},{value:'3',label:'星期三'},{value:'4',label:'星期四'},{value:'5',label:'星期五'},{value:'6',label:'星期六'},{value:'0',label:'星期日'}],r.weekday??'1'),
+      field('enabled','規則狀態','select',[{value:'true',label:'啟用'},{value:'false',label:'停用'}],String(r.enabled??true))
+    ],v=>{
+      const x=item(v.itemId);if(!allowedItem(x,v.department))throw Error('該品項未開放此部門');
+      if(v.route==='內部申領'&&(!v.supplyDepartment||v.department===v.supplyDepartment||!allowedItem(x,v.supplyDepartment)))throw Error('請選擇可供應此品項的其他部門');
+      if(db.rules.some(q=>q.id!==r.id&&q.itemId===v.itemId&&q.department===v.department))throw Error('此部門與品項已有規則');
+      if(v.locationId&&loc(v.locationId)?.department!==v.department)throw Error('指定儲位須屬於庫存部門');
+      const monthDay=requirePositive(v.monthDay);if(monthDay>31)throw Error('盤點日須為1～31');
+      const next={...r,id:r.id||code('RULE',db.rules),...v,threshold:requireNonnegative(v.threshold),packSize:requirePositive(v.packSize),fixedQty:requirePositive(v.fixedQty),monthDay,enabled:v.enabled==='true'};
+      if(r.id)Object.assign(r,next);else db.rules.push(next);log('設定補貨規則',`${v.department} ${x.name}`,'－',`${next.fixedQty} ${v.packUnit}／${next.fixedQty*next.packSize} ${x.unit}`,next.id);
+    });
+  }
+  function planningCatalog(){
+    form('加入企劃盤點表的品項與預設規則',[field('confirm','確認','select',[{value:'yes',label:'只加入缺少的品項／規則，不建立實際庫存'}])],()=>{
+      const defs=[['擦手紙','包',20,6,1,'箱'],['大捲筒衛生紙','捲',12,5,1,'箱'],['漂白水','桶',4,0,1,'箱'],['洗潔精','桶',4,0,1,'箱'],['超大白垃圾袋','捲',6,0,1,'箱'],['珍珠洗手乳','桶',4,0,1,'箱'],['中垃圾袋-國蘭牌','捲',20,1,1,'箱'],['特小垃圾袋-飯店專用','捲',24,0,1,'箱'],['菜瓜布','個',2,0,2,'包'],['排水濾網','包',1,0,1,'包'],['酒精','桶',1,0,1,'桶'],['3M馬桶刷-替換頭','個',1,2,5,'個'],['3M馬桶刷柄','支',1,0,1,'支'],['抹布（藍／紅／綠）','條',1,0,2,'條'],['防蚊補充液','罐',10,0,1,'盒'],['咖啡豆','包',1,0,2,'包'],['桶裝水','桶',1,1,3,'桶']];
+      defs.forEach(([name,unit,packSize,threshold,fixedQty,packUnit],i)=>{
+        let x=db.items.find(q=>q.name===name);if(!x){x={id:code('ITM',db.items),name,type:'消耗品',category:i===16?'飲用水':'日常消耗品',unit,safety:0,enabled:true,allowedDepartments:[]};db.items.push(x)}
+        if(x.unit!==unit||x.type!=='消耗品')return;
+        if(!ruleFor(x.id,'企劃部'))db.rules.push({id:code('RULE',db.rules),itemId:x.id,department:'企劃部',supplier:i<10?'廣達':i===10?'樂清':i===11||i===12?'MOMO':'',provider:i===15?'U店':i<11?'7樓':'待確認',route:'只提醒',supplyDepartment:'總部',threshold,packSize,fixedQty,packUnit,schedule:i===16?'每週':'每月',monthDay:25,weekday:'1',enabled:true});
+      });
+      log('加入企劃盤點表','17個品項預設','無庫存','請確認供應處、補貨方式與桶裝水規則','');
+    });
+  }
+  function requestNew(){
+    form('新增部門申領',[field('department','申請部門','select',units(),homeScope==='全部'?'企劃部':homeScope),field('supplyDepartment','供應部門','select',units(),'總部'),field('itemId','品項','select',itemOptions('消耗品')),field('packs','申請包裝數（無規則時按基本單位）','number',[],1),field('reason','申請原因')],v=>{
+      const x=item(v.itemId),r=ruleFor(v.itemId,v.department);if(!x||x.type!=='消耗品'||v.department===v.supplyDepartment||!allowedItem(x,v.department)||!allowedItem(x,v.supplyDepartment))throw Error('請選擇可供兩部門使用的消耗品');
+      if(db.requisitions.some(q=>q.itemId===x.id&&q.department===v.department&&openReq(q)))throw Error('此部門品項已有未完成申領');
+      const packs=requirePositive(v.packs),packSize=r?.packSize||1,id=code('REQ',db.requisitions);const qty=packs*packSize;requirePositive(qty);
+      db.requisitions.unshift({id,time:stamp(),who:'OG',...v,packs,qty,packSize,packUnit:r?.packUnit||x.unit,sourceId:'',destinationId:'',status:'草稿'});log('申領草稿',x.name,'－',v.department,id);
+    });
+  }
+  function reqStep(id){
+    const r=db.requisitions.find(x=>x.id===id);if(!r)return;
+    const x=item(r.itemId);if(!x)return;
+    if(r.status==='草稿')form('確認送出申領 '+id,[field('packs',`申請數量（${r.packUnit}；1${r.packUnit}=${r.packSize}${x.unit}）`,'number',[],r.packs),field('destinationId','企劃／接收部門上架位置','select',unitLocations(r.department),r.destinationId),field('reason','申請原因','text',[],r.reason)],v=>{if(r.status!=='草稿')throw Error('單據狀態已變更');const packs=requirePositive(v.packs);requirePositive(packs*r.packSize);if(loc(v.destinationId)?.department!==r.department)throw Error('接收位置部門不符');Object.assign(r,{packs,qty:packs*r.packSize,destinationId:v.destinationId,reason:v.reason,status:'待備料',submittedAt:stamp()});log('送出申領',x.name,'草稿','待備料',id)});
+    else if(r.status==='待備料')form('供應部門確認備料 '+id,[field('sourceId','供應位置','select',unitLocations(r.supplyDepartment)),field('confirm','確認','select',[{value:'yes',label:`保留 ${r.qty} ${x.unit}，尚未扣在庫量`}])],v=>{if(r.status!=='待備料'||loc(v.sourceId)?.department!==r.supplyDepartment||freeAt(x.id,v.sourceId)<r.qty)throw Error('供應位置或可用庫存不足');r.sourceId=v.sourceId;r.status='待取貨';r.preparedAt=stamp();log('備料保留',`${x.name} × ${r.qty}`,'待備料','待取貨',id)});
+    else if(r.status==='待取貨')form('確認取貨交接 '+id,[field('person','取貨人'),field('confirm','確認','select',[{value:'yes',label:`實際交接 ${r.qty} ${x.unit}，供應庫存扣除`}])],v=>{if(r.status!=='待取貨'||freeAt(x.id,r.sourceId,id)<r.qty)throw Error('單據狀態或供應庫存不足');changeStock(x.id,r.sourceId,-r.qty);r.status='待清點';r.pickedAt=stamp();r.pickupPerson=v.person;log('取貨交接',`${x.name} × ${r.qty}`,labelLoc(r.sourceId),'在途／待清點',id)});
+    else if(r.status==='待清點')form('接收清點 '+id,[field('received',`實收數量（${x.unit}，預計 ${r.qty}）`,'number',[],r.qty),field('damaged',`損壞數量（含在實收內；${x.unit}）`,'number',[],0),field('note','清點備註（短少／損壞須填）','text',[],'',false)],v=>{const received=requireNonnegative(v.received),damaged=requireNonnegative(v.damaged);if(r.status!=='待清點'||received>r.qty||damaged>received)throw Error('實收不可超過交接數；損壞不可超過實收');if((received<r.qty||damaged)&&!v.note.trim())throw Error('請填寫差異原因');Object.assign(r,{received,damaged,accepted:received-damaged,shortage:r.qty-received,note:v.note,checkedAt:stamp(),status:'待上架'});log('申領清點',x.name,'待清點',`合格 ${r.accepted}／短少 ${r.shortage}／損壞 ${damaged}`,id)});
+    else if(r.status==='待上架')form('確認申領上架 '+id,[field('destinationId','實際上架位置','select',unitLocations(r.department),r.destinationId),field('confirm','確認','select',[{value:'yes',label:`已放入位置；增加 ${r.accepted} ${x.unit}`}])],v=>{if(r.status!=='待上架'||loc(v.destinationId)?.department!==r.department)throw Error('上架位置不符');changeStock(x.id,v.destinationId,r.accepted);r.destinationId=v.destinationId;r.putawayAt=stamp();r.status=r.shortage||r.damaged?'異常待確認':'已完成';log('申領上架',`${x.name} × ${r.accepted}`,'待上架',labelLoc(v.destinationId),id)});
+    else if(r.status==='異常待確認')form('申領差異結案 '+id,[field('resolution','差異處理結果（補送另建單，損壞另辦回收）')],v=>{if(r.status!=='異常待確認')throw Error('狀態已變更');r.resolution=v.resolution;r.status='已完成';log('申領差異結案',x.name,'異常待確認',v.resolution,id)});
+  }
+  function cancelReq(id){const r=db.requisitions.find(q=>q.id===id);if(!r||!['草稿','待備料','待取貨'].includes(r.status))return;form('取消／駁回申領 '+id,[field('reason','原因')],v=>{if(!['草稿','待備料','待取貨'].includes(r.status))throw Error('取貨後不可取消');const before=r.status;r.cancelReason=v.reason;r.status='已取消';const rule=db.rules.find(q=>q.id===r.ruleId);if(rule)rule.suppressAuto=true;log('取消申領',itemName(r.itemId),before,'已取消',id)})}
+  function putawayInbound(id){const r=db.inbound.find(q=>q.id===id);if(!r||r.status!=='待上架')return;const department=loc(r.locationId)?.department;
+    form('確認到貨上架 '+id,[field('locationId','實際上架位置','select',unitLocations(department),r.locationId),field('confirm','確認','select',[{value:'yes',label:`實物已放入；增加 ${r.accepted} ${item(r.itemId)?.unit}`}])],v=>{
+      const x=item(r.itemId);if(r.status!=='待上架'||!x||loc(v.locationId)?.department!==department)throw Error('上架位置或單據狀態不符');
+      if(x.type==='設備')for(let i=0;i<r.accepted;i++)db.assets.push({id:code('AST',db.assets),itemId:x.id,locationId:v.locationId,status:'可用',holder:'',receiptId:id});else changeStock(x.id,v.locationId,r.accepted);
+      r.locationId=v.locationId;r.putawayAt=stamp();r.status='已入庫';const p=db.purchases.find(q=>q.id===r.purchaseId);if(p){p.received=(p.received||0)+r.accepted;p.status=p.received>=p.qty?'已入庫':'部分入庫'}log('到貨上架',`${x.name} × ${r.accepted}`,'待上架',labelLoc(v.locationId),id);
+    });
+  }
+  function countStock(){
+    form('選擇現場盤點位置',[field('locationId','位置（只盤備品，不含使用中）','select',unitLocations(homeScope==='全部'?'':homeScope)),field('note','盤點說明','text',[],'定期備品盤點',false)],v=>{
+      const locationId=v.locationId,department=loc(locationId)?.department;if(!department)throw Error('位置不存在');
+      const list=db.items.filter(x=>x.enabled&&x.type==='消耗品'&&allowedItem(x,department)&&((ruleFor(x.id,department)&&(!ruleFor(x.id,department).locationId||ruleFor(x.id,department).locationId===locationId))||db.stock.some(q=>q.itemId===x.id&&q.locationId===locationId)));
+      if(!list.length)throw Error('此位置尚無品項；先設定部門補貨規則或建立期初庫存');
+      // The generic form closes after submit; open the batch form after that close.
+      setTimeout(()=>openCountSheet(locationId,list,v.note),0);
+    });
+  }
+  function openCountSheet(locationId,list,note){
+    const key='bomb-wms-count-draft-v1:'+locationId;let draft={};try{draft=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
+    const before=Object.fromEntries(list.map(x=>[x.id,amountAt(x.id,locationId)]));
+    dialog.innerHTML=`<form id="wmsForm"><h2>現場盤點</h2><p>${E(labelLoc(locationId))}・只盤備品，不含使用中</p><div class="wms-count-grid">${list.map(x=>`<label class="wms-count-item"><strong>${E(x.name)}</strong><small>帳面 ${before[x.id]} ${E(x.unit)}；不填表示此次不盤</small><input type="number" name="${E(x.id)}" min="0" step="1" placeholder="輸入實際數量（${E(x.unit)}）" value="${E(draft[x.id]??'')}" inputmode="numeric"></label>`).join('')}</div><p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">暫存／關閉</button><button class="btn btn-primary" type="submit">送出盤點，待確認差異</button></div></form>`;
+    dialog.querySelector('form').addEventListener('input',()=>localStorage.setItem(key,JSON.stringify(Object.fromEntries(new FormData(dialog.querySelector('form'))))));
+    submitDialog=v=>{
+      const entries=list.filter(x=>v[x.id]!==''&&v[x.id]!==undefined).map(x=>({x,actual:requireNonnegative(v[x.id])}));if(!entries.length)throw Error('至少填寫一項實盤數');
+      if(entries.some(({x})=>amountAt(x.id,locationId)!==before[x.id]))throw Error('盤點期間帳面已有異動，請重開並核對');
+      entries.forEach(({x,actual})=>{const id=code('CT',db.counts);db.counts.unshift({id,time:stamp(),itemId:x.id,locationId,before:before[x.id],actual,diff:actual-before[x.id],who:'OG',note,status:'待確認'});log('送出盤點',x.name,`${before[x.id]} ${x.unit}`,`實盤 ${actual}；待確認`,id)});localStorage.removeItem(key);
+    };dialog.showModal();
+  }
+  function confirmCount(id){const r=db.counts.find(q=>q.id===id);if(!r||r.status!=='待確認')return;
+    form('確認盤點差異 '+id,[field('reason','差異原因／確認說明（消耗、漏記或其他）'),field('confirm','確認','select',[{value:'yes',label:`帳面 ${r.before} → 實盤 ${r.actual}；差異 ${r.diff}`}])],v=>{
+      if(r.status!=='待確認'||amountAt(r.itemId,r.locationId)!==r.before)throw Error('盤點後帳面已有異動，請重盤');if(r.actual<reserved(r.itemId,r.locationId))throw Error('實盤少於已保留數，請先處理申領');changeStock(r.itemId,r.locationId,r.diff);r.status='已確認';r.reason=v.reason;r.confirmedAt=stamp();r.confirmedBy='OG';log('盤點調整',itemName(r.itemId),String(r.before),String(r.actual),id);
+    });
+  }
+  function transferStock(){
+    form('同部門儲位移動（跨部門請用部門申領）',[field('itemId','消耗品','select',itemOptions('消耗品')),field('from','原位置','select',unitLocations()),field('to','新位置','select',unitLocations()),field('qty','實際移動數量','number')],v=>{
+      const qty=requirePositive(v.qty);ensureDifferent(v.from,v.to);if(loc(v.from)?.department!==loc(v.to)?.department)throw Error('跨部門請用部門申領，保留取貨與清點紀錄');if(freeAt(v.itemId,v.from)<qty)throw Error('可移動庫存不足（已扣申領保留）');changeStock(v.itemId,v.from,-qty);changeStock(v.itemId,v.to,qty);const id=code('TR',db.transfers);db.transfers.unshift({id,time:stamp(),subject:itemName(v.itemId),from:labelLoc(v.from),to:labelLoc(v.to),qty,who:'OG'});log('儲位移動',itemName(v.itemId),labelLoc(v.from),labelLoc(v.to),id);
+    });
+  }
+  function transferAsset(){
+    form('移動設備儲位（領用使用請到領用／回收）',[field('assetId','可用資產','select',assetOptions(a=>a.status==='可用')),field('to','同部門新位置','select',unitLocations())],v=>{
+      const a=asset(v.assetId),l=loc(v.to);if(!a||a.status!=='可用'||!l||loc(a.locationId)?.department!==l.department)throw Error('須為可用資產及同部門位置');ensureDifferent(a.locationId,l.id);const from=labelLoc(a.locationId),id=code('TR',db.transfers);a.locationId=l.id;db.transfers.unshift({id,time:stamp(),subject:a.id,from,to:labelLoc(l.id),qty:1,who:'OG'});log('設備儲位移動',a.id,from,labelLoc(l.id),id);
+    });
+  }
+  function returnAsset(id){const b=db.borrows.find(q=>q.id===id),a=b&&asset(b.assetId);if(!b||b.status!=='借用中'||!a)return;
+    form('借用歸還確認 '+id,[field('note','交接／外觀說明')],v=>{if(b.status!=='借用中')throw Error('狀態已變更');b.status='已歸還';b.returned=stamp();a.status='待回收驗收';const ref=code('WF',db.workflows);db.workflows.unshift({id:ref,kind:'回收',assetId:a.id,itemId:a.itemId,department:loc(a.locationId)?.department,qty:1,status:'待回收驗收',who:'OG',time:stamp(),note:v.note,borrowId:id});log('借用歸還',a.id,b.holder,'待回收驗收',ref)});
+  }
+  function finishRepair(id){const r=db.repairs.find(q=>q.id===id),a=r&&asset(r.assetId);if(!r||!a||r.status!=='維修中')return;form('維修完成後待檢查 '+id,[field('note','維修結果')],v=>{r.status='已完成';a.status='待回收驗收';const ref=code('WF',db.workflows);db.workflows.unshift({id:ref,kind:'回收',assetId:a.id,itemId:a.itemId,department:loc(a.locationId)?.department,qty:1,status:'待回收驗收',time:stamp(),who:'OG',note:v.note});log('維修完成',a.id,'維修中','待回收驗收',ref)})}
+  function lifecycleNew(){
+    form('新增領用／回收／報廢申請',[field('kind','作業','select',['領用','回收','報廢'].map(value=>({value,label:value}))),field('assetId','逐件資產（選填；耗材可留空）','select',assetOptions(a=>!['報廢','待報廢'].includes(a.status)),'',false),field('itemId','品項（選資產時以資產為準）','select',itemOptions()),field('locationId','原位置／耗材回收位置','select',unitLocations()),field('qty','數量（資產固定1）','number',[],1),field('holder','領用人／回收交付人'),field('useLocationId','實際使用位置（選填；不轉移庫存歸屬）','select',unitLocations(),'',false),field('note','用途／原因')],v=>{
+      const a=asset(v.assetId),x=a?item(a.itemId):item(v.itemId),l=loc(a?a.locationId:v.locationId),qty=a?1:requirePositive(v.qty);
+      if(!x||!l||(!a&&x.type!=='消耗品'))throw Error('設備須選擇逐件資產，耗材須選位置');if(a&&['借用中','維修中','待回收驗收','待上架','領用保留','待報廢','報廢'].includes(a.status))throw Error('資產正處理中，請完成原流程');
+      if(v.kind==='領用'&&((a&&a.status!=='可用')||(!a&&freeAt(x.id,l.id)<qty)))throw Error('可領用庫存不足');if(v.kind==='回收'&&a&&a.status!=='使用中')throw Error('資產須為使用中才能回收');if(v.kind==='報廢'&&!a)throw Error('耗材損壞請先回收並驗證後報廢');
+      if(!a&&v.kind==='回收'){
+        const issued=db.workflows.filter(w=>w.kind==='領用'&&!w.assetId&&w.itemId===x.id&&w.department===l.department&&w.status==='使用中').reduce((n,w)=>n+w.qty,0);
+        const returned=db.workflows.filter(w=>w.kind==='回收'&&!w.assetId&&w.itemId===x.id&&w.department===l.department).reduce((n,w)=>n+w.qty,0);if(qty>issued-returned)throw Error('回收量超過本系統已領用且尚未回收數');
+      }
+      const id=code('WF',db.workflows),status=v.kind==='領用'?'待交接':v.kind==='回收'?'待回收驗收':'待報廢驗證';
+      if(a)a.status=v.kind==='領用'?'領用保留':v.kind==='回收'?'待回收驗收':'待報廢';
+      db.workflows.unshift({id,...v,assetId:a?.id||'',itemId:x.id,locationId:l.id,department:l.department,qty,status,time:stamp(),who:'OG'});log(v.kind+'申請',a?.id||`${x.name} × ${qty}`,'－',status,id);
+    });
+  }
+  function workflowStep(id){const r=db.workflows.find(q=>q.id===id);if(!r)return;const a=asset(r.assetId),x=item(r.itemId);
+    if(r.status==='待交接')form('領用交接確認 '+id,[field('confirm','確認','select',[{value:'yes',label:`實際交付 ${r.qty} ${x.unit} 給 ${r.holder}`}])],()=>{if(r.status!=='待交接')throw Error('狀態已變更');if(a){if(a.status!=='領用保留')throw Error('資產狀態不符');a.status='使用中';a.holder=r.holder;a.useLocationId=r.useLocationId||''}else{if(freeAt(x.id,r.locationId,id)<r.qty)throw Error('庫存不足');changeStock(x.id,r.locationId,-r.qty)}r.status='使用中';r.confirmedAt=stamp();log('領用交接',a?.id||x.name,labelLoc(r.locationId),r.holder,id)});
+    else if(r.status==='待回收驗收')form('回收驗收 '+id,[field('result','驗收結果','select',[{value:'待上架',label:'可再次使用 → 待上架'},{value:'異常待處理',label:'異常／待洗牌 → 待處理'},{value:'待報廢驗證',label:'不堪使用 → 報廢驗證'}]),field('note','驗收說明')],v=>{if(r.status!=='待回收驗收')throw Error('狀態已變更');r.status=v.result;r.note=v.note;if(a)a.status=v.result==='待報廢驗證'?'待報廢':v.result;log('回收驗收',a?.id||x.name,'待回收驗收',r.status,id)});
+    else if(r.status==='異常待處理')form('異常處理 '+id,[field('result','處理結果','select',[{value:'待回收驗收',label:'完成洗牌／處理 → 重新驗收'},{value:'待報廢驗證',label:'報廢驗證'}]),field('note','處理說明')],v=>{r.status=v.result;r.note=v.note;if(a)a.status=v.result==='待報廢驗證'?'待報廢':v.result;log('異常處理',a?.id||x.name,'異常待處理',r.status,id)});
+    else if(r.status==='待上架')form('回收上架 '+id,[field('locationId','上架位置','select',unitLocations(r.department),a?.locationId||r.locationId)],v=>{if(r.status!=='待上架'||loc(v.locationId)?.department!==r.department)throw Error('位置或狀態不符');if(a){a.locationId=v.locationId;a.status='可用';a.holder='';a.useLocationId=''}else changeStock(x.id,v.locationId,r.qty);r.status='已完成';r.putawayAt=stamp();log('回收上架',a?.id||x.name,'待上架',labelLoc(v.locationId),id)});
+    else if(['待報廢驗證','待報廢核准','待報廢確認'].includes(r.status)){
+      const before=r.status,next={'待報廢驗證':'待報廢核准','待報廢核准':'待報廢確認','待報廢確認':'已報廢'}[before];
+      form(before+' '+id,[field('note','驗證／核准／處理說明')],v=>{if(r.status!==before)throw Error('狀態已變更');r.status=next;r.note=v.note;r[before]=stamp();if(a&&next==='已報廢'){a.status='報廢';a.holder=''}log('報廢處理',a?.id||x.name,before,next,id)});
+    }
+  }
+  function configureItem(id){const x=item(id);if(!x)return;form('品項適用範圍／外部對照 '+id,[field('scope','適用範圍','select',[{value:'shared',label:'共用品項：各部門各自記庫存'},...units()],x.allowedDepartments?.length===1?x.allowedDepartments[0]:'shared'),field('externalId','ERP品項代碼（選填）','text',[],x.externalId||'',false),field('tracking','追蹤方式','select',[{value:'quantity',label:'基本單位數量（耗材）'},{value:'instance',label:'逐件資產／編號（設備）'}],x.type==='設備'?'instance':'quantity')],v=>{if((x.type==='設備')!==(v.tracking==='instance'))throw Error('追蹤方式須符合既有類型，已有庫存不可直接轉換');if(v.scope!=='shared'&&(db.locations.some(l=>l.department!==v.scope&&(amountAt(x.id,l.id)>0||db.assets.some(a=>a.itemId===x.id&&a.locationId===l.id)))||db.rules.some(r=>r.itemId===x.id&&r.department!==v.scope)||db.requisitions.some(r=>r.itemId===x.id&&openReq(r))))throw Error('其他部門仍有庫存、規則或未完成申領，不可改為專用品項');x.allowedDepartments=v.scope==='shared'?[]:[v.scope];x.externalId=v.externalId;x.tracking=v.tracking;log('設定品項適用',x.name,'－',v.scope,id)})}
+  function organizationPath(){form('新增部門／地點／區域',[field('department','部門名稱'),field('site','地點名稱'),field('area','區域名稱')],v=>{const d=v.department.trim(),s=v.site.trim(),a=v.area.trim();if(!d||!s||!a)throw Error('請填寫名稱');if(!Object.hasOwn(ORG_TREE,d))Object.defineProperty(ORG_TREE,d,{value:{},enumerable:true,writable:true,configurable:true});if(!Object.hasOwn(ORG_TREE[d],s))Object.defineProperty(ORG_TREE[d],s,{value:[],enumerable:true,writable:true,configurable:true});if(!ORG_TREE[d][s].includes(a))ORG_TREE[d][s].push(a);db.organization=ORG_TREE;log('新增組織區域',d,'－',s+'／'+a,'')})}
+  function connections(){const c=db.connections;form('ERP／HR整合預留設定',[field('companyCode','公司代碼（選填）','text',[],c.companyCode,false),field('erp','ERP識別名稱／網址（選填）','text',[],c.erp,false),field('hr','HR識別名稱／網址（選填）','text',[],c.hr,false),field('note','整合備註（選填）','text',[],c.note,false)],v=>{db.connections=v;log('整合預留設定','ERP／HR','－','已儲存；尚未連線','')})}
+  function purchase(){form('新增外部採購需求',[field('department','申請部門','select',units()),field('itemId','品項','select',itemOptions()),field('qty','基本單位數量','number'),field('reason','原因')],v=>{const x=item(v.itemId),qty=requirePositive(v.qty);if(!allowedItem(x,v.department))throw Error('品項不適用此部門');if(db.purchases.some(p=>p.itemId===x.id&&p.department===v.department&&['待叫貨','已叫貨','無須叫貨','待審核','已核准','部分入庫'].includes(p.status)))throw Error('此部門品項已有未完成採購');const id=code('PR',db.purchases);db.purchases.unshift({id,...v,qty,time:stamp(),who:'OG',source:'人工申請',received:0,status:'待審核'});log('外部採購需求',x.name,'－',v.department,id)})}
+  function scheduleLabel(r){return r.schedule==='每月'?`每月 ${r.monthDay} 日前（假日人工調整）`:r.schedule==='每週'?`每週${['日','一','二','三','四','五','六'][Number(r.weekday)]}`:'不定期'}
+  function scopeBar(){return `<div class="wms-unit-bar"><strong>查看部門</strong><select data-integration-scope aria-label="查看部門">${optionsHtml([{value:'全部',label:'全部（分部門列示）'},...units()],homeScope)}</select><small>OG 展示帳號；這是資料篩選，尚無正式權限驗證</small></div>`}
+  function renderAll(){
+    prepareIntegration();renderLegacyAll();renderIntegration();localStorage.setItem(KEY,JSON.stringify(db));
+  }
+  function renderIntegration(){
+    const reqs=db.requisitions.filter(r=>inScope(r.department)||inScope(r.supplyDepartment)),scopedRules=db.rules.filter(r=>inScope(r.department));
+    page('requisition','部門申領','內部補貨：申請 → 備料保留 → 取貨 → 清點 → 上架',['單號／時間','品項','申請／供應部門','申請量／基本數','實收／短少／損壞','來源／上架位置','狀態','操作'],formatRows(reqs,[r=>cell(r.id+'／'+r.time),r=>cell(itemName(r.itemId)),r=>cell(r.department+' ← '+r.supplyDepartment),r=>cell(`${r.packs} ${r.packUnit}／${r.qty} ${item(r.itemId)?.unit}`),r=>cell(r.received===undefined?'待清點':`${r.received}／${r.shortage}／${r.damaged}`),r=>cell(labelLoc(r.sourceId)+' → '+labelLoc(r.destinationId)),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${openReq(r)?button('req-step',({'草稿':'確認送出','待備料':'確認備料','待取貨':'取貨交接','待清點':'清點','待上架':'上架','異常待確認':'差異結案'})[r.status]||'處理',r.id):E(r.resolution||r.cancelReason||'完成')}${['草稿','待備料','待取貨'].includes(r.status)?button('cancel-req','取消／駁回',r.id):''}</td>`]),button('new-request','＋ 新增申領'),'低庫存只產生草稿；已有未完成申領不重複產生。取貨前保留，取貨扣供應庫存，上架增加接收庫存。');
+    const pending=db.inbound.filter(r=>r.status==='待上架'&&matchUnit(loc(r.locationId)));
+    page('putaway','上架入庫','驗收、清點後確認實物已放入儲位，才增加可用庫存',['來源','單號','部門','品項','合格數','位置','操作'],pending.map(r=>row([cell('外部到貨'),cell(r.id),cell(loc(r.locationId)?.department),cell(itemName(r.itemId)),cell(r.accepted+' '+item(r.itemId)?.unit),cell(labelLoc(r.locationId)),`<td>${button('putaway-inbound','確認上架',r.id)}</td>`])).join('')+reqs.filter(r=>r.status==='待上架').map(r=>row([cell('內部申領'),cell(r.id),cell(r.department),cell(itemName(r.itemId)),cell(r.accepted+' '+item(r.itemId)?.unit),cell(labelLoc(r.destinationId)),`<td>${button('req-step','確認上架',r.id)}</td>`])).join('')+db.workflows.filter(r=>r.status==='待上架'&&inScope(r.department)).map(r=>row([cell('回收'),cell(r.id),cell(r.department),cell(itemName(r.itemId)),cell(r.qty+' '+item(r.itemId)?.unit),cell(labelLoc(r.locationId)),`<td>${button('workflow-step','確認上架',r.id)}</td>`])).join(''));
+    const flows=db.workflows.filter(r=>inScope(r.department));
+    page('lifecycle','領用／回收／報廢','總部作業區與企劃均可使用；責任交接、回收驗收與報廢逐步確認',['單號／時間','部門','作業','品項／資產','數量','領用／交付人','備註','狀態','操作'],formatRows(flows,[r=>cell(r.id+'／'+r.time),r=>cell(r.department),r=>cell(r.kind),r=>cell(itemName(r.itemId)+' '+(r.assetId||'')),r=>cell(r.qty+' '+item(r.itemId)?.unit),r=>cell((r.holder||r.who)+(r.useLocationId?'／'+labelLoc(r.useLocationId):'')),r=>cell(r.note),r=>`<td>${badge(r.status)}</td>`,r=>`<td>${!['已完成','使用中','已報廢'].includes(r.status)?button('workflow-step','下一步確認',r.id):'－'}</td>`]),button('new-workflow','＋ 新增作業'),'逐件物件沿用資產編號；牌盒／球盒可建為設備型品項。內容物與批次效期可記錄於資產詳細欄位；洗牌品質與內容物耗用連動尚未實作。');
+    page('count','盤點管理','手機／平板現場輸入，暫存草稿；差異確認後才調整庫存',['單號','時間','部門／位置','品項','帳面','實盤','差異','盤點人','狀態','操作'],formatRows(db.counts.filter(r=>matchUnit(loc(r.locationId))),[r=>cell(r.id),r=>cell(r.time),r=>cell(labelLoc(r.locationId)),r=>cell(itemName(r.itemId)),r=>cell(r.before),r=>cell(r.actual),r=>cell(r.diff),r=>cell(r.who),r=>`<td>${badge(r.status||'已確認（舊紀錄）')}</td>`,r=>`<td>${r.status==='待確認'?button('confirm-count','確認差異',r.id):E(r.reason||'－')}</td>`]),button('new-count','＋ 現場盤點'));
+    document.getElementById('page-count').insertAdjacentHTML('beforeend',card('盤點與申領安排','月盤、週補貨與低庫存提醒分開設定；固定補貨量不是目標庫存',table('count-schedules',['部門','品項','安排','補貨門檻','每次補貨','方式'],formatRows(scopedRules,[r=>cell(r.department),r=>cell(itemName(r.itemId)),r=>cell(scheduleLabel(r)),r=>cell(r.threshold+' '+item(r.itemId)?.unit),r=>cell(r.fixedQty+' '+r.packUnit+'＝'+r.fixedQty*r.packSize+' '+item(r.itemId)?.unit),r=>cell(r.route)]))));
+    const inv=[];db.items.forEach(x=>db.locations.filter(matchUnit).forEach(l=>{const total=x.type==='設備'?db.assets.filter(a=>a.itemId===x.id&&a.locationId===l.id).length:amountAt(x.id,l.id);const rule=ruleFor(x.id,l.department),defaultLoc=rule?.locationId||db.locations.find(q=>q.department===l.department&&/備品|倉架|庫存/.test(q.area))?.id||db.locations.find(q=>q.department===l.department)?.id;if(total||(rule&&l.id===defaultLoc)){const r=rule,free=x.type==='設備'?db.assets.filter(a=>a.itemId===x.id&&a.locationId===l.id&&a.status==='可用').length:freeAt(x.id,l.id);inv.push({x,l,total,free,held:reserved(x.id,l.id),r})}}));
+    page('inventory','庫存管理','同一品項，分部門、分儲位記庫存；待驗、在途與待上架不列可用',['品項','管理部門','地點／區域／位置','在庫／資產數','作業保留數','可用數','部門補貨門檻','狀態'],formatRows(inv,[r=>cell(r.x.id+' '+r.x.name),r=>cell(r.l.department),r=>cell((r.l.site||'')+'／'+r.l.area+'／'+r.l.spot),r=>cell(r.total+' '+r.x.unit),r=>cell(r.held+' '+r.x.unit),r=>cell(r.free+' '+r.x.unit),r=>cell(r.r?r.r.threshold+' '+r.x.unit:'沿用品項 '+r.x.safety),r=>`<td>${badge((r.r?departmentAvailable(r.x.id,r.l.department)<=r.r.threshold:available(r.x.id)<r.x.safety)?'低於安全庫存':'正常')}</td>`]),button('new-inbound','＋ 到貨登記')+' '+button('new-transfer-stock','同部門儲位移動')+' '+button('new-request','跨部門申領'));
+    const settings=document.getElementById('page-settings');
+    settings.innerHTML=header('系統設定','設定組織、品項供應與補貨規則；保留ERP／HR識別欄位',button('new-org-path','＋ 部門／地點／區域')+' '+button('edit-connections','ERP／HR預留設定'))+card('組織與區域','設定可追加；已有庫存的位置保留',table('org-settings',['部門','地點','區域'],Object.entries(ORG_TREE).flatMap(([d,sites])=>Object.entries(sites).map(([site,areas])=>row([cell(d),cell(site),cell(areas.join('、'))]))).join('')))+`<div class="wms-work-note"><p>企劃原表可加入品項與預設規則，不建立庫存。提供處未確認前只提醒；桶裝水門檻與補貨量暫以示例，請修改後啟用申領。</p>${button('planning-catalog','加入企劃盤點表品項')}${button('edit-rule','＋ 補貨與盤點規則')}</div>`+card('部門盤點與補貨規則','每個部門獨立門檻、箱規、固定補貨量與供應路線',table('rule-settings',['部門／品項','廠商／提供處','週期','門檻／箱規','固定量／路線','狀態','操作'],formatRows(db.rules,[r=>cell(r.department+'／'+itemName(r.itemId)),r=>cell((r.supplier||'－')+'／'+(r.provider||'－')),r=>cell(scheduleLabel(r)),r=>cell(`${r.threshold} ${item(r.itemId)?.unit}／1${r.packUnit}=${r.packSize}${item(r.itemId)?.unit}`),r=>cell(`${r.fixedQty}${r.packUnit}／${r.route}${r.route==='內部申領'?' ← '+r.supplyDepartment:''}`),r=>cell(r.enabled?(r.suppressAuto?'啟用；自動草稿暫停至庫存回復':'啟用'):'停用'),r=>`<td>${button('edit-rule','修改',r.id)}</td>`])))+card('ERP／HR整合預留','目前只保存設定，尚未發出API連線或套用真正權限',table('connection-settings',['項目','內容'],Object.entries(db.connections).map(([k,v])=>row([cell({companyCode:'公司代碼',erp:'ERP',hr:'HR',note:'備註'}[k]),cell(v||'未設定')])).join('')));
+    const assetBody=document.getElementById('rows-assets');[...assetBody.rows].forEach((tr,i)=>{const a=db.assets[i];if(!a)return;tr.lastElementChild.insertAdjacentHTML('beforeend',' '+button('asset-details','資產詳細',a.id));tr.cells[1].insertAdjacentHTML('beforeend',`<small style="display:block">${E(a.serialNo||'')}${a.contentItemId?'／'+E(itemName(a.contentItemId))+' × '+E(a.contentQty||0):''}${a.useLocationId?'／使用：'+E(labelLoc(a.useLocationId)):''}</small>`)});
+    const catalog=document.querySelector('#rows-items');[...catalog.rows].forEach((tr,i)=>{const x=db.items[i];if(!x)return;tr.hidden=homeScope!=='全部'&&!allowedItem(x,homeScope);tr.lastElementChild.insertAdjacentHTML('beforeend',' '+button('configure-item','適用／對照',x.id));tr.cells[1].insertAdjacentHTML('beforeend',`<small style="display:block">${E(x.allowedDepartments?.length?x.allowedDepartments.join('、')+'專用':'共用品項')} ${E(x.externalId||'')}</small>`)});
+    // Apply scope to existing list pages without changing underlying data.
+    const lists={assets:[db.assets,r=>loc(r.locationId)?.department],inbound:[db.inbound,r=>loc(r.locationId)?.department],inspection:[db.inbound,r=>loc(r.locationId)?.department],borrow:[db.borrows,r=>loc(asset(r.assetId)?.locationId)?.department],repair:[db.repairs,r=>loc(asset(r.assetId)?.locationId)?.department],purchase:[db.purchases,r=>r.department],machine:[db.locations.filter(l=>l.site==='機台區'&&['機台區','倉架位置（第1層／第2層）'].includes(l.area)),r=>r.department],transfer:[db.transfers,r=>inScope(String(r.from).split('／')[0])?homeScope:String(r.to).split('／')[0]],racks:[db.locations,r=>r.department]};
+    Object.entries(lists).forEach(([key,[data,unit]])=>{const body=document.getElementById('rows-'+key);if(!body)return;[...body.rows].forEach((tr,i)=>{if(data[i])tr.hidden=!inScope(unit(data[i]))})});
+    for(const key of ['items','inventory','assets','inbound','inspection','putaway','requisition','lifecycle','count','borrow','repair','purchase','racks','machine','transfer','notifications'])document.getElementById('page-'+key).querySelector('.page-header').insertAdjacentHTML('afterend',scopeBar());
+    const activeReqs=reqs.filter(openReq),returning=flows.filter(r=>!['已完成','使用中','已報廢'].includes(r.status));
+    document.querySelector('#page-dashboard .wms-scope-bar').insertAdjacentHTML('afterend',`<section class="wms-work-summary"><article>部門申領待處理<strong>${activeReqs.length}</strong>${button('go-requisition','查看申領')}</article><article>待上架作業<strong>${pending.length+reqs.filter(r=>r.status==='待上架').length+flows.filter(r=>r.status==='待上架').length}</strong>${button('go-putaway','確認上架')}</article><article>領用／回收待處理<strong>${returning.length}</strong>${button('go-lifecycle','查看作業')}</article><article>盤點待確認<strong>${db.counts.filter(r=>r.status==='待確認'&&matchUnit(loc(r.locationId))).length}</strong>${button('go-count','確認盤點')}</article></section>`);
+    const notices=scopedRules.filter(r=>r.enabled&&item(r.itemId)?.enabled&&departmentAvailable(r.itemId,r.department)<=r.threshold).map(r=>({title:r.department+'／'+itemName(r.itemId),detail:`可用 ${departmentAvailable(r.itemId,r.department)} ${item(r.itemId)?.unit}；${r.route}；${scheduleLabel(r)}`}));
+    const noteBody=document.getElementById('rows-notifications');if(notices.length){if(noteBody.querySelector('.wms-empty'))noteBody.innerHTML='';noteBody.insertAdjacentHTML('beforeend',notices.map(n=>row([cell('部門補貨提醒'),cell(n.title+'：'+n.detail),cell('設定規則'),`<td>${badge('待處理')}</td>`])).join(''))}
+    document.getElementById('page-reports').innerHTML=header('摘要報表','總部與企劃分別統計；不合併不同單位的物品數量')+scopeBar()+card('各部門作業摘要','單位不同的數量不相加；僅統計單據與資產筆數',table('department-summary',['部門','待申領','待到貨驗收','待上架','盤點待確認','資產數'],Object.keys(ORG_TREE).filter(inScope).map(d=>row([cell(d),cell(db.requisitions.filter(r=>r.department===d&&openReq(r)).length),cell(db.inbound.filter(r=>loc(r.locationId)?.department===d&&r.status==='待驗收').length),cell(db.inbound.filter(r=>loc(r.locationId)?.department===d&&r.status==='待上架').length+db.requisitions.filter(r=>r.department===d&&r.status==='待上架').length),cell(db.counts.filter(r=>loc(r.locationId)?.department===d&&r.status==='待確認').length),cell(db.assets.filter(a=>loc(a.locationId)?.department===d).length)])).join('')));
+    document.getElementById('page-log').insertAdjacentHTML('beforeend',card('庫存異動事件','保留舊紀錄；整合版本起逐次保存異動前後狀態與來源單號（本機展示）',table('inventory-event-list',['時間','動作','對象','異動前','異動後','來源'],formatRows(db.inventoryEvents.slice(0,200),[r=>cell(r.time),r=>cell(r.action),r=>cell(r.key),r=>cell(JSON.stringify(r.before)),r=>cell(JSON.stringify(r.after)),r=>cell(r.ref)]))));
+    // Legacy descriptions that assumed immediate return/receipt are superseded.
+    document.querySelector('#page-borrow .page-title p').textContent='歸還先待回收驗收，合格並上架後才恢復可用';
+    document.querySelector('#page-transfer .page-title p').textContent='同部門儲位移動；跨部門耗材使用部門申領，設備領用使用交接作業';
+  }
+  document.addEventListener('change',e=>{if(e.target.matches('[data-integration-scope]')){homeScope=e.target.value;localStorage.setItem(HOME_SCOPE_KEY,homeScope);renderAll()}});
+  const integrationHandlers={'new-request':requestNew,'req-step':reqStep,'cancel-req':cancelReq,'putaway-inbound':putawayInbound,'edit-rule':editRule,'planning-catalog':planningCatalog,'confirm-count':confirmCount,'new-workflow':lifecycleNew,'workflow-step':workflowStep,'configure-item':configureItem,'asset-details':assetDetails,'new-org-path':organizationPath,'edit-connections':connections,'go-requisition':()=>showPage('requisition'),'go-putaway':()=>showPage('putaway'),'go-lifecycle':()=>showPage('lifecycle'),'go-count':()=>showPage('count')};
+  function repair(){form('設備送修（保留所屬部門）',[field('assetId','資產','select',assetOptions(a=>['可用','使用中','故障','待檢測','異常待處理'].includes(a.status))),field('locationId','同部門維修位置','select',unitLocations()),field('issue','故障／檢測原因')],v=>{const a=asset(v.assetId),l=loc(v.locationId);if(!a||!l||loc(a.locationId)?.department!==l.department||!['可用','使用中','故障','待檢測','異常待處理'].includes(a.status))throw Error('資產狀態或維修部門不符');if(db.workflows.some(w=>w.assetId===a.id&&!['已完成','使用中','已報廢'].includes(w.status)))throw Error('請先完成此資產的回收／異常流程');const from=labelLoc(a.locationId),id=code('RP',db.repairs);a.status='維修中';a.holder='';a.locationId=l.id;db.repairs.unshift({id,time:stamp(),assetId:a.id,issue:v.issue,location:from,status:'維修中'});log('設備送修',a.id,from,labelLoc(l.id),id)})}
+  function replaceAsset(){form('同部門設備更換',[field('faultyId','故障／待檢／維修資產','select',assetOptions(a=>['故障','待檢測','維修中'].includes(a.status))),field('replacementId','可用替換資產','select',assetOptions(a=>a.status==='可用')),field('to','使用位置','select',unitLocations()),field('repairLocationId','故障資產維修位置','select',unitLocations()),field('issue','更換原因')],v=>{const old=asset(v.faultyId),next=asset(v.replacementId),to=loc(v.to),repairLoc=loc(v.repairLocationId);if(!old||!next||!to||!repairLoc||old.id===next.id||old.itemId!==next.itemId||next.status!=='可用'||!['故障','待檢測','維修中'].includes(old.status))throw Error('資產狀態或品項不符');const d=loc(old.locationId)?.department;if([loc(next.locationId)?.department,to.department,repairLoc.department].some(unit=>unit!==d))throw Error('更換位置及備品必須屬同部門');if(db.workflows.some(w=>w.assetId===old.id&&!['已完成','使用中','已報廢'].includes(w.status)))throw Error('請先完成原回收流程');const from=labelLoc(next.locationId),id=code('RP',db.repairs);old.status='維修中';old.holder='';old.locationId=repairLoc.id;next.locationId=to.id;next.status='使用中';next.holder=to.spot;db.repairs.filter(r=>r.assetId===old.id&&r.status==='維修中').forEach(r=>r.status='已合併更換');db.repairs.unshift({id,time:stamp(),assetId:old.id,issue:v.issue+'；以 '+next.id+' 更換',location:labelLoc(to.id),status:'維修中'});log('維修更換',old.id+' → '+next.id,from,labelLoc(to.id),id)})}
+
+  function assetDetails(id){const a=asset(id);if(!a)return;form('資產詳細／內容物 '+id,[field('serialNo','物件序號／條碼（選填）','text',[],a.serialNo||'',false),field('batchNo','批次／批號（選填）','text',[],a.batchNo||'',false),field('expiry','有效期限（選填）','date',[],a.expiry||'',false),field('contentItemId','內容物品項（選填；只記錄，不扣耗材庫存）','select',itemOptions(),a.contentItemId||'',false),field('contentQty','內容物數量（該品項基本單位）','number',[],a.contentQty||0),field('externalId','ERP資產識別碼（選填）','text',[],a.externalId||'',false),field('note','物件狀況／內容物備註（選填）','text',[],a.note||'',false)],v=>{const qty=requireNonnegative(v.contentQty);if(qty&&!item(v.contentItemId))throw Error('有內容物數量時須選品項');if(v.contentItemId===a.itemId)throw Error('內容物不可設定為物件本身');if(v.serialNo.trim()&&db.assets.some(q=>q.id!==a.id&&q.serialNo===v.serialNo.trim()))throw Error('物件序號已存在');Object.assign(a,{...v,serialNo:v.serialNo.trim(),contentQty:qty});log('修改資產詳細',a.id,'－',v.serialNo||a.id,id)})}
+
+  /* Free dashboard placement; positions belong to the current browser only. */
+  const HOME_POSITION_KEY='bomb-wms-home-positions-v1';
+  let homePositions={};try{homePositions=JSON.parse(localStorage.getItem(HOME_POSITION_KEY)||'{}')||{}}catch(e){}
+  function storeHomePositions(){localStorage.setItem(HOME_POSITION_KEY,JSON.stringify(homePositions))}
+  function desktopHome(){return window.innerWidth>720}
+  function dashboardCanvasHeight(workspace){
+    if(!desktopHome()){workspace.style.height='';return}
+    let bottom=260;workspace.querySelectorAll('[data-home-widget]').forEach(frame=>{if(!frame.classList.contains('is-expanded'))bottom=Math.max(bottom,frame.offsetTop+frame.offsetHeight+24)});workspace.style.height=bottom+'px';
+  }
+  function placeHome(frame,x,y){
+    const workspace=frame.closest('.wms-dashboard-workspace');if(!workspace)return;
+    x=Math.max(0,Math.min(Math.max(0,workspace.clientWidth-frame.offsetWidth),Math.round(x/8)*8));y=Math.max(0,Math.round(y/8)*8);
+    frame.style.left=x+'px';frame.style.top=y+'px';homePositions[frame.dataset.homeWidget]={x,y};dashboardCanvasHeight(workspace);
+  }
+  function bindDashboardWorkspace(){
+    const home=document.getElementById('page-dashboard'),workspace=home.querySelector('.wms-dashboard-workspace');if(!workspace)return;
+    const frames=[...workspace.querySelectorAll('[data-home-widget]')];
+    frames.forEach(frame=>workspace.append(frame));workspace.querySelectorAll('[data-home-column]').forEach(column=>column.remove());
+    workspace.classList.add('wms-free-canvas');
+    let yLeft=0,yRight=0;
+    frames.forEach(frame=>{
+      const key=frame.dataset.homeWidget,side=dashboardPrefs.columns[key];
+      const width=homeSizes[key]?.width||Math.max(250,Math.floor((workspace.clientWidth-32)/3));
+      frame.style.width=desktopHome()?Math.min(width,workspace.clientWidth)+'px':'';
+      const size=homePositions[key],valid=size&&Number.isFinite(size.x)&&Number.isFinite(size.y);
+      const x=valid?size.x:side==='right'?Math.max(0,workspace.clientWidth-width):0;
+      const y=valid?size.y:side==='right'?yRight:yLeft;
+      if(desktopHome())placeHome(frame,x,y);
+      if(side==='right')yRight=y+frame.offsetHeight+16;else yLeft=y+frame.offsetHeight+16;
+    });
+    legacyBindDashboardWorkspace();dashboardCanvasHeight(workspace);
+    if(typeof ResizeObserver!=='undefined'){
+      const observer=new ResizeObserver(()=>{if(!workspace.isConnected){observer.disconnect();return}if(workspace.dataset.dragging!=='true')dashboardCanvasHeight(workspace)});frames.forEach(frame=>observer.observe(frame));
+    }
+  }
+  function bindDashboardDrag(workspace,handle){
+    const frame=handle.closest('[data-home-widget]');
+    handle.addEventListener('keydown',event=>{
+      const vectors={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]};
+      if(!desktopHome()||!vectors[event.key]||frame.classList.contains('is-expanded'))return;event.preventDefault();const step=event.shiftKey?48:16;const [dx,dy]=vectors[event.key];placeHome(frame,frame.offsetLeft+dx*step,frame.offsetTop+dy*step);storeHomePositions();
+    });
+    handle.addEventListener('pointerdown',event=>{
+      if(event.button!==0||!desktopHome()||frame.classList.contains('is-expanded')||workspace.dataset.dragging==='true')return;
+      event.preventDefault();const rect=frame.getBoundingClientRect(),offset={x:event.clientX-rect.left,y:event.clientY-rect.top},key=frame.dataset.homeWidget;
+      const old=homePositions[key]?{...homePositions[key]}:{x:frame.offsetLeft,y:frame.offsetTop};let point={x:event.clientX,y:event.clientY},active=true,raf=0,last=0,moved=false;
+      workspace.dataset.dragging='true';frame.classList.add('is-free-moving');document.documentElement.classList.add('wms-drag-active');frame.querySelector('details')?.removeAttribute('open');handle.setPointerCapture(event.pointerId);
+      function paint(time){
+        if(!active)return;const elapsed=last?Math.min(32,time-last):16;last=time;
+        if(point.y>window.innerHeight-64||point.y<120){const direction=point.y>window.innerHeight-64?1:-1;let scroller=workspace.parentElement;while(scroller&&!(scroller.scrollHeight>scroller.clientHeight&&/(auto|scroll)/.test(getComputedStyle(scroller).overflowY)))scroller=scroller.parentElement;if(!scroller)scroller=document.scrollingElement;if(scroller)scroller.scrollTop+=direction*500*elapsed/1000}
+        const area=workspace.getBoundingClientRect();placeHome(frame,point.x-area.left-offset.x,point.y-area.top-offset.y);raf=requestAnimationFrame(paint);
+      }
+      function move(e){if(e.pointerId!==event.pointerId)return;point={x:e.clientX,y:e.clientY};moved=true}
+      function finish(e){
+        if(e.pointerId!==event.pointerId)return;active=false;cancelAnimationFrame(raf);
+        if(e.type==='pointerup'&&moved){const area=workspace.getBoundingClientRect();placeHome(frame,e.clientX-area.left-offset.x,e.clientY-area.top-offset.y);storeHomePositions()}else{placeHome(frame,old.x,old.y)}
+        frame.classList.remove('is-free-moving');document.documentElement.classList.remove('wms-drag-active');delete workspace.dataset.dragging;
+        document.removeEventListener('pointermove',move);document.removeEventListener('pointerup',finish);document.removeEventListener('pointercancel',finish);document.removeEventListener('keydown',escape);window.removeEventListener('blur',cancel);if(handle.hasPointerCapture(event.pointerId))handle.releasePointerCapture(event.pointerId);
+      }
+      function cancel(){finish({pointerId:event.pointerId,type:'pointercancel'})}function escape(e){if(e.key==='Escape'){e.preventDefault();cancel()}}
+      document.addEventListener('pointermove',move);document.addEventListener('pointerup',finish);document.addEventListener('pointercancel',finish);document.addEventListener('keydown',escape);window.addEventListener('blur',cancel);raf=requestAnimationFrame(paint);
+    });
+  }
+  function resetHomePositions(){homePositions={};storeHomePositions();renderAll()}
+  let homeViewportDesktop=window.innerWidth>720,homeResizeTimer;
+  window.addEventListener('resize',()=>{clearTimeout(homeResizeTimer);homeResizeTimer=setTimeout(()=>{
+    const workspace=document.querySelector('#page-dashboard .wms-free-canvas');if(!workspace||workspace.dataset.dragging==='true')return;
+    if(homeViewportDesktop!==desktopHome()){homeViewportDesktop=desktopHome();renderAll();return}
+    if(desktopHome())workspace.querySelectorAll('[data-home-widget]').forEach(frame=>{if(!frame.classList.contains('is-expanded'))placeHome(frame,frame.offsetLeft,frame.offsetTop)});dashboardCanvasHeight(workspace);
+  },180)});
+
+  const handlers={'reset-home-positions':resetHomePositions,'new-item':addItem,'new-inbound':inbound,'new-transfer-asset':transferAsset,'new-transfer-stock':transferStock,'new-borrow':borrow,'new-repair':repair,'new-replacement':replaceAsset,'new-count':countStock,'new-purchase':purchase,'new-location':addLocation,'refresh':renderAll,'go-log':()=>showPage('log'),'go-notifications':()=>showPage('notifications'),'go-inspection':()=>showPage('inspection'),'go-purchase':()=>showPage('purchase'),'go-inventory':()=>showPage('inventory'),'go-assets':()=>showPage('assets'),'customize-home':customizeHome,'go-racks':()=>showPage('racks'),'set-home-scope':id=>{if(['全部',...Object.keys(ORG_TREE)].includes(id)){homeScope=id;localStorage.setItem(HOME_SCOPE_KEY,id);renderAll()}},'export':exportData,'import':importData,'import-excel':importExcel,'download-excel-template':downloadExcelTemplate,'close-dialog':()=>dialog.close()};
   document.addEventListener('click',e=>{const target=e.target.closest('[data-action]');if(!target)return;const action=target.dataset.action,id=target.dataset.id;if(handlers[action])handlers[action](id);else if(action==='edit-item')editItem(id);else if(action==='return-asset')returnAsset(id);else if(action==='finish-repair')finishRepair(id);else if(action==='approve-purchase')approve(id);else if(action==='inspect-inbound')inspectInbound(id);else if(action==='toggle-order')setOrderDecision(id,'ordered',target.checked);else if(action==='toggle-no-order')setOrderDecision(id,'no-order',target.checked)});
+  Object.assign(handlers,integrationHandlers);
   renderAll();
 })();
 </script>
