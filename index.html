@@ -689,6 +689,83 @@
 #page-dashboard .wms-free-canvas>.wms-home-widget.is-expanded{position:fixed;left:20px!important;right:20px!important;top:var(--expanded-top,100px)!important;bottom:20px;z-index:80}
 @media(max-width:720px){#page-dashboard .wms-free-canvas{display:grid;gap:16px;height:auto!important}#page-dashboard .wms-free-canvas>.wms-home-widget{position:relative;left:auto!important;top:auto!important;width:100%!important;min-width:0}#page-dashboard [data-home-drag]{display:none}#page-dashboard .wms-free-canvas>.wms-home-widget.is-expanded{position:fixed;left:10px!important;right:10px!important;top:var(--expanded-top,100px)!important;width:auto!important;bottom:10px}}
 </style>
+<style id="wms-workpage-polish">
+/* Unified work pages. Dashboard drag/resize canvas retains its existing styles. */
+:root{--wms-ui-panel:#fff;--wms-ui-soft:#f5f8fa;--wms-ui-line:#e1e8ed;--wms-ui-ink:#233b4d;--wms-ui-muted:#6c7f8e;--wms-ui-accent:#245a73;--wms-ui-tint:#eaf2f5;--wms-ui-hover:#f0f6f8;--wms-ui-shadow:0 5px 22px rgba(32,57,76,.035)}
+html[data-theme="dark"]{--wms-ui-panel:#1b2733;--wms-ui-soft:#202f3b;--wms-ui-line:#344550;--wms-ui-ink:#e0eaf0;--wms-ui-muted:#a2b5c2;--wms-ui-accent:#8cc7db;--wms-ui-tint:#263e4a;--wms-ui-hover:#253744;--wms-ui-shadow:0 5px 22px rgba(0,0,0,.09)}
+.wms-book-nav{padding:8px 16px 0!important}
+.wms-book-nav .sheet-tabs{min-height:58px;padding:8px 3px 0!important;scrollbar-width:thin;scrollbar-color:var(--home-scroll) transparent}
+.wms-book-nav .sheet-tab{--book-fill:var(--wms-ui-soft);--book-line:var(--wms-ui-line);--tab-mark:#7292a4;min-width:142px;height:48px!important;margin-right:-12px!important;padding:0 25px 0 16px!important;font-size:13px!important;letter-spacing:.025em;color:var(--wms-ui-muted)!important;transition:transform .15s ease,color .15s ease}
+.wms-book-nav .sheet-tab:nth-child(1){z-index:8}.wms-book-nav .sheet-tab:nth-child(2){z-index:7}.wms-book-nav .sheet-tab:nth-child(3){z-index:6}.wms-book-nav .sheet-tab:nth-child(4){z-index:5}.wms-book-nav .sheet-tab:nth-child(5){z-index:4}.wms-book-nav .sheet-tab:nth-child(6){z-index:3}.wms-book-nav .sheet-tab:nth-child(7){z-index:2}.wms-book-nav .sheet-tab:nth-child(8){z-index:1}
+.wms-book-nav .sheet-tab[data-group="headquarters"]{--tab-mark:#668f89}.wms-book-nav .sheet-tab[data-group="catalog"]{--tab-mark:#7b9bad}.wms-book-nav .sheet-tab[data-group="procurement"]{--tab-mark:#87a18a}.wms-book-nav .sheet-tab[data-group="assets"]{--tab-mark:#b59a6b}.wms-book-nav .sheet-tab[data-group="operations"]{--tab-mark:#7997a0}.wms-book-nav .sheet-tab[data-group="reports"]{--tab-mark:#889dac}.wms-book-nav .sheet-tab[data-group="system"]{--tab-mark:#949fa7}
+.wms-book-nav .sheet-tab>span:not(.tab-icon){display:inline-flex;align-items:center;gap:8px}
+.wms-book-nav .sheet-tab>span:not(.tab-icon)::before{content:"";width:6px;height:6px;flex:0 0 6px;border-radius:50%;background:var(--tab-mark)}
+.wms-book-nav .sheet-tab:hover{--book-fill:var(--wms-ui-hover);color:var(--wms-ui-ink)!important;transform:translateY(-1px)}
+.wms-book-nav .sheet-tab.active{--book-fill:#245a73;--book-line:#245a73;transform:translateY(-3px);color:#fff!important}
+.wms-book-nav .sheet-tab.active>span::before{background:#c6e5e9}
+html[data-theme="dark"] .wms-book-nav .sheet-tab{--book-fill:var(--wms-ui-soft);--book-line:var(--wms-ui-line);color:var(--wms-ui-muted)!important}
+html[data-theme="dark"] .wms-book-nav .sheet-tab:hover{--book-fill:var(--wms-ui-hover);color:var(--wms-ui-ink)!important}
+html[data-theme="dark"] .wms-book-nav .sheet-tab.active{--book-fill:#35697d;--book-line:#35697d;color:#fff!important}
+.wms-book-nav .sheet-subtabs,html[data-theme="dark"] .wms-book-nav .sheet-subtabs{margin-top:0!important;padding:10px 12px!important;border:1px solid var(--wms-ui-line);border-radius:0 0 15px 15px;background:var(--wms-ui-panel);box-shadow:var(--wms-ui-shadow)}
+.wms-book-nav .sheet-children{gap:6px;flex-wrap:wrap}
+.wms-book-nav .child-tab{display:inline-flex!important;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:8px 14px!important;border:1px solid transparent!important;background:transparent!important;border-radius:10px!important;color:var(--wms-ui-muted)!important;font-size:13px!important;font-weight:600;box-shadow:none!important}
+.wms-book-nav .child-tab:hover{background:var(--wms-ui-soft)!important;color:var(--wms-ui-ink)!important}
+.wms-book-nav .child-tab.active{background:var(--wms-ui-tint)!important;border-color:var(--wms-ui-line)!important;color:var(--wms-ui-accent)!important}
+.wms-book-nav .child-tab .tab-icon svg{width:17px;height:17px;stroke-width:1.65}
+.wms-book-nav .child-tab:focus-visible{outline:2px solid var(--wms-ui-accent);outline-offset:2px}
+.page-view:not(#page-dashboard){color:var(--wms-ui-ink)}
+.page-view:not(#page-dashboard) .page-header{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin:8px 0 18px;padding:12px 0 8px;border:0;background:transparent;box-shadow:none}
+.page-view:not(#page-dashboard) .page-title h1{margin:0 0 7px;font-size:clamp(23px,2vw,28px);font-weight:750;letter-spacing:.015em;color:var(--wms-ui-ink)}
+.page-view:not(#page-dashboard) .page-title p{max-width:760px;margin:0;font-size:13px;line-height:1.7;color:var(--wms-ui-muted)}
+.page-view:not(#page-dashboard) .header-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap;max-width:52%}
+.page-view:not(#page-dashboard) .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:7px 12px;border:1px solid var(--wms-ui-line);border-radius:9px;background:var(--wms-ui-panel);color:var(--wms-ui-ink);font:inherit;font-size:13px;font-weight:600;line-height:1.4;box-shadow:none;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s}
+.page-view:not(#page-dashboard) .btn:hover{background:var(--wms-ui-hover);border-color:var(--wms-ui-accent)}
+.page-view:not(#page-dashboard) .btn-primary,.page-view:not(#page-dashboard) .header-actions>.btn:first-child{background:#245a73;border-color:#245a73;color:#fff}
+.page-view:not(#page-dashboard) .btn-primary:hover,.page-view:not(#page-dashboard) .header-actions>.btn:first-child:hover{background:#1d4c62;border-color:#1d4c62}
+.page-view:not(#page-dashboard) .btn:focus-visible{outline:2px solid var(--wms-ui-accent);outline-offset:3px}
+.page-view:not(#page-dashboard) .card{margin:0 0 18px;border:1px solid var(--wms-ui-line);border-radius:16px;background:var(--wms-ui-panel);box-shadow:var(--wms-ui-shadow);overflow:hidden}
+.page-view:not(#page-dashboard) .card-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;border-bottom:1px solid var(--wms-ui-line);background:var(--wms-ui-panel)}
+.page-view:not(#page-dashboard) .card-header h2{margin:0 0 5px;font-size:16px;line-height:1.5;font-weight:700;color:var(--wms-ui-ink)}
+.page-view:not(#page-dashboard) .card-header span{display:block;max-width:900px;font-size:12px;line-height:1.65;color:var(--wms-ui-muted)}
+.page-view:not(#page-dashboard) .card-body{padding:20px}
+.page-view:not(#page-dashboard) .table-wrap{overflow:auto;max-width:100%;scrollbar-width:thin;scrollbar-color:var(--home-scroll) transparent}
+.page-view:not(#page-dashboard) .table-wrap table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px;color:var(--wms-ui-ink);background:var(--wms-ui-panel)}
+.page-view:not(#page-dashboard) .table-wrap th{padding:13px 16px;border:0;border-bottom:1px solid var(--wms-ui-line);background:var(--wms-ui-soft);color:var(--wms-ui-muted);font-size:12px;font-weight:650;line-height:1.5;white-space:nowrap;text-align:left}
+.page-view:not(#page-dashboard) .table-wrap td{padding:15px 16px;border:0;border-bottom:1px solid var(--wms-ui-line);background:transparent;line-height:1.65;vertical-align:middle;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.page-view:not(#page-dashboard) .table-wrap tbody tr:nth-child(even){background:color-mix(in srgb,var(--wms-ui-soft) 55%,var(--wms-ui-panel))}
+.page-view:not(#page-dashboard) .table-wrap tbody tr:hover{background:var(--wms-ui-hover)}
+.page-view:not(#page-dashboard) .table-wrap tbody tr:last-child td{border-bottom:0}
+.page-view:not(#page-dashboard) .table-wrap td:first-child{font-weight:650;color:var(--wms-ui-ink)}
+.page-view:not(#page-dashboard) .table-wrap td .btn{margin:3px 5px 3px 0;min-height:34px;padding:6px 10px;font-size:12px}
+.page-view:not(#page-dashboard) .table-wrap .wms-empty{padding:38px 20px;text-align:center;font-weight:400;color:var(--wms-ui-muted)}
+.page-view:not(#page-dashboard) .badge{display:inline-flex;align-items:center;justify-content:center;min-height:25px;padding:3px 9px;border-radius:7px;font-size:11px;font-weight:650;line-height:1.5;white-space:nowrap;border:1px solid transparent}
+.page-view:not(#page-dashboard) .badge-info{background:#e9f1f5;color:#416d83}.page-view:not(#page-dashboard) .badge-success{background:#eaf3ee;color:#3b785d}.page-view:not(#page-dashboard) .badge-warning{background:#f8f1e5;color:#997230}.page-view:not(#page-dashboard) .badge-danger{background:#f8eaea;color:#a64b52}
+html[data-theme="dark"] .page-view:not(#page-dashboard) .badge-info{background:#293f4c;color:#afd1df}html[data-theme="dark"] .page-view:not(#page-dashboard) .badge-success{background:#283f35;color:#a6d2b9}html[data-theme="dark"] .page-view:not(#page-dashboard) .badge-warning{background:#463e2c;color:#e1c58a}html[data-theme="dark"] .page-view:not(#page-dashboard) .badge-danger{background:#472f34;color:#e6adb4}
+.page-view:not(#page-dashboard) .wms-unit-bar{gap:12px;margin:0 0 18px;padding:12px 16px;border:1px solid var(--wms-ui-line);border-radius:12px;background:var(--wms-ui-panel)}
+.page-view:not(#page-dashboard) .wms-unit-bar strong{font-size:13px}.page-view:not(#page-dashboard) .wms-unit-bar small{margin-left:auto;font-size:11px;color:var(--wms-ui-muted)}
+.page-view:not(#page-dashboard) select,.page-view:not(#page-dashboard) input:not([type="checkbox"]):not([type="radio"]){box-sizing:border-box;min-height:40px;padding:9px 12px;border:1px solid var(--wms-ui-line);border-radius:9px;background:var(--wms-ui-soft);color:var(--wms-ui-ink);font:inherit;font-size:13px}
+.page-view:not(#page-dashboard) input[type="number"]{font-variant-numeric:tabular-nums;appearance:textfield;-moz-appearance:textfield}.page-view:not(#page-dashboard) input[type="number"]::-webkit-inner-spin-button,.page-view:not(#page-dashboard) input[type="number"]::-webkit-outer-spin-button{appearance:none;margin:0}
+.page-view:not(#page-dashboard) input:focus-visible,.page-view:not(#page-dashboard) select:focus-visible{outline:2px solid var(--wms-ui-accent);outline-offset:2px}
+.page-view:not(#page-dashboard) .wms-work-note{padding:13px 16px;border:1px solid var(--wms-ui-line);border-radius:12px;background:var(--wms-ui-soft);color:var(--wms-ui-muted);font-size:12px;line-height:1.8}
+.page-view:not(#page-dashboard) .item-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px}
+#wmsDialog:not(:has(.wms-home-editor)) #wmsForm h2{margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--home-line);font-size:22px;letter-spacing:.02em}
+#wmsDialog:not(:has(.wms-home-editor)) .wms-field>span{font-size:12px;font-weight:650;color:var(--home-muted)}
+#wmsDialog:not(:has(.wms-home-editor)) input:not([type="checkbox"]):not([type="radio"]),#wmsDialog:not(:has(.wms-home-editor)) select{min-height:46px;border-radius:11px}
+#wmsDialog:not(:has(.wms-home-editor)) .wms-dialog-actions .btn-primary{background:#245a73;border-color:#245a73}
+#wmsDialog .wms-count-grid{display:grid;grid-template-columns:1fr;gap:0;padding:0;max-height:52vh;border:1px solid var(--home-line);border-radius:12px;overflow:auto}
+#wmsDialog .wms-count-item{display:grid;grid-template-columns:minmax(130px,1fr) minmax(80px,.6fr) minmax(100px,.65fr);align-items:center;gap:14px;margin:0;padding:12px 16px;border:0;border-bottom:1px solid var(--home-line);border-radius:0;background:var(--home-panel);cursor:text}
+#wmsDialog .wms-count-item:last-child{border-bottom:0}#wmsDialog .wms-count-item:nth-child(even){background:var(--home-field)}#wmsDialog .wms-count-item:focus-within{background:var(--home-tint)}
+#wmsDialog .wms-count-item strong{font-size:14px;line-height:1.5}#wmsDialog .wms-count-item small{margin:0;font-size:12px;line-height:1.6;font-variant-numeric:tabular-nums;color:var(--home-muted)}
+#wmsDialog .wms-count-item input{margin:0;min-height:46px;background:var(--home-panel);border:1px solid var(--home-line);text-align:center;font-size:18px;font-weight:650;appearance:textfield;-moz-appearance:textfield}
+#wmsDialog .wms-count-item input::-webkit-inner-spin-button,#wmsDialog .wms-count-item input::-webkit-outer-spin-button{appearance:none;margin:0}
+#wmsDialog .wms-count-head{display:grid;grid-template-columns:minmax(130px,1fr) minmax(80px,.6fr) minmax(100px,.65fr);gap:14px;padding:10px 16px;margin-bottom:6px;color:var(--home-muted);font-size:12px;font-weight:600}
+#wmsDialog .wms-count-hint{margin:12px 0 18px!important;font-size:12px!important;line-height:1.7!important;color:var(--home-muted)}
+@media(max-width:900px){.page-view:not(#page-dashboard) .page-header{flex-direction:column;gap:12px}.page-view:not(#page-dashboard) .header-actions{justify-content:flex-start;max-width:100%}.page-view:not(#page-dashboard) .table-wrap th,.page-view:not(#page-dashboard) .table-wrap td{padding:12px}.page-view:not(#page-dashboard) .wms-unit-bar small{flex-basis:100%;margin:0}}
+@media(max-width:600px){.wms-book-nav{padding:6px 8px 0!important}.wms-book-nav .sheet-tabs{min-height:53px}.wms-book-nav .sheet-tab{min-width:124px;height:44px!important;margin-right:-10px!important;padding-left:12px!important;font-size:12px!important}.wms-book-nav .sheet-subtabs{padding:8px!important}.wms-book-nav .child-tab{min-height:38px;padding:7px 11px!important;font-size:12px!important}.page-view:not(#page-dashboard) .page-title h1{font-size:23px}.page-view:not(#page-dashboard) .card-header{padding:15px}.page-view:not(#page-dashboard) .btn{min-height:42px}.page-view:not(#page-dashboard) .card{border-radius:13px}.page-view:not(#page-dashboard) .table-wrap td .btn{min-height:38px}#wmsDialog .wms-count-item,#wmsDialog .wms-count-head{grid-template-columns:minmax(95px,1fr) 78px 90px;gap:8px;padding:11px 10px}#wmsDialog .wms-count-item strong{font-size:13px}#wmsDialog .wms-count-item input{font-size:16px;padding:8px 5px!important}}
+@media(max-width:360px){#wmsDialog .wms-count-item,#wmsDialog .wms-count-head{grid-template-columns:minmax(70px,1fr) 65px 74px;gap:6px;padding:10px 7px}}
+@media(prefers-reduced-motion:reduce){.wms-book-nav .sheet-tab,.page-view:not(#page-dashboard) .btn{transition:none}}
+
+</style>
 </head>
 
 <body>
@@ -893,7 +970,7 @@
   const childTabs=[...document.querySelectorAll('.child-tab')];
   const subtabBar=document.querySelector('.sheet-subtabs');
   const pageGroups={hqreceiving:'headquarters',hqoffice:'headquarters',hqcards:'headquarters',requisition:'operations',putaway:'procurement',lifecycle:'operations',items:'catalog',inventory:'catalog',racks:'catalog',purchase:'procurement',inbound:'procurement',inspection:'procurement',assets:'assets',machine:'assets',repair:'assets',transfer:'operations',borrow:'operations',count:'operations',reports:'reports',log:'reports',notifications:'reports',roles:'system',import:'system',settings:'system'};
-  document.querySelectorAll('.wms-book-nav .sheet-tab').forEach(tab=>tab.insertAdjacentHTML('afterbegin','<svg class="wms-book-shape" viewBox="0 0 180 54" preserveAspectRatio="none" aria-hidden="true"><path d="M8 1H149Q155 1 158 8L179 45Q183 53 172 53H8Q1 53 1 46V9Q1 1 8 1Z"/></svg>'));
+  document.querySelectorAll('.wms-book-nav .sheet-tab').forEach(tab=>tab.insertAdjacentHTML('afterbegin','<svg class="wms-book-shape" viewBox="0 0 180 54" preserveAspectRatio="none" aria-hidden="true"><path d="M9 1H158Q164 1 166 8L178 44Q181 53 172 53H9Q1 53 1 45V9Q1 1 9 1Z"/></svg>'));
   let currentPage='dashboard';
   function legacyShowPage(page,group=pageGroups[page]||null){
     const main=group?groupTabs.find(t=>t.dataset.group===group):directTabs.find(t=>t.dataset.page===page);
@@ -1772,7 +1849,7 @@
   function openCountSheet(locationId,list,note){
     const key='bomb-wms-count-draft-v1:'+locationId;let draft={};try{draft=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){}
     const before=Object.fromEntries(list.map(x=>[x.id,amountAt(x.id,locationId)]));
-    dialog.innerHTML=`<form id="wmsForm"><h2>現場盤點</h2><p>${E(labelLoc(locationId))}・只盤備品，不含使用中</p><div class="wms-count-grid">${list.map(x=>`<label class="wms-count-item"><strong>${E(x.name)}</strong><small>帳面 ${before[x.id]} ${E(x.unit)}；不填表示此次不盤</small><input type="number" name="${E(x.id)}" min="0" step="1" placeholder="輸入實際數量（${E(x.unit)}）" value="${E(draft[x.id]??'')}" inputmode="numeric"></label>`).join('')}</div><p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">暫存／關閉</button><button class="btn btn-primary" type="submit">送出盤點，待確認差異</button></div></form>`;
+    dialog.innerHTML=`<form id="wmsForm"><h2>現場盤點</h2><p class="wms-count-hint">${E(labelLoc(locationId))}<br>逐項填實盤量；未填表示這次不盤。差異送出後再確認。</p><div class="wms-count-head" aria-hidden="true"><span>品項</span><span>帳面／單位</span><span>實盤量</span></div><div class="wms-count-grid">${list.map(x=>`<label class="wms-count-item"><strong>${E(x.name)}</strong><small>帳面 ${before[x.id]} ${E(x.unit)}；不填表示此次不盤</small><input type="number" name="${E(x.id)}" min="0" step="1" aria-label="${E(x.name)}實盤量（${E(x.unit)}）" placeholder="未盤" value="${E(draft[x.id]??'')}" inputmode="numeric" autocomplete="off"></label>`).join('')}</div><p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">暫存／關閉</button><button class="btn btn-primary" type="submit">送出盤點，待確認差異</button></div></form>`;
     dialog.querySelector('form').addEventListener('input',()=>localStorage.setItem(key,JSON.stringify(Object.fromEntries(new FormData(dialog.querySelector('form'))))));
     submitDialog=v=>{
       const entries=list.filter(x=>v[x.id]!==''&&v[x.id]!==undefined).map(x=>({x,actual:requireNonnegative(v[x.id])}));if(!entries.length)throw Error('至少填寫一項實盤數');
