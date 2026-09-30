@@ -553,6 +553,60 @@
     .wms-saas-navbar .account-trigger,
     .wms-saas-navbar .wms-account-chevron{transition:none}
   }
+  /* 首頁直接配置與自訂視窗 */
+  :root{--home-panel:#fff;--home-field:#f4f7fa;--home-line:#dce5ee;--home-ink:#263b50;--home-muted:#657c92;--home-accent:#246da8;--home-tint:#eaf3fb;--home-scroll:#a5b6c7}
+  html[data-theme="dark"]{--home-panel:#192534;--home-field:#223246;--home-line:#35495f;--home-ink:#e0ebf8;--home-muted:#a4b7ce;--home-accent:#9cd0fa;--home-tint:#253f58;--home-scroll:#536d86}
+  #page-dashboard .wms-home-arrange{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:20px 0 12px;color:var(--home-muted);font-size:13px}
+  #page-dashboard .wms-home-arrange p{margin:0;line-height:1.6}
+  #page-dashboard .wms-home-arrange select,#page-dashboard .wms-widget-kind{font:inherit;color:var(--home-ink);background:var(--home-field);border:1px solid var(--home-line);border-radius:9px;padding:8px 10px;max-width:100%}
+  #page-dashboard .wms-dashboard-column{min-height:100px;padding:4px;border-radius:16px;transition:background .15s ease}
+  #page-dashboard .wms-dashboard-column.is-drop-column{background:var(--home-tint);outline:2px dashed var(--home-accent);outline-offset:2px}
+  #page-dashboard .wms-home-widget{position:relative;overflow:visible;border-radius:16px;background:var(--home-panel);border:1px solid var(--home-line);box-shadow:var(--dash-shadow);min-width:0}
+  #page-dashboard .wms-home-widget>.card{border:0;box-shadow:none;border-radius:16px;background:var(--home-panel)}
+  #page-dashboard .wms-home-widget>.card .card-header{padding-top:0}
+  #page-dashboard .wms-home-widget>.card .card-header h2{display:none}
+  #page-dashboard .wms-widget-tools{display:flex;align-items:center;gap:8px;padding:12px 14px 10px;color:var(--home-ink)}
+  #page-dashboard .wms-widget-tools button{display:grid;place-items:center;min-width:32px;height:32px;padding:0 7px;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--home-muted);font:inherit;cursor:pointer}
+  #page-dashboard .wms-widget-tools button:hover{background:var(--home-tint);color:var(--home-accent)}
+  #page-dashboard .wms-widget-tools button:focus-visible,#page-dashboard .wms-widget-tools select:focus-visible{outline:2px solid var(--home-accent);outline-offset:2px}
+  #page-dashboard .wms-widget-tools [data-home-drag]{cursor:grab;touch-action:none;font-size:20px;letter-spacing:-2px}
+  #page-dashboard .wms-widget-tools [data-home-drag]:active{cursor:grabbing}
+  #page-dashboard .wms-widget-kind{flex:1;min-width:0;font-size:14px;font-weight:700;background:transparent;border-color:transparent;padding-left:2px}
+  #page-dashboard .wms-widget-menu{position:relative;flex:0 0 auto}
+  #page-dashboard .wms-widget-menu>summary{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;list-style:none;cursor:pointer;font-weight:800;letter-spacing:2px}
+  #page-dashboard .wms-widget-menu>summary::-webkit-details-marker{display:none}
+  #page-dashboard .wms-widget-menu[open]>summary,#page-dashboard .wms-widget-menu>summary:hover{background:var(--home-tint);color:var(--home-accent)}
+  #page-dashboard .wms-widget-menu>div{position:absolute;top:38px;right:0;z-index:10;display:grid;gap:3px;width:154px;padding:6px;border:1px solid var(--home-line);border-radius:12px;background:var(--home-panel);box-shadow:0 12px 28px rgba(0,0,0,.16)}
+  #page-dashboard .wms-widget-menu>div button{display:block;text-align:left;width:100%;height:auto;padding:9px 10px;font-size:13px}
+  #page-dashboard .wms-home-widget.is-dragging{opacity:.45}
+  #page-dashboard .wms-home-widget.is-drop-before::before{content:"";position:absolute;top:-10px;left:0;right:0;height:3px;border-radius:4px;background:var(--home-accent)}
+  #page-dashboard .wms-empty-column{padding:24px 12px;text-align:center;border:1px dashed var(--home-line);border-radius:14px;color:var(--home-muted);font-size:13px}
+  #wmsDialog:has(.wms-home-editor){box-sizing:border-box;width:min(680px,calc(100vw - 28px));max-height:calc(100dvh - 40px);padding:0;border:1px solid var(--home-line);border-radius:20px;background:var(--home-panel);color:var(--home-ink);box-shadow:0 24px 80px rgba(0,0,0,.3);overflow:auto;scrollbar-width:thin;scrollbar-color:var(--home-scroll) transparent;color-scheme:light}
+  html[data-theme="dark"] #wmsDialog:has(.wms-home-editor){color-scheme:dark}
+  #wmsDialog:has(.wms-home-editor)::backdrop{background:rgba(9,18,30,.5);backdrop-filter:blur(5px)}
+  #wmsDialog:has(.wms-home-editor)::-webkit-scrollbar{width:6px}
+  #wmsDialog:has(.wms-home-editor)::-webkit-scrollbar-thumb{background:var(--home-scroll);border-radius:8px}
+  #wmsDialog .wms-home-editor{padding:24px}
+  #wmsDialog .wms-home-editor h2{margin:0 0 8px;font-size:21px}
+  #wmsDialog .wms-home-editor h3{margin:24px 0 12px;font-size:15px;color:var(--home-ink)}
+  #wmsDialog .wms-home-editor p{color:var(--home-muted);font-size:13px;line-height:1.7}
+  #wmsDialog .wms-home-editor .wms-layout-row{padding:12px;background:var(--home-field);border-color:var(--home-line);gap:8px}
+  #wmsDialog .wms-home-editor .wms-layout-row label{font-size:14px;color:var(--home-ink)}
+  #wmsDialog .wms-home-editor input[type="checkbox"]{width:17px;height:17px;accent-color:#3384bd;flex-shrink:0;cursor:pointer}
+  #wmsDialog .wms-home-editor .wms-layout-row select,#wmsDialog .wms-home-editor .wms-layout-row button{box-sizing:border-box;height:34px;background:var(--home-panel);border:1px solid var(--home-line);color:var(--home-ink);padding:5px 9px;font:inherit;font-size:13px}
+  #wmsDialog .wms-home-editor .wms-layout-row button:hover:not(:disabled){background:var(--home-tint);border-color:var(--home-accent)}
+  #wmsDialog .wms-home-editor .wms-layout-row button:disabled{opacity:.35}
+  #wmsDialog .wms-home-editor .wms-customize-grid{gap:9px}
+  #wmsDialog .wms-home-editor .wms-customize-grid label{border-color:var(--home-line);padding:12px;background:var(--home-field);color:var(--home-ink);font-size:14px}
+  #wmsDialog .wms-home-editor .wms-customize-grid label:has(input:checked){border-color:var(--home-accent);background:var(--home-tint)}
+  #wmsDialog .wms-home-editor .wms-dialog-actions{display:flex;justify-content:flex-end;gap:10px;padding-top:16px;margin-top:20px;border-top:1px solid var(--home-line)}
+  #wmsDialog .wms-home-editor .wms-dialog-actions .btn{padding:9px 20px;border-radius:10px;background:var(--home-field);border:1px solid var(--home-line);color:var(--home-ink)}
+  #wmsDialog .wms-home-editor .wms-dialog-actions .btn-primary{background:#246da8;border-color:#246da8;color:#fff}
+  #wmsDialog .wms-home-editor #formError{color:#d95765}
+  @media(max-width:900px){#page-dashboard .wms-dashboard-workspace{grid-template-columns:1fr}#page-dashboard .wms-empty-column{padding:14px}#page-dashboard .wms-dashboard-column:has(>.wms-empty-column){min-height:0}}
+  @media(max-width:520px){#wmsDialog .wms-home-editor{padding:18px}#wmsDialog .wms-home-editor .wms-layout-row>label{flex-basis:100%}#wmsDialog .wms-home-editor .wms-layout-row select{flex:1}#page-dashboard .wms-home-arrange select{width:100%}}
+  @media(prefers-reduced-motion:reduce){#page-dashboard .wms-dashboard-column{transition:none}}
+
 </style>
 </head>
 
@@ -847,6 +901,93 @@
   if(!dashboardPrefs.favorites.length)dashboardPrefs.favorites=[...defaultPrefs.favorites];
   if(!dashboardPrefs.widgets.length)dashboardPrefs.widgets=[...defaultPrefs.widgets];
   function renderFavorites(){return dashboardPrefs.favorites.map(key=>{const label=favoriteChoices.find(([id])=>id===key)?.[1]||key;return `<button type="button" data-favorite-page="${E(key)}">${E(label)}</button>`}).join('')}
+  function saveDashboardLayout(){
+    localStorage.setItem(DASH_PREF_KEY,JSON.stringify(dashboardPrefs));
+    renderAll();
+  }
+  function moveDashboardWidget(key,side,before=null){
+    if(!dashboardPrefs.widgets.includes(key)||!['left','right'].includes(side)||before===key)return;
+    const order=dashboardPrefs.widgets.filter(id=>id!==key);
+    dashboardPrefs.columns[key]=side;
+    const index=before?order.indexOf(before):-1;
+    if(index>=0)order.splice(index,0,key);
+    else{
+      const last=order.reduce((n,id,i)=>dashboardPrefs.columns[id]===side?i:n,-1);
+      order.splice(last+1,0,key);
+    }
+    dashboardPrefs.widgets=order;
+    saveDashboardLayout();
+  }
+  function bindDashboardWorkspace(){
+    const home=document.getElementById('page-dashboard');
+    const workspace=home.querySelector('.wms-dashboard-workspace');
+    if(!workspace)return;
+    home.querySelector('[data-home-add]')?.addEventListener('change',event=>{
+      const key=event.target.value;
+      if(!widgetChoices.some(([id])=>id===key)||dashboardPrefs.widgets.includes(key))return;
+      dashboardPrefs.widgets.push(key);saveDashboardLayout();
+    });
+    workspace.querySelectorAll('[data-home-kind]').forEach(select=>select.addEventListener('change',()=>{
+      const key=select.closest('[data-home-widget]').dataset.homeWidget;
+      const next=select.value;
+      if(next===key||!widgetChoices.some(([id])=>id===next))return;
+      const shown=dashboardPrefs.widgets.includes(next);
+      const oldSide=dashboardPrefs.columns[key];
+      dashboardPrefs.widgets=dashboardPrefs.widgets.map(id=>id===key?next:id===next?key:id);
+      if(shown)dashboardPrefs.columns[key]=dashboardPrefs.columns[next];
+      dashboardPrefs.columns[next]=oldSide;
+      saveDashboardLayout();
+    }));
+    workspace.addEventListener('click',event=>{
+      const control=event.target.closest('[data-home-command]');if(!control)return;
+      const frame=control.closest('[data-home-widget]'),key=frame.dataset.homeWidget;
+      const side=dashboardPrefs.columns[key],command=control.dataset.homeCommand;
+      if(command==='hide'){
+        if(dashboardPrefs.widgets.length===1){customizeHome();return;}
+        dashboardPrefs.widgets=dashboardPrefs.widgets.filter(id=>id!==key);saveDashboardLayout();return;
+      }
+      if(command==='side'){moveDashboardWidget(key,side==='left'?'right':'left');return;}
+      const siblings=dashboardPrefs.widgets.filter(id=>dashboardPrefs.columns[id]===side);
+      const i=siblings.indexOf(key);
+      if(command==='up'&&i>0)moveDashboardWidget(key,side,siblings[i-1]);
+      if(command==='down'&&i<siblings.length-1)moveDashboardWidget(key,side,siblings[i+2]||null);
+    });
+    workspace.querySelectorAll('[data-home-drag]').forEach(handle=>{
+      handle.addEventListener('pointerdown',event=>{
+        if(event.button!==0)return;
+        const frame=handle.closest('[data-home-widget]'),key=frame.dataset.homeWidget;
+        const origin={x:event.clientX,y:event.clientY};let active=false,target=null;
+        handle.setPointerCapture(event.pointerId);
+        const clear=()=>workspace.querySelectorAll('.is-drop-column,.is-drop-before,.is-dragging').forEach(el=>el.classList.remove('is-drop-column','is-drop-before','is-dragging'));
+        const move=e=>{
+          if(e.pointerId!==event.pointerId)return;
+          if(!active&&Math.hypot(e.clientX-origin.x,e.clientY-origin.y)<8)return;
+          active=true;clear();frame.classList.add('is-dragging');
+          const hit=document.elementFromPoint(e.clientX,e.clientY);
+          const column=hit?.closest('[data-home-column]');
+          target=null;
+          if(column&&workspace.contains(column)){
+            column.classList.add('is-drop-column');
+            const before=[...column.querySelectorAll('[data-home-widget]')].find(el=>el!==frame&&e.clientY<el.getBoundingClientRect().top+el.getBoundingClientRect().height/2);
+            before?.classList.add('is-drop-before');
+            target={side:column.dataset.homeColumn,before:before?.dataset.homeWidget||null};
+          }
+        };
+        const finish=e=>{
+          if(e.pointerId!==event.pointerId)return;
+          handle.removeEventListener('pointermove',move);
+          handle.removeEventListener('pointerup',finish);
+          handle.removeEventListener('pointercancel',finish);
+          if(handle.hasPointerCapture(event.pointerId))handle.releasePointerCapture(event.pointerId);
+          clear();
+          if(e.type==='pointerup'&&active&&target)moveDashboardWidget(key,target.side,target.before);
+        };
+        handle.addEventListener('pointermove',move);
+        handle.addEventListener('pointerup',finish);
+        handle.addEventListener('pointercancel',finish);
+      });
+    });
+  }
   function customizeHome(){
     const ordered=[...new Set([...dashboardPrefs.widgets,...widgetChoices.map(([key])=>key)])];
     const favoriteGrid=`<h3>我的常用</h3><div class="wms-customize-grid">${favoriteChoices.map(([key,label])=>`<label><input type="checkbox" name="favorite_${E(key)}" ${dashboardPrefs.favorites.includes(key)?'checked':''}><span>${E(label)}</span></label>`).join('')}</div>`;
@@ -855,7 +996,7 @@
       const side=dashboardPrefs.columns[key]||defaultPrefs.columns[key];
       return `<div class="wms-layout-row" data-widget="${E(key)}"><label><input type="checkbox" name="widget_${E(key)}" ${dashboardPrefs.widgets.includes(key)?'checked':''}><span>${E(label)}</span></label><select aria-label="${E(label)}所在欄位"><option value="left" ${side==='left'?'selected':''}>左欄</option><option value="right" ${side==='right'?'selected':''}>右欄</option></select><button type="button" data-move="up" aria-label="${E(label)}上移">↑</button><button type="button" data-move="down" aria-label="${E(label)}下移">↓</button></div>`;
     }).join('');
-    dialog.innerHTML=`<form id="wmsForm"><h2>自訂首頁</h2><p>勾選要顯示的視窗，選左欄或右欄，再用箭頭調整各欄順序；設定保存在目前瀏覽器。</p><h3>首頁視窗</h3><div class="wms-layout-list">${rows}</div>${favoriteGrid}<p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">取消</button><button type="submit" class="btn btn-primary">儲存</button></div></form>`;
+    dialog.innerHTML=`<form id="wmsForm" class="wms-home-editor"><h2>自訂首頁</h2><p>勾選要顯示的視窗，選左欄或右欄，再用箭頭調整各欄順序；設定保存在目前瀏覽器。</p><h3>首頁視窗</h3><div class="wms-layout-list">${rows}</div>${favoriteGrid}<p id="formError" class="wms-form-error" role="alert"></p><div class="wms-dialog-actions"><button type="button" class="btn" data-action="close-dialog">取消</button><button type="submit" class="btn btn-primary">儲存</button></div></form>`;
     const list=dialog.querySelector('.wms-layout-list');
     const updateArrows=()=>{[...list.children].forEach((row,i,all)=>{row.querySelector('[data-move="up"]').disabled=i===0;row.querySelector('[data-move="down"]').disabled=i===all.length-1})};
     list.addEventListener('click',event=>{
@@ -1082,11 +1223,15 @@
       alerts:card('異常與提醒','全公司低庫存、採購與設備狀態',`<div class="card-body"><div class="alert-list">${alerts}</div></div>`),
       recent:card('最近異動','全公司最新五筆操作紀錄',table('dashboard-log',['時間','異動類型','品項／資產','原位置','新位置','操作人'],recent)+`<div class="wms-card-footer" style="display:flex;justify-content:flex-end;padding:12px 16px">${button('go-log','查看全部異動')}</div>`)
     };
-    const left=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]==='left'&&widgets[key]).map(key=>widgets[key]).join('');
-    const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(key=>widgets[key]).join('');
+    const renderHomeWidget=key=>`<section class="wms-home-widget" data-home-widget="${E(key)}"><div class="wms-widget-tools"><button type="button" data-home-drag aria-label="拖移${E(widgetChoices.find(([id])=>id===key)?.[1]||key)}，也可用右側選單移動" title="拖移視窗">⠿</button><select class="wms-widget-kind" data-home-kind aria-label="切換視窗內容">${widgetChoices.map(([id,label])=>`<option value="${E(id)}" ${id===key?'selected':''}>${E(label)}</option>`).join('')}</select><details class="wms-widget-menu"><summary aria-label="視窗操作" title="視窗操作">···</summary><div><button type="button" data-home-command="up">↑ 上移</button><button type="button" data-home-command="down">↓ 下移</button><button type="button" data-home-command="side">⇄ 移到${dashboardPrefs.columns[key]==='left'?'右':'左'}欄</button><button type="button" data-home-command="hide">隱藏視窗</button></div></details></div>${widgets[key]}</section>`;
+    const left=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]==='left'&&widgets[key]).map(renderHomeWidget).join('');
+    const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(renderHomeWidget).join('');
+    const hiddenWidgets=widgetChoices.filter(([key])=>!dashboardPrefs.widgets.includes(key));
+    const arrange=`<div class="wms-home-arrange"><p>拖曳視窗左上角移動位置；點選標題可切換內容，右側選單可調整或隱藏。位置自動儲存在目前瀏覽器。</p><select data-home-add aria-label="新增首頁視窗" ${hiddenWidgets.length?'':'disabled'}><option value="">${hiddenWidgets.length?'＋ 新增視窗':'全部視窗已顯示'}</option>${hiddenWidgets.map(([key,label])=>`<option value="${E(key)}">${E(label)}</option>`).join('')}</select></div>`;
     const scopeButtons=['全部','總部','企劃部'].map(name=>`<button type="button" data-action="set-home-scope" data-id="${E(name)}" class="${homeScope===name?'active':''}" aria-pressed="${homeScope===name}">${E(name)}</button>`).join('');
     const orgCards=Object.entries(ORG_TREE).map(([unit,sites])=>`<div class="wms-org-unit" ${inScope(unit)?'':'hidden'}><h3>${E(unit)}</h3>${Object.entries(sites).map(([site,areas])=>`<div class="wms-org-place"><b>${E(site)}</b><small>${E(areas.join('・'))}</small></div>`).join('')}</div>`).join('');
-    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-scope-bar"><strong>管理範圍</strong>${scopeButtons}</div><section class="wms-org-card"><h2>地點與區域</h2><p>OG 可查看並管理全部範圍；目前為單機展示資料</p><div class="wms-org-grid">${orgCards}</div><div style="margin-top:12px">${button('go-racks','管理位置')}</div></section><div class="wms-dashboard-section-title"><h2>今日作業</h2><p>${E(homeScope)}・資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section><section class="wms-dashboard-workspace ${left&&right?'':'is-single'}">${left?`<div class="wms-dashboard-column">${left}</div>`:''}${right?`<div class="wms-dashboard-column">${right}</div>`:''}</section>`;
+    document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-scope-bar"><strong>管理範圍</strong>${scopeButtons}</div><section class="wms-org-card"><h2>地點與區域</h2><p>OG 可查看並管理全部範圍；目前為單機展示資料</p><div class="wms-org-grid">${orgCards}</div><div style="margin-top:12px">${button('go-racks','管理位置')}</div></section><div class="wms-dashboard-section-title"><h2>今日作業</h2><p>${E(homeScope)}・資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section>${arrange}<section class="wms-dashboard-workspace"><div class="wms-dashboard-column" data-home-column="left">${left||'<div class="wms-empty-column">拖移視窗到左欄</div>'}</div><div class="wms-dashboard-column" data-home-column="right">${right||'<div class="wms-empty-column">拖移視窗到右欄</div>'}</div></section>`;
+    bindDashboardWorkspace();
     const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
     filterItems();
   }
