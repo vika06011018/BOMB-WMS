@@ -901,59 +901,205 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
 
     </header>
 
-    <!-- WMS 工作區書籤 -->
-    <nav class="sheet-nav wms-book-nav" aria-label="WMS 工作區">
-      <div class="sheet-tabs" aria-label="主要標籤">
-        <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true"><span>營運總覽</span></button>
-        <button type="button" class="sheet-tab" data-group="headquarters" aria-selected="false"><span>總部</span></button>
-        <button type="button" class="sheet-tab" data-group="catalog" aria-selected="false"><span>品項與庫存</span></button>
-        <button type="button" class="sheet-tab" data-group="procurement" aria-selected="false"><span>採購與驗收</span></button>
-        <button type="button" class="sheet-tab" data-group="assets" aria-selected="false"><span>資產與設備</span></button>
-        <button type="button" class="sheet-tab" data-group="operations" aria-selected="false"><span>異動與盤點</span></button>
-        <button type="button" class="sheet-tab" data-group="reports" aria-selected="false"><span>報表與紀錄</span></button>
-        <button type="button" class="sheet-tab" data-group="system" aria-selected="false"><span>系統設定</span></button>
-      </div>
-      <div class="sheet-subtabs" hidden>
-        <div class="sheet-children" data-children="headquarters" aria-label="總部三區子選單" hidden>
-          <button type="button" class="child-tab" data-page="hqreceiving" data-parent="headquarters" aria-selected="false"><span>倉庫</span></button>
-          <button type="button" class="child-tab" data-page="hqoffice" data-parent="headquarters" aria-selected="false"><span>辦公室</span></button>
-          <button type="button" class="child-tab" data-page="hqcards" data-parent="headquarters" aria-selected="false"><span>作業區</span></button>
-        </div>
-        <div class="sheet-children" data-children="catalog" aria-label="品項與庫存子標籤" hidden>
-          <button type="button" class="child-tab" data-page="items" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="items" aria-hidden="true"></span><span>品項管理</span></button>
-          <button type="button" class="child-tab" data-page="inventory" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="inventory" aria-hidden="true"></span><span>庫存管理</span></button>
-          <button type="button" class="child-tab" data-page="racks" data-parent="catalog" aria-selected="false"><span class="tab-icon" data-icon="racks" aria-hidden="true"></span><span>位置／倉架</span></button>
-        </div>
-        <div class="sheet-children" data-children="procurement" aria-label="採購與驗收子標籤" hidden>
-          <button type="button" class="child-tab" data-page="purchase" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="purchase" aria-hidden="true"></span><span>採購需求</span></button>
-          <button type="button" class="child-tab" data-page="putaway" data-parent="procurement" aria-selected="false"><span>上架入庫</span></button>
-          <button type="button" class="child-tab" data-page="inbound" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>到貨登記</span></button>
-          <button type="button" class="child-tab" data-page="inspection" data-parent="procurement" aria-selected="false"><span class="tab-icon" data-icon="inbound" aria-hidden="true"></span><span>驗收</span></button>
-        </div>
-        <div class="sheet-children" data-children="assets" aria-label="資產與設備子標籤" hidden>
-          <button type="button" class="child-tab" data-page="assets" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="assets" aria-hidden="true"></span><span>資產管理</span></button>
-          <button type="button" class="child-tab" data-page="machine" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="machine" aria-hidden="true"></span><span>機台管理</span></button>
-          <button type="button" class="child-tab" data-page="repair" data-parent="assets" aria-selected="false"><span class="tab-icon" data-icon="repair" aria-hidden="true"></span><span>維修更換</span></button>
-        </div>
-        <div class="sheet-children" data-children="operations" aria-label="異動與盤點子標籤" hidden>
-          <button type="button" class="child-tab" data-page="requisition" data-parent="operations" aria-selected="false"><span>部門申領</span></button>
-          <button type="button" class="child-tab" data-page="lifecycle" data-parent="operations" aria-selected="false"><span>領用／回收／報廢</span></button>
-          <button type="button" class="child-tab" data-page="transfer" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="transfer" aria-hidden="true"></span><span>調撥／配置</span></button>
-          <button type="button" class="child-tab" data-page="borrow" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="borrow" aria-hidden="true"></span><span>借用／歸還</span></button>
-          <button type="button" class="child-tab" data-page="count" data-parent="operations" aria-selected="false"><span class="tab-icon" data-icon="count" aria-hidden="true"></span><span>盤點管理</span></button>
-        </div>
-        <div class="sheet-children" data-children="reports" aria-label="報表與紀錄子標籤" hidden>
-          <button type="button" class="child-tab" data-page="reports" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span><span>摘要報表</span></button>
-          <button type="button" class="child-tab" data-page="log" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="log" aria-hidden="true"></span><span>異動日誌</span></button>
-          <button type="button" class="child-tab" data-page="notifications" data-parent="reports" aria-selected="false"><span class="tab-icon" data-icon="notifications" aria-hidden="true"></span><span>通知中心</span></button>
-        </div>
-        <div class="sheet-children" data-children="system" aria-label="系統設定子標籤" hidden>
-          <button type="button" class="child-tab" data-page="roles" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="roles" aria-hidden="true"></span><span>角色與權限</span></button>
-          <button type="button" class="child-tab" data-page="import" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="import" aria-hidden="true"></span><span>匯入／匯出</span></button>
-          <button type="button" class="child-tab" data-page="settings" data-parent="system" aria-selected="false"><span class="tab-icon" data-icon="settings" aria-hidden="true"></span><span>系統設定</span></button>
-        </div>
-      </div>
-    </nav>
+   <!-- WMS 工作區書籤 -->
+<nav class="sheet-nav wms-book-nav" aria-label="BOMB WMS 工作區">
+
+  <div class="sheet-tabs" aria-label="主要功能">
+
+    <button type="button" class="sheet-tab active" data-page="dashboard" aria-selected="true">
+      <span>營運總覽</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="inventoryOps" aria-selected="false">
+      <span>庫存作業</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="procurement" aria-selected="false">
+      <span>採購管理</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="assets" aria-selected="false">
+      <span>資產設備</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="stocktake" aria-selected="false">
+      <span>盤點管理</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="organization" aria-selected="false">
+      <span>組織與位置</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="workCenter" aria-selected="false">
+      <span>工作中心</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="masterData" aria-selected="false">
+      <span>基礎資料</span>
+    </button>
+
+    <button type="button" class="sheet-tab" data-group="system" aria-selected="false">
+      <span>系統管理</span>
+    </button>
+
+  </div>
+
+  <div class="sheet-subtabs" hidden>
+
+    <!-- 庫存作業 -->
+    <div class="sheet-children" data-children="inventoryOps" aria-label="庫存作業子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="inventory" data-parent="inventoryOps" aria-selected="false">
+        <span class="tab-icon" data-icon="inventory" aria-hidden="true"></span>
+        <span>庫存總覽</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="inbound" data-parent="inventoryOps" aria-selected="false">
+        <span class="tab-icon" data-icon="inbound" aria-hidden="true"></span>
+        <span>收貨</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="inspection" data-parent="inventoryOps" aria-selected="false">
+        <span class="tab-icon" data-icon="inbound" aria-hidden="true"></span>
+        <span>待驗／驗收</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="putaway" data-parent="inventoryOps" aria-selected="false">
+        <span>入庫上架</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="requisition" data-parent="inventoryOps" aria-selected="false">
+        <span>領用／補貨</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="transfer" data-parent="inventoryOps" aria-selected="false">
+        <span class="tab-icon" data-icon="transfer" aria-hidden="true"></span>
+        <span>調撥／位置移轉</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="borrow" data-parent="inventoryOps" aria-selected="false">
+        <span class="tab-icon" data-icon="borrow" aria-hidden="true"></span>
+        <span>借用／歸還</span>
+      </button>
+
+    </div>
+
+    <!-- 採購管理 -->
+    <div class="sheet-children" data-children="procurement" aria-label="採購管理子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="purchase" data-parent="procurement" aria-selected="false">
+        <span class="tab-icon" data-icon="purchase" aria-hidden="true"></span>
+        <span>採購需求</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="hqreceiving" data-parent="procurement" aria-selected="false">
+        <span>到貨追蹤</span>
+      </button>
+
+    </div>
+
+    <!-- 資產設備 -->
+    <div class="sheet-children" data-children="assets" aria-label="資產設備子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="assets" data-parent="assets" aria-selected="false">
+        <span class="tab-icon" data-icon="assets" aria-hidden="true"></span>
+        <span>資產管理</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="machine" data-parent="assets" aria-selected="false">
+        <span class="tab-icon" data-icon="machine" aria-hidden="true"></span>
+        <span>設備配置</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="repair" data-parent="assets" aria-selected="false">
+        <span class="tab-icon" data-icon="repair" aria-hidden="true"></span>
+        <span>維修／保養</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="lifecycle" data-parent="assets" aria-selected="false">
+        <span>退貨／報廢</span>
+      </button>
+
+    </div>
+
+    <!-- 盤點管理 -->
+    <div class="sheet-children" data-children="stocktake" aria-label="盤點管理子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="count" data-parent="stocktake" aria-selected="false">
+        <span class="tab-icon" data-icon="count" aria-hidden="true"></span>
+        <span>盤點作業</span>
+      </button>
+
+    </div>
+
+    <!-- 組織與位置 -->
+    <div class="sheet-children" data-children="organization" aria-label="組織與位置子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="racks" data-parent="organization" aria-selected="false">
+        <span class="tab-icon" data-icon="racks" aria-hidden="true"></span>
+        <span>據點／區域／位置</span>
+      </button>
+
+    </div>
+
+    <!-- 工作中心 -->
+    <div class="sheet-children" data-children="workCenter" aria-label="工作中心子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="notifications" data-parent="workCenter" aria-selected="false">
+        <span class="tab-icon" data-icon="notifications" aria-hidden="true"></span>
+        <span>我的待辦／通知</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="log" data-parent="workCenter" aria-selected="false">
+        <span class="tab-icon" data-icon="log" aria-hidden="true"></span>
+        <span>異動紀錄</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="reports" data-parent="workCenter" aria-selected="false">
+        <span class="tab-icon" data-icon="dashboard" aria-hidden="true"></span>
+        <span>作業報表</span>
+      </button>
+
+    </div>
+
+    <!-- 基礎資料 -->
+    <div class="sheet-children" data-children="masterData" aria-label="基礎資料子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="items" data-parent="masterData" aria-selected="false">
+        <span class="tab-icon" data-icon="items" aria-hidden="true"></span>
+        <span>物品／品項資料</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="settings" data-parent="masterData" aria-selected="false">
+        <span class="tab-icon" data-icon="settings" aria-hidden="true"></span>
+        <span>流程／規則設定</span>
+      </button>
+
+    </div>
+
+    <!-- 系統管理 -->
+    <div class="sheet-children" data-children="system" aria-label="系統管理子選單" hidden>
+
+      <button type="button" class="child-tab" data-page="roles" data-parent="system" aria-selected="false">
+        <span class="tab-icon" data-icon="roles" aria-hidden="true"></span>
+        <span>角色與權限</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="import" data-parent="system" aria-selected="false">
+        <span class="tab-icon" data-icon="import" aria-hidden="true"></span>
+        <span>匯入／匯出</span>
+      </button>
+
+      <button type="button" class="child-tab" data-page="settings" data-parent="system" aria-selected="false">
+        <span class="tab-icon" data-icon="settings" aria-hidden="true"></span>
+        <span>系統設定</span>
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>
 
     <!-- Content -->
     <div class="content">
@@ -1036,7 +1182,37 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
   const groupTabs=[...document.querySelectorAll('.sheet-tab[data-group]')];
   const childTabs=[...document.querySelectorAll('.child-tab')];
   const subtabBar=document.querySelector('.sheet-subtabs');
-  const pageGroups={hqreceiving:'headquarters',hqoffice:'headquarters',hqcards:'headquarters',requisition:'operations',putaway:'procurement',lifecycle:'operations',items:'catalog',inventory:'catalog',racks:'catalog',purchase:'procurement',inbound:'procurement',inspection:'procurement',assets:'assets',machine:'assets',repair:'assets',transfer:'operations',borrow:'operations',count:'operations',reports:'reports',log:'reports',notifications:'reports',roles:'system',import:'system',settings:'system'};
+  const pageGroups={
+  inventory:'inventoryOps',
+  inbound:'inventoryOps',
+  inspection:'inventoryOps',
+  putaway:'inventoryOps',
+  requisition:'inventoryOps',
+  transfer:'inventoryOps',
+  borrow:'inventoryOps',
+
+  purchase:'procurement',
+  hqreceiving:'procurement',
+
+  assets:'assets',
+  machine:'assets',
+  repair:'assets',
+  lifecycle:'assets',
+
+  count:'stocktake',
+
+  racks:'organization',
+
+  notifications:'workCenter',
+  log:'workCenter',
+  reports:'workCenter',
+
+  items:'masterData',
+
+  roles:'system',
+  import:'system',
+  settings:'system'
+};
   document.querySelectorAll('.wms-book-nav .sheet-tab').forEach(tab=>tab.insertAdjacentHTML('afterbegin','<svg class="wms-book-shape" viewBox="0 0 180 54" preserveAspectRatio="none" aria-hidden="true"><path d="M9 1H158Q164 1 166 8L178 44Q181 53 172 53H9Q1 53 1 45V9Q1 1 9 1Z"/></svg>'));
   let currentPage='dashboard';
   function legacyShowPage(page,group=pageGroups[page]||null){
