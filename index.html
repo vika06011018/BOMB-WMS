@@ -68,6 +68,46 @@
   #page-dashboard .wms-dashboard-focus{margin-bottom:18px}
   #page-dashboard .wms-scope-bar{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:12px 0 20px}
   #page-dashboard .wms-scope-bar strong{margin-right:4px}
+  #page-dashboard .wms-scope-field{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  min-width:0;
+}
+
+#page-dashboard .wms-scope-field>span{
+  color:var(--dash-muted);
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+#page-dashboard .wms-scope-field select{
+  min-width:145px;
+  min-height:38px;
+  padding:7px 30px 7px 10px;
+  border:1px solid var(--dash-border);
+  border-radius:10px;
+  background:var(--dash-surface);
+  color:inherit;
+  font:inherit;
+  font-size:13px;
+}
+
+#page-dashboard .wms-scope-field select:focus-visible{
+  outline:2px solid #246da8;
+  outline-offset:2px;
+}
+
+@media(max-width:700px){
+  #page-dashboard .wms-scope-field{
+    flex:1 1 220px;
+  }
+
+  #page-dashboard .wms-scope-field select{
+    width:100%;
+  }
+}
   #page-dashboard .wms-scope-bar button{padding:8px 14px;border:1px solid var(--dash-border);border-radius:10px;background:var(--dash-surface);color:inherit;font:inherit;cursor:pointer}
   #page-dashboard .wms-scope-bar button.active{background:#246da8;border-color:#246da8;color:#fff}
   #page-dashboard .wms-org-card{margin:0 0 18px;padding:17px 19px;border:1px solid var(--dash-border);border-radius:16px;background:var(--dash-surface);box-shadow:var(--dash-shadow)}
@@ -1299,9 +1339,34 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
   }
   normalizeLocations();
   const HOME_SCOPE_KEY='bomb-wms-home-scope-v1';
-  let homeScope=['全部','總部','企劃部'].includes(localStorage.getItem(HOME_SCOPE_KEY))?localStorage.getItem(HOME_SCOPE_KEY):'全部';
-  const inScope=department=>homeScope==='全部'||department===homeScope;
+ const HOME_SITE_KEY='bomb-wms-home-site-v1';
+ const HOME_AREA_KEY='bomb-wms-home-area-v1';
+ const HOME_LOCATION_KEY='bomb-wms-home-location-v1';
 
+ let homeScope=[
+  '全部',
+  ...Object.keys(ORG_TREE)
+].includes(localStorage.getItem(HOME_SCOPE_KEY))
+  ? localStorage.getItem(HOME_SCOPE_KEY)
+  : '全部';
+
+ let homeSite=localStorage.getItem(HOME_SITE_KEY)||'全部';
+ let homeArea=localStorage.getItem(HOME_AREA_KEY)||'全部';
+ let homeLocation=localStorage.getItem(HOME_LOCATION_KEY)||'全部';
+
+ const inScope=department=>
+  homeScope==='全部'||department===homeScope;
+
+ function locationInHomeScope(location){
+  if(!location)return false;
+
+  if(homeScope!=='全部'&&location.department!==homeScope)return false;
+  if(homeSite!=='全部'&&location.site!==homeSite)return false;
+  if(homeArea!=='全部'&&location.area!==homeArea)return false;
+  if(homeLocation!=='全部'&&location.id!==homeLocation)return false;
+
+  return true;
+}
   function save(){captureInventory();localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
   function E(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   const DASH_PREF_KEY='bomb-wms-dashboard-prefs-v1';
@@ -1814,8 +1879,212 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
     const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(renderHomeWidget).join('');
     const hiddenWidgets=widgetChoices.filter(([key])=>!dashboardPrefs.widgets.includes(key));
     const arrange=`<div class="wms-home-arrange"><p>桌機／大平板：拖曳左上角，自由放在左側、中間或右側；右下角調整大小。放開後自動避開其他視窗並儲存位置；手機／窄螢幕改為直排。</p><div>${button('customize-home','新增／隱藏視窗')} ${button('reset-home-positions','重新排列')}</div></div>`;
-    const scopeButtons=['全部',...Object.keys(ORG_TREE)].map(name=>`<button type="button" data-action="set-home-scope" data-id="${E(name)}" class="${homeScope===name?'active':''}" aria-pressed="${homeScope===name}">${E(name)}</button>`).join('');
-    const orgCards=Object.entries(ORG_TREE).map(([unit,sites])=>`<div class="wms-org-unit" ${inScope(unit)?'':'hidden'}><h3>${E(unit)}</h3>${Object.entries(sites).map(([site,areas])=>`<div class="wms-org-place"><b>${E(site)}</b><small>${E(areas.join('・'))}</small></div>`).join('')}</div>`).join('');
+    const scopedUnits=
+  homeScope==='全部'
+    ? Object.keys(ORG_TREE)
+    : [homeScope];
+
+const siteNames=[
+  ...new Set(
+    scopedUnits.flatMap(unit=>
+      Object.keys(ORG_TREE[unit]||{})
+    )
+  )
+];
+
+if(homeSite!=='全部'&&!siteNames.includes(homeSite)){
+  homeSite='全部';
+  localStorage.setItem(HOME_SITE_KEY,'全部');
+}
+
+const areaNames=[
+  ...new Set(
+    scopedUnits.flatMap(unit=>
+      Object.entries(ORG_TREE[unit]||{})
+        .filter(([site])=>homeSite==='全部'||site===homeSite)
+        .flatMap(([,areas])=>areas)
+    )
+  )
+];
+
+if(homeArea!=='全部'&&!areaNames.includes(homeArea)){
+  homeArea='全部';
+  localStorage.setItem(HOME_AREA_KEY,'全部');
+}
+
+const locationRows=db.locations.filter(location=>
+  inScope(location.department)&&
+  (homeSite==='全部'||location.site===homeSite)&&
+  (homeArea==='全部'||location.area===homeArea)
+);
+
+if(
+  homeLocation!=='全部'&&
+  !locationRows.some(location=>location.id===homeLocation)
+){
+  homeLocation='全部';
+  localStorage.setItem(HOME_LOCATION_KEY,'全部');
+}
+
+const scopeButtons=`
+  <label class="wms-scope-field">
+    <span>組織／單位</span>
+
+    <select
+      data-home-scope="unit"
+      aria-label="組織或單位"
+    >
+      ${optionsHtml(
+        [
+          {value:'全部',label:'全部範圍'},
+          ...Object.keys(ORG_TREE).map(name=>({
+            value:name,
+            label:name
+          }))
+        ],
+        homeScope
+      )}
+    </select>
+  </label>
+
+  <label class="wms-scope-field">
+    <span>據點</span>
+
+    <select
+      data-home-scope="site"
+      aria-label="據點"
+    >
+      ${optionsHtml(
+        [
+          {value:'全部',label:'全部據點'},
+          ...siteNames.map(name=>({
+            value:name,
+            label:name
+          }))
+        ],
+        homeSite
+      )}
+    </select>
+  </label>
+
+  <label class="wms-scope-field">
+    <span>區域</span>
+
+    <select
+      data-home-scope="area"
+      aria-label="區域"
+    >
+      ${optionsHtml(
+        [
+          {value:'全部',label:'全部區域'},
+          ...areaNames.map(name=>({
+            value:name,
+            label:name
+          }))
+        ],
+        homeArea
+      )}
+    </select>
+  </label>
+
+  <label class="wms-scope-field">
+    <span>位置</span>
+
+    <select
+      data-home-scope="location"
+      aria-label="位置"
+    >
+      ${optionsHtml(
+        [
+          {value:'全部',label:'全部位置'},
+          ...locationRows.map(location=>({
+            value:location.id,
+            label:[
+              location.spot,
+              location.rack,
+              location.shelf,
+              location.bin
+            ].filter(Boolean).join('／')||location.id
+          }))
+        ],
+        homeLocation
+      )}
+    </select>
+  </label>
+`;
+const orgCards=Object.entries(ORG_TREE)
+  .filter(([unit])=>inScope(unit))
+  .map(([unit,sites])=>{
+
+    const siteCards=Object.entries(sites)
+      .filter(([site])=>
+        homeSite==='全部'||site===homeSite
+      )
+      .map(([site,areas])=>{
+
+        const visibleAreas=areas.filter(area=>
+          homeArea==='全部'||area===homeArea
+        );
+
+        if(!visibleAreas.length)return '';
+
+        const areaText=visibleAreas.map(area=>{
+
+          const positions=db.locations.filter(location=>
+            location.department===unit&&
+            location.site===site&&
+            location.area===area&&
+            (homeLocation==='全部'||location.id===homeLocation)
+          );
+
+          if(homeLocation!=='全部'&&!positions.length)return '';
+
+          const positionText=positions.length
+            ? positions
+                .map(location=>
+                  [
+                    location.spot,
+                    location.rack,
+                    location.shelf,
+                    location.bin
+                  ].filter(Boolean).join('／')
+                )
+                .filter(Boolean)
+                .join('、')
+            : '';
+
+          return `
+            <div class="wms-org-place">
+              <b>${E(area)}</b>
+              ${
+                positionText
+                  ? `<small>${E(positionText)}</small>`
+                  : '<small>尚未建立實際位置</small>'
+              }
+            </div>
+          `;
+        }).join('');
+
+        if(!areaText)return '';
+
+        return `
+          <div class="wms-org-place">
+            <b>${E(site)}</b>
+            ${areaText}
+          </div>
+        `;
+      }).join('');
+
+    if(!siteCards)return '';
+
+    return `
+      <div class="wms-org-unit">
+        <h3>${E(unit)}</h3>
+        ${siteCards}
+      </div>
+    `;
+  })
+  .join('');
     document.getElementById('page-dashboard').innerHTML=header('營運總覽','今天需要處理的倉儲作業與設備狀態',`<button type="button" class="btn wms-small-btn wms-home-customize" data-action="customize-home">自訂首頁</button> ${button('refresh','重新整理')}`)+`<div class="wms-scope-bar"><strong>管理範圍</strong>${scopeButtons}</div><section class="wms-org-card"><h2>地點與區域</h2><p>OG 可查看並管理全部範圍；目前為單機展示資料</p><div class="wms-org-grid">${orgCards}</div><div style="margin-top:12px">${button('go-racks','管理位置')}</div></section><div class="wms-dashboard-section-title"><h2>今日作業</h2><p>${E(homeScope)}・資料儲存在目前瀏覽器</p></div><section class="stats-grid wms-dashboard-focus">${stats}</section>${arrange}<section class="wms-dashboard-workspace"><div class="wms-dashboard-column" data-home-column="left">${left||'<div class="wms-empty-column">拖移視窗到左欄</div>'}</div><div class="wms-dashboard-column" data-home-column="right">${right||'<div class="wms-empty-column">拖移視窗到右欄</div>'}</div></section>`;
     bindDashboardWorkspace();
     const bell=document.getElementById('notificationBadge');if(bell)bell.hidden=!notes.length;
@@ -2169,7 +2438,69 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
     document.querySelector('#page-borrow .page-title p').textContent='歸還先待回收驗收，合格並上架後才恢復可用';
     document.querySelector('#page-transfer .page-title p').textContent='同部門儲位移動；跨部門耗材使用部門申領，設備領用使用交接作業';
   }
-  document.addEventListener('change',e=>{if(e.target.matches('[data-integration-scope]')){homeScope=e.target.value;localStorage.setItem(HOME_SCOPE_KEY,homeScope);renderAll()}});
+ document.addEventListener('change',e=>{
+
+  const target=e.target.closest('[data-home-scope]');
+
+  if(target){
+
+    const level=target.dataset.homeScope;
+    const value=target.value;
+
+    if(level==='unit'){
+      homeScope=value;
+      homeSite='全部';
+      homeArea='全部';
+      homeLocation='全部';
+
+      localStorage.setItem(HOME_SCOPE_KEY,homeScope);
+      localStorage.setItem(HOME_SITE_KEY,homeSite);
+      localStorage.setItem(HOME_AREA_KEY,homeArea);
+      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+    }
+
+    if(level==='site'){
+      homeSite=value;
+      homeArea='全部';
+      homeLocation='全部';
+
+      localStorage.setItem(HOME_SITE_KEY,homeSite);
+      localStorage.setItem(HOME_AREA_KEY,homeArea);
+      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+    }
+
+    if(level==='area'){
+      homeArea=value;
+      homeLocation='全部';
+
+      localStorage.setItem(HOME_AREA_KEY,homeArea);
+      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+    }
+
+    if(level==='location'){
+      homeLocation=value;
+      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+    }
+
+    renderAll();
+    return;
+  }
+
+  if(e.target.matches('[data-integration-scope]')){
+    homeScope=e.target.value;
+    homeSite='全部';
+    homeArea='全部';
+    homeLocation='全部';
+
+    localStorage.setItem(HOME_SCOPE_KEY,homeScope);
+    localStorage.setItem(HOME_SITE_KEY,homeSite);
+    localStorage.setItem(HOME_AREA_KEY,homeArea);
+    localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+
+    renderAll();
+  }
+
+});
   const integrationHandlers={'new-request':requestNew,'req-step':reqStep,'cancel-req':cancelReq,'putaway-inbound':putawayInbound,'edit-rule':editRule,'planning-catalog':planningCatalog,'confirm-count':confirmCount,'new-workflow':lifecycleNew,'workflow-step':workflowStep,'configure-item':configureItem,'asset-details':assetDetails,'new-org-path':organizationPath,'edit-connections':connections,'go-requisition':()=>showPage('requisition'),'go-putaway':()=>showPage('putaway'),'go-lifecycle':()=>showPage('lifecycle'),'go-count':()=>showPage('count')};
   function repair(){form('設備送修（保留所屬部門）',[field('assetId','資產','select',assetOptions(a=>['可用','使用中','故障','待檢測','異常待處理'].includes(a.status))),field('locationId','同部門維修位置','select',unitLocations()),field('issue','故障／檢測原因')],v=>{const a=asset(v.assetId),l=loc(v.locationId);if(!a||!l||loc(a.locationId)?.department!==l.department||!['可用','使用中','故障','待檢測','異常待處理'].includes(a.status))throw Error('資產狀態或維修部門不符');guardHQBox(a);validateLocationItem(a.itemId,l.id,1,a.id);if(db.workflows.some(w=>w.assetId===a.id&&!['已完成','使用中','已報廢'].includes(w.status)))throw Error('請先完成此資產的回收／異常流程');const from=labelLoc(a.locationId),id=code('RP',db.repairs);a.status='維修中';a.holder='';a.locationId=l.id;db.repairs.unshift({id,time:stamp(),assetId:a.id,issue:v.issue,location:from,status:'維修中'});log('設備送修',a.id,from,labelLoc(l.id),id)})}
   function replaceAsset(){form('同部門設備更換',[field('faultyId','故障／待檢／維修資產','select',assetOptions(a=>['故障','待檢測','維修中'].includes(a.status))),field('replacementId','可用替換資產','select',assetOptions(a=>a.status==='可用')),field('to','使用位置','select',unitLocations()),field('repairLocationId','故障資產維修位置','select',unitLocations()),field('issue','更換原因')],v=>{const old=asset(v.faultyId),next=asset(v.replacementId),to=loc(v.to),repairLoc=loc(v.repairLocationId);if(!old||!next||!to||!repairLoc||old.id===next.id||old.itemId!==next.itemId||next.status!=='可用'||!['故障','待檢測','維修中'].includes(old.status))throw Error('資產狀態或品項不符');guardHQBox(old);guardHQBox(next);validateLocationItem(next.itemId,to.id,1,next.id);const d=loc(old.locationId)?.department;if([loc(next.locationId)?.department,to.department,repairLoc.department].some(unit=>unit!==d))throw Error('更換位置及備品必須屬同部門');if(db.workflows.some(w=>w.assetId===old.id&&!['已完成','使用中','已報廢'].includes(w.status)))throw Error('請先完成原回收流程');const from=labelLoc(next.locationId),id=code('RP',db.repairs);old.status='維修中';old.holder='';old.locationId=repairLoc.id;next.locationId=to.id;next.status='使用中';next.holder=to.spot;db.repairs.filter(r=>r.assetId===old.id&&r.status==='維修中').forEach(r=>r.status='已合併更換');db.repairs.unshift({id,time:stamp(),assetId:old.id,issue:v.issue+'；以 '+next.id+' 更換',location:labelLoc(to.id),status:'維修中'});log('維修更換',old.id+' → '+next.id,from,labelLoc(to.id),id)})}
