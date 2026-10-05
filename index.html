@@ -1338,35 +1338,72 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
     localStorage.setItem(KEY,JSON.stringify(db));
   }
   normalizeLocations();
-  const HOME_SCOPE_KEY='bomb-wms-home-scope-v1';
- const HOME_SITE_KEY='bomb-wms-home-site-v1';
- const HOME_AREA_KEY='bomb-wms-home-area-v1';
- const HOME_LOCATION_KEY='bomb-wms-home-location-v1';
+const HOME_ORG_KEY='bomb-wms-home-organization-v1';
+const HOME_SCOPE_KEY='bomb-wms-home-unit-v1';
+const HOME_SITE_KEY='bomb-wms-home-site-v1';
+const HOME_AREA_KEY='bomb-wms-home-area-v1';
+const HOME_LOCATION_KEY='bomb-wms-home-location-v1';
 
- let homeScope=[
+/*
+  Prototype 展示組織。
+  正式系統未來由企業／租戶資料來源提供，
+  不把任何公司名稱寫死為 WMS 核心架構。
+*/
+const ORGANIZATIONS=[
+  {
+    id:'ORG-DEMO',
+    name:'BOMB'
+  }
+];
+
+let homeOrganization=
+  localStorage.getItem(HOME_ORG_KEY)||'ORG-DEMO';
+
+let homeScope=[
   '全部',
   ...Object.keys(ORG_TREE)
 ].includes(localStorage.getItem(HOME_SCOPE_KEY))
   ? localStorage.getItem(HOME_SCOPE_KEY)
   : '全部';
 
- let homeSite=localStorage.getItem(HOME_SITE_KEY)||'全部';
- let homeArea=localStorage.getItem(HOME_AREA_KEY)||'全部';
- let homeLocation=localStorage.getItem(HOME_LOCATION_KEY)||'全部';
+let homeSite=
+  localStorage.getItem(HOME_SITE_KEY)||'全部';
 
- const inScope=department=>
+let homeArea=
+  localStorage.getItem(HOME_AREA_KEY)||'全部';
+
+let homeLocation=
+  localStorage.getItem(HOME_LOCATION_KEY)||'全部';
+
+const inScope=department=>
   homeScope==='全部'||department===homeScope;
 
- function locationInHomeScope(location){
+function locationInHomeScope(location){
   if(!location)return false;
 
-  if(homeScope!=='全部'&&location.department!==homeScope)return false;
-  if(homeSite!=='全部'&&location.site!==homeSite)return false;
-  if(homeArea!=='全部'&&location.area!==homeArea)return false;
-  if(homeLocation!=='全部'&&location.id!==homeLocation)return false;
+  if(
+    homeScope!=='全部'&&
+    location.department!==homeScope
+  )return false;
+
+  if(
+    homeSite!=='全部'&&
+    location.site!==homeSite
+  )return false;
+
+  if(
+    homeArea!=='全部'&&
+    location.area!==homeArea
+  )return false;
+
+  if(
+    homeLocation!=='全部'&&
+    location.id!==homeLocation
+  )return false;
 
   return true;
 }
+
   function save(){captureInventory();localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
   function E(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   const DASH_PREF_KEY='bomb-wms-dashboard-prefs-v1';
@@ -1879,65 +1916,152 @@ html[data-palette] .page-view .btn:disabled{opacity:.5;cursor:not-allowed}
     const right=dashboardPrefs.widgets.filter(key=>dashboardPrefs.columns[key]!=='left'&&widgets[key]).map(renderHomeWidget).join('');
     const hiddenWidgets=widgetChoices.filter(([key])=>!dashboardPrefs.widgets.includes(key));
     const arrange=`<div class="wms-home-arrange"><p>桌機／大平板：拖曳左上角，自由放在左側、中間或右側；右下角調整大小。放開後自動避開其他視窗並儲存位置；手機／窄螢幕改為直排。</p><div>${button('customize-home','新增／隱藏視窗')} ${button('reset-home-positions','重新排列')}</div></div>`;
-    const scopedUnits=
+const organizationOptions=
+  ORGANIZATIONS.map(org=>({
+    value:org.id,
+    label:org.name
+  }));
+
+if(
+  !ORGANIZATIONS.some(
+    org=>org.id===homeOrganization
+  )
+){
+  homeOrganization=
+    ORGANIZATIONS[0]?.id||'';
+
+  localStorage.setItem(
+    HOME_ORG_KEY,
+    homeOrganization
+  );
+}
+
+const unitNames=
+  Object.keys(ORG_TREE);
+
+if(
+  homeScope!=='全部'&&
+  !unitNames.includes(homeScope)
+){
+  homeScope='全部';
+  localStorage.setItem(
+    HOME_SCOPE_KEY,
+    '全部'
+  );
+}
+
+const scopedUnits=
   homeScope==='全部'
-    ? Object.keys(ORG_TREE)
+    ? unitNames
     : [homeScope];
 
 const siteNames=[
   ...new Set(
     scopedUnits.flatMap(unit=>
-      Object.keys(ORG_TREE[unit]||{})
+      Object.keys(
+        ORG_TREE[unit]||{}
+      )
     )
   )
 ];
 
-if(homeSite!=='全部'&&!siteNames.includes(homeSite)){
+if(
+  homeSite!=='全部'&&
+  !siteNames.includes(homeSite)
+){
   homeSite='全部';
-  localStorage.setItem(HOME_SITE_KEY,'全部');
+
+  localStorage.setItem(
+    HOME_SITE_KEY,
+    '全部'
+  );
 }
 
 const areaNames=[
   ...new Set(
     scopedUnits.flatMap(unit=>
-      Object.entries(ORG_TREE[unit]||{})
-        .filter(([site])=>homeSite==='全部'||site===homeSite)
+      Object.entries(
+        ORG_TREE[unit]||{}
+      )
+        .filter(([site])=>
+          homeSite==='全部'||
+          site===homeSite
+        )
         .flatMap(([,areas])=>areas)
     )
   )
 ];
 
-if(homeArea!=='全部'&&!areaNames.includes(homeArea)){
+if(
+  homeArea!=='全部'&&
+  !areaNames.includes(homeArea)
+){
   homeArea='全部';
-  localStorage.setItem(HOME_AREA_KEY,'全部');
+
+  localStorage.setItem(
+    HOME_AREA_KEY,
+    '全部'
+  );
 }
 
-const locationRows=db.locations.filter(location=>
-  inScope(location.department)&&
-  (homeSite==='全部'||location.site===homeSite)&&
-  (homeArea==='全部'||location.area===homeArea)
-);
+const locationRows=
+  db.locations.filter(location=>
+    inScope(location.department)&&
+    (
+      homeSite==='全部'||
+      location.site===homeSite
+    )&&
+    (
+      homeArea==='全部'||
+      location.area===homeArea
+    )
+  );
 
 if(
   homeLocation!=='全部'&&
-  !locationRows.some(location=>location.id===homeLocation)
+  !locationRows.some(
+    location=>
+      location.id===homeLocation
+  )
 ){
   homeLocation='全部';
-  localStorage.setItem(HOME_LOCATION_KEY,'全部');
+
+  localStorage.setItem(
+    HOME_LOCATION_KEY,
+    '全部'
+  );
 }
 
 const scopeButtons=`
+
   <label class="wms-scope-field">
-    <span>組織／單位</span>
+    <span>組織</span>
+
+    <select
+      data-home-scope="organization"
+      aria-label="組織"
+    >
+      ${optionsHtml(
+        organizationOptions,
+        homeOrganization
+      )}
+    </select>
+  </label>
+
+  <label class="wms-scope-field">
+    <span>部門／單位</span>
 
     <select
       data-home-scope="unit"
-      aria-label="組織或單位"
+      aria-label="部門或單位"
     >
       ${optionsHtml(
         [
-          {value:'全部',label:'全部範圍'},
-          ...Object.keys(ORG_TREE).map(name=>({
+          {
+            value:'全部',
+            label:'全部部門／單位'
+          },
+          ...unitNames.map(name=>({
             value:name,
             label:name
           }))
@@ -1956,7 +2080,10 @@ const scopeButtons=`
     >
       ${optionsHtml(
         [
-          {value:'全部',label:'全部據點'},
+          {
+            value:'全部',
+            label:'全部據點'
+          },
           ...siteNames.map(name=>({
             value:name,
             label:name
@@ -1976,7 +2103,10 @@ const scopeButtons=`
     >
       ${optionsHtml(
         [
-          {value:'全部',label:'全部區域'},
+          {
+            value:'全部',
+            label:'全部區域'
+          },
           ...areaNames.map(name=>({
             value:name,
             label:name
@@ -1996,7 +2126,10 @@ const scopeButtons=`
     >
       ${optionsHtml(
         [
-          {value:'全部',label:'全部位置'},
+          {
+            value:'全部',
+            label:'全部位置'
+          },
           ...locationRows.map(location=>({
             value:location.id,
             label:[
@@ -2004,13 +2137,17 @@ const scopeButtons=`
               location.rack,
               location.shelf,
               location.bin
-            ].filter(Boolean).join('／')||location.id
+            ]
+              .filter(Boolean)
+              .join('／')||
+              location.id
           }))
         ],
         homeLocation
       )}
     </select>
   </label>
+
 `;
 const orgCards=Object.entries(ORG_TREE)
   .filter(([unit])=>inScope(unit))
@@ -2440,62 +2577,166 @@ const orgCards=Object.entries(ORG_TREE)
   }
  document.addEventListener('change',e=>{
 
-  const target=e.target.closest('[data-home-scope]');
+  const target=
+    e.target.closest('[data-home-scope]');
 
   if(target){
 
-    const level=target.dataset.homeScope;
-    const value=target.value;
+    const level=
+      target.dataset.homeScope;
 
-    if(level==='unit'){
-      homeScope=value;
+    const value=
+      target.value;
+
+    if(level==='organization'){
+
+      homeOrganization=value;
+
+      homeScope='全部';
       homeSite='全部';
       homeArea='全部';
       homeLocation='全部';
 
-      localStorage.setItem(HOME_SCOPE_KEY,homeScope);
-      localStorage.setItem(HOME_SITE_KEY,homeSite);
-      localStorage.setItem(HOME_AREA_KEY,homeArea);
-      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+      localStorage.setItem(
+        HOME_ORG_KEY,
+        homeOrganization
+      );
+
+      localStorage.setItem(
+        HOME_SCOPE_KEY,
+        homeScope
+      );
+
+      localStorage.setItem(
+        HOME_SITE_KEY,
+        homeSite
+      );
+
+      localStorage.setItem(
+        HOME_AREA_KEY,
+        homeArea
+      );
+
+      localStorage.setItem(
+        HOME_LOCATION_KEY,
+        homeLocation
+      );
     }
 
-    if(level==='site'){
-      homeSite=value;
+    if(level==='unit'){
+
+      homeScope=value;
+
+      homeSite='全部';
       homeArea='全部';
       homeLocation='全部';
 
-      localStorage.setItem(HOME_SITE_KEY,homeSite);
-      localStorage.setItem(HOME_AREA_KEY,homeArea);
-      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+      localStorage.setItem(
+        HOME_SCOPE_KEY,
+        homeScope
+      );
+
+      localStorage.setItem(
+        HOME_SITE_KEY,
+        homeSite
+      );
+
+      localStorage.setItem(
+        HOME_AREA_KEY,
+        homeArea
+      );
+
+      localStorage.setItem(
+        HOME_LOCATION_KEY,
+        homeLocation
+      );
+    }
+
+    if(level==='site'){
+
+      homeSite=value;
+
+      homeArea='全部';
+      homeLocation='全部';
+
+      localStorage.setItem(
+        HOME_SITE_KEY,
+        homeSite
+      );
+
+      localStorage.setItem(
+        HOME_AREA_KEY,
+        homeArea
+      );
+
+      localStorage.setItem(
+        HOME_LOCATION_KEY,
+        homeLocation
+      );
     }
 
     if(level==='area'){
+
       homeArea=value;
+
       homeLocation='全部';
 
-      localStorage.setItem(HOME_AREA_KEY,homeArea);
-      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+      localStorage.setItem(
+        HOME_AREA_KEY,
+        homeArea
+      );
+
+      localStorage.setItem(
+        HOME_LOCATION_KEY,
+        homeLocation
+      );
     }
 
     if(level==='location'){
+
       homeLocation=value;
-      localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+
+      localStorage.setItem(
+        HOME_LOCATION_KEY,
+        homeLocation
+      );
     }
 
     renderAll();
     return;
   }
 
-  if(e.target.matches('[data-integration-scope]')){
+  if(
+    e.target.matches(
+      '[data-integration-scope]'
+    )
+  ){
+
     homeScope=e.target.value;
+
     homeSite='全部';
     homeArea='全部';
     homeLocation='全部';
 
-    localStorage.setItem(HOME_SCOPE_KEY,homeScope);
-    localStorage.setItem(HOME_SITE_KEY,homeSite);
-    localStorage.setItem(HOME_AREA_KEY,homeArea);
-    localStorage.setItem(HOME_LOCATION_KEY,homeLocation);
+    localStorage.setItem(
+      HOME_SCOPE_KEY,
+      homeScope
+    );
+
+    localStorage.setItem(
+      HOME_SITE_KEY,
+      homeSite
+    );
+
+    localStorage.setItem(
+      HOME_AREA_KEY,
+      homeArea
+    );
+
+    localStorage.setItem(
+      HOME_LOCATION_KEY,
+      homeLocation
+    );
 
     renderAll();
   }
