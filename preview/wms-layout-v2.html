@@ -4428,6 +4428,11 @@ table{font-size:14px}th{font-size:13px!important}td{font-size:14px!important}inp
 
 .brand{overflow:hidden!important}.brand-title{white-space:nowrap!important;flex:none}.brand-mark{flex:none!important}.brand-sub{display:none!important}
 
+
+/* 全介面數量欄位：直接輸入，隱藏瀏覽器原生上下箭頭 */
+input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 </style>
 </head>
 
