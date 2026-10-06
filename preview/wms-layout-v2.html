@@ -2909,74 +2909,79 @@ html[data-theme="dark"] .inventory-page{
 
     <table class="stock-table">
 
-      <thead>
-        <tr>
-          <th>料號</th>
-          <th>品名</th>
-          <th>規格</th>
-          <th>倉庫</th>
-          <th>庫存數量</th>
-          <th>單位</th>
-          <th>狀態</th>
-          <th>更新時間</th>
-        </tr>
-      </thead>
+<thead>
+  <tr>
+    <th>料號</th>
+    <th>品名</th>
+    <th>規格</th>
+    <th>倉庫</th>
+    <th>儲位</th>
+    <th>庫存數量</th>
+    <th>單位</th>
+    <th>狀態</th>
+    <th>更新時間</th>
+  </tr>
+</thead>
 
-      <tbody id="inventoryTableBody">
+<tbody id="inventoryTableBody">
 
-        <tr>
-          <td>ITM0001</td>
-          <td>電子零件</td>
-          <td>A-100</td>
-          <td>主倉</td>
-          <td>2,350</td>
-          <td>PCS</td>
-          <td>
-            <span class="status green">正常</span>
-          </td>
-          <td>2026/10/06 10:24</td>
-        </tr>
+  <tr>
+    <td>ITM0001</td>
+    <td>電子零件</td>
+    <td>A-100</td>
+    <td>主倉</td>
+    <td>A-01-01</td>
+    <td>2,350</td>
+    <td>PCS</td>
+    <td>
+      <span class="status green">正常</span>
+    </td>
+    <td>2026/10/06 10:24</td>
+  </tr>
 
-        <tr>
-          <td>ITM0002</td>
-          <td>包裝材料</td>
-          <td>B-200</td>
-          <td>主倉</td>
-          <td>1,680</td>
-          <td>PCS</td>
-          <td>
-            <span class="status green">正常</span>
-          </td>
-          <td>2026/10/06 09:17</td>
-        </tr>
+  <tr>
+    <td>ITM0002</td>
+    <td>包裝材料</td>
+    <td>B-200</td>
+    <td>主倉</td>
+    <td>B-02-03</td>
+    <td>1,680</td>
+    <td>PCS</td>
+    <td>
+      <span class="status green">正常</span>
+    </td>
+    <td>2026/10/06 09:17</td>
+  </tr>
 
-        <tr>
-          <td>ITM0003</td>
-          <td>成品</td>
-          <td>B-200</td>
-          <td>主倉</td>
-          <td>980</td>
-          <td>PCS</td>
-          <td>
-            <span class="status orange">低庫存</span>
-          </td>
-          <td>2026/10/06 16:32</td>
-        </tr>
+  <tr>
+    <td>ITM0003</td>
+    <td>成品</td>
+    <td>B-200</td>
+    <td>主倉</td>
+    <td>C-01-02</td>
+    <td>980</td>
+    <td>PCS</td>
+    <td>
+      <span class="status orange">低庫存</span>
+    </td>
+    <td>2026/10/06 16:32</td>
+  </tr>
 
-        <tr>
-          <td>ITM0004</td>
-          <td>半成品</td>
-          <td>C-300</td>
-          <td>備品倉</td>
-          <td>520</td>
-          <td>PCS</td>
-          <td>
-            <span class="status green">正常</span>
-          </td>
-          <td>2026/10/06 14:08</td>
-        </tr>
+  <tr>
+    <td>ITM0004</td>
+    <td>半成品</td>
+    <td>C-300</td>
+    <td>備品倉</td>
+    <td>SP-01-01</td>
+    <td>520</td>
+    <td>PCS</td>
+    <td>
+      <span class="status green">正常</span>
+    </td>
+    <td>2026/10/06 14:08</td>
+  </tr>
 
-      </tbody>
+</tbody>
 
     </table>
 
@@ -3142,7 +3147,7 @@ function filterInventoryTable(){
 
     const cells=row.querySelectorAll('td');
 
-    if(cells.length<8)return;
+    if(cells.length<9)return;
 
     const itemNo=
       String(cells[0]?.textContent||'')
@@ -3163,7 +3168,7 @@ function filterInventoryTable(){
       String(cells[3]?.textContent||'').trim();
 
     const rowStatus=
-      String(cells[6]?.textContent||'').trim();
+  String(cells[7]?.textContent||'').trim();
 
     const matchWarehouse=
       !warehouse||rowWarehouse===warehouse;
@@ -3199,7 +3204,7 @@ function filterInventoryTable(){
       emptyRow.id='inventoryEmptyRow';
 
       emptyRow.innerHTML=`
-        <td colspan="8" style="
+        <td colspan="9" style="
           height:110px;
           text-align:center;
           color:#8a99ab;
