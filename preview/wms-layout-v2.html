@@ -865,6 +865,133 @@ select{
   font-size:18px;
 }
 
+
+.inventory-tab-panel{
+  display:none;
+}
+
+.inventory-tab-panel.active{
+  display:block;
+}
+
+.operation-panel{
+  display:none;
+}
+
+.operation-panel.active{
+  display:block;
+}
+
+.operation-summary{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.operation-summary-card{
+  min-height:92px;
+  padding:16px 18px;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.operation-summary-card span{
+  display:block;
+  margin-bottom:8px;
+  color:#75869b;
+  font-size:10.5px;
+  font-weight:800;
+}
+
+.operation-summary-card strong{
+  color:#1b3048;
+  font-size:24px;
+  font-weight:900;
+}
+
+.operation-summary-card small{
+  margin-left:4px;
+  color:#8292a5;
+  font-size:10px;
+  font-weight:700;
+}
+
+.operation-card{
+  overflow:hidden;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.operation-card-head{
+  min-height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 16px;
+  border-bottom:1px solid #e7eef6;
+}
+
+.operation-card-head strong{
+  color:#263a52;
+  font-size:14px;
+  font-weight:900;
+}
+
+.operation-card-head span{
+  color:#7c8da1;
+  font-size:10.5px;
+  font-weight:700;
+}
+
+.operation-table{
+  width:100%;
+  min-width:860px;
+  border-collapse:separate;
+  border-spacing:0;
+}
+
+.operation-table th{
+  height:44px;
+  padding:0 14px;
+  background:#f4f8fc;
+  border-bottom:1px solid #dfe8f3;
+  color:#6d7f94;
+  font-size:11px;
+  font-weight:800;
+  text-align:left;
+  white-space:nowrap;
+}
+
+.operation-table td{
+  height:50px;
+  padding:0 14px;
+  border-bottom:1px solid #edf2f7;
+  color:#34475f;
+  font-size:11.5px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.operation-table tbody tr:last-child td{
+  border-bottom:0;
+}
+
+.operation-table-wrap{
+  overflow:auto;
+}
+
+@media(max-width:760px){
+  .operation-summary{
+    grid-template-columns:1fr;
+  }
+}
+
 .inventory-toolbar{
   min-height:50px;
   display:flex;
@@ -2372,6 +2499,38 @@ html[data-theme="dark"] .inventory-export-btn:hover{
   color:#6aa8ff;
 }
 
+
+html[data-theme="dark"] .operation-summary-card,
+html[data-theme="dark"] .operation-card{
+  background:#111a28;
+  border-color:#26364b;
+}
+
+html[data-theme="dark"] .operation-summary-card span,
+html[data-theme="dark"] .operation-card-head span{
+  color:#8fa1b6;
+}
+
+html[data-theme="dark"] .operation-summary-card strong,
+html[data-theme="dark"] .operation-card-head strong{
+  color:#e4ebf3;
+}
+
+html[data-theme="dark"] .operation-card-head{
+  border-bottom-color:#26364b;
+}
+
+html[data-theme="dark"] .operation-table th{
+  background:#162132;
+  color:#90a2b7;
+  border-bottom-color:#26364b;
+}
+
+html[data-theme="dark"] .operation-table td{
+  color:#d7e1ec;
+  border-bottom-color:#24354a;
+}
+
 html[data-theme="dark"] .filter-card,
 html[data-theme="dark"] .stock-card{
   background:#111a28;
@@ -2942,190 +3101,490 @@ html[data-theme="dark"] .inventory-page{
 
  <div class="sub-tabs">
 
-  <button class="tab active">
+  <button class="tab active" type="button" data-inventory-tab="stock">
     <span class="material-symbols-rounded">inventory_2</span>
     庫存查詢
   </button>
 
-  <button class="tab">
+  <button class="tab" type="button" data-inventory-tab="receiving">
     <span class="material-symbols-rounded">local_shipping</span>
     收貨
   </button>
 
-  <button class="tab">
+  <button class="tab" type="button" data-inventory-tab="inspection">
     <span class="material-symbols-rounded">fact_check</span>
     驗收
   </button>
 
-  <button class="tab">
+  <button class="tab" type="button" data-inventory-tab="putaway">
     <span class="material-symbols-rounded">move_to_inbox</span>
     入庫
   </button>
 
-  <button class="tab">
+  <button class="tab" type="button" data-inventory-tab="outbound">
     <span class="material-symbols-rounded">outbox</span>
     出庫
   </button>
 
-  <button class="tab">
+  <button class="tab" type="button" data-inventory-tab="transfer">
     <span class="material-symbols-rounded">swap_horiz</span>
     調撥
   </button>
 
 </div>
 
-<div class="filter-card">
+<div class="inventory-tab-panel active" data-inventory-panel="stock">
 
-  <div class="filter-field">
-    <label for="inventoryWarehouseFilter">倉庫</label>
-    <select id="inventoryWarehouseFilter">
-      <option value="">全部倉庫</option>
-      <option value="主倉">主倉</option>
-      <option value="備品倉">備品倉</option>
-    </select>
+  <div class="filter-card">
+
+    <div class="filter-field">
+      <label for="inventoryWarehouseFilter">倉庫</label>
+      <select id="inventoryWarehouseFilter">
+        <option value="">全部倉庫</option>
+        <option value="主倉">主倉</option>
+        <option value="備品倉">備品倉</option>
+      </select>
+    </div>
+
+    <div class="filter-field filter-search">
+      <label for="inventoryKeywordFilter">品項搜尋</label>
+      <input
+        id="inventoryKeywordFilter"
+        type="search"
+        placeholder="輸入品名、品號或關鍵字"
+      >
+    </div>
+
+    <div class="filter-field">
+      <label for="inventoryStatusFilter">庫存狀態</label>
+      <select id="inventoryStatusFilter">
+        <option value="">全部狀態</option>
+        <option value="正常">正常</option>
+        <option value="低庫存">低庫存</option>
+      </select>
+    </div>
+
+    <div class="filter-actions">
+      <button
+        class="primary-btn"
+        id="inventorySearchBtn"
+        type="button"
+      >
+        <span class="material-symbols-rounded">search</span>
+        查詢
+      </button>
+    </div>
+
   </div>
 
-  <div class="filter-field filter-search">
-    <label for="inventoryKeywordFilter">品項搜尋</label>
-    <input
-      id="inventoryKeywordFilter"
-      type="search"
-      placeholder="輸入品名、品號或關鍵字"
-    >
-  </div>
+  <div class="inventory-toolbar">
 
-  <div class="filter-field">
-    <label for="inventoryStatusFilter">庫存狀態</label>
-    <select id="inventoryStatusFilter">
-      <option value="">全部狀態</option>
-      <option value="正常">正常</option>
-      <option value="低庫存">低庫存</option>
-    </select>
-  </div>
+    <div class="inventory-toolbar-title">
+      <strong>庫存清單</strong>
+      <span
+        class="inventory-result-count"
+        id="inventoryResultCount"
+      >
+        共 4 筆
+      </span>
+    </div>
 
-  <div class="filter-actions">
     <button
-      class="primary-btn"
-      id="inventorySearchBtn"
+      class="inventory-export-btn"
+      id="inventoryExportBtn"
       type="button"
     >
-      <span class="material-symbols-rounded">search</span>
-      查詢
+      <span class="material-symbols-rounded">download</span>
+      匯出
     </button>
+
   </div>
 
-</div>
-
-<div class="inventory-toolbar">
-
-  <div class="inventory-toolbar-title">
-    <strong>庫存清單</strong>
-    <span
-      class="inventory-result-count"
-      id="inventoryResultCount"
-    >
-      共 4 筆
-    </span>
-  </div>
-
-  <button
-    class="inventory-export-btn"
-    id="inventoryExportBtn"
-    type="button"
-  >
-    <span class="material-symbols-rounded">download</span>
-    匯出
-  </button>
-
-</div>
-
-<div class="stock-card">
+  <div class="stock-card">
 
     <table class="stock-table">
 
-<thead>
-  <tr>
-    <th>料號</th>
-    <th>品名</th>
-    <th>規格</th>
-    <th>倉庫</th>
-    <th>儲位</th>
-    <th>現有量</th>
-    <th>可用量</th>
-    <th>單位</th>
-    <th>狀態</th>
-    <th>更新時間</th>
-  </tr>
-</thead>
+      <thead>
+        <tr>
+          <th>料號</th>
+          <th>品名</th>
+          <th>規格</th>
+          <th>倉庫</th>
+          <th>儲位</th>
+          <th>現有量</th>
+          <th>可用量</th>
+          <th>單位</th>
+          <th>狀態</th>
+          <th>更新時間</th>
+        </tr>
+      </thead>
 
-<tbody id="inventoryTableBody">
+      <tbody id="inventoryTableBody">
 
-  <tr>
-    <td>ITM0001</td>
-    <td>電子零件</td>
-    <td>A-100</td>
-    <td>主倉</td>
-    <td>A-01-01</td>
-    <td>2,350</td>
-    <td>2,180</td>
-    <td>PCS</td>
-    <td>
-      <span class="status green">正常</span>
-    </td>
-    <td>2026/10/06 10:24</td>
-  </tr>
+        <tr>
+          <td>ITM0001</td>
+          <td>電子零件</td>
+          <td>A-100</td>
+          <td>主倉</td>
+          <td>A-01-01</td>
+          <td>2,350</td>
+          <td>2,180</td>
+          <td>PCS</td>
+          <td><span class="status green">正常</span></td>
+          <td>2026/10/06 10:24</td>
+        </tr>
 
-  <tr>
-    <td>ITM0002</td>
-    <td>包裝材料</td>
-    <td>B-200</td>
-    <td>主倉</td>
-    <td>B-02-03</td>
-    <td>1,680</td>
-    <td>1,540</td>
-    <td>PCS</td>
-    <td>
-      <span class="status green">正常</span>
-    </td>
-    <td>2026/10/06 09:17</td>
-  </tr>
+        <tr>
+          <td>ITM0002</td>
+          <td>包裝材料</td>
+          <td>B-200</td>
+          <td>主倉</td>
+          <td>B-02-03</td>
+          <td>1,680</td>
+          <td>1,540</td>
+          <td>PCS</td>
+          <td><span class="status green">正常</span></td>
+          <td>2026/10/06 09:17</td>
+        </tr>
 
-  <tr>
-    <td>ITM0003</td>
-    <td>成品</td>
-    <td>B-200</td>
-    <td>主倉</td>
-    <td>C-01-02</td>
-    <td>980</td>
-    <td>760</td>
-    <td>PCS</td>
-    <td>
-      <span class="status orange">低庫存</span>
-    </td>
-    <td>2026/10/06 16:32</td>
-  </tr>
+        <tr>
+          <td>ITM0003</td>
+          <td>成品</td>
+          <td>B-200</td>
+          <td>主倉</td>
+          <td>C-01-02</td>
+          <td>980</td>
+          <td>760</td>
+          <td>PCS</td>
+          <td><span class="status orange">低庫存</span></td>
+          <td>2026/10/06 16:32</td>
+        </tr>
 
-  <tr>
-    <td>ITM0004</td>
-    <td>半成品</td>
-    <td>C-300</td>
-    <td>備品倉</td>
-    <td>SP-01-01</td>
-    <td>520</td>
-    <td>500</td>
-    <td>PCS</td>
-    <td>
-      <span class="status green">正常</span>
-    </td>
-    <td>2026/10/06 14:08</td>
-  </tr>
+        <tr>
+          <td>ITM0004</td>
+          <td>半成品</td>
+          <td>C-300</td>
+          <td>備品倉</td>
+          <td>SP-01-01</td>
+          <td>520</td>
+          <td>500</td>
+          <td>PCS</td>
+          <td><span class="status green">正常</span></td>
+          <td>2026/10/06 14:08</td>
+        </tr>
 
-</tbody>
+      </tbody>
 
     </table>
 
   </div>
 
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="receiving">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>今日待收貨</span>
+      <strong>12</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已收貨</span>
+      <strong>28</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>異常待處理</span>
+      <strong>2</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>收貨作業清單</strong>
+      <span>到貨登記後進入驗收流程</span>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>收貨單號</th>
+            <th>供應商</th>
+            <th>品項</th>
+            <th>預計數量</th>
+            <th>實收數量</th>
+            <th>到貨時間</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>RC261006001</td>
+            <td>宏達材料</td>
+            <td>電子零件</td>
+            <td>500</td>
+            <td>500</td>
+            <td>10/06 09:20</td>
+            <td><span class="status blue">待驗收</span></td>
+          </tr>
+          <tr>
+            <td>RC261006002</td>
+            <td>協成包材</td>
+            <td>包裝材料</td>
+            <td>800</td>
+            <td>780</td>
+            <td>10/06 10:45</td>
+            <td><span class="status orange">數量異常</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="inspection">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待驗收</span>
+      <strong>8</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日合格</span>
+      <strong>21</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>驗收異常</span>
+      <strong>3</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>驗收作業清單</strong>
+      <span>驗收合格後才可進入入庫</span>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>驗收單號</th>
+            <th>來源收貨單</th>
+            <th>品項</th>
+            <th>送驗數量</th>
+            <th>合格數量</th>
+            <th>不良數量</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>QC261006003</td>
+            <td>RC261006001</td>
+            <td>電子零件</td>
+            <td>500</td>
+            <td>500</td>
+            <td>0</td>
+            <td><span class="status green">驗收合格</span></td>
+          </tr>
+          <tr>
+            <td>QC261006004</td>
+            <td>RC261006002</td>
+            <td>包裝材料</td>
+            <td>780</td>
+            <td>760</td>
+            <td>20</td>
+            <td><span class="status orange">部分異常</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="putaway">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待入庫</span>
+      <strong>15</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已入庫</span>
+      <strong>34</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>待分配儲位</span>
+      <strong>4</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>入庫作業清單</strong>
+      <span>依驗收結果分配倉庫與儲位</span>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>入庫單號</th>
+            <th>品項</th>
+            <th>數量</th>
+            <th>目標倉庫</th>
+            <th>建議儲位</th>
+            <th>批號</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IN261006008</td>
+            <td>電子零件</td>
+            <td>500</td>
+            <td>主倉</td>
+            <td>A-01-02</td>
+            <td>LOT261006A</td>
+            <td><span class="status blue">待入庫</span></td>
+          </tr>
+          <tr>
+            <td>IN261006009</td>
+            <td>包裝材料</td>
+            <td>760</td>
+            <td>主倉</td>
+            <td>B-02-04</td>
+            <td>LOT261006B</td>
+            <td><span class="status orange">待確認儲位</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="outbound">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待出庫</span>
+      <strong>9</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已出庫</span>
+      <strong>26</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>揀貨中</span>
+      <strong>5</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>出庫作業清單</strong>
+      <span>確認可用量後執行揀貨與出庫</span>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>出庫單號</th>
+            <th>需求單位</th>
+            <th>品項</th>
+            <th>需求數量</th>
+            <th>揀貨儲位</th>
+            <th>預計出庫</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OUT261006004</td>
+            <td>企劃部</td>
+            <td>成品</td>
+            <td>120</td>
+            <td>C-01-02</td>
+            <td>10/06 15:00</td>
+            <td><span class="status blue">待揀貨</span></td>
+          </tr>
+          <tr>
+            <td>OUT261006005</td>
+            <td>作業區</td>
+            <td>包裝材料</td>
+            <td>200</td>
+            <td>B-02-03</td>
+            <td>10/06 16:00</td>
+            <td><span class="status orange">揀貨中</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="transfer">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待調撥</span>
+      <strong>6</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已完成</span>
+      <strong>11</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>運送中</span>
+      <strong>3</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>調撥作業清單</strong>
+      <span>跨倉庫移轉時保留來源與目的儲位紀錄</span>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>調撥單號</th>
+            <th>品項</th>
+            <th>數量</th>
+            <th>來源</th>
+            <th>目的</th>
+            <th>申請人</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TR261006002</td>
+            <td>包裝材料</td>
+            <td>150</td>
+            <td>主倉 / B-02-03</td>
+            <td>備品倉 / SP-01-02</td>
+            <td>OG</td>
+            <td><span class="status blue">待調撥</span></td>
+          </tr>
+          <tr>
+            <td>TR261006003</td>
+            <td>半成品</td>
+            <td>80</td>
+            <td>備品倉 / SP-01-01</td>
+            <td>主倉 / C-02-01</td>
+            <td>KEN</td>
+            <td><span class="status orange">運送中</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
 </div>
 
 </section>
@@ -3233,15 +3692,37 @@ document.querySelectorAll('.mobile-bottom button').forEach(btn=>{
 
 });
 
-document.querySelectorAll('.tab').forEach(tab=>{
+const inventoryTabs=
+  document.querySelectorAll('[data-inventory-tab]');
+
+const inventoryPanels=
+  document.querySelectorAll('[data-inventory-panel]');
+
+function showInventoryTab(name){
+
+  inventoryTabs.forEach(tab=>{
+    tab.classList.toggle(
+      'active',
+      tab.dataset.inventoryTab===name
+    );
+  });
+
+  inventoryPanels.forEach(panel=>{
+    panel.classList.toggle(
+      'active',
+      panel.dataset.inventoryPanel===name
+    );
+  });
+
+}
+
+inventoryTabs.forEach(tab=>{
 
   tab.addEventListener('click',()=>{
 
-    document.querySelectorAll('.tab').forEach(item=>{
-      item.classList.remove('active');
-    });
-
-    tab.classList.add('active');
+    showInventoryTab(
+      tab.dataset.inventoryTab||'stock'
+    );
 
   });
 
