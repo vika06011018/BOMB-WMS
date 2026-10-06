@@ -2862,36 +2862,41 @@ html[data-theme="dark"] .inventory-page{
 
 </div>
 
-  <div class="filter-card">
+<div class="filter-card">
 
   <div class="filter-field">
-    <label>倉庫</label>
-    <select>
-      <option>全部倉庫</option>
-      <option>主倉</option>
-      <option>備品倉</option>
+    <label for="inventoryWarehouseFilter">倉庫</label>
+    <select id="inventoryWarehouseFilter">
+      <option value="">全部倉庫</option>
+      <option value="主倉">主倉</option>
+      <option value="備品倉">備品倉</option>
     </select>
   </div>
 
   <div class="filter-field filter-search">
-    <label>品項搜尋</label>
+    <label for="inventoryKeywordFilter">品項搜尋</label>
     <input
+      id="inventoryKeywordFilter"
       type="search"
       placeholder="輸入品名、品號或關鍵字"
     >
   </div>
 
   <div class="filter-field">
-    <label>庫存狀態</label>
-    <select>
-      <option>全部狀態</option>
-      <option>正常</option>
-      <option>低庫存</option>
+    <label for="inventoryStatusFilter">庫存狀態</label>
+    <select id="inventoryStatusFilter">
+      <option value="">全部狀態</option>
+      <option value="正常">正常</option>
+      <option value="低庫存">低庫存</option>
     </select>
   </div>
 
   <div class="filter-actions">
-    <button class="primary-btn">
+    <button
+      class="primary-btn"
+      id="inventorySearchBtn"
+      type="button"
+    >
       <span class="material-symbols-rounded">search</span>
       查詢
     </button>
@@ -2917,7 +2922,7 @@ html[data-theme="dark"] .inventory-page{
         </tr>
       </thead>
 
-      <tbody>
+      <tbody id="inventoryTableBody">
 
         <tr>
           <td>ITM0001</td>
@@ -3097,6 +3102,144 @@ document.querySelectorAll('.tab').forEach(tab=>{
   });
 
 });
+
+const inventoryWarehouseFilter=
+  document.getElementById('inventoryWarehouseFilter');
+
+const inventoryKeywordFilter=
+  document.getElementById('inventoryKeywordFilter');
+
+const inventoryStatusFilter=
+  document.getElementById('inventoryStatusFilter');
+
+const inventorySearchBtn=
+  document.getElementById('inventorySearchBtn');
+
+const inventoryTableBody=
+  document.getElementById('inventoryTableBody');
+
+
+function filterInventoryTable(){
+
+  if(!inventoryTableBody)return;
+
+  const warehouse=
+    String(inventoryWarehouseFilter?.value||'').trim();
+
+  const keyword=
+    String(inventoryKeywordFilter?.value||'')
+      .trim()
+      .toLowerCase();
+
+  const status=
+    String(inventoryStatusFilter?.value||'').trim();
+
+    const rows=
+    [...inventoryTableBody.querySelectorAll('tr')]
+      .filter(row=>row.id!=='inventoryEmptyRow');
+
+  rows.forEach(row=>{
+
+    const cells=row.querySelectorAll('td');
+
+    if(cells.length<8)return;
+
+    const itemNo=
+      String(cells[0]?.textContent||'')
+        .trim()
+        .toLowerCase();
+
+    const itemName=
+      String(cells[1]?.textContent||'')
+        .trim()
+        .toLowerCase();
+
+    const spec=
+      String(cells[2]?.textContent||'')
+        .trim()
+        .toLowerCase();
+
+    const rowWarehouse=
+      String(cells[3]?.textContent||'').trim();
+
+    const rowStatus=
+      String(cells[6]?.textContent||'').trim();
+
+    const matchWarehouse=
+      !warehouse||rowWarehouse===warehouse;
+
+    const matchStatus=
+      !status||rowStatus===status;
+
+    const matchKeyword=
+      !keyword||
+      itemNo.includes(keyword)||
+      itemName.includes(keyword)||
+      spec.includes(keyword);
+
+            const matched=
+      matchWarehouse&&matchStatus&&matchKeyword;
+
+    row.style.display=
+      matched?'':'none';
+
+  });
+
+  const visibleRows=
+    [...rows].filter(row=>row.style.display!=='none');
+
+  let emptyRow=
+    document.getElementById('inventoryEmptyRow');
+
+  if(visibleRows.length===0){
+
+    if(!emptyRow){
+
+      emptyRow=document.createElement('tr');
+      emptyRow.id='inventoryEmptyRow';
+
+      emptyRow.innerHTML=`
+        <td colspan="8" style="
+          height:110px;
+          text-align:center;
+          color:#8a99ab;
+          font-weight:700;
+        ">
+          查無符合條件的庫存資料
+        </td>
+      `;
+
+      inventoryTableBody.appendChild(emptyRow);
+
+    }
+
+    emptyRow.style.display='';
+
+  }else if(emptyRow){
+
+    emptyRow.remove();
+
+  }
+
+}
+
+
+inventorySearchBtn?.addEventListener(
+  'click',
+  filterInventoryTable
+);
+
+
+inventoryKeywordFilter?.addEventListener(
+  'keydown',
+  event=>{
+
+    if(event.key==='Enter'){
+      filterInventoryTable();
+    }
+
+  }
+);
 
 const themeToggle=document.getElementById('themeToggle');
 
