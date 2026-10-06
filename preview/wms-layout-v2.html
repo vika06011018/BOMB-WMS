@@ -4385,6 +4385,9 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 @media(max-width:1150px){.hub-layout{grid-template-columns:1fr}.hub-side{display:grid;grid-template-columns:1fr 1fr}.hub-table td{padding:15px}.hub-table{min-width:650px}}
 @media(max-width:650px){.hub-heading{align-items:flex-start;gap:12px;flex-direction:column}.hub-heading h1{font-size:26px}.hub-areas{overflow-x:auto}.hub-areas button{flex-shrink:0;padding:11px 18px}.hub-summary{grid-template-columns:1fr 1fr;gap:10px}.hub-summary>div{padding:16px}.hub-summary strong{font-size:28px}.hub-side{display:flex}.hub-card-head{padding:17px}.hub-filters input{flex-basis:100%}.hub-demo{font-size:12px}.hub-top-title{font-size:15px}}
 
+
+.generic-scope{background:#fff;border:1px solid #d5e1eb;border-radius:14px;padding:20px;margin-bottom:22px;gap:18px}.generic-scope label{display:flex;flex-direction:column;gap:9px;flex:1;font-size:14px;color:#4c6174;min-width:170px}.generic-scope select{padding:12px;font-size:16px}.generic-config{margin-bottom:22px}html[data-theme="dark"] .generic-scope{background:#182a3b;border-color:#33495c}html[data-theme="dark"] .generic-scope label{color:#c2d5e4}.nav>.secondary-action-btn{margin:15px 10px;font-size:14px;white-space:normal;line-height:1.6}
+
 </style>
 </head>
 
@@ -4500,8 +4503,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 
           <select>
             <option>全部倉庫</option>
-            <option>總部主倉</option>
-            <option>辦公室備品倉</option>
+            <option>A1</option>
+            <option>B1</option>
           </select>
         </div>
 
@@ -4904,8 +4907,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
       <label for="inventoryWarehouseFilter">倉庫</label>
       <select id="inventoryWarehouseFilter">
         <option value="">全部倉庫</option>
-        <option value="主倉">總部主倉</option>
-        <option value="備品倉">辦公室備品倉</option>
+        <option value="A1">A1</option>
+        <option value="B1">B1</option>
       </select>
     </div>
 
@@ -4988,7 +4991,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <td>ITM0001</td>
           <td>電子零件</td>
           <td>A-100</td>
-          <td>總部主倉</td>
+          <td>A1</td>
           <td>A-01-01</td>
           <td>2,350</td>
           <td>2,180</td>
@@ -5001,7 +5004,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <td>ITM0002</td>
           <td>包裝材料</td>
           <td>B-200</td>
-          <td>總部主倉</td>
+          <td>A1</td>
           <td>B-02-03</td>
           <td>1,680</td>
           <td>1,540</td>
@@ -5014,7 +5017,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <td>ITM0003</td>
           <td>成品</td>
           <td>B-200</td>
-          <td>總部主倉</td>
+          <td>A1</td>
           <td>C-01-02</td>
           <td>980</td>
           <td>760</td>
@@ -5027,7 +5030,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <td>ITM0004</td>
           <td>半成品</td>
           <td>C-300</td>
-          <td>辦公室備品倉</td>
+          <td>B1</td>
           <td>SP-01-01</td>
           <td>520</td>
           <td>500</td>
@@ -5218,7 +5221,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>IN261006008</td>
             <td>電子零件</td>
             <td>500</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>A-01-02</td>
             <td>LOT261006A</td>
             <td><span class="status blue">待入庫</span></td>
@@ -5227,7 +5230,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>IN261006009</td>
             <td>包裝材料</td>
             <td>760</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>B-02-04</td>
             <td>LOT261006B</td>
             <td><span class="status orange">待確認儲位</span></td>
@@ -5281,7 +5284,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         <tbody>
           <tr>
             <td>OUT261006004</td>
-            <td>企劃部</td>
+            <td>使用區</td>
             <td>成品</td>
             <td>120</td>
             <td>C-01-02</td>
@@ -5290,7 +5293,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           </tr>
           <tr>
             <td>OUT261006005</td>
-            <td>作業區</td>
+            <td>倉儲區</td>
             <td>包裝材料</td>
             <td>200</td>
             <td>B-02-03</td>
@@ -5348,8 +5351,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>TR261006002</td>
             <td>包裝材料</td>
             <td>150</td>
-            <td>總部主倉 / B-02-03</td>
-            <td>辦公室備品倉 / SP-01-02</td>
+            <td>A1 / B-02-03</td>
+            <td>B1 / SP-01-02</td>
             <td>OG</td>
             <td><span class="status blue">待調撥</span></td>
           </tr>
@@ -5357,8 +5360,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>TR261006003</td>
             <td>半成品</td>
             <td>80</td>
-            <td>辦公室備品倉 / SP-01-01</td>
-            <td>總部主倉 / C-02-01</td>
+            <td>B1 / SP-01-01</td>
+            <td>A1 / C-02-01</td>
             <td>KEN</td>
             <td><span class="status orange">運送中</span></td>
           </tr>
@@ -5462,8 +5465,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         <label for="purchaseWarehouseFilter">倉庫</label>
         <select id="purchaseWarehouseFilter">
           <option value="">全部倉庫</option>
-          <option value="主倉">總部主倉</option>
-          <option value="備品倉">辦公室備品倉</option>
+          <option value="A1">A1</option>
+          <option value="B1">B1</option>
         </select>
       </div>
 
@@ -5547,11 +5550,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 
         <tbody id="purchaseRequestBody">
 
-          <tr data-purchase-row data-warehouse="主倉" data-status="待叫貨">
+          <tr data-purchase-row data-warehouse="A1" data-status="待叫貨">
             <td>PR261006001</td>
             <td>ITM0003</td>
             <td>成品</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>980</td>
             <td>1,200</td>
             <td>500</td>
@@ -5568,11 +5571,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </td>
           </tr>
 
-          <tr data-purchase-row data-warehouse="主倉" data-status="待叫貨">
+          <tr data-purchase-row data-warehouse="A1" data-status="待叫貨">
             <td>PR261006002</td>
             <td>ITM0012</td>
             <td>清潔耗材</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>42</td>
             <td>80</td>
             <td>60</td>
@@ -5589,11 +5592,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </td>
           </tr>
 
-          <tr data-purchase-row data-warehouse="備品倉" data-status="待叫貨">
+          <tr data-purchase-row data-warehouse="B1" data-status="待叫貨">
             <td>PR261006003</td>
             <td>ITM0021</td>
             <td>維修備品</td>
-            <td>辦公室備品倉</td>
+            <td>B1</td>
             <td>18</td>
             <td>30</td>
             <td>20</td>
@@ -5610,11 +5613,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </td>
           </tr>
 
-          <tr data-purchase-row data-warehouse="主倉" data-status="已叫貨">
+          <tr data-purchase-row data-warehouse="A1" data-status="已叫貨">
             <td>PR261005006</td>
             <td>ITM0002</td>
             <td>包裝材料</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>1,680</td>
             <td>1,500</td>
             <td>800</td>
@@ -5631,11 +5634,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </td>
           </tr>
 
-          <tr data-purchase-row data-warehouse="主倉" data-status="無須叫貨">
+          <tr data-purchase-row data-warehouse="A1" data-status="無須叫貨">
             <td>PR261005009</td>
             <td>ITM0030</td>
             <td>活動耗材</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>120</td>
             <td>100</td>
             <td>0</td>
@@ -5792,7 +5795,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 
     <div class="flow-card">
       <div class="flow-card-head">
-        <strong>企劃部 → 總部補貨流程</strong>
+        <strong>使用區 → 示範據點補貨流程</strong>
         <span>共用品與低庫存品項使用同一套流程</span>
       </div>
 
@@ -5801,19 +5804,19 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         <div class="flow-step">
           <div class="flow-step-no">1</div>
           <strong>盤點 / 低庫存提示</strong>
-          <small>企劃部依盤點日或安全庫存自動產生需求。</small>
+          <small>使用區依盤點日或安全庫存自動產生需求。</small>
         </div>
 
         <div class="flow-step">
           <div class="flow-step-no">2</div>
-          <strong>向總部申請</strong>
+          <strong>向示範據點申請</strong>
           <small>確認品項與數量後送出內部補貨申請。</small>
         </div>
 
         <div class="flow-step">
           <div class="flow-step-no">3</div>
-          <strong>總部備貨</strong>
-          <small>由總部主倉確認可用量並完成揀貨。</small>
+          <strong>示範據點備貨</strong>
+          <small>由A1確認可用量並完成揀貨。</small>
         </div>
 
         <div class="flow-step">
@@ -5825,7 +5828,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         <div class="flow-step">
           <div class="flow-step-no">5</div>
           <strong>上架 / 入庫</strong>
-          <small>完成後更新辦公室或作業區的現有量。</small>
+          <small>完成後更新使用區或倉儲區的現有量。</small>
         </div>
 
       </div>
@@ -5855,33 +5858,33 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <tbody>
             <tr>
               <td>IR261006001</td>
-              <td>企劃部</td>
+              <td>使用區</td>
               <td>衛生紙</td>
               <td>6 箱</td>
-              <td>總部主倉</td>
-              <td>辦公室</td>
+              <td>A1</td>
+              <td>使用區</td>
               <td>定期補貨</td>
               <td><span class="status blue">待備貨</span></td>
               <td><span class="mandatory-tag">不可取消</span></td>
             </tr>
             <tr>
               <td>IR261006002</td>
-              <td>企劃部</td>
+              <td>使用區</td>
               <td>漂白水</td>
               <td>12 瓶</td>
-              <td>總部主倉</td>
-              <td>作業區</td>
+              <td>A1</td>
+              <td>倉儲區</td>
               <td>低庫存</td>
               <td><span class="status orange">備貨中</span></td>
               <td><span class="mandatory-tag">不可取消</span></td>
             </tr>
             <tr>
               <td>IR261006003</td>
-              <td>機台區</td>
+              <td>設備區</td>
               <td>維修備品</td>
               <td>4 組</td>
-              <td>總部主倉</td>
-              <td>機台區維修區</td>
+              <td>A1</td>
+              <td>設備區維修區</td>
               <td>人工申請</td>
               <td><span class="status green">已完成</span></td>
               <td>一般申請</td>
@@ -5979,10 +5982,10 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         <label for="assetLocationFilter">所在區域</label>
         <select id="assetLocationFilter">
           <option value="">全部區域</option>
-          <option value="辦公室">辦公室</option>
-          <option value="企劃部">企劃部</option>
-          <option value="機台區">機台區</option>
-          <option value="作業區">作業區</option>
+          <option value="使用區">使用區</option>
+          <option value="使用區">使用區</option>
+          <option value="設備區">設備區</option>
+          <option value="倉儲區">倉儲區</option>
         </select>
       </div>
 
@@ -6061,11 +6064,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 
         <tbody id="assetTableBody">
 
-          <tr data-asset-row data-location="辦公室" data-status="使用中">
+          <tr data-asset-row data-location="使用區" data-status="使用中">
             <td class="asset-code">AST-0001</td>
             <td>企劃工作站</td>
             <td>電腦設備</td>
-            <td>辦公室</td>
+            <td>使用區</td>
             <td>OG</td>
             <td>2026/03/15</td>
             <td><span class="status green">使用中</span></td>
@@ -6073,11 +6076,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>2026/10/05</td>
           </tr>
 
-          <tr data-asset-row data-location="企劃部" data-status="使用中">
+          <tr data-asset-row data-location="使用區" data-status="使用中">
             <td class="asset-code">AST-0002</td>
             <td>27 吋螢幕</td>
             <td>電腦設備</td>
-            <td>企劃部</td>
+            <td>使用區</td>
             <td>KEN</td>
             <td>2026/04/02</td>
             <td><span class="status green">使用中</span></td>
@@ -6085,11 +6088,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>2026/10/01</td>
           </tr>
 
-          <tr data-asset-row data-location="機台區" data-status="維修中">
+          <tr data-asset-row data-location="設備區" data-status="維修中">
             <td class="asset-code">AST-0003</td>
             <td>維修工具組 A</td>
             <td>工具設備</td>
-            <td>機台區</td>
+            <td>設備區</td>
             <td>肉肉</td>
             <td>2026/01/20</td>
             <td><span class="status orange">維修中</span></td>
@@ -6097,11 +6100,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>2026/10/06</td>
           </tr>
 
-          <tr data-asset-row data-location="作業區" data-status="待盤點">
+          <tr data-asset-row data-location="倉儲區" data-status="待盤點">
             <td class="asset-code">AST-0004</td>
             <td>手持掃描器</td>
             <td>作業設備</td>
-            <td>作業區</td>
+            <td>倉儲區</td>
             <td>弦</td>
             <td>2026/05/18</td>
             <td><span class="status red">待盤點</span></td>
@@ -6109,11 +6112,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>2026/09/28</td>
           </tr>
 
-          <tr data-asset-row data-location="辦公室" data-status="閒置">
+          <tr data-asset-row data-location="使用區" data-status="閒置">
             <td class="asset-code">AST-0005</td>
             <td>備用筆電</td>
             <td>電腦設備</td>
-            <td>辦公室</td>
+            <td>使用區</td>
             <td>—</td>
             <td>2025/12/10</td>
             <td><span class="status blue">閒置</span></td>
@@ -6121,11 +6124,11 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>2026/09/30</td>
           </tr>
 
-          <tr data-asset-row data-location="企劃部" data-status="使用中">
+          <tr data-asset-row data-location="使用區" data-status="使用中">
             <td class="asset-code">AST-0006</td>
             <td>會議平板</td>
             <td>行動設備</td>
-            <td>企劃部</td>
+            <td>使用區</td>
             <td>RU</td>
             <td>2026/06/21</td>
             <td><span class="status green">使用中</span></td>
@@ -6172,8 +6175,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
               <td>AST-0001</td>
               <td>企劃工作站</td>
               <td>保管人變更</td>
-              <td>辦公室 / —</td>
-              <td>辦公室 / OG</td>
+              <td>使用區 / —</td>
+              <td>使用區 / OG</td>
               <td>OG</td>
             </tr>
             <tr>
@@ -6181,8 +6184,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
               <td>AST-0006</td>
               <td>會議平板</td>
               <td>領用</td>
-              <td>辦公室 / —</td>
-              <td>企劃部 / RU</td>
+              <td>使用區 / —</td>
+              <td>使用區 / RU</td>
               <td>KEN</td>
             </tr>
             <tr>
@@ -6190,8 +6193,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
               <td>AST-0005</td>
               <td>備用筆電</td>
               <td>歸還</td>
-              <td>企劃部 / 鬼</td>
-              <td>辦公室 / —</td>
+              <td>使用區 / 鬼</td>
+              <td>使用區 / —</td>
               <td>OG</td>
             </tr>
           </tbody>
@@ -6349,7 +6352,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <tbody>
             <tr>
               <td>ST261006001</td>
-              <td>總部主倉 / A 區</td>
+              <td>A1 / A 區</td>
               <td>OG</td>
               <td>2026/10/06</td>
               <td>12 / 20</td>
@@ -6358,7 +6361,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </tr>
             <tr>
               <td>ST261006002</td>
-              <td>辦公室備品倉</td>
+              <td>B1</td>
               <td>KEN</td>
               <td>2026/10/06</td>
               <td>4 / 8</td>
@@ -6367,7 +6370,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </tr>
             <tr>
               <td>ST261005004</td>
-              <td>企劃部共用品</td>
+              <td>示範消耗品</td>
               <td>RU</td>
               <td>2026/10/05</td>
               <td>16 / 16</td>
@@ -6389,8 +6392,8 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         <label for="stocktakeWarehouseFilter">倉庫</label>
         <select id="stocktakeWarehouseFilter">
           <option value="">全部倉庫</option>
-          <option value="主倉">總部主倉</option>
-          <option value="備品倉">辦公室備品倉</option>
+          <option value="A1">A1</option>
+          <option value="B1">B1</option>
         </select>
       </div>
 
@@ -6451,10 +6454,10 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
         </thead>
         <tbody id="stocktakeTableBody">
 
-          <tr data-stocktake-row data-warehouse="主倉">
+          <tr data-stocktake-row data-warehouse="A1">
             <td>ITM0001</td>
             <td>電子零件</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>A-01-01</td>
             <td data-book-qty>2350</td>
             <td><input class="count-input" type="number" min="0" value="2350"></td>
@@ -6463,10 +6466,10 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>—</td>
           </tr>
 
-          <tr data-stocktake-row data-warehouse="主倉">
+          <tr data-stocktake-row data-warehouse="A1">
             <td>ITM0002</td>
             <td>包裝材料</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>B-02-03</td>
             <td data-book-qty>1680</td>
             <td><input class="count-input" type="number" min="0" value="1668"></td>
@@ -6475,10 +6478,10 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>待複核</td>
           </tr>
 
-          <tr data-stocktake-row data-warehouse="主倉">
+          <tr data-stocktake-row data-warehouse="A1">
             <td>ITM0003</td>
             <td>成品</td>
-            <td>總部主倉</td>
+            <td>A1</td>
             <td>C-01-02</td>
             <td data-book-qty>980</td>
             <td><input class="count-input" type="number" min="0" value="985"></td>
@@ -6487,10 +6490,10 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             <td>待確認入庫單</td>
           </tr>
 
-          <tr data-stocktake-row data-warehouse="備品倉">
+          <tr data-stocktake-row data-warehouse="B1">
             <td>ITM0004</td>
             <td>半成品</td>
-            <td>辦公室備品倉</td>
+            <td>B1</td>
             <td>SP-01-01</td>
             <td data-book-qty>520</td>
             <td><input class="count-input" type="number" min="0" value="520"></td>
@@ -6529,7 +6532,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <tbody>
             <tr>
               <td>ST261005004</td>
-              <td>企劃部共用品</td>
+              <td>示範消耗品</td>
               <td>2026/10/05</td>
               <td>16</td>
               <td>0</td>
@@ -6538,7 +6541,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
             </tr>
             <tr>
               <td>ST261001003</td>
-              <td>總部主倉 / B 區</td>
+              <td>A1 / B 區</td>
               <td>2026/10/01</td>
               <td>32</td>
               <td>2</td>
@@ -6563,7 +6566,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
   <div class="page-head">
     <div class="page-title">
       <h1>場域與管理工具</h1>
-      <p>統一總部、辦公室、作業區與機台區的倉儲位置與管理流程</p>
+      <p>統一示範據點、使用區、倉儲區與設備區的倉儲位置與管理流程</p>
     </div>
   </div>
 
@@ -6575,12 +6578,12 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h12v18M16 9h4v12M8 7h1M12 7h1M8 11h1M12 11h1M8 15h1M12 15h1M9 21v-3h3v3"/></svg>
         </div>
         <div>
-          <strong>總部</strong>
+          <strong>示範據點</strong>
           <p>主要庫存與補貨來源</p>
         </div>
       </div>
       <div class="site-tags">
-        <span class="site-tag">總部主倉</span>
+        <span class="site-tag">A1</span>
         <span class="site-tag">收貨</span>
         <span class="site-tag">驗收</span>
         <span class="site-tag">出貨</span>
@@ -6593,13 +6596,13 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h12v18M16 9h4v12M8 7h1M12 7h1M8 11h1M12 11h1M8 15h1M12 15h1M9 21v-3h3v3"/></svg>
         </div>
         <div>
-          <strong>辦公室</strong>
+          <strong>使用區</strong>
           <p>行政與企劃日常領用</p>
         </div>
       </div>
       <div class="site-tags">
-        <span class="site-tag">企劃部</span>
-        <span class="site-tag">辦公室備品倉</span>
+        <span class="site-tag">使用區</span>
+        <span class="site-tag">B1</span>
         <span class="site-tag">共用品</span>
       </div>
     </section>
@@ -6610,15 +6613,15 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M7 21v-5l5-5-4-5 3-3 6 7-3 6v5M17 9h4v5l-3 2"/><circle cx="12" cy="11" r="2"/></svg>
         </div>
         <div>
-          <strong>作業區</strong>
+          <strong>倉儲區</strong>
           <p>現場作業與耗用品配置</p>
         </div>
       </div>
       <div class="site-tags">
-        <span class="site-tag">洗牌房</span>
-        <span class="site-tag">棚區1 真人</span>
-        <span class="site-tag">棚區2 RB</span>
-        <span class="site-tag">棚區3 MBL</span>
+        <span class="site-tag">示範位置 F</span>
+        <span class="site-tag">示範位置 C</span>
+        <span class="site-tag">示範位置 D</span>
+        <span class="site-tag">示範位置 E</span>
       </div>
     </section>
 
@@ -6628,12 +6631,12 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
           <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
         </div>
         <div>
-          <strong>機台區</strong>
+          <strong>設備區</strong>
           <p>機台零件與維修備品</p>
         </div>
       </div>
       <div class="site-tags">
-        <span class="site-tag">倉架 2 層</span>
+        <span class="site-tag">示範貨架</span>
         <span class="site-tag">維修區</span>
         <span class="site-tag">備品管理</span>
       </div>
@@ -6658,7 +6661,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
       <div class="flow-step">
         <div class="flow-step-no">2</div>
         <strong>採購 / 內部補貨</strong>
-        <small>外部採購或向總部主倉申請。</small>
+        <small>外部採購或向A1申請。</small>
       </div>
 
       <div class="flow-step">
@@ -6697,15 +6700,15 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 
       <div class="more-list">
         <div class="more-link">
-          <div><strong>總部主倉</strong><small>　A / B / C 區</small></div>
+          <div><strong>A1</strong><small>　A / B / C 區</small></div>
           <button type="button" data-prototype-action="warehouse-manage">管理</button>
         </div>
         <div class="more-link">
-          <div><strong>辦公室備品倉</strong><small>　SP 區</small></div>
+          <div><strong>B1</strong><small>　SP 區</small></div>
           <button type="button" data-prototype-action="warehouse-manage-office">管理</button>
         </div>
         <div class="more-link">
-          <div><strong>機台區</strong><small>　倉架 2 層 / 維修區</small></div>
+          <div><strong>設備區</strong><small>　示範貨架 / 維修區</small></div>
           <button type="button" data-prototype-action="machine-location">查看</button>
         </div>
       </div>
@@ -6778,7 +6781,7 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 
       <div class="more-list">
         <div class="more-link">
-          <div><strong>內部補貨</strong><small>　企劃部 → 總部</small></div>
+          <div><strong>內部補貨</strong><small>　使用區 → 示範據點</small></div>
           <button type="button" data-more-page="purchase" data-more-purchase-tab="internal">開啟</button>
         </div>
         <div class="more-link">
@@ -6878,6 +6881,12 @@ html[data-theme="dark"] .hub-top-title,html[data-theme="dark"] .hub-heading h1,h
 </div>
 
 <script>
+(function(){
+const replacements=[["\u7e3d\u90e8\u4e3b\u5009", "A1"], ["\u8fa6\u516c\u5ba4\u5099\u54c1\u5009", "B1"], ["\u4f01\u5283\u90e8\u5171\u7528\u54c1", "\u793a\u7bc4\u6d88\u8017\u54c1"], ["\u4f01\u5283\u90e8", "\u4f7f\u7528\u5340"], ["\u7e3d\u90e8", "\u793a\u7bc4\u64da\u9ede"], ["\u8fa6\u516c\u5ba4", "\u4f7f\u7528\u5340"], ["\u4f5c\u696d\u5340", "\u5009\u5132\u5340"], ["\u6a5f\u53f0\u5340", "\u8a2d\u5099\u5340"], ["\u68da\u53401 \u771f\u4eba", "\u793a\u7bc4\u4f4d\u7f6e C"], ["\u68da\u53402 RB", "\u793a\u7bc4\u4f4d\u7f6e D"], ["\u68da\u53403 MBL", "\u793a\u7bc4\u4f4d\u7f6e E"], ["\u6d17\u724c\u623f", "\u793a\u7bc4\u4f4d\u7f6e F"], ["\u5009\u67b6 2 \u5c64", "\u793a\u7bc4\u8ca8\u67b6"], ["\u4e3b\u5009", "A1"], ["\u5099\u54c1\u5009", "B1"], ["\u6d17\u724c\u8a2d\u5099", "\u4f5c\u696d\u8a2d\u5099"], ["\u724c\u76d2", "\u5468\u8f49\u7bb1"], ["\u724c\u9774", "\u5de5\u5177\u7bb1"], ["\u7403\u76d2", "\u96f6\u4ef6\u76d2"], ["\u64b2\u514b\u724c", "\u8017\u6750"], ["\u6a5f\u68b0\u624b\u81c2\u65b0\u724c", "\u8a2d\u5099\u8017\u6750"], ["\u6a5f\u68b0\u624b\u81c2", "\u8a2d\u5099"], ["\u76d8", "\u76e4"]];
+function convert(v){if(typeof v==='string'){for(const [from,to] of replacements)v=v.split(from).join(to);return v;}if(Array.isArray(v))return v.map(convert);if(v&&typeof v==='object')return Object.fromEntries(Object.entries(v).map(([k,value])=>[k,convert(value)]));return v;}
+for(const key of ['bomb-wms-prototype-created-records','bomb-wms-integrated-workspace-v1']){try{const raw=localStorage.getItem(key);if(raw){const next=JSON.stringify(convert(JSON.parse(raw)));if(next!==raw)localStorage.setItem(key,next);}}catch(e){}}
+})();
+
 const dashboardPage=document.getElementById('dashboardPage');
 const inventoryPage=document.getElementById('inventoryPage');
 const purchasePage=document.getElementById('purchasePage');
@@ -8426,7 +8435,7 @@ const modalContentMap={
         <div class="modal-list-row">
           <div>
             <strong>盤點差異</strong>
-            <small>主倉與備品倉共有 3 項差異待複核。</small>
+            <small>A1與B1共有 3 項差異待複核。</small>
           </div>
           <span class="modal-chip">3 項</span>
         </div>
@@ -8461,7 +8470,7 @@ const modalContentMap={
   },
 
   'warehouse-manage':{
-    title:'總部主倉',
+    title:'A1',
     subtitle:'Warehouse → Zone → Location',
     body:`
       <div class="modal-list">
@@ -8473,8 +8482,8 @@ const modalContentMap={
   },
 
   'warehouse-manage-office':{
-    title:'辦公室備品倉',
-    subtitle:'辦公室與企劃部共用品',
+    title:'B1',
+    subtitle:'使用區與示範消耗品',
     body:`
       <div class="modal-list">
         <div class="modal-list-row"><div><strong>SP 區</strong><small>辦公備品與行政耗材</small></div><span class="modal-chip">SP-01 ～ SP-06</span></div>
@@ -8484,7 +8493,7 @@ const modalContentMap={
   },
 
   'machine-location':{
-    title:'機台區',
+    title:'設備區',
     subtitle:'倉架與維修區',
     body:`
       <div class="modal-info-grid">
@@ -8532,9 +8541,9 @@ const modalContentMap={
     subtitle:'入庫 / 出庫 / 調撥留痕',
     body:`
       <div class="modal-list">
-        <div class="modal-list-row"><div><strong>IN261006008</strong><small>電子零件 +500 / 主倉 A-01-02</small></div><span class="modal-chip">入庫</span></div>
-        <div class="modal-list-row"><div><strong>OUT261006004</strong><small>成品 -120 / 企劃部領用</small></div><span class="modal-chip">出庫</span></div>
-        <div class="modal-list-row"><div><strong>TR261006002</strong><small>包裝材料 150 / 主倉 → 備品倉</small></div><span class="modal-chip">調撥</span></div>
+        <div class="modal-list-row"><div><strong>IN261006008</strong><small>電子零件 +500 / A1 A-01-02</small></div><span class="modal-chip">入庫</span></div>
+        <div class="modal-list-row"><div><strong>OUT261006004</strong><small>成品 -120 / 使用區領用</small></div><span class="modal-chip">出庫</span></div>
+        <div class="modal-list-row"><div><strong>TR261006002</strong><small>包裝材料 150 / A1 → B1</small></div><span class="modal-chip">調撥</span></div>
       </div>
     `
   },
@@ -8557,7 +8566,7 @@ const modalContentMap={
       <div class="modal-list">
         <div class="modal-list-row"><div><strong>OG</strong><small>2026/10/06 14:10　調整資產保管人。</small></div><span class="modal-chip">資產</span></div>
         <div class="modal-list-row"><div><strong>KEN</strong><small>2026/10/06 11:25　完成會議平板領用。</small></div><span class="modal-chip">領用</span></div>
-        <div class="modal-list-row"><div><strong>RU</strong><small>2026/10/05 16:40　完成企劃部共用品盤點。</small></div><span class="modal-chip">盤點</span></div>
+        <div class="modal-list-row"><div><strong>RU</strong><small>2026/10/05 16:40　完成示範消耗品盤點。</small></div><span class="modal-chip">盤點</span></div>
       </div>
     `
   }
@@ -8609,7 +8618,7 @@ const workflowDefinitions={
       ['item','品項','text','電子零件'],
       ['qty','預計數量','number','500'],
       ['received','實收數量','number','500'],
-      ['warehouse','目的倉庫','select','總部主倉|辦公室備品倉'],
+      ['warehouse','目的倉庫','select','A1|B1'],
       ['note','備註','textarea','']
     ]
   },
@@ -8633,7 +8642,7 @@ const workflowDefinitions={
     fields:[
       ['item','品項','text','電子零件'],
       ['qty','入庫數量','number','500'],
-      ['warehouse','目標倉庫','select','總部主倉|辦公室備品倉'],
+      ['warehouse','目標倉庫','select','A1|B1'],
       ['location','儲位','text','A-01-02'],
       ['lot','批號','text','LOT261006A'],
       ['note','備註','textarea','']
@@ -8644,10 +8653,10 @@ const workflowDefinitions={
     title:'新增出庫',
     subtitle:'建立領用或出庫需求',
     fields:[
-      ['department','需求單位','select','企劃部|辦公室|作業區|機台區'],
+      ['department','需求單位','select','使用區|使用區|倉儲區|設備區'],
       ['item','品項','text','成品'],
       ['qty','需求數量','number','120'],
-      ['warehouse','來源倉庫','select','總部主倉|辦公室備品倉'],
+      ['warehouse','來源倉庫','select','A1|B1'],
       ['location','揀貨儲位','text','C-01-02'],
       ['note','用途 / 備註','textarea','']
     ]
@@ -8659,8 +8668,8 @@ const workflowDefinitions={
     fields:[
       ['item','品項','text','包裝材料'],
       ['qty','調撥數量','number','150'],
-      ['from','來源','text','總部主倉 / B-02-03'],
-      ['to','目的','text','辦公室備品倉 / SP-01-02'],
+      ['from','來源','text','A1 / B-02-03'],
+      ['to','目的','text','B1 / SP-01-02'],
       ['applicant','申請人','text','OG'],
       ['note','備註','textarea','']
     ]
@@ -8672,7 +8681,7 @@ const workflowDefinitions={
     fields:[
       ['itemNo','品號','text','ITM0003'],
       ['item','品名','text','成品'],
-      ['warehouse','需求倉庫','select','總部主倉|辦公室備品倉'],
+      ['warehouse','需求倉庫','select','A1|B1'],
       ['qty','叫貨數量','number','500'],
       ['source','需求來源','select','低庫存自動|人工申請'],
       ['note','備註','textarea','']
@@ -8685,7 +8694,7 @@ const workflowDefinitions={
     fields:[
       ['assetName','資產名稱','text','新設備'],
       ['category','類別','select','電腦設備|行動設備|工具設備|作業設備|其他'],
-      ['location','所在區域','select','辦公室|企劃部|機台區|作業區'],
+      ['location','所在區域','select','使用區|使用區|設備區|倉儲區'],
       ['custodian','保管人','text','OG'],
       ['date','取得日期','date','2026-10-06'],
       ['note','備註','textarea','']
@@ -8696,7 +8705,7 @@ const workflowDefinitions={
     title:'新增盤點任務',
     subtitle:'建立盤點範圍與負責人',
     fields:[
-      ['scope','盤點範圍','select','總部主倉 / A 區|總部主倉 / B 區|總部主倉 / C 區|辦公室備品倉|企劃部共用品|機台區'],
+      ['scope','盤點範圍','select','A1 / A 區|A1 / B 區|A1 / C 區|B1|示範消耗品|設備區'],
       ['owner','負責人','text','OG'],
       ['date','盤點日期','date','2026-10-06'],
       ['mode','盤點方式','select','例行盤點|低庫存複核|臨時盤點'],
@@ -8951,7 +8960,7 @@ function renderCreatedRecords(){
     row.dataset.assetRow='';row.dataset.location=d.location;row.dataset.status='使用中';
     values=[id,d.assetName,d.category,d.location,d.custodian,d.date,'使用中','待盤點',date];break;
    case 'purchase':
-    row.dataset.purchaseRow='';row.dataset.warehouse=d.warehouse==='總部主倉'?'主倉':'備品倉';row.dataset.status='待叫貨';
+    row.dataset.purchaseRow='';row.dataset.warehouse=d.warehouse==='A1'?'A1':'B1';row.dataset.status='待叫貨';
     row.innerHTML=[id,d.itemNo,d.item,d.warehouse,'—','—',d.qty].map(v=>'<td>'+escapeRecord(v)+'</td>').join('')+
      '<td><input class="purchase-qty" type="number" min="1" step="1" value="'+escapeRecord(d.qty)+'"></td><td data-status-cell><span class="status orange">待叫貨</span></td><td>'+escapeRecord(d.source)+'</td><td><div class="purchase-row-actions"><button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button><button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button></div></td>';
     break;
@@ -8975,23 +8984,23 @@ globalWarehouse?.addEventListener('change',()=>{inventoryWarehouseFilter.value=g
 (()=>{
 const KEY='bomb-wms-integrated-workspace-v1';
 const esc=escapeRecord;
-const sites=['總部主倉','辦公室備品倉','企劃部','洗牌房','棚區1 真人','棚區2 RB','棚區3 MBL','機台區 / 倉架 2 層','機台區 / 維修區'];
+const sites=['A1','B1','使用區','示範位置 F','示範位置 C','示範位置 D','示範位置 E','設備區 / 示範貨架','設備區 / 維修區'];
 const definitions={
- returns:{page:'inventory',title:'歸還',subtitle:'先回待驗區，驗收後才可上架',headers:['單號','物品','數量','歸還人','目的位置','狀態'],fields:['物品','數量','歸還人','目的位置'],defaults:['耳機 EQ-0001','1','OG','總部主倉 / 待驗區'],status:'待驗中'},
+ returns:{page:'inventory',title:'歸還',subtitle:'先回待驗區，驗收後才可上架',headers:['單號','物品','數量','歸還人','目的位置','狀態'],fields:['物品','數量','歸還人','目的位置'],defaults:['耳機 EQ-0001','1','OG','A1 / 待驗區'],status:'待驗中'},
  supplierReturn:{page:'inventory',title:'退貨',subtitle:'保留原採購與驗收關聯，追蹤交付供應商',headers:['單號','物品','數量','供應商','原因','狀態'],fields:['物品','數量','供應商','原因'],defaults:['Mini PC','1','宏達材料','功能異常'],status:'待主管確認'},
  exceptions:{page:'inventory',title:'驗收異常',subtitle:'缺件、短少與換貨分開追蹤，合格部分可先入庫',headers:['單號','來源驗收單','物品','異常數量','處理方式','狀態'],fields:['來源驗收單','物品','異常數量','處理方式'],defaults:['QC261006004','Mini PC','1','等待補件'],options:{'處理方式':['等待補件','等待補送','換貨','重新驗收','退貨','報廢評估']},status:'待處理'},
  quotations:{page:'purchase',title:'詢價與比價',subtitle:'比較價格、交期、規格與替代方案',headers:['單號','物品','供應商','單價','交期天數','狀態'],fields:['物品','供應商','單價','交期天數'],defaults:['Mini PC','宏達材料','18000','7'],status:'待確認'},
  categories:{page:'asset',title:'分類管理',subtitle:'父階層 → 子階層 → 品項；停用保留既有資料',headers:['代碼','分類名稱','父階層','標籤類型','識別方式','狀態'],fields:['分類名稱','父階層','標籤類型','識別方式'],defaults:['耳機','通訊設備','個別識別','QR兩層'],options:{'標籤類型':['個別識別','批量識別','無標籤'],'識別方式':['QR兩層','NFC三層','不適用']},status:'啟用'},
  labels:{page:'asset',title:'標籤管理',subtitle:'物品身份固定，換發紀錄延續；此處提供操作原型',headers:['編號','物品業務編號','6碼識別碼','識別方式','換發原因','狀態'],fields:['物品業務編號','6碼識別碼','識別方式','換發原因'],defaults:['EQ-TC-00001','120001','QR兩層','首次產製'],options:{'識別方式':['QR兩層','NFC三層']},status:'待產製'},
- disposal:{page:'asset',title:'報廢與丟棄',subtitle:'待報廢 → 核准 → 留存 → 處置；永久保留履歷',headers:['單號','物品','數量','報廢原因','留存位置','狀態'],fields:['物品','數量','報廢原因','留存位置'],defaults:['損壞螢幕','1','無法修復','總部主倉 / 報廢區'],status:'待核准'},
- maintenance:{page:'asset',title:'保養任務',subtitle:'與送修分開；就地保養保留原配置位置',headers:['單號','設備','所在位置','負責人','預計日期','狀態'],fields:['設備','所在位置','負責人','預計日期'],defaults:['洗牌設備','洗牌房','OG','2026-10-10'],status:'待執行'},
- review:{page:'stocktake',title:'複查',subtitle:'複查人不可與執行人相同；異常案件保留原紀錄',headers:['單號','來源盤點單','範圍','執行人','複查人','狀態'],fields:['來源盤點單','範圍','執行人','複查人'],defaults:['ST261006001','總部主倉 / A 區','PB','SM'],status:'待複查'},
+ disposal:{page:'asset',title:'報廢與丟棄',subtitle:'待報廢 → 核准 → 留存 → 處置；永久保留履歷',headers:['單號','物品','數量','報廢原因','留存位置','狀態'],fields:['物品','數量','報廢原因','留存位置'],defaults:['損壞螢幕','1','無法修復','A1 / 報廢區'],status:'待核准'},
+ maintenance:{page:'asset',title:'保養任務',subtitle:'與送修分開；就地保養保留原配置位置',headers:['單號','設備','所在位置','負責人','預計日期','狀態'],fields:['設備','所在位置','負責人','預計日期'],defaults:['作業設備','示範位置 F','OG','2026-10-10'],status:'待執行'},
+ review:{page:'stocktake',title:'複查',subtitle:'複查人不可與執行人相同；異常案件保留原紀錄',headers:['單號','來源盤點單','範圍','執行人','複查人','狀態'],fields:['來源盤點單','範圍','執行人','複查人'],defaults:['ST261006001','A1 / A 區','PB','SM'],status:'待複查'},
  variance:{page:'stocktake',title:'盤點異常',subtitle:'原因調查、補登與沖正均需留下紀錄',headers:['單號','來源盤點單','物品','差異數量','調查說明','狀態'],fields:['來源盤點單','物品','差異數量','調查說明'],defaults:['ST261006001','耳機','-1','待核對領用紀錄'],status:'調查中'},
- tasks:{page:'more',title:'任務中心',subtitle:'統一管理負責人、期限、改派與強制結案原因',headers:['單號','任務內容','負責人','期限','備註','狀態'],fields:['任務內容','負責人','期限','備註'],defaults:['企劃部共用品補貨','OG','2026-10-07','總部備貨後通知取貨'],status:'待執行'},
+ tasks:{page:'more',title:'任務中心',subtitle:'統一管理負責人、期限、改派與強制結案原因',headers:['單號','任務內容','負責人','期限','備註','狀態'],fields:['任務內容','負責人','期限','備註'],defaults:['示範消耗品補貨','OG','2026-10-07','示範據點備貨後通知取貨'],status:'待執行'},
  supplies:{page:'more',title:'備品區',subtitle:'無標籤；三班盤點與進貨登記，不走一般領用',headers:['紀錄','品項','前次數量','期間進貨','本次數量','消耗量'],fields:['品項','前次數量','期間進貨','本次數量'],defaults:['衛生紙','30','10','25'],status:''},
  uniforms:{page:'more',title:'制服配發',subtitle:'依尺碼批量管理；個人持有或共用尺碼池',headers:['單號','尺碼','數量','配發對象','追蹤方式','狀態'],fields:['尺碼','數量','配發對象','追蹤方式'],defaults:['M','2','PB-001','個人持有'],options:{'追蹤方式':['個人持有','共用尺碼池']},status:'待領取'},
- headsets:{page:'more',title:'耳機配發',subtitle:'個別耳機綁定人員；歸還解除綁定',headers:['單號','耳機編號','人員','使用位置','備註','狀態'],fields:['耳機編號','人員','使用位置','備註'],defaults:['EQ-TC-00001','PB-001','棚區1 真人','長期配置'],status:'待領取'},
- locations:{page:'more',title:'位置設定',subtitle:'據點 → 區域／廳別 → 貨架 → 桌台／櫃位',headers:['代碼','名稱','上層位置','類型','6碼識別碼','狀態'],fields:['名稱','上層位置','類型','6碼識別碼'],defaults:['A1','總部主倉','一般貨架','220001'],options:{'類型':['一般貨架','待驗區','待退貨區','維修區','報廢區','使用位置']},status:'啟用'},
+ headsets:{page:'more',title:'耳機配發',subtitle:'個別耳機綁定人員；歸還解除綁定',headers:['單號','耳機編號','人員','使用位置','備註','狀態'],fields:['耳機編號','人員','使用位置','備註'],defaults:['EQ-TC-00001','PB-001','示範位置 C','長期配置'],status:'待領取'},
+ locations:{page:'more',title:'位置設定',subtitle:'據點 → 區域／廳別 → 貨架 → 桌台／櫃位',headers:['代碼','名稱','上層位置','類型','6碼識別碼','狀態'],fields:['名稱','上層位置','類型','6碼識別碼'],defaults:['A1','A1','一般貨架','220001'],options:{'類型':['一般貨架','待驗區','待退貨區','維修區','報廢區','使用位置']},status:'啟用'},
  rules:{page:'more',title:'流程參數',subtitle:'依企業設定期限與上限，預設值待企劃確認',headers:['代碼','參數名稱','設定值','單位','適用範圍','狀態'],fields:['參數名稱','設定值','單位','適用範圍'],defaults:['身上貨品上限','10','項','現場作業'],status:'草案'}
 };
 let state;try{state=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
@@ -9035,7 +9044,7 @@ prototypeModalBody.addEventListener('submit',e=>{if(e.target.id!=='integratedFor
 const field=document.createElement('div');field.id='fieldWorkspace';field.className='field-workspace';field.hidden=true;document.querySelector('section.page').append(field);
 const switcher=document.createElement('div');switcher.className='workspace-switch';switcher.innerHTML='<button class="active" data-workspace="manage">倉儲管理</button><button data-workspace="field">現場作業</button>';document.querySelector('.topbar').prepend(switcher);
 function renderField(){
- field.innerHTML='<div class="page-head"><div class="page-title"><h1>現場作業</h1><p>OG · 同一帳號查看庫存與現場物品</p></div><span class="workspace-badge">操作展示 · 手動識別</span></div><div class="field-metrics"><div><span>我的搬運中物品</span><strong>'+state.field.filter(r=>r.status==='運送中').length+'</strong></div><div><span>今日操作</span><strong>'+state.field.length+'</strong></div><div><span>場域</span><strong>總部／辦公室／現場</strong></div></div><div class="field-actions">'+[['領取','取出物品，加入身上貨品'],['存入','確認貨架，完成放置'],['歸還','物品先放待驗區'],['移轉','更新實體位置'],['盤點','核對系統與實際數量'],['手動驗證','輸入物品 6 碼識別碼']].map(([name,sub],i)=>'<button data-field-action="'+name+'"><span class="field-action-number">0'+(i+1)+'</span><strong>'+name+'</strong><small>'+sub+'</small><span class="field-action-arrow">↗</span></button>').join('')+'</div><div class="field-columns"><section class="card"><div class="card-head"><h2>我的現場紀錄</h2></div><div class="field-records">'+(state.field.length?state.field.map(r=>'<div class="field-record"><div><strong>'+esc(r.item)+'</strong><small>'+esc(r.code)+' · '+esc(r.qty)+' 件 · '+esc(r.location)+'</small></div><span class="status blue">'+esc(r.status)+'</span></div>').join(''):'<div class="workspace-empty">尚無操作紀錄，從上方選擇作業開始</div>')+'</div></section><section class="card"><div class="card-head"><h2>同時查詢庫存</h2></div><div class="field-shortcuts"><p>查看總部與辦公室可用庫存，接續現場任務。</p><button class="primary-btn" data-field-stock>開啟庫存查詢</button><button class="secondary-action-btn" data-field-tasks>查看任務中心</button><button class="secondary-action-btn" data-field-log>操作日誌</button></div></section></div>';
+ field.innerHTML='<div class="page-head"><div class="page-title"><h1>現場作業</h1><p>OG · 同一帳號查看庫存與現場物品</p></div><span class="workspace-badge">操作展示 · 手動識別</span></div><div class="field-metrics"><div><span>我的搬運中物品</span><strong>'+state.field.filter(r=>r.status==='運送中').length+'</strong></div><div><span>今日操作</span><strong>'+state.field.length+'</strong></div><div><span>場域</span><strong>示範據點／使用區／現場</strong></div></div><div class="field-actions">'+[['領取','取出物品，加入身上貨品'],['存入','確認貨架，完成放置'],['歸還','物品先放待驗區'],['移轉','更新實體位置'],['盤點','核對系統與實際數量'],['手動驗證','輸入物品 6 碼識別碼']].map(([name,sub],i)=>'<button data-field-action="'+name+'"><span class="field-action-number">0'+(i+1)+'</span><strong>'+name+'</strong><small>'+sub+'</small><span class="field-action-arrow">↗</span></button>').join('')+'</div><div class="field-columns"><section class="card"><div class="card-head"><h2>我的現場紀錄</h2></div><div class="field-records">'+(state.field.length?state.field.map(r=>'<div class="field-record"><div><strong>'+esc(r.item)+'</strong><small>'+esc(r.code)+' · '+esc(r.qty)+' 件 · '+esc(r.location)+'</small></div><span class="status blue">'+esc(r.status)+'</span></div>').join(''):'<div class="workspace-empty">尚無操作紀錄，從上方選擇作業開始</div>')+'</div></section><section class="card"><div class="card-head"><h2>同時查詢庫存</h2></div><div class="field-shortcuts"><p>查看示範據點與使用區可用庫存，接續現場任務。</p><button class="primary-btn" data-field-stock>開啟庫存查詢</button><button class="secondary-action-btn" data-field-tasks>查看任務中心</button><button class="secondary-action-btn" data-field-log>操作日誌</button></div></section></div>';
 }
 const showBeforeWorkspace=showPage;showPage=function(page){field.hidden=page!=='field';showBeforeWorkspace(page);switcher.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.workspace===(page==='field'?'field':'manage')));if(page==='field')renderField();};
 switcher.addEventListener('click',e=>{const b=e.target.closest('[data-workspace]');if(b)showPage(b.dataset.workspace==='field'?'field':'dashboard');});
@@ -9050,63 +9059,82 @@ prototypeModalBody.addEventListener('submit',e=>{if(e.target.id!=='fieldForm')re
  const status=({'領取':'運送中','存入':'在貨架上','歸還':'待驗中','移轉':'位置已更新','盤點':'待複查','手動驗證':'手動驗證'}[action]);const r={code,item:String(fd.get('item')),qty:fd.get('qty'),location:String(fd.get('location'))+' / '+rack,status,action,time:new Date().toLocaleString('zh-TW')};state.field.unshift(r);log(action+'／手動驗證',code);if(!save()){state.field.shift();state.logs.shift();return;}closePrototypeModal();renderField();showPrototypeToast('操作紀錄已保存');});
 })();
 
-/* One workspace for headquarters, office and field. */
+/* Configurable site -> zone -> location workspace. */
 (()=>{
-const KEY='bomb-wms-site-hub-v1',e=escapeRecord;
-const areas=['總部','辦公室','企劃部','作業區','機台區'];
-const places={'總部':['總部主倉'],'辦公室':['辦公室備品倉'],'企劃部':['企劃部'],'作業區':['洗牌房','棚區1 真人','棚區2 RB','棚區3 MBL'],'機台區':['倉架 2 層','維修區']};
-const seed=[
-['總部','總部主倉','衛生紙','消耗品','箱',48,12,0,'SP-01','無標籤',true],
-['總部','總部主倉','漂白水','消耗品','瓶',36,10,0,'SP-02','無標籤',true],
-['總部','總部主倉','無線電耳機','個別資產','支',12,5,0,'A1','QR兩層',false],
-['總部','總部主倉','撲克牌','批量物品','副',600,200,0,'B1','QR兩層',false],
-['辦公室','辦公室備品倉','衛生紙','消耗品','箱',6,8,0,'SP-01','無標籤',true],
-['辦公室','辦公室備品倉','漂白水','消耗品','瓶',8,6,0,'SP-02','無標籤',true],
-['辦公室','辦公室備品倉','Mini PC','個別資產','台',3,2,8,'A1','QR兩層',false],
-['企劃部','企劃部','衛生紙','消耗品','箱',2,6,0,'備品櫃','無標籤',true],
-['企劃部','企劃部','漂白水','消耗品','瓶',1,4,0,'備品櫃','無標籤',true],
-['企劃部','企劃部','工作站','個別資產','台',1,1,6,'設備櫃','QR兩層',false],
-['作業區','洗牌房','牌盒','個別資產','盒',24,12,18,'G區','NFC三層',false],
-['作業區','棚區1 真人','牌靴','個別資產','個',4,2,12,'備用櫃','NFC三層',false],
-['作業區','棚區2 RB','機械手臂新牌','批量物品','副',80,40,16,'RB-N區','QR兩層',false],
-['作業區','棚區3 MBL','球盒','個別資產','盒',10,5,8,'備用櫃','NFC三層',false],
-['機台區','倉架 2 層','維修備品','批量物品','個',8,12,0,'第2層','QR兩層',false],
-['機台區','維修區','待修螢幕','個別資產','台',0,0,0,'維修架','QR兩層',false]
-].map((v,i)=>({id:'HUB-'+(i+1),area:v[0],place:v[1],name:v[2],category:v[3],unit:v[4],qty:v[5],min:v[6],used:v[7],rack:v[8],tag:v[9],fixed:v[10]}));
-let db;try{db=JSON.parse(localStorage.getItem(KEY)||'null');}catch(err){}
-if(!db||!Array.isArray(db.items)||!Array.isArray(db.requests)||!Array.isArray(db.logs))db={items:seed,requests:[],logs:[],area:'企劃部'};
-let area=areas.includes(db.area)?db.area:'企劃部',place='',keyword='',scope='all';
-function save(){db.area=area;try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(err){showPrototypeToast('無法保存，請確認儲存空間');return false;}}
-const steps=['申請','總部備貨','取貨／清點','上架／入庫','已完成'];
+const KEY='bomb-wms-generic-workspace-v1',esc=escapeRecord;
+const initial={sites:[{id:'S1',name:'示範據點',enabled:true}],zones:[{id:'Z1',site:'S1',name:'倉儲區',enabled:true},{id:'Z2',site:'S1',name:'使用區',enabled:true}],locations:[{id:'L1',zone:'Z1',name:'A1',type:'一般貨架',enabled:true},{id:'L2',zone:'Z1',name:'待驗位置',type:'待驗區',enabled:true},{id:'L3',zone:'Z2',name:'B1',type:'使用位置',enabled:true}],items:[{id:'I1',name:'清潔用品',unit:'瓶',mode:'數量管理',location:'L1',qty:30,used:0,min:10,fixed:false},{id:'I2',name:'清潔用品',unit:'瓶',mode:'數量管理',location:'L3',qty:2,used:0,min:6,fixed:false},{id:'I3',name:'筆記型電腦',unit:'台',mode:'個別資產',location:'L1',qty:4,used:0,min:2,fixed:false},{id:'I4',name:'筆記型電腦',unit:'台',mode:'個別資產',location:'L3',qty:1,used:3,min:1,fixed:false}],requests:[],logs:[]};
+let db;try{db=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+if(!db||!['sites','zones','locations','items','requests','logs'].every(k=>Array.isArray(db[k])))db=initial;
+let site='',zone='',location='',keyword='',status='all',view='work';
+const id=prefix=>prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6);
+const locName=n=>db.locations.find(x=>x.id===n)?.name||'未指定';
+const zoneName=n=>db.zones.find(x=>x.id===n)?.name||'未指定';
+const siteName=n=>db.sites.find(x=>x.id===n)?.name||'未指定';
+function lineage(n){const l=db.locations.find(x=>x.id===n),z=db.zones.find(x=>x.id===l?.zone);return {l,z,s:db.sites.find(x=>x.id===z?.site)};}
+function enabledLocation(x){const a=lineage(x.id);return x.enabled&&a.z?.enabled&&a.s?.enabled;}
+const options=(list,selected,empty)=>'<option value="">'+empty+'</option>'+list.map(x=>'<option value="'+esc(x.id)+'" '+(x.id===selected?'selected':'')+'>'+esc(x.name)+'</option>').join('');
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){showPrototypeToast('無法保存，請確認瀏覽器儲存空間');return false;}}
+function transact(fn){const before=JSON.stringify(db);fn();if(!persist()){db=JSON.parse(before);return false;}syncForms();render();return true;}
+function log(action,detail){db.logs.unshift({action,detail,time:new Date().toLocaleString('zh-TW'),actor:'OG'});}
+function inScope(item){const a=lineage(item.location);return (!site||a.s?.id===site)&&(!zone||a.z?.id===zone)&&(!location||item.location===location);}
+function rows(){return db.items.filter(x=>inScope(x)&&(!keyword||(x.name+x.mode+locName(x.location)).toLowerCase().includes(keyword.toLowerCase()))&&(status!=='low'||x.qty<x.min)&&(status!=='used'||x.used>0));}
+const steps=['申請','來源備貨','取貨／清點','上架／入庫','完成'];
 const hub=document.createElement('div');hub.id='siteHub';document.querySelector('section.page').append(hub);
-function current(){return db.items.filter(x=>x.area===area&&(!place||x.place===place)&&(!keyword||(x.name+x.category+x.rack).toLowerCase().includes(keyword.toLowerCase()))&&(scope!=='low'||x.qty<x.min)&&(scope!=='used'||x.used>0));}
-function render(){const rows=current(),all=db.items.filter(x=>x.area===area&&(!place||x.place===place)),requests=db.requests.filter(x=>x.area===area),low=all.filter(x=>x.qty<x.min).length;
-hub.innerHTML='<div class="hub-heading"><div><span class="hub-eyebrow">BOMB WMS · 共用倉儲工作台</span><h1>'+area+'作業總覽</h1><p>同一頁掌握庫存、現場配置與補貨進度</p></div><span class="hub-demo">Prototype 展示資料</span></div><div class="hub-areas">'+areas.map(a=>'<button data-hub-area="'+a+'" class="'+(a===area?'active':'')+'">'+a+'</button>').join('')+'</div><div class="hub-summary"><div><span>庫存品項</span><strong>'+all.length+'<small>項</small></strong></div><div><span>低庫存</span><strong>'+low+'<small>項待補</small></strong></div><div><span>使用中品項</span><strong>'+all.filter(x=>x.used>0).length+'<small>項</small></strong></div><div><span>補貨待辦</span><strong>'+requests.filter(x=>x.step<4).length+'<small>筆</small></strong></div></div><div class="hub-layout"><section class="hub-card"><div class="hub-card-head"><div><h2>庫存與使用狀況</h2><p>各物品依管理方式作業，消耗品使用數量盤點</p></div><button class="secondary-action-btn" data-hub-export>匯出</button></div><div class="hub-filters"><select id="hubPlace"><option value="">全部位置</option>'+places[area].map(p=>'<option '+(place===p?'selected':'')+'>'+p+'</option>').join('')+'</select><input id="hubKeyword" type="search" placeholder="搜尋品名、分類或儲位" value="'+e(keyword)+'"><select id="hubScope"><option value="all" '+(scope==='all'?'selected':'')+'>全部品項</option><option value="low" '+(scope==='low'?'selected':'')+'>低庫存</option><option value="used" '+(scope==='used'?'selected':'')+'>使用中</option></select><button class="primary-btn" data-hub-search>查詢</button></div><div class="hub-table-wrap"><table class="hub-table"><thead><tr><th>品項／管理方式</th><th>位置</th><th>可用</th><th>使用中</th><th>狀況</th><th>操作</th></tr></thead><tbody>'+rows.map(x=>'<tr><td><strong>'+e(x.name)+'</strong><small>'+e(x.category)+' · '+e(x.tag)+(x.fixed?' · 固定補貨':'')+'</small></td><td>'+e(x.place)+'<small>'+e(x.rack)+'</small></td><td class="hub-number">'+x.qty+'<small>'+e(x.unit)+'／門檻 '+x.min+'</small></td><td class="hub-number">'+x.used+'</td><td><span class="hub-status '+(x.qty<x.min?'low':'')+'">'+(x.qty<x.min?'需補貨':'正常')+'</span></td><td><div class="hub-row-actions"><button data-hub-count="'+x.id+'">盘點'.replace('盘','盤')+'</button><button data-hub-request="'+x.id+'">補貨</button>'+(x.tag!=='無標籤'?'<button data-hub-detail="'+x.id+'">查看</button>':'')+'</div></td></tr>').join('')+(rows.length?'':'<tr><td colspan="6" class="workspace-empty">查無符合條件的品項</td></tr>')+'</tbody></table></div></section><aside class="hub-side"><section class="hub-card"><div class="hub-card-head"><div><h2>補貨進度</h2><p>總部與需求場域共用同一筆單據</p></div></div><div class="hub-request-list">'+(requests.length?requests.map(r=>'<article class="hub-request"><div><strong>'+e(r.name)+'</strong><span>'+r.qty+' '+e(r.unit)+'</span></div><small>'+e(r.id)+' · '+e(r.area)+'</small><div class="hub-progress">'+steps.slice(0,4).map((v,i)=>'<span class="'+(r.step>=i?'done':'')+'">'+v+'</span>').join('')+'</div><p>'+e(steps[r.step])+(r.fixed?' · 共用品不可取消':'')+'</p>'+(r.step<4?'<button class="primary-btn" data-hub-next="'+r.id+'">'+['確認總部備貨','完成備貨，通知取貨','確認取貨與清點','確認上架入庫'][r.step]+'</button>':'<span class="hub-status">補貨已完成</span>')+'</article>').join(''):'<div class="hub-empty"><strong>尚無補貨申請</strong><p>從低庫存品項按「補貨」，開始向總部申請。</p></div>')+'</div></section><section class="hub-card"><div class="hub-card-head"><h2>場域作業入口</h2></div><div class="hub-links"><button data-hub-page="inventory">收貨／驗貨／入庫 <span>→</span></button><button data-hub-page="asset">資產／維修／報廢 <span>→</span></button><button data-hub-page="stocktake">盤點任務／複查 <span>→</span></button><button data-hub-logs>本次作業紀錄 <span>→</span></button></div></section></aside></div>';
+function render(){view==='config'?renderConfig():renderWork();}
+function header(){return '<div class="hub-heading"><div><span class="hub-eyebrow">BOMB WMS · 通用倉儲工作台</span><h1>'+ (view==='config'?'據點與位置設定':'倉儲作業總覽')+'</h1><p>據點 → 區域 → 實際位置，依組織需求自行設定</p></div><button class="secondary-action-btn" data-g-view="'+(view==='config'?'work':'config')+'">'+(view==='config'?'返回作業總覽':'管理據點與位置')+'</button></div>';}
+function renderWork(){const all=db.items.filter(inScope),rs=db.requests.filter(r=>{const x=db.items.find(x=>x.id===r.target);return x&&inScope(x);});
+hub.innerHTML=header()+'<div class="hub-filters generic-scope"><label>據點<select id="gSite">'+options(db.sites.filter(x=>x.enabled),site,'全部據點')+'</select></label><label>區域<select id="gZone">'+options(db.zones.filter(x=>x.enabled&&(!site||x.site===site)&&db.sites.find(s=>s.id===x.site)?.enabled),zone,'全部區域')+'</select></label><label>實際位置<select id="gLocation">'+options(db.locations.filter(x=>enabledLocation(x)&&(!zone||x.zone===zone)&&(!site||lineage(x.id).s?.id===site)),location,'全部位置')+'</select></label></div><div class="hub-summary"><div><span>庫存品項</span><strong>'+all.length+'<small>項</small></strong></div><div><span>低庫存</span><strong>'+all.filter(x=>x.qty<x.min).length+'<small>項</small></strong></div><div><span>使用中品項</span><strong>'+all.filter(x=>x.used>0).length+'<small>項</small></strong></div><div><span>補貨待辦</span><strong>'+rs.filter(r=>r.step<4).length+'<small>筆</small></strong></div></div><div class="hub-layout"><section class="hub-card"><div class="hub-card-head"><div><h2>庫存與使用狀況</h2><p>名稱與補貨來源依設定選擇；DEMO 為展示資料</p></div><button class="primary-btn" data-g-create="item">新增品項</button></div><div class="hub-filters"><input id="gKeyword" type="search" placeholder="搜尋品名或位置" value="'+esc(keyword)+'"><select id="gStatus">'+[['all','全部狀況'],['low','低庫存'],['used','使用中']].map(([k,v])=>'<option value="'+k+'" '+(status===k?'selected':'')+'>'+v+'</option>').join('')+'</select><button class="primary-btn" data-g-search>查詢</button><button class="secondary-action-btn" data-g-export>匯出</button></div><div class="hub-table-wrap"><table class="hub-table"><thead><tr><th>品項／方式</th><th>據點／區域／位置</th><th>可用</th><th>使用中</th><th>狀況</th><th>操作</th></tr></thead><tbody>'+rows().map(x=>{const a=lineage(x.location);return '<tr><td><strong>'+esc(x.name)+'</strong><small>'+esc(x.mode)+(x.fixed?' · 固定補貨':'')+'</small></td><td>'+esc(locName(x.location))+'<small>'+esc(a.s?.name)+' / '+esc(a.z?.name)+'</small></td><td class="hub-number">'+x.qty+'<small>'+esc(x.unit)+' · 門檻 '+x.min+'</small></td><td class="hub-number">'+x.used+'</td><td><span class="hub-status '+(x.qty<x.min?'low':'')+'">'+(x.qty<x.min?'需補貨':'正常')+'</span></td><td><div class="hub-row-actions"><button data-g-count="'+x.id+'">盤點</button><button data-g-request="'+x.id+'">補貨</button></div></td></tr>';}).join('')+(rows().length?'':'<tr><td colspan="6" class="workspace-empty">尚無符合資料，可新增品項或調整篩選</td></tr>')+'</tbody></table></div></section><aside class="hub-side"><section class="hub-card"><div class="hub-card-head"><h2>補貨進度</h2></div>'+ (rs.length?rs.map(r=>{const t=db.items.find(x=>x.id===r.target),src=db.items.find(x=>x.id===r.source);return '<article class="hub-request"><div><strong>'+esc(t?.name)+'</strong><span>'+r.qty+' '+esc(t?.unit)+'</span></div><small>'+esc(r.id)+'</small><p>'+esc(locName(src?.location))+' → '+esc(locName(t?.location))+'</p><div class="hub-progress">'+steps.slice(0,4).map((n,i)=>'<span class="'+(r.step>=i?'done':'')+'">'+n+'</span>').join('')+'</div><p>'+steps[r.step]+(t?.fixed?' · 固定補貨不可取消':'')+'</p>'+(r.step<4?'<button class="primary-btn" data-g-next="'+r.id+'">'+['確認來源備貨','完成備貨','確認取貨／清點','確認上架／入庫'][r.step]+'</button>':'<span class="hub-status">已完成</span>')+'</article>';}).join(''):'<div class="hub-empty">尚無補貨申請，從品項按「補貨」開始。</div>')+'</section><section class="hub-card"><div class="hub-card-head"><h2>作業入口</h2></div><div class="hub-links"><button data-g-page="inventory">收貨／驗收／入庫 →</button><button data-g-page="purchase">採購與供應商 →</button><button data-g-page="asset">資產與維修 →</button><button data-g-page="stocktake">盤點與複查 →</button><button data-g-logs>異動紀錄 →</button></div></section></aside></div>';
 }
-const previousShow=showPage;showPage=function(page){const home=page==='dashboard'||page==='field';previousShow(home?'dashboard':page);hub.hidden=!home;if(home){dashboardPage.classList.add('hidden');document.getElementById('fieldWorkspace').hidden=true;render();}};
-document.querySelector('.workspace-switch').style.display='none';document.querySelector('.warehouse').style.display='none';document.querySelector('.search').style.display='none';
-const topTitle=document.createElement('strong');topTitle.className='hub-top-title';topTitle.textContent='總部與現場共用工作台';document.querySelector('.topbar').prepend(topTitle);
-hub.addEventListener('click',ev=>{
-const b=ev.target.closest('button');if(!b)return;
-if(b.dataset.hubArea){area=b.dataset.hubArea;place='';keyword='';scope='all';save();render();}
-if(b.hasAttribute('data-hub-search')){place=document.getElementById('hubPlace').value;keyword=document.getElementById('hubKeyword').value;scope=document.getElementById('hubScope').value;render();}
-if(b.dataset.hubPage)showPage(b.dataset.hubPage);
-if(b.hasAttribute('data-hub-logs'))openPrototypeModal({title:'場域異動紀錄',subtitle:'保留操作前後數量與補貨進度',body:db.logs.length?db.logs.map(l=>'<div class="modal-list-row"><div><strong>'+e(l.action)+'</strong><small>'+e(l.detail)+' · OG · '+e(l.time)+'</small></div></div>').join(''):'<p>尚無異動紀錄</p>'});
-if(b.dataset.hubDetail){const x=db.items.find(v=>v.id===b.dataset.hubDetail);openPrototypeModal({title:x.name,subtitle:x.area+' / '+x.place,body:'<div class="modal-info-grid">'+[['儲位',x.rack],['識別方式',x.tag],['可用數量',x.qty],['使用中',x.used]].map(([k,v])=>'<div class="modal-info-card"><span>'+k+'</span><strong>'+e(v)+'</strong></div>').join('')+'</div><p>個別資產掃碼、完整配置關係與身上貨品規則仍待串接。</p>'});}
-const id=b.dataset.hubCount||b.dataset.hubRequest;
-if(id){const x=db.items.find(v=>v.id===id),count=!!b.dataset.hubCount;openPrototypeModal({title:(count?'盤點：':'補貨：')+x.name,subtitle:count?'核對實際數量，紀錄差異':'向總部主倉申請，建立共用補貨單',body:'<form id="hubForm" data-id="'+x.id+'" data-kind="'+(count?'count':'request')+'" class="workflow-form"><div class="workflow-field"><label>'+ (count?'實際可用數量':'申請數量')+'</label><input name="qty" required type="number" min="'+(count?'0':'1')+'" step="1" value="'+(count?x.qty:Math.max(1,x.min-x.qty))+'"></div><div class="workflow-field"><label>原因／備註</label><textarea name="reason" required>'+(count?'現場清點':'低庫存補貨')+'</textarea></div>'+(x.fixed?'<p class="hub-rule">衛生紙、漂白水為固定補貨品項，申請後不可取消。</p>':'')+'<div class="workflow-form-actions"><button type="button" class="workflow-cancel-btn" data-workflow-cancel>取消</button><button type="submit" class="workflow-save-btn">確認送出</button></div></form>'});}
-if(b.dataset.hubNext){const r=db.requests.find(v=>v.id===b.dataset.hubNext),target=db.items.find(v=>v.id===r.itemId),source=db.items.find(v=>v.area==='總部'&&v.name===r.name);const before=JSON.stringify(db);
-if(r.step===3){if(!source||source.id===target.id||source.qty<r.qty){showPrototypeToast('總部來源庫存不足或來源與目的相同，請先處理來源庫存');return;}source.qty-=r.qty;target.qty+=r.qty;}
-r.step+=1;db.logs.unshift({action:'補貨進度更新',detail:r.id+' · '+steps[r.step],time:new Date().toLocaleString('zh-TW')});if(!save()){db=JSON.parse(before);return;}render();showPrototypeToast(r.step===4?'已入庫，總部與目的地庫存同步更新':'補貨進度已保存');}
-if(b.hasAttribute('data-hub-export')){const csv='\uFEFF'+[['品項','場域','位置','儲位','可用','使用中','單位'],...current().map(x=>[x.name,x.area,x.place,x.rack,x.qty,x.used,x.unit])].map(r=>r.map(csvCell).join(',')).join('\r\n');const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));link.download='BOMB-WMS-'+area+'-庫存.csv';link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);}
+function renderConfig(){hub.innerHTML=header()+['site','zone','location'].map(kind=>{const arr=db[{site:'sites',zone:'zones',location:'locations'}[kind]],label={site:'據點',zone:'區域',location:'實際位置'}[kind];return '<section class="hub-card generic-config"><div class="hub-card-head"><h2>'+label+'</h2><button class="primary-btn" data-g-create="'+kind+'">＋ 新增'+label+'</button></div><div class="hub-table-wrap"><table class="hub-table"><thead><tr><th>名稱</th><th>所屬層級</th><th>類型</th><th>狀態</th><th>操作</th></tr></thead><tbody>'+arr.map(x=>'<tr><td>'+esc(x.name)+'</td><td>'+esc(kind==='zone'?siteName(x.site):kind==='location'?zoneName(x.zone):'—')+'</td><td>'+esc(x.type||'—')+'</td><td>'+ (x.enabled?'啟用':'停用')+'</td><td><div class="hub-row-actions"><button data-g-edit="'+kind+'" data-id="'+x.id+'">編輯</button><button data-g-toggle="'+kind+'" data-id="'+x.id+'">'+(x.enabled?'停用':'啟用')+'</button></div></td></tr>').join('')+'</tbody></table></div></section>';}).join('')+'<p class="hub-rule">停用保留庫存與歷史，新增作業不再提供停用位置。無刪除功能。</p>';}
+const field=(name,label,value='',type='text')=>'<div class="workflow-field"><label for="gf-'+name+'">'+label+'</label><input id="gf-'+name+'" name="'+name+'" type="'+type+'" '+(type==='number'?'min="0" step="1"':'')+' value="'+esc(value)+'" required></div>';
+const select=(name,label,list,chosen='')=>'<div class="workflow-field"><label for="gf-'+name+'">'+label+'</label><select id="gf-'+name+'" name="'+name+'" required>'+options(list,chosen,'請選擇')+'</select></div>';
+function openEditor(kind,recordId){let obj=recordId?db[{site:'sites',zone:'zones',location:'locations'}[kind]]?.find(x=>x.id===recordId):null;let fields='';
+if(['site','zone','location'].includes(kind)){fields=field('name','名稱',obj?.name||'');if(kind==='zone')fields+=select('site','所屬據點',db.sites.filter(x=>x.enabled||x.id===obj?.site),obj?.site);if(kind==='location'){fields+=select('zone','所屬區域',db.zones.filter(x=>x.enabled||x.id===obj?.zone).map(x=>({...x,name:siteName(x.site)+' / '+x.name})),obj?.zone);fields+=select('type','位置類型',['一般貨架','待驗區','待上架區','維修區','待退貨區','報廢區','使用位置','暫存位置','其他'].map(n=>({id:n,name:n})),obj?.type);}}
+else if(kind==='item')fields=field('name','品項名稱')+select('location','實際位置',db.locations.filter(enabledLocation).map(x=>({...x,name:siteName(lineage(x.id).s?.id)+' / '+zoneName(x.zone)+' / '+x.name})))+select('mode','管理方式',['數量管理','批量識別','個別資產'].map(n=>({id:n,name:n})))+field('unit','單位','個')+field('qty','可用數量',0,'number')+field('min','低庫存門檻',0,'number')+select('fixed','固定補貨',[{id:'no',name:'否'},{id:'yes',name:'是'}],'no');
+openPrototypeModal({title:(obj?'編輯':'新增')+({site:'據點',zone:'區域',location:'實際位置',item:'品項'}[kind]),subtitle:'設定後即時更新選單與作業資料',body:'<form id="genericEditor" data-kind="'+kind+'" data-id="'+esc(recordId||'')+'" class="workflow-form"><div class="workflow-form-grid">'+fields+'</div><div class="workflow-form-actions"><button type="button" class="workflow-cancel-btn" data-workflow-cancel>取消</button><button type="submit" class="workflow-save-btn">儲存</button></div></form>'});}
+function syncForms(){const list=db.locations.filter(enabledLocation);const pipe=list.map(x=>locName(x.id)).join('|');
+Object.values(workflowDefinitions).forEach(d=>d.fields.forEach(f=>{if(['warehouse','department','location','scope'].includes(f[0])){f[2]='select';f[3]=pipe;}}));
+// Update all warehouse and location filters from the same master configuration.
+['inventoryWarehouseFilter','purchaseWarehouseFilter','assetLocationFilter','stocktakeWarehouseFilter'].forEach(key=>{const el=document.getElementById(key);if(!el)return;const old=el.value;el.innerHTML=options(list.map(x=>({id:x.name,name:x.name})),old,'全部位置');});
+}
+const oldShow=showPage;showPage=function(page){const home=page==='dashboard'||page==='field';oldShow(home?'dashboard':page);hub.hidden=!home;if(home){dashboardPage.classList.add('hidden');document.getElementById('fieldWorkspace').hidden=true;render();}};
+document.querySelector('.workspace-switch').style.display='none';document.querySelector('.warehouse').style.display='none';document.querySelector('.search').style.display='none';const title=document.createElement('strong');title.className='hub-top-title';title.textContent='BOMB WMS · 通用倉儲管理';document.querySelector('.topbar').prepend(title);
+const setup=document.createElement('button');setup.type='button';setup.className='secondary-action-btn';setup.textContent='據點與位置設定';setup.addEventListener('click',()=>{view='config';showPage('dashboard');});document.querySelector('.nav').append(setup);
+hub.addEventListener('change',ev=>{if(ev.target.id==='gSite'){site=ev.target.value;zone='';location='';render();}if(ev.target.id==='gZone'){zone=ev.target.value;location='';render();}if(ev.target.id==='gLocation'){location=ev.target.value;render();}});
+hub.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;
+if(b.dataset.gView){view=b.dataset.gView;render();}if(b.dataset.gCreate)openEditor(b.dataset.gCreate);if(b.dataset.gEdit)openEditor(b.dataset.gEdit,b.dataset.id);
+if(b.dataset.gToggle){const arr=db[{site:'sites',zone:'zones',location:'locations'}[b.dataset.gToggle]],x=arr.find(v=>v.id===b.dataset.id);transact(()=>{x.enabled=!x.enabled;log(x.enabled?'啟用':'停用',x.name);});}
+if(b.hasAttribute('data-g-search')){keyword=document.getElementById('gKeyword').value;status=document.getElementById('gStatus').value;render();}
+if(b.dataset.gPage)showPage(b.dataset.gPage);
+if(b.hasAttribute('data-g-logs'))openPrototypeModal({title:'異動紀錄',subtitle:'操作前後資料與來源、目的皆保留',body:db.logs.length?db.logs.map(x=>'<div class="modal-list-row"><div><strong>'+esc(x.action)+'</strong><small>'+esc(x.detail)+' · '+esc(x.actor)+' · '+esc(x.time)+'</small></div></div>').join(''):'<p>尚無紀錄</p>'});
+const itemId=b.dataset.gCount||b.dataset.gRequest;
+if(itemId){const x=db.items.find(v=>v.id===itemId),count=!!b.dataset.gCount,candidates=db.items.filter(v=>v.id!==x.id&&v.name===x.name&&v.unit===x.unit&&v.location!==x.location&&enabledLocation(db.locations.find(l=>l.id===v.location)||{}));
+openPrototypeModal({title:(count?'盤點：':'補貨：').replace('盤','盤')+x.name,subtitle:count?'提交盤點差異，待複查後調整':'來源由人員選擇，不固定任何據點',body:'<form id="genericOperation" data-kind="'+(count?'count':'request')+'" data-id="'+x.id+'" class="workflow-form">'+(!count?select('source','補貨來源',candidates.map(v=>({id:v.id,name:locName(v.location)+' · 可用 '+v.qty+' '+v.unit}))):'')+field('qty',count?'實盤數量':'申請數量',count?x.qty:Math.max(1,x.min-x.qty),'number')+field('reason','原因／備註',count?'現場清點':'低庫存補貨')+(candidates.length||count?'':'<p class="hub-rule">沒有相同品項的可用來源，請新增來源庫存或建立採購需求。</p>')+'<div class="workflow-form-actions"><button type="button" class="workflow-cancel-btn" data-workflow-cancel>取消</button><button type="submit" class="workflow-save-btn">送出</button></div></form>'});}
+if(b.dataset.gNext){const r=db.requests.find(v=>v.id===b.dataset.gNext);if(!r||r.step>=4)return;const src=db.items.find(v=>v.id===r.source),dst=db.items.find(v=>v.id===r.target);if(!src||!dst)return;
+if(!enabledLocation(db.locations.find(x=>x.id===src.location)||{})||!enabledLocation(db.locations.find(x=>x.id===dst.location)||{})){showPrototypeToast('來源或目的位置已停用，請先啟用或改派');return;}
+const reserved=db.requests.filter(x=>x.id!==r.id&&x.source===r.source&&x.step>=1&&x.step<4).reduce((n,x)=>n+x.qty,0);if((r.step===0||r.step===3)&&src.qty-reserved<r.qty){showPrototypeToast('來源可用庫存不足，請調整補貨或採購');return;}
+transact(()=>{if(r.step===3){const before=src.qty+'/'+dst.qty;src.qty-=r.qty;dst.qty+=r.qty;log('補貨入庫',locName(src.location)+' → '+locName(dst.location)+' · '+before+' → '+src.qty+'/'+dst.qty);}r.step++;log('補貨進度',r.id+' · '+steps[r.step]);});}
+if(b.hasAttribute('data-g-export')){const csv='\uFEFF'+[['品項','據點','區域','位置','可用','使用中','單位'],...rows().map(x=>{const a=lineage(x.location);return [x.name,a.s?.name,a.z?.name,a.l?.name,x.qty,x.used,x.unit];})].map(r=>r.map(csvCell).join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='BOMB-WMS-庫存.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
 });
-prototypeModalBody.addEventListener('submit',ev=>{if(ev.target.id!=='hubForm')return;ev.preventDefault();const x=db.items.find(v=>v.id===ev.target.dataset.id),fd=new FormData(ev.target),qty=Number(fd.get('qty')),reason=String(fd.get('reason')).trim(),kind=ev.target.dataset.kind;
-if(!Number.isInteger(qty)||qty<(kind==='count'?0:1)||!reason){showPrototypeToast('請填寫有效數量與原因');return;}
-const before=JSON.stringify(db);
-if(kind==='count'){const old=x.qty;x.qty=qty;db.logs.unshift({action:'盤點數量登記',detail:x.name+' · '+old+' → '+qty+' · '+reason,time:new Date().toLocaleString('zh-TW')});}
-else{if(x.area==='總部'){showPrototypeToast('總部補貨請使用採購需求或來源調撥');return;}db.requests.unshift({id:'RP-'+Date.now().toString(36).toUpperCase(),itemId:x.id,name:x.name,area:x.area,qty,unit:x.unit,fixed:x.fixed,step:0,reason});db.logs.unshift({action:'建立補貨申請',detail:x.name+' · '+qty+' '+x.unit+' · '+reason,time:new Date().toLocaleString('zh-TW')});}
-if(!save()){db=JSON.parse(before);return;}closePrototypeModal();render();showPrototypeToast('已儲存');});
-showPage('dashboard');
+prototypeModalBody.addEventListener('submit',ev=>{const f=ev.target;if(!['genericEditor','genericOperation'].includes(f.id))return;ev.preventDefault();const data=Object.fromEntries(new FormData(f)),kind=f.dataset.kind;
+if(f.id==='genericEditor'){
+if(!String(data.name||'').trim()){showPrototypeToast('請填名稱');return;}
+if(kind==='zone'&&!db.sites.some(x=>x.id===data.site&&x.enabled)||kind==='location'&&!db.zones.some(x=>x.id===data.zone&&x.enabled)){showPrototypeToast('請選擇有效上層');return;}
+if(kind==='item'&&(!db.locations.some(x=>x.id===data.location&&enabledLocation(x))||![data.qty,data.min].every(v=>Number.isInteger(Number(v))&&Number(v)>=0))){showPrototypeToast('請確認有效位置與非負整數數量');return;}
+const arr=db[{site:'sites',zone:'zones',location:'locations',item:'items'}[kind]],existing=arr.find(x=>x.id===f.dataset.id),parent=kind==='zone'?'site':kind==='location'?'zone':null;
+if(arr.some(x=>x.id!==existing?.id&&x.name===data.name.trim()&&(!parent||x[parent]===data[parent]))&&kind!=='item'){showPrototypeToast('同一層級名稱不可重複');return;}
+const ok=transact(()=>{const value={...data,name:data.name.trim(),id:existing?.id||id(kind),enabled:existing?.enabled??true};if(kind==='item')Object.assign(value,{qty:Number(data.qty),min:Number(data.min),used:0,fixed:data.fixed==='yes'});if(existing){const before=JSON.stringify(existing);Object.assign(existing,value);log('設定修改',before+' → '+JSON.stringify(existing));}else{arr.push(value);log('新增設定',kind+' · '+value.name);}});if(ok)closePrototypeModal();
+}else{const x=db.items.find(v=>v.id===f.dataset.id),qty=Number(data.qty);if(!x||!Number.isInteger(qty)||qty<(kind==='count'?0:1)||!String(data.reason||'').trim()){showPrototypeToast('請確認數量與原因');return;}
+if(kind==='request'){const source=db.items.find(v=>v.id===data.source);if(!source||source.location===x.location||source.name!==x.name||source.unit!==x.unit){showPrototypeToast('請選有效的同品項來源');return;}}
+const ok=transact(()=>{if(kind==='count'){log('盤點送複查',x.name+' · 帳面 '+x.qty+'／實盤 '+qty+' · '+data.reason);db.logs[0].review='待複查';}else{db.requests.unshift({id:id('RP'),source:data.source,target:x.id,qty,step:0,reason:data.reason});log('建立補貨申請',x.name+' · '+qty+' '+x.unit);}});if(ok)closePrototypeModal();}
+});
+
+// Location management routes to the shared master configuration.
+document.addEventListener('click',event=>{const b=event.target.closest('[data-module],[data-prototype-action]');if(!b)return;if(b.dataset.module==='locations'||['warehouse-manage','warehouse-manage-office','machine-location'].includes(b.dataset.prototypeAction)){event.stopImmediatePropagation();view='config';showPage('dashboard');}},true);
+// Existing integrated forms also select locations from the shared master data.
+document.addEventListener('click',event=>{const b=event.target.closest('[data-module-create],[data-field-action]');if(!b)return;const available=db.locations.filter(enabledLocation);const form=document.getElementById('integratedForm');if(form){const indexes={returns:3,maintenance:1,headsets:2,disposal:3,asset:2};const index=indexes[form.dataset.module];if(index!==undefined){const input=form.querySelector('[name="v'+index+'"]');if(input){const selectEl=document.createElement('select');selectEl.name=input.name;selectEl.id=input.id;selectEl.required=true;selectEl.innerHTML=options(available.map(x=>({id:x.name,name:x.name})),'','請選擇位置');input.replaceWith(selectEl);}}}const fieldForm=document.getElementById('fieldForm');if(fieldForm){const selectEl=fieldForm.querySelector('[name="location"]');if(selectEl)selectEl.innerHTML=options(available.map(x=>({id:x.name,name:x.name})),'','請選擇位置');}});
+
+syncForms();showPage('dashboard');
 })();
 
 </script>
