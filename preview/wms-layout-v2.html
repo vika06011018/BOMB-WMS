@@ -732,85 +732,196 @@ select{
 
 .sub-tabs{
   display:flex;
-  gap:3px;
-  margin-bottom:15px;
-  border-bottom:1px solid #dfe8f3;
+  align-items:center;
+  gap:8px;
+  margin-bottom:18px;
+  padding:6px;
+  border:1px solid #e1e9f3;
+  border-radius:12px;
+  background:#f4f8fc;
 }
 
 .tab{
-  padding:12px 18px;
-  border:0;
-  border-bottom:2px solid transparent;
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:0 15px;
+  border:1px solid transparent;
+  border-radius:8px;
   background:transparent;
   color:#60738c;
+  font-size:12px;
   font-weight:800;
   cursor:pointer;
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    color .16s ease,
+    box-shadow .16s ease;
+}
+
+.tab .material-symbols-rounded{
+  font-size:19px;
+}
+
+.tab:hover{
+  background:#fff;
+  border-color:#d9e5f1;
+  color:#2379ef;
 }
 
 .tab.active{
+  background:#fff;
+  border-color:#cddff2;
   color:#2379ef;
-  border-bottom-color:#2379ef;
+  box-shadow:
+    0 3px 10px rgba(35,121,239,.08),
+    inset 0 0 0 1px rgba(35,121,239,.03);
 }
 
 .filter-card{
   display:grid;
-  grid-template-columns:1fr 1fr 1fr auto;
-  gap:10px;
-  margin-bottom:14px;
-  padding:14px;
+  grid-template-columns:180px minmax(260px,1fr) 180px auto;
+  gap:14px;
+  align-items:end;
+  margin-bottom:16px;
+  padding:18px;
   background:#fff;
   border:1px solid var(--line);
-  border-radius:9px;
+  border-radius:12px;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.filter-field{
+  min-width:0;
+}
+
+.filter-field label{
+  display:block;
+  margin-bottom:7px;
+  color:#687b92;
+  font-size:11px;
+  font-weight:800;
 }
 
 .filter-card input,
 .filter-card select{
-  height:40px;
+  width:100%;
+  height:42px;
   padding:0 12px;
   border:1px solid #dbe6f2;
-  border-radius:7px;
+  border-radius:8px;
   background:#fff;
+  color:#34475f;
+  font-size:12px;
+  outline:none;
+  transition:
+    border-color .16s ease,
+    box-shadow .16s ease;
+}
+
+.filter-card input:focus,
+.filter-card select:focus{
+  border-color:#8ebaff;
+  box-shadow:0 0 0 3px rgba(35,121,239,.08);
+}
+
+.filter-card input::placeholder{
+  color:#9aa9b8;
+}
+
+.filter-actions{
+  display:flex;
+  align-items:flex-end;
 }
 
 .primary-btn{
-  padding:0 22px;
+  height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:0 20px;
   border:0;
-  border-radius:7px;
+  border-radius:8px;
   background:#2379ef;
   color:#fff;
+  font-size:12px;
   font-weight:800;
   cursor:pointer;
+  transition:
+    background .16s ease,
+    transform .16s ease;
+}
+
+.primary-btn:hover{
+  background:#1768d8;
+  transform:translateY(-1px);
+}
+
+.primary-btn .material-symbols-rounded{
+  font-size:18px;
 }
 
 .stock-card{
   background:#fff;
-  border:1px solid var(--line);
-  border-radius:9px;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
   overflow:auto;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
 }
 
 .stock-table{
   width:100%;
-  min-width:760px;
-  border-collapse:collapse;
+  min-width:900px;
+  border-collapse:separate;
+  border-spacing:0;
 }
 
 .stock-table th{
-  background:#eff5fb;
-  color:#6e7f95;
-  font-size:10px;
+  height:44px;
+  padding:0 14px;
+  background:#f4f8fc;
+  border-bottom:1px solid #dfe8f3;
+  color:#6d7f94;
+  font-size:11px;
+  font-weight:800;
   text-align:left;
-  padding:10px;
+  white-space:nowrap;
 }
 
 .stock-table td{
-  padding:11px 10px;
+  height:50px;
+  padding:0 14px;
   border-bottom:1px solid #edf2f7;
-  font-size:10px;
+  color:#34475f;
+  font-size:11.5px;
+  font-weight:600;
+  white-space:nowrap;
 }
 
-.stock-table tr:last-child td{
+.stock-table tbody tr{
+  transition:background .16s ease;
+}
+
+.stock-table tbody tr:hover{
+  background:#f8fbff;
+}
+
+.stock-table tbody tr:last-child td{
   border-bottom:0;
+}
+
+.stock-table th:first-child,
+.stock-table td:first-child{
+  padding-left:18px;
+}
+
+.stock-table th:last-child,
+.stock-table td:last-child{
+  padding-right:18px;
 }
 
 /* =========================================================
@@ -859,6 +970,26 @@ select{
   .content-grid{
     grid-template-columns:1fr;
   }
+
+  .sub-tabs{
+    overflow-x:auto;
+    justify-content:flex-start;
+    scrollbar-width:thin;
+  }
+
+  .tab{
+    flex:0 0 auto;
+    white-space:nowrap;
+  }
+
+  .filter-card{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .filter-actions{
+    align-self:end;
+  }
+
 }
 
 @media(max-width:760px){
@@ -952,6 +1083,30 @@ select{
   .filter-card{
     grid-template-columns:1fr;
   }
+
+  .filter-actions{
+  width:100%;
+}
+
+.filter-actions .primary-btn{
+  width:100%;
+}
+
+.sub-tabs{
+  gap:6px;
+  padding:5px;
+  margin-bottom:14px;
+}
+
+.tab{
+  min-height:38px;
+  padding:0 12px;
+  font-size:11px;
+}
+
+.tab .material-symbols-rounded{
+  font-size:18px;
+}
 
   .mobile-bottom{
     position:fixed;
@@ -2129,16 +2284,27 @@ html[data-theme="dark"] .stock-table td{
 }
 
 html[data-theme="dark"] .sub-tabs{
-  border-bottom-color:#26364b;
+  background:#111a28;
+  border-color:#26364b;
 }
 
 html[data-theme="dark"] .tab{
   color:#8fa1b6;
 }
 
-html[data-theme="dark"] .tab.active{
+html[data-theme="dark"] .tab:hover{
+  background:#162132;
+  border-color:#2a3b52;
   color:#6aa8ff;
-  border-bottom-color:#4a91ef;
+}
+
+html[data-theme="dark"] .tab.active{
+  background:#162132;
+  border-color:#35506d;
+  color:#6aa8ff;
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.16),
+    inset 0 0 0 1px rgba(106,168,255,.04);
 }
 
 html[data-theme="dark"] .quick-btn.blue .material-symbols-rounded{
@@ -2662,41 +2828,76 @@ html[data-theme="dark"] .inventory-page{
 
   </div>
 
-  <div class="sub-tabs">
+ <div class="sub-tabs">
 
-    <button class="tab active">庫存查詢</button>
-    <button class="tab">收貨</button>
-    <button class="tab">驗收</button>
-    <button class="tab">入庫</button>
-    <button class="tab">出庫</button>
-    <button class="tab">調撥</button>
+  <button class="tab active">
+    <span class="material-symbols-rounded">inventory_2</span>
+    庫存查詢
+  </button>
 
-  </div>
+  <button class="tab">
+    <span class="material-symbols-rounded">local_shipping</span>
+    收貨
+  </button>
+
+  <button class="tab">
+    <span class="material-symbols-rounded">fact_check</span>
+    驗收
+  </button>
+
+  <button class="tab">
+    <span class="material-symbols-rounded">move_to_inbox</span>
+    入庫
+  </button>
+
+  <button class="tab">
+    <span class="material-symbols-rounded">outbox</span>
+    出庫
+  </button>
+
+  <button class="tab">
+    <span class="material-symbols-rounded">swap_horiz</span>
+    調撥
+  </button>
+
+</div>
 
   <div class="filter-card">
 
+  <div class="filter-field">
+    <label>倉庫</label>
     <select>
       <option>全部倉庫</option>
       <option>主倉</option>
       <option>備品倉</option>
     </select>
+  </div>
 
+  <div class="filter-field filter-search">
+    <label>品項搜尋</label>
     <input
       type="search"
-      placeholder="搜尋品名或品號..."
+      placeholder="輸入品名、品號或關鍵字"
     >
+  </div>
 
+  <div class="filter-field">
+    <label>庫存狀態</label>
     <select>
       <option>全部狀態</option>
       <option>正常</option>
       <option>低庫存</option>
     </select>
+  </div>
 
+  <div class="filter-actions">
     <button class="primary-btn">
+      <span class="material-symbols-rounded">search</span>
       查詢
     </button>
-
   </div>
+
+</div>
 
 
   <div class="stock-card">
