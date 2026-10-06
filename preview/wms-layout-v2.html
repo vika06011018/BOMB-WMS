@@ -718,11 +718,13 @@ select{
    INVENTORY PAGE PREVIEW
 ========================================================= */
 
-.inventory-page{
+.inventory-page,
+.purchase-page{
   display:none;
 }
 
-.inventory-page.active{
+.inventory-page.active,
+.purchase-page.active{
   display:block;
 }
 
@@ -1122,6 +1124,318 @@ select{
 .stock-table th:last-child,
 .stock-table td:last-child{
   padding-right:18px;
+}
+
+
+/* =========================================================
+   PURCHASE PAGE
+========================================================= */
+
+.purchase-toolbar{
+  min-height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:14px;
+  padding:0 16px;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.purchase-toolbar-left{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-width:0;
+}
+
+.purchase-toolbar-left strong{
+  color:#253a52;
+  font-size:13px;
+  font-weight:900;
+}
+
+.purchase-toolbar-left span{
+  color:#8292a5;
+  font-size:10.5px;
+  font-weight:700;
+}
+
+.purchase-toolbar-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.secondary-action-btn{
+  min-height:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:0 12px;
+  border:1px solid #dbe6f2;
+  border-radius:8px;
+  background:#fff;
+  color:#50647c;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.secondary-action-btn:hover{
+  background:#f7fbff;
+  border-color:#bfd8f5;
+  color:#2379ef;
+}
+
+.secondary-action-btn .material-symbols-rounded{
+  font-size:18px;
+}
+
+.purchase-table-card{
+  overflow:auto;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.purchase-table{
+  width:100%;
+  min-width:1100px;
+  border-collapse:separate;
+  border-spacing:0;
+}
+
+.purchase-table th{
+  height:44px;
+  padding:0 13px;
+  background:#f4f8fc;
+  border-bottom:1px solid #dfe8f3;
+  color:#6d7f94;
+  font-size:11px;
+  font-weight:800;
+  text-align:left;
+  white-space:nowrap;
+}
+
+.purchase-table td{
+  min-height:52px;
+  padding:10px 13px;
+  border-bottom:1px solid #edf2f7;
+  color:#34475f;
+  font-size:11.5px;
+  font-weight:600;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.purchase-table tbody tr:last-child td{
+  border-bottom:0;
+}
+
+.purchase-qty{
+  width:96px;
+  height:34px;
+  padding:0 10px;
+  border:1px solid #dbe6f2;
+  border-radius:7px;
+  background:#fff;
+  color:#34475f;
+  font-size:11.5px;
+  font-weight:800;
+  outline:none;
+}
+
+.purchase-qty:focus{
+  border-color:#8ebaff;
+  box-shadow:0 0 0 3px rgba(35,121,239,.08);
+}
+
+.purchase-row-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.purchase-action-btn{
+  min-height:32px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+  border:1px solid #dbe6f2;
+  border-radius:7px;
+  background:#fff;
+  color:#50647c;
+  font-size:10.5px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.purchase-action-btn.primary{
+  border-color:#b9d5fb;
+  background:#eef6ff;
+  color:#176bd9;
+}
+
+.purchase-action-btn.muted{
+  background:#f7f9fc;
+  color:#708197;
+}
+
+.purchase-action-btn:hover{
+  border-color:#9fc6f5;
+  color:#176bd9;
+}
+
+.purchase-empty{
+  padding:46px 20px !important;
+  text-align:center;
+  color:#8796a8 !important;
+  font-weight:700 !important;
+}
+
+.purchase-summary{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.purchase-summary-card{
+  min-height:104px;
+  padding:17px 18px;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.purchase-summary-card .label{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#73859a;
+  font-size:10.5px;
+  font-weight:800;
+}
+
+.purchase-summary-card .label .material-symbols-rounded{
+  font-size:18px;
+}
+
+.purchase-summary-card strong{
+  display:block;
+  margin-top:8px;
+  color:#1b3048;
+  font-size:27px;
+  font-weight:900;
+}
+
+.purchase-summary-card small{
+  color:#8b9aac;
+  font-size:9.5px;
+  font-weight:700;
+}
+
+.purchase-tab-panel{
+  display:none;
+}
+
+.purchase-tab-panel.active{
+  display:block;
+}
+
+.purchase-note{
+  margin-top:12px;
+  padding:12px 14px;
+  border:1px solid #dce8f5;
+  border-radius:10px;
+  background:#f7fbff;
+  color:#61748c;
+  font-size:10.5px;
+  font-weight:700;
+  line-height:1.6;
+}
+
+html[data-theme="dark"] .purchase-toolbar,
+html[data-theme="dark"] .purchase-table-card,
+html[data-theme="dark"] .purchase-summary-card{
+  background:#111a28;
+  border-color:#26364b;
+}
+
+html[data-theme="dark"] .purchase-toolbar-left strong,
+html[data-theme="dark"] .purchase-summary-card strong{
+  color:#e4ebf3;
+}
+
+html[data-theme="dark"] .purchase-toolbar-left span,
+html[data-theme="dark"] .purchase-summary-card .label,
+html[data-theme="dark"] .purchase-summary-card small{
+  color:#8fa1b6;
+}
+
+html[data-theme="dark"] .secondary-action-btn,
+html[data-theme="dark"] .purchase-action-btn,
+html[data-theme="dark"] .purchase-qty{
+  background:#162132;
+  border-color:#2a3b52;
+  color:#d7e2ee;
+}
+
+html[data-theme="dark"] .purchase-table th{
+  background:#162132;
+  border-bottom-color:#26364b;
+  color:#90a2b7;
+}
+
+html[data-theme="dark"] .purchase-table td{
+  color:#d7e1ec;
+  border-bottom-color:#24354a;
+}
+
+html[data-theme="dark"] .purchase-action-btn.primary{
+  background:rgba(35,121,239,.16);
+  border-color:#355d8e;
+  color:#6aa8ff;
+}
+
+html[data-theme="dark"] .purchase-note{
+  background:#141f2e;
+  border-color:#2a3b52;
+  color:#91a3b8;
+}
+
+@media(max-width:1050px){
+  .purchase-summary{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:760px){
+  .purchase-summary{
+    grid-template-columns:1fr;
+  }
+
+  .purchase-toolbar{
+    align-items:flex-start;
+    flex-direction:column;
+    padding:12px;
+  }
+
+  .purchase-toolbar-actions{
+    width:100%;
+  }
+
+  .purchase-toolbar-actions .secondary-action-btn{
+    flex:1;
+  }
 }
 
 /* =========================================================
@@ -2666,7 +2980,7 @@ html[data-theme="dark"] .inventory-page{
     <span class="nav-label">庫存</span>
   </button>
 
-  <button class="nav-btn">
+  <button class="nav-btn" data-page="purchase">
     <span class="nav-icon">
       <span class="material-symbols-rounded">shopping_cart</span>
     </span>
@@ -3585,6 +3899,412 @@ html[data-theme="dark"] .inventory-page{
   </div>
 
 </div>
+
+</div>
+
+<!-- =====================================================
+     PURCHASE PAGE
+====================================================== -->
+
+<div class="purchase-page" id="purchasePage">
+
+  <div class="page-head">
+
+    <div class="page-title">
+      <h1>採購作業</h1>
+      <p>從低庫存需求、叫貨、採購單到供應商進度集中管理</p>
+    </div>
+
+    <div class="update">
+      採購資料已同步
+    </div>
+
+  </div>
+
+  <div class="purchase-summary">
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <span class="material-symbols-rounded">warning</span>
+        待叫貨
+      </div>
+      <strong id="purchaseNeedCount">3</strong>
+      <small>低庫存與人工申請</small>
+    </div>
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <span class="material-symbols-rounded">shopping_cart_checkout</span>
+        已叫貨
+      </div>
+      <strong id="purchaseOrderedCount">2</strong>
+      <small>等待供應商到貨</small>
+    </div>
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <span class="material-symbols-rounded">local_shipping</span>
+        本週到貨
+      </div>
+      <strong>5</strong>
+      <small>採購單預計到貨</small>
+    </div>
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <span class="material-symbols-rounded">error</span>
+        異常
+      </div>
+      <strong>1</strong>
+      <small>數量或交期需確認</small>
+    </div>
+
+  </div>
+
+  <div class="sub-tabs">
+
+    <button class="tab active" type="button" data-purchase-tab="request">
+      <span class="material-symbols-rounded">playlist_add</span>
+      採購需求
+    </button>
+
+    <button class="tab" type="button" data-purchase-tab="order">
+      <span class="material-symbols-rounded">receipt_long</span>
+      採購單
+    </button>
+
+    <button class="tab" type="button" data-purchase-tab="supplier">
+      <span class="material-symbols-rounded">storefront</span>
+      供應商
+    </button>
+
+  </div>
+
+  <div class="purchase-tab-panel active" data-purchase-panel="request">
+
+    <div class="filter-card">
+
+      <div class="filter-field">
+        <label for="purchaseWarehouseFilter">倉庫</label>
+        <select id="purchaseWarehouseFilter">
+          <option value="">全部倉庫</option>
+          <option value="主倉">主倉</option>
+          <option value="備品倉">備品倉</option>
+        </select>
+      </div>
+
+      <div class="filter-field filter-search">
+        <label for="purchaseKeywordFilter">品項搜尋</label>
+        <input
+          id="purchaseKeywordFilter"
+          type="search"
+          placeholder="輸入品名、品號或關鍵字"
+        >
+      </div>
+
+      <div class="filter-field">
+        <label for="purchaseStatusFilter">叫貨狀態</label>
+        <select id="purchaseStatusFilter">
+          <option value="">全部狀態</option>
+          <option value="待叫貨">待叫貨</option>
+          <option value="已叫貨">已叫貨</option>
+          <option value="無須叫貨">無須叫貨</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button
+          class="primary-btn"
+          id="purchaseSearchBtn"
+          type="button"
+        >
+          <span class="material-symbols-rounded">search</span>
+          查詢
+        </button>
+      </div>
+
+    </div>
+
+    <div class="purchase-toolbar">
+
+      <div class="purchase-toolbar-left">
+        <strong>採購需求清單</strong>
+        <span id="purchaseResultCount">共 5 筆</span>
+      </div>
+
+      <div class="purchase-toolbar-actions">
+        <button class="secondary-action-btn" id="purchaseExportBtn" type="button">
+          <span class="material-symbols-rounded">download</span>
+          匯出
+        </button>
+
+        <button class="secondary-action-btn" id="purchaseResetBtn" type="button">
+          <span class="material-symbols-rounded">restart_alt</span>
+          清除篩選
+        </button>
+      </div>
+
+    </div>
+
+    <div class="purchase-table-card">
+
+      <table class="purchase-table">
+
+        <thead>
+          <tr>
+            <th>需求單號</th>
+            <th>品號</th>
+            <th>品名</th>
+            <th>倉庫</th>
+            <th>現有量</th>
+            <th>安全庫存</th>
+            <th>建議叫貨</th>
+            <th>叫貨數量</th>
+            <th>狀態</th>
+            <th>來源</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+
+        <tbody id="purchaseRequestBody">
+
+          <tr data-purchase-row data-warehouse="主倉" data-status="待叫貨">
+            <td>PR261006001</td>
+            <td>ITM0003</td>
+            <td>成品</td>
+            <td>主倉</td>
+            <td>980</td>
+            <td>1,200</td>
+            <td>500</td>
+            <td>
+              <input class="purchase-qty" type="number" min="0" value="500">
+            </td>
+            <td data-status-cell><span class="status orange">待叫貨</span></td>
+            <td>低庫存自動</td>
+            <td>
+              <div class="purchase-row-actions">
+                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
+                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-purchase-row data-warehouse="主倉" data-status="待叫貨">
+            <td>PR261006002</td>
+            <td>ITM0012</td>
+            <td>清潔耗材</td>
+            <td>主倉</td>
+            <td>42</td>
+            <td>80</td>
+            <td>60</td>
+            <td>
+              <input class="purchase-qty" type="number" min="0" value="60">
+            </td>
+            <td data-status-cell><span class="status orange">待叫貨</span></td>
+            <td>低庫存自動</td>
+            <td>
+              <div class="purchase-row-actions">
+                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
+                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-purchase-row data-warehouse="備品倉" data-status="待叫貨">
+            <td>PR261006003</td>
+            <td>ITM0021</td>
+            <td>維修備品</td>
+            <td>備品倉</td>
+            <td>18</td>
+            <td>30</td>
+            <td>20</td>
+            <td>
+              <input class="purchase-qty" type="number" min="0" value="20">
+            </td>
+            <td data-status-cell><span class="status orange">待叫貨</span></td>
+            <td>人工申請</td>
+            <td>
+              <div class="purchase-row-actions">
+                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
+                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-purchase-row data-warehouse="主倉" data-status="已叫貨">
+            <td>PR261005006</td>
+            <td>ITM0002</td>
+            <td>包裝材料</td>
+            <td>主倉</td>
+            <td>1,680</td>
+            <td>1,500</td>
+            <td>800</td>
+            <td>
+              <input class="purchase-qty" type="number" min="0" value="800">
+            </td>
+            <td data-status-cell><span class="status blue">已叫貨</span></td>
+            <td>人工申請</td>
+            <td>
+              <div class="purchase-row-actions">
+                <button class="purchase-action-btn primary" type="button" data-order-action disabled>已叫貨</button>
+                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
+              </div>
+            </td>
+          </tr>
+
+          <tr data-purchase-row data-warehouse="主倉" data-status="無須叫貨">
+            <td>PR261005009</td>
+            <td>ITM0030</td>
+            <td>活動耗材</td>
+            <td>主倉</td>
+            <td>120</td>
+            <td>100</td>
+            <td>0</td>
+            <td>
+              <input class="purchase-qty" type="number" min="0" value="0">
+            </td>
+            <td data-status-cell><span class="status green">無須叫貨</span></td>
+            <td>人工確認</td>
+            <td>
+              <div class="purchase-row-actions">
+                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
+                <button class="purchase-action-btn muted" type="button" data-no-order-action disabled>無須叫貨</button>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <div class="purchase-note">
+      低於安全庫存的品項可自動進入採購需求；一旦標記為「已叫貨」，不再顯示「需採購」狀態，避免同一品項重複叫貨。
+    </div>
+
+  </div>
+
+  <div class="purchase-tab-panel" data-purchase-panel="order">
+
+    <div class="operation-card">
+
+      <div class="operation-card-head">
+        <strong>採購單追蹤</strong>
+        <span>已叫貨項目與預計到貨進度</span>
+      </div>
+
+      <div class="operation-table-wrap">
+
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>採購單號</th>
+              <th>供應商</th>
+              <th>品項</th>
+              <th>數量</th>
+              <th>下單日期</th>
+              <th>預計到貨</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PO261006003</td>
+              <td>協成包材</td>
+              <td>包裝材料</td>
+              <td>800</td>
+              <td>2026/10/06</td>
+              <td>2026/10/08</td>
+              <td><span class="status blue">已叫貨</span></td>
+            </tr>
+            <tr>
+              <td>PO261005008</td>
+              <td>宏達材料</td>
+              <td>電子零件</td>
+              <td>500</td>
+              <td>2026/10/05</td>
+              <td>2026/10/07</td>
+              <td><span class="status orange">待到貨</span></td>
+            </tr>
+            <tr>
+              <td>PO261004012</td>
+              <td>聯盛工業</td>
+              <td>維修備品</td>
+              <td>40</td>
+              <td>2026/10/04</td>
+              <td>2026/10/06</td>
+              <td><span class="status red">交期異常</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="purchase-tab-panel" data-purchase-panel="supplier">
+
+    <div class="operation-card">
+
+      <div class="operation-card-head">
+        <strong>供應商清單</strong>
+        <span>採購來源與交貨表現</span>
+      </div>
+
+      <div class="operation-table-wrap">
+
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>供應商</th>
+              <th>主要供應</th>
+              <th>聯絡窗口</th>
+              <th>平均交期</th>
+              <th>準時率</th>
+              <th>未完成採購單</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>宏達材料</td>
+              <td>電子零件</td>
+              <td>王先生</td>
+              <td>2 天</td>
+              <td>96%</td>
+              <td>1</td>
+              <td><span class="status green">正常</span></td>
+            </tr>
+            <tr>
+              <td>協成包材</td>
+              <td>包裝材料</td>
+              <td>林小姐</td>
+              <td>3 天</td>
+              <td>93%</td>
+              <td>1</td>
+              <td><span class="status green">正常</span></td>
+            </tr>
+            <tr>
+              <td>聯盛工業</td>
+              <td>維修備品</td>
+              <td>陳先生</td>
+              <td>5 天</td>
+              <td>84%</td>
+              <td>1</td>
+              <td><span class="status orange">需注意</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
 
 </section>
@@ -3615,7 +4335,7 @@ html[data-theme="dark"] .inventory-page{
     庫存
   </button>
 
-  <button>
+  <button data-mobile="purchase">
     <svg class="svg-icon" viewBox="0 0 24 24">
       <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.5L21 7H6"/>
       <circle cx="9" cy="20" r="1.3"/>
@@ -3639,16 +4359,24 @@ html[data-theme="dark"] .inventory-page{
 <script>
 const dashboardPage=document.getElementById('dashboardPage');
 const inventoryPage=document.getElementById('inventoryPage');
+const purchasePage=document.getElementById('purchasePage');
 
 function showPage(page){
 
-  if(page==='inventory'){
-    dashboardPage.classList.add('hidden');
-    inventoryPage.classList.add('active');
-  }else{
-    dashboardPage.classList.remove('hidden');
-    inventoryPage.classList.remove('active');
-  }
+  dashboardPage.classList.toggle(
+    'hidden',
+    page!=='dashboard'
+  );
+
+  inventoryPage.classList.toggle(
+    'active',
+    page==='inventory'
+  );
+
+  purchasePage.classList.toggle(
+    'active',
+    page==='purchase'
+  );
 
 }
 
@@ -3956,6 +4684,412 @@ updateInventoryResultCount(
   getInventoryRows().length
 );
 
+
+
+const purchaseTabs=
+  document.querySelectorAll('[data-purchase-tab]');
+
+const purchasePanels=
+  document.querySelectorAll('[data-purchase-panel]');
+
+function showPurchaseTab(name){
+
+  purchaseTabs.forEach(tab=>{
+    tab.classList.toggle(
+      'active',
+      tab.dataset.purchaseTab===name
+    );
+  });
+
+  purchasePanels.forEach(panel=>{
+    panel.classList.toggle(
+      'active',
+      panel.dataset.purchasePanel===name
+    );
+  });
+
+}
+
+purchaseTabs.forEach(tab=>{
+
+  tab.addEventListener('click',()=>{
+
+    showPurchaseTab(
+      tab.dataset.purchaseTab||'request'
+    );
+
+  });
+
+});
+
+
+const purchaseWarehouseFilter=
+  document.getElementById('purchaseWarehouseFilter');
+
+const purchaseKeywordFilter=
+  document.getElementById('purchaseKeywordFilter');
+
+const purchaseStatusFilter=
+  document.getElementById('purchaseStatusFilter');
+
+const purchaseSearchBtn=
+  document.getElementById('purchaseSearchBtn');
+
+const purchaseResetBtn=
+  document.getElementById('purchaseResetBtn');
+
+const purchaseExportBtn=
+  document.getElementById('purchaseExportBtn');
+
+const purchaseRequestBody=
+  document.getElementById('purchaseRequestBody');
+
+const purchaseResultCount=
+  document.getElementById('purchaseResultCount');
+
+const purchaseNeedCount=
+  document.getElementById('purchaseNeedCount');
+
+const purchaseOrderedCount=
+  document.getElementById('purchaseOrderedCount');
+
+
+function getPurchaseRows(){
+  if(!purchaseRequestBody)return [];
+
+  return [...purchaseRequestBody.querySelectorAll('[data-purchase-row]')];
+}
+
+
+function setPurchaseStatus(row,status){
+
+  if(!row)return;
+
+  row.dataset.status=status;
+
+  const statusCell=
+    row.querySelector('[data-status-cell]');
+
+  if(statusCell){
+
+    let className='orange';
+
+    if(status==='已叫貨'){
+      className='blue';
+    }else if(status==='無須叫貨'){
+      className='green';
+    }
+
+    statusCell.innerHTML=
+      `<span class="status ${className}">${status}</span>`;
+
+  }
+
+  const orderBtn=
+    row.querySelector('[data-order-action]');
+
+  const noOrderBtn=
+    row.querySelector('[data-no-order-action]');
+
+  if(orderBtn){
+    orderBtn.disabled=status==='已叫貨';
+    orderBtn.textContent=
+      status==='已叫貨'
+        ?'已叫貨'
+        :'標記已叫貨';
+  }
+
+  if(noOrderBtn){
+    noOrderBtn.disabled=status==='無須叫貨';
+  }
+
+  refreshPurchaseSummary();
+  filterPurchaseTable();
+
+}
+
+
+function refreshPurchaseSummary(){
+
+  const rows=getPurchaseRows();
+
+  const needCount=
+    rows.filter(
+      row=>row.dataset.status==='待叫貨'
+    ).length;
+
+  const orderedCount=
+    rows.filter(
+      row=>row.dataset.status==='已叫貨'
+    ).length;
+
+  if(purchaseNeedCount){
+    purchaseNeedCount.textContent=needCount;
+  }
+
+  if(purchaseOrderedCount){
+    purchaseOrderedCount.textContent=orderedCount;
+  }
+
+}
+
+
+function filterPurchaseTable(){
+
+  const rows=getPurchaseRows();
+
+  const warehouse=
+    String(
+      purchaseWarehouseFilter?.value||''
+    ).trim();
+
+  const keyword=
+    String(
+      purchaseKeywordFilter?.value||''
+    )
+      .trim()
+      .toLowerCase();
+
+  const status=
+    String(
+      purchaseStatusFilter?.value||''
+    ).trim();
+
+  let visibleCount=0;
+
+  rows.forEach(row=>{
+
+    const cells=
+      row.querySelectorAll('td');
+
+    const rowText=
+      String(row.textContent||'')
+        .toLowerCase();
+
+    const rowWarehouse=
+      String(row.dataset.warehouse||'');
+
+    const rowStatus=
+      String(row.dataset.status||'');
+
+    const matched=
+      (!warehouse||rowWarehouse===warehouse)&&
+      (!status||rowStatus===status)&&
+      (!keyword||rowText.includes(keyword));
+
+    row.style.display=
+      matched?'':'none';
+
+    if(matched){
+      visibleCount+=1;
+    }
+
+  });
+
+  let emptyRow=
+    document.getElementById('purchaseEmptyRow');
+
+  if(visibleCount===0){
+
+    if(!emptyRow){
+
+      emptyRow=document.createElement('tr');
+      emptyRow.id='purchaseEmptyRow';
+
+      emptyRow.innerHTML=`
+        <td colspan="11" class="purchase-empty">
+          查無符合條件的採購需求
+        </td>
+      `;
+
+      purchaseRequestBody?.appendChild(emptyRow);
+
+    }
+
+    emptyRow.style.display='';
+
+  }else if(emptyRow){
+
+    emptyRow.remove();
+
+  }
+
+  if(purchaseResultCount){
+    purchaseResultCount.textContent=
+      `共 ${visibleCount} 筆`;
+  }
+
+  if(purchaseExportBtn){
+    purchaseExportBtn.disabled=
+      visibleCount===0;
+  }
+
+}
+
+
+purchaseSearchBtn?.addEventListener(
+  'click',
+  filterPurchaseTable
+);
+
+
+purchaseKeywordFilter?.addEventListener(
+  'keydown',
+  event=>{
+
+    if(event.key==='Enter'){
+      filterPurchaseTable();
+    }
+
+  }
+);
+
+
+purchaseResetBtn?.addEventListener(
+  'click',
+  ()=>{
+
+    if(purchaseWarehouseFilter){
+      purchaseWarehouseFilter.value='';
+    }
+
+    if(purchaseKeywordFilter){
+      purchaseKeywordFilter.value='';
+    }
+
+    if(purchaseStatusFilter){
+      purchaseStatusFilter.value='';
+    }
+
+    filterPurchaseTable();
+
+  }
+);
+
+
+purchaseRequestBody?.addEventListener(
+  'click',
+  event=>{
+
+    const button=
+      event.target.closest(
+        '[data-order-action],[data-no-order-action]'
+      );
+
+    if(!button||button.disabled)return;
+
+    const row=
+      button.closest('[data-purchase-row]');
+
+    if(button.hasAttribute('data-order-action')){
+
+      const qty=
+        Number(
+          row?.querySelector('.purchase-qty')?.value||0
+        );
+
+      if(qty<=0){
+        alert('請先輸入大於 0 的叫貨數量');
+        return;
+      }
+
+      setPurchaseStatus(
+        row,
+        '已叫貨'
+      );
+
+    }else{
+
+      setPurchaseStatus(
+        row,
+        '無須叫貨'
+      );
+
+    }
+
+  }
+);
+
+
+purchaseExportBtn?.addEventListener(
+  'click',
+  ()=>{
+
+    const rows=
+      getPurchaseRows()
+        .filter(
+          row=>row.style.display!=='none'
+        );
+
+    if(!rows.length)return;
+
+    const header=[
+      '需求單號',
+      '品號',
+      '品名',
+      '倉庫',
+      '現有量',
+      '安全庫存',
+      '建議叫貨',
+      '叫貨數量',
+      '狀態',
+      '來源'
+    ];
+
+    const body=
+      rows.map(row=>{
+
+        const cells=
+          row.querySelectorAll('td');
+
+        return [
+          cells[0]?.textContent,
+          cells[1]?.textContent,
+          cells[2]?.textContent,
+          cells[3]?.textContent,
+          cells[4]?.textContent,
+          cells[5]?.textContent,
+          cells[6]?.textContent,
+          row.querySelector('.purchase-qty')?.value,
+          row.dataset.status,
+          cells[9]?.textContent
+        ].map(value=>
+          `"${String(value??'').trim().replaceAll('"','""')}"`
+        ).join(',');
+
+      });
+
+    const csv=
+      '\uFEFF'+
+      [header.join(','),...body].join('\n');
+
+    const blob=
+      new Blob(
+        [csv],
+        {type:'text/csv;charset=utf-8;'}
+      );
+
+    const url=
+      URL.createObjectURL(blob);
+
+    const link=
+      document.createElement('a');
+
+    link.href=url;
+    link.download=
+      `BOMB-WMS-採購需求-${new Date().toISOString().slice(0,10)}.csv`;
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(url);
+
+  }
+);
+
+
+refreshPurchaseSummary();
 
 const themeToggle=document.getElementById('themeToggle');
 
