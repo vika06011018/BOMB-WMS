@@ -4,10 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BOMB WMS｜營運總覽</title>
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,1,0"
-/>
+
 <style>
 *{
   box-sizing:border-box;
@@ -3978,39 +3975,6 @@ html[data-theme="dark"] .workflow-hint{
   }
 }
 
-
-/* =========================================================
-   PROTOTYPE DATA / PERSISTENCE
-========================================================= */
-
-.prototype-data-banner{
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  margin-bottom:16px;
-  padding:12px 14px;
-  border:1px solid #dbe8f5;
-  border-radius:11px;
-  background:#f7fbff;
-  color:#60748c;
-  font-size:10.5px;
-  font-weight:700;
-  line-height:1.55;
-}
-
-.prototype-data-banner .material-symbols-rounded{
-  flex:none;
-  margin-top:1px;
-  color:#2379ef;
-  font-size:19px;
-}
-
-html[data-theme="dark"] .prototype-data-banner{
-  background:#141f2e;
-  border-color:#2a3b52;
-  color:#91a3b8;
-}
-
 /* =========================================================
    DARK THEME
 ========================================================= */
@@ -4390,6 +4354,26 @@ html[data-theme="dark"] .kpi-value small{
   color:#8ea2b8;
 }
 
+
+/* Unified self-contained SVG icon system */
+svg.wms-icon{display:inline-block;width:22px;height:22px;min-width:22px;flex-shrink:0;vertical-align:middle;font-family:inherit!important;overflow:visible}
+.nav-icon .wms-icon{width:24px;height:24px;stroke-width:1.65}
+.kpi-icon{width:68px!important;height:68px!important;border-radius:22px!important;box-shadow:none!important;border:1px solid currentColor!important;position:relative;isolation:isolate;overflow:visible!important}
+.kpi-icon::after{content:"";position:absolute;inset:6px;border:1px solid currentColor;border-radius:17px;opacity:.10;z-index:-1}
+.kpi-icon .wms-icon{width:38px!important;height:38px!important;stroke-width:1.65!important;filter:none!important}
+.kpi-icon.blue{background:#eaf3ff!important;color:#367bd3!important;border-color:#d4e6fa!important}
+.kpi-icon.green{background:#e9f6f1!important;color:#269476!important;border-color:#d2ebe2!important}
+.kpi-icon.orange{background:#fff4e5!important;color:#c58a30!important;border-color:#f3e2c8!important}
+.kpi-icon.red{background:#fceff0!important;color:#c76872!important;border-color:#f0dce0!important}
+.kpi-icon svg rect,.kpi-icon svg circle{fill:currentColor;fill-opacity:.09}
+.quick-btn .wms-icon{width:28px;height:28px;stroke-width:1.65}
+.tab .wms-icon,.secondary-action-btn .wms-icon{width:19px;height:19px;min-width:19px}
+html[data-theme="dark"] .kpi-icon.blue{background:#172d46!important;color:#80b6fa!important;border-color:#2d4560!important}
+html[data-theme="dark"] .kpi-icon.green{background:#183830!important;color:#78c6aa!important;border-color:#2a5044!important}
+html[data-theme="dark"] .kpi-icon.orange{background:#3d3020!important;color:#e8bd79!important;border-color:#55432d!important}
+html[data-theme="dark"] .kpi-icon.red{background:#3e2730!important;color:#e39ba5!important;border-color:#573640!important}
+@media(max-width:640px){.kpi-icon{width:52px!important;height:52px!important;border-radius:17px!important}.kpi-icon .wms-icon{width:29px!important;height:29px!important}.operation-card-head{flex-wrap:wrap;gap:10px}.operation-card-head .secondary-action-btn{margin-left:0}.workflow-form-actions{flex-wrap:wrap}.prototype-modal-card{max-height:calc(100dvh - 32px)}.main,.page{min-width:0}.sub-tabs{overflow-x:auto}.tab{flex-shrink:0}}
+
 </style>
 </head>
 
@@ -4422,42 +4406,42 @@ html[data-theme="dark"] .kpi-value small{
 
   <button class="nav-btn active" data-page="dashboard">
     <span class="nav-icon">
-      <span class="material-symbols-rounded">dashboard</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="8" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="3" y="15" width="7" height="6" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/></svg>
     </span>
     <span class="nav-label">首頁</span>
   </button>
 
   <button class="nav-btn" data-page="inventory">
     <span class="nav-icon">
-      <span class="material-symbols-rounded">inventory_2</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4v11l-9 4-9-4Z"/><path d="m3 7 9 4 9-4M12 11v11M8 5l9 4v5"/></svg>
     </span>
     <span class="nav-label">庫存</span>
   </button>
 
   <button class="nav-btn" data-page="purchase">
     <span class="nav-icon">
-      <span class="material-symbols-rounded">shopping_cart</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l3 13h11l2-9H6M9 11h10"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
     </span>
     <span class="nav-label">採購</span>
   </button>
 
   <button class="nav-btn" data-page="asset">
     <span class="nav-icon">
-      <span class="material-symbols-rounded">inventory</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
     </span>
     <span class="nav-label">資產</span>
   </button>
 
   <button class="nav-btn" data-page="stocktake">
     <span class="nav-icon">
-      <span class="material-symbols-rounded">fact_check</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
     </span>
     <span class="nav-label">盤點</span>
   </button>
 
   <button class="nav-btn" data-page="more">
     <span class="nav-icon">
-      <span class="material-symbols-rounded">apps</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="15" y="3" width="6" height="6" rx="2"/><rect x="3" y="15" width="6" height="6" rx="2"/><rect x="15" y="15" width="6" height="6" rx="2"/></svg>
     </span>
     <span class="nav-label">更多</span>
   </button>
@@ -4572,19 +4556,12 @@ html[data-theme="dark"] .kpi-value small{
 
 
         <!-- KPI -->
-        <div class="prototype-data-banner">
-        <span class="material-symbols-rounded">database</span>
-        <div>
-          此為 BOMB WMS 可操作 Prototype：新增的收貨、驗收、入庫、出庫、調撥、採購需求、資產與盤點資料會保存在此瀏覽器，重新整理後仍會保留並回填到對應清單。
-        </div>
-      </div>
-
-      <div class="kpi-grid">
+        <div class="kpi-grid">
 
           <article class="kpi-card">
 
            <div class="kpi-icon blue">
-  <span class="material-symbols-rounded">local_shipping</span>
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
 </div>
 
             <div>
@@ -4606,7 +4583,7 @@ html[data-theme="dark"] .kpi-value small{
           <article class="kpi-card">
 
             <div class="kpi-icon green">
-  <span class="material-symbols-rounded">assignment_turned_in</span>
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="3"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 3 3 5-6"/></svg>
 </div>
 
             <div>
@@ -4628,7 +4605,7 @@ html[data-theme="dark"] .kpi-value small{
           <article class="kpi-card">
 
   <div class="kpi-icon orange">
-    <span class="material-symbols-rounded">move_to_inbox</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 2v12m-4-4 4 4 4-4"/></svg>
   </div>
 
   <div>
@@ -4650,7 +4627,7 @@ html[data-theme="dark"] .kpi-value small{
           <article class="kpi-card">
 
             <div class="kpi-icon red">
-  <span class="material-symbols-rounded">warning</span>
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
 </div>
 
             <div>
@@ -4828,27 +4805,27 @@ html[data-theme="dark"] .kpi-value small{
   <div class="quick-grid">
 
     <button class="quick-btn blue" type="button" data-quick-page="inventory" data-quick-inventory-tab="receiving">
-      <span class="material-symbols-rounded">local_shipping</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
       收貨
     </button>
 
     <button class="quick-btn green" type="button" data-quick-page="inventory" data-quick-inventory-tab="inspection">
-      <span class="material-symbols-rounded">fact_check</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
       驗收
     </button>
 
     <button class="quick-btn orange" type="button" data-quick-page="inventory" data-quick-inventory-tab="putaway">
-      <span class="material-symbols-rounded">move_to_inbox</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 2v12m-4-4 4 4 4-4"/></svg>
       入庫
     </button>
 
     <button class="quick-btn purple" type="button" data-quick-page="inventory" data-quick-inventory-tab="outbound">
-      <span class="material-symbols-rounded">outbox</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 14V2m-4 4 4-4 4 4"/></svg>
       出庫
     </button>
 
     <button class="quick-btn cyan" type="button" data-quick-page="inventory" data-quick-inventory-tab="stock">
-      <span class="material-symbols-rounded">manage_search</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
       庫存查詢
     </button>
 
@@ -4877,32 +4854,32 @@ html[data-theme="dark"] .kpi-value small{
  <div class="sub-tabs">
 
   <button class="tab active" type="button" data-inventory-tab="stock">
-    <span class="material-symbols-rounded">inventory_2</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4v11l-9 4-9-4Z"/><path d="m3 7 9 4 9-4M12 11v11M8 5l9 4v5"/></svg>
     庫存查詢
   </button>
 
   <button class="tab" type="button" data-inventory-tab="receiving">
-    <span class="material-symbols-rounded">local_shipping</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
     收貨
   </button>
 
   <button class="tab" type="button" data-inventory-tab="inspection">
-    <span class="material-symbols-rounded">fact_check</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
     驗收
   </button>
 
   <button class="tab" type="button" data-inventory-tab="putaway">
-    <span class="material-symbols-rounded">move_to_inbox</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 2v12m-4-4 4 4 4-4"/></svg>
     入庫
   </button>
 
   <button class="tab" type="button" data-inventory-tab="outbound">
-    <span class="material-symbols-rounded">outbox</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 14V2m-4 4 4-4 4 4"/></svg>
     出庫
   </button>
 
   <button class="tab" type="button" data-inventory-tab="transfer">
-    <span class="material-symbols-rounded">swap_horiz</span>
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h17m-4-4 4 4-4 4M21 16H4m4-4-4 4 4 4"/></svg>
     調撥
   </button>
 
@@ -4945,7 +4922,7 @@ html[data-theme="dark"] .kpi-value small{
         id="inventorySearchBtn"
         type="button"
       >
-        <span class="material-symbols-rounded">search</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
         查詢
       </button>
     </div>
@@ -4969,7 +4946,7 @@ html[data-theme="dark"] .kpi-value small{
       id="inventoryExportBtn"
       type="button"
     >
-      <span class="material-symbols-rounded">download</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
       匯出
     </button>
 
@@ -5078,7 +5055,7 @@ html[data-theme="dark"] .kpi-value small{
       <strong>收貨作業清單</strong>
       <span>到貨登記後進入驗收流程</span>
       <button class="secondary-action-btn" type="button" data-create-workflow="receiving">
-        <span class="material-symbols-rounded">add</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         新增收貨
       </button>
     </div>
@@ -5095,7 +5072,7 @@ html[data-theme="dark"] .kpi-value small{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody id="receivingTableBody">
+        <tbody>
           <tr>
             <td>RC261006001</td>
             <td>宏達材料</td>
@@ -5143,7 +5120,7 @@ html[data-theme="dark"] .kpi-value small{
       <strong>驗收作業清單</strong>
       <span>驗收合格後才可進入入庫</span>
       <button class="secondary-action-btn" type="button" data-create-workflow="inspection">
-        <span class="material-symbols-rounded">add</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         新增驗收
       </button>
     </div>
@@ -5160,7 +5137,7 @@ html[data-theme="dark"] .kpi-value small{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody id="inspectionTableBody">
+        <tbody>
           <tr>
             <td>QC261006003</td>
             <td>RC261006001</td>
@@ -5208,7 +5185,7 @@ html[data-theme="dark"] .kpi-value small{
       <strong>入庫作業清單</strong>
       <span>依驗收結果分配倉庫與儲位</span>
       <button class="secondary-action-btn" type="button" data-create-workflow="putaway">
-        <span class="material-symbols-rounded">add</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         新增入庫
       </button>
     </div>
@@ -5225,7 +5202,7 @@ html[data-theme="dark"] .kpi-value small{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody id="putawayTableBody">
+        <tbody>
           <tr>
             <td>IN261006008</td>
             <td>電子零件</td>
@@ -5273,7 +5250,7 @@ html[data-theme="dark"] .kpi-value small{
       <strong>出庫作業清單</strong>
       <span>確認可用量後執行揀貨與出庫</span>
       <button class="secondary-action-btn" type="button" data-create-workflow="outbound">
-        <span class="material-symbols-rounded">add</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         新增出庫
       </button>
     </div>
@@ -5290,7 +5267,7 @@ html[data-theme="dark"] .kpi-value small{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody id="outboundTableBody">
+        <tbody>
           <tr>
             <td>OUT261006004</td>
             <td>企劃部</td>
@@ -5338,7 +5315,7 @@ html[data-theme="dark"] .kpi-value small{
       <strong>調撥作業清單</strong>
       <span>跨倉庫移轉時保留來源與目的儲位紀錄</span>
       <button class="secondary-action-btn" type="button" data-create-workflow="transfer">
-        <span class="material-symbols-rounded">add</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         新增調撥
       </button>
     </div>
@@ -5355,7 +5332,7 @@ html[data-theme="dark"] .kpi-value small{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody id="transferTableBody">
+        <tbody>
           <tr>
             <td>TR261006002</td>
             <td>包裝材料</td>
@@ -5406,7 +5383,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="purchase-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">warning</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
         待叫貨
       </div>
       <strong id="purchaseNeedCount">3</strong>
@@ -5415,7 +5392,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="purchase-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">shopping_cart_checkout</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l3 13h11l2-9H6M9 11h10"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
         已叫貨
       </div>
       <strong id="purchaseOrderedCount">2</strong>
@@ -5424,7 +5401,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="purchase-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">local_shipping</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
         本週到貨
       </div>
       <strong>5</strong>
@@ -5433,7 +5410,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="purchase-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">error</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
         異常
       </div>
       <strong>1</strong>
@@ -5445,22 +5422,22 @@ html[data-theme="dark"] .kpi-value small{
   <div class="sub-tabs">
 
     <button class="tab active" type="button" data-purchase-tab="request">
-      <span class="material-symbols-rounded">playlist_add</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h12M3 10h12M3 15h6M17 12v10M12 17h10"/></svg>
       採購需求
     </button>
 
     <button class="tab" type="button" data-purchase-tab="order">
-      <span class="material-symbols-rounded">receipt_long</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2v20l3-2 4 2 4-2 3 2V2l-3 2-4-2-4 2ZM9 8h6M9 12h6M9 16h4"/></svg>
       採購單
     </button>
 
     <button class="tab" type="button" data-purchase-tab="supplier">
-      <span class="material-symbols-rounded">storefront</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v11h16V10M2 10l3-7h14l3 7M2 10c0 4 5 4 5 0 0 4 5 4 5 0 0 4 5 4 5 0 0 4 5 4 5 0M9 21v-6h6v6"/></svg>
       供應商
     </button>
 
     <button class="tab" type="button" data-purchase-tab="internal">
-      <span class="material-symbols-rounded">move_up</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18V6h12m-4-4 4 4-4 4M10 14h11M10 18h11M10 22h11"/></svg>
       內部補貨
     </button>
 
@@ -5504,7 +5481,7 @@ html[data-theme="dark"] .kpi-value small{
           id="purchaseSearchBtn"
           type="button"
         >
-          <span class="material-symbols-rounded">search</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
           查詢
         </button>
       </div>
@@ -5520,17 +5497,17 @@ html[data-theme="dark"] .kpi-value small{
 
       <div class="purchase-toolbar-actions">
         <button class="secondary-action-btn" type="button" data-create-workflow="purchase">
-          <span class="material-symbols-rounded">add</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           新增需求
         </button>
 
         <button class="secondary-action-btn" id="purchaseExportBtn" type="button">
-          <span class="material-symbols-rounded">download</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
           匯出
         </button>
 
         <button class="secondary-action-btn" id="purchaseResetBtn" type="button">
-          <span class="material-symbols-rounded">restart_alt</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
           清除篩選
         </button>
       </div>
@@ -5928,7 +5905,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="asset-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">inventory_2</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4v11l-9 4-9-4Z"/><path d="m3 7 9 4 9-4M12 11v11M8 5l9 4v5"/></svg>
         資產總數
       </div>
       <strong id="assetTotalCount">6</strong>
@@ -5937,7 +5914,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="asset-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">person_check</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21v-3a7 7 0 0 1 12-5m1 5 2 2 5-5"/></svg>
         使用中
       </div>
       <strong id="assetUsingCount">3</strong>
@@ -5946,7 +5923,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="asset-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">home_repair_service</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
         維修中
       </div>
       <strong id="assetRepairCount">1</strong>
@@ -5955,7 +5932,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="asset-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">warning</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
         待盤點
       </div>
       <strong id="assetCheckCount">2</strong>
@@ -5967,17 +5944,17 @@ html[data-theme="dark"] .kpi-value small{
   <div class="sub-tabs">
 
     <button class="tab active" type="button" data-asset-tab="list">
-      <span class="material-symbols-rounded">view_list</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M3 10h18M3 15h18"/></svg>
       資產清單
     </button>
 
     <button class="tab" type="button" data-asset-tab="movement">
-      <span class="material-symbols-rounded">sync_alt</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h17m-4-4 4 4-4 4M21 16H4m4-4-4 4 4 4"/></svg>
       異動紀錄
     </button>
 
     <button class="tab" type="button" data-asset-tab="maintenance">
-      <span class="material-symbols-rounded">build</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
       維修紀錄
     </button>
 
@@ -6020,7 +5997,7 @@ html[data-theme="dark"] .kpi-value small{
 
       <div class="filter-actions">
         <button class="primary-btn" id="assetSearchBtn" type="button">
-          <span class="material-symbols-rounded">search</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
           查詢
         </button>
       </div>
@@ -6036,17 +6013,17 @@ html[data-theme="dark"] .kpi-value small{
 
       <div class="asset-toolbar-actions">
         <button class="secondary-action-btn" type="button" data-create-workflow="asset">
-          <span class="material-symbols-rounded">add</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           新增資產
         </button>
 
         <button class="secondary-action-btn" id="assetExportBtn" type="button">
-          <span class="material-symbols-rounded">download</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
           匯出
         </button>
 
         <button class="secondary-action-btn" id="assetResetBtn" type="button">
-          <span class="material-symbols-rounded">restart_alt</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
           清除篩選
         </button>
       </div>
@@ -6281,7 +6258,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="stocktake-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">fact_check</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
         進行中
       </div>
       <strong>2</strong>
@@ -6290,7 +6267,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="stocktake-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">inventory</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
         待盤品項
       </div>
       <strong>18</strong>
@@ -6299,7 +6276,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="stocktake-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">difference</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M12 5v6M8 16h8"/></svg>
         差異品項
       </div>
       <strong>3</strong>
@@ -6308,7 +6285,7 @@ html[data-theme="dark"] .kpi-value small{
 
     <div class="stocktake-summary-card">
       <div class="label">
-        <span class="material-symbols-rounded">task_alt</span>
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg>
         本月完成
       </div>
       <strong>9</strong>
@@ -6320,17 +6297,17 @@ html[data-theme="dark"] .kpi-value small{
   <div class="sub-tabs">
 
     <button class="tab active" type="button" data-stocktake-tab="task">
-      <span class="material-symbols-rounded">assignment</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
       盤點任務
     </button>
 
     <button class="tab" type="button" data-stocktake-tab="count">
-      <span class="material-symbols-rounded">calculate</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M8 6h8M8 11h1M14 11h2M8 15h1M14 15h2M8 19h1M14 19h2"/></svg>
       實盤作業
     </button>
 
     <button class="tab" type="button" data-stocktake-tab="history">
-      <span class="material-symbols-rounded">history</span>
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
       歷史紀錄
     </button>
 
@@ -6342,6 +6319,7 @@ html[data-theme="dark"] .kpi-value small{
       <div class="operation-card-head">
         <strong>盤點任務</strong>
         <span>依倉庫、區域或儲位建立盤點範圍</span>
+<button class="secondary-action-btn" type="button" data-create-workflow="stocktake"><svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> 新增盤點任務</button>
       </div>
 
       <div class="operation-table-wrap">
@@ -6357,7 +6335,7 @@ html[data-theme="dark"] .kpi-value small{
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody id="stocktakeTaskBody">
+          <tbody>
             <tr>
               <td>ST261006001</td>
               <td>總部主倉 / A 區</td>
@@ -6421,7 +6399,7 @@ html[data-theme="dark"] .kpi-value small{
 
       <div class="filter-actions">
         <button class="primary-btn" id="stocktakeSearchBtn" type="button">
-          <span class="material-symbols-rounded">search</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
           查詢
         </button>
       </div>
@@ -6435,11 +6413,11 @@ html[data-theme="dark"] .kpi-value small{
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
         <button class="secondary-action-btn" type="button" data-create-workflow="stocktake">
-          <span class="material-symbols-rounded">add</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           新增盤點
         </button>
         <button class="secondary-action-btn" id="stocktakeExportBtn" type="button">
-          <span class="material-symbols-rounded">download</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
           匯出
         </button>
       </div>
@@ -6583,7 +6561,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="site-card">
       <div class="site-card-head">
         <div class="site-card-icon">
-          <span class="material-symbols-rounded">corporate_fare</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h12v18M16 9h4v12M8 7h1M12 7h1M8 11h1M12 11h1M8 15h1M12 15h1M9 21v-3h3v3"/></svg>
         </div>
         <div>
           <strong>總部</strong>
@@ -6601,7 +6579,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="site-card">
       <div class="site-card-head">
         <div class="site-card-icon">
-          <span class="material-symbols-rounded">apartment</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h12v18M16 9h4v12M8 7h1M12 7h1M8 11h1M12 11h1M8 15h1M12 15h1M9 21v-3h3v3"/></svg>
         </div>
         <div>
           <strong>辦公室</strong>
@@ -6618,7 +6596,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="site-card">
       <div class="site-card-head">
         <div class="site-card-icon">
-          <span class="material-symbols-rounded">precision_manufacturing</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M7 21v-5l5-5-4-5 3-3 6 7-3 6v5M17 9h4v5l-3 2"/><circle cx="12" cy="11" r="2"/></svg>
         </div>
         <div>
           <strong>作業區</strong>
@@ -6636,7 +6614,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="site-card">
       <div class="site-card-head">
         <div class="site-card-icon">
-          <span class="material-symbols-rounded">build_circle</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
         </div>
         <div>
           <strong>機台區</strong>
@@ -6698,7 +6676,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="more-card">
       <div class="more-card-head">
         <div class="more-card-icon">
-          <span class="material-symbols-rounded">warehouse</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 10-5 10 5v13H2ZM7 21V11h10v10M7 15h10M7 18h10"/></svg>
         </div>
         <div>
           <h3>倉庫與儲位</h3>
@@ -6725,7 +6703,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="more-card">
       <div class="more-card-head">
         <div class="more-card-icon">
-          <span class="material-symbols-rounded">notifications</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0v6l3 3H3l3-3ZM10 21h4"/></svg>
         </div>
         <div>
           <h3>通知中心</h3>
@@ -6752,7 +6730,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="more-card">
       <div class="more-card-head">
         <div class="more-card-icon">
-          <span class="material-symbols-rounded">history</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
         </div>
         <div>
           <h3>異動日誌</h3>
@@ -6779,7 +6757,7 @@ html[data-theme="dark"] .kpi-value small{
     <section class="more-card">
       <div class="more-card-head">
         <div class="more-card-icon">
-          <span class="material-symbols-rounded">apps</span>
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="15" y="3" width="6" height="6" rx="2"/><rect x="3" y="15" width="6" height="6" rx="2"/><rect x="15" y="15" width="6" height="6" rx="2"/></svg>
         </div>
         <div>
           <h3>快速入口</h3>
@@ -6856,6 +6834,37 @@ html[data-theme="dark"] .kpi-value small{
 
 </nav>
 
+
+
+
+
+<div class="prototype-modal" id="prototypeModal" aria-hidden="true">
+
+  <div class="prototype-modal-card" role="dialog" aria-modal="true">
+
+    <div class="prototype-modal-head">
+
+      <div class="prototype-modal-title">
+        <strong id="prototypeModalTitle">詳細資料</strong>
+        <small id="prototypeModalSubtitle">BOMB WMS</small>
+      </div>
+
+      <button class="prototype-modal-close" id="prototypeModalClose" type="button" aria-label="關閉">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+
+    </div>
+
+    <div class="prototype-modal-body" id="prototypeModalBody"></div>
+
+  </div>
+
+</div>
+
+<div class="prototype-toast" id="prototypeToast">
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg>
+  <span id="prototypeToastText">操作完成</span>
+</div>
 
 <script>
 const dashboardPage=document.getElementById('dashboardPage');
@@ -8731,7 +8740,8 @@ function workflowFieldHtml(field){
         name="${name}"
         type="${type}"
         value="${value}"
-        ${type==='number'?'min="0"':''}
+        ${type==='number'?'min="0" step="1"':''}
+        required
       >
     </div>
   `;
@@ -8761,7 +8771,7 @@ function openWorkflowForm(type){
         </div>
 
         <div class="workflow-hint">
-          Prototype 目前會將新增資料保存在此瀏覽器 localStorage，方便操作展示；正式版再由後端 API 與資料庫接手。
+          儲存後會加入對應清單，重新整理後仍會保留。
         </div>
 
         <div class="workflow-form-actions">
@@ -8769,7 +8779,7 @@ function openWorkflowForm(type){
             取消
           </button>
           <button class="workflow-save-btn" type="submit">
-            <span class="material-symbols-rounded">save</span>
+            <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h13l4 4v14H3V3ZM7 3v6h9V3M7 21v-8h10v8"/></svg>
             儲存
           </button>
         </div>
@@ -8811,311 +8821,14 @@ prototypeModalBody?.addEventListener(
 );
 
 
-const workflowStorageKey=
-  'bomb-wms-prototype-created-records';
-
-
-function readWorkflowRecords(){
-
-  try{
-    const rows=
-      JSON.parse(
-        localStorage.getItem(workflowStorageKey)||'[]'
-      );
-
-    return Array.isArray(rows)?rows:[];
-
-  }catch(error){
-    return [];
-  }
-
-}
-
-
-function saveWorkflowRecords(records){
-
-  localStorage.setItem(
-    workflowStorageKey,
-    JSON.stringify(records)
-  );
-
-}
-
-
-function escWorkflow(value){
-
-  return String(value??'')
-    .replace(
-      /[&<>"']/g,
-      char=>({
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
-      }[char])
-    );
-
-}
-
-
-function prototypeRecordNo(prefix,createdAt){
-
-  const date=
-    new Date(createdAt||Date.now());
-
-  const yy=
-    String(date.getFullYear()).slice(-2);
-
-  const mm=
-    String(date.getMonth()+1).padStart(2,'0');
-
-  const dd=
-    String(date.getDate()).padStart(2,'0');
-
-  const suffix=
-    String(
-      Math.floor(
-        Math.abs(date.getTime())%1000
-      )
-    ).padStart(3,'0');
-
-  return `${prefix}${yy}${mm}${dd}${suffix}`;
-
-}
-
-
-function renderWorkflowRecord(record){
-
-  if(!record||!record.type)return;
-
-  const data=record.data||{};
-  const createdAt=record.createdAt||new Date().toISOString();
-
-  const row=
-    document.createElement('tr');
-
-  row.dataset.prototypeCreated='true';
-
-  if(record.type==='receiving'){
-
-    const body=
-      document.getElementById('receivingTableBody');
-
-    if(!body)return;
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('RC',createdAt)}</td>
-      <td>${escWorkflow(data.supplier)}</td>
-      <td>${escWorkflow(data.item)}</td>
-      <td>${escWorkflow(data.qty)}</td>
-      <td>${escWorkflow(data.received)}</td>
-      <td>${new Date(createdAt).toLocaleString('zh-TW')}</td>
-      <td><span class="status blue">待驗收</span></td>
-    `;
-
-    body.prepend(row);
-    return;
-  }
-
-
-  if(record.type==='inspection'){
-
-    const body=
-      document.getElementById('inspectionTableBody');
-
-    if(!body)return;
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('QC',createdAt)}</td>
-      <td>${escWorkflow(data.source)}</td>
-      <td>${escWorkflow(data.item)}</td>
-      <td>${escWorkflow(data.qty)}</td>
-      <td>${escWorkflow(data.pass)}</td>
-      <td>${escWorkflow(data.fail)}</td>
-      <td><span class="status ${data.result==='驗收合格'?'green':'orange'}">${escWorkflow(data.result)}</span></td>
-    `;
-
-    body.prepend(row);
-    return;
-  }
-
-
-  if(record.type==='putaway'){
-
-    const body=
-      document.getElementById('putawayTableBody');
-
-    if(!body)return;
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('IN',createdAt)}</td>
-      <td>${escWorkflow(data.item)}</td>
-      <td>${escWorkflow(data.qty)}</td>
-      <td>${escWorkflow(data.warehouse)}</td>
-      <td>${escWorkflow(data.location)}</td>
-      <td>${escWorkflow(data.lot)}</td>
-      <td><span class="status blue">待入庫</span></td>
-    `;
-
-    body.prepend(row);
-    return;
-  }
-
-
-  if(record.type==='outbound'){
-
-    const body=
-      document.getElementById('outboundTableBody');
-
-    if(!body)return;
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('OUT',createdAt)}</td>
-      <td>${escWorkflow(data.department)}</td>
-      <td>${escWorkflow(data.item)}</td>
-      <td>${escWorkflow(data.qty)}</td>
-      <td>${escWorkflow(data.location)}</td>
-      <td>${new Date(createdAt).toLocaleDateString('zh-TW')}</td>
-      <td><span class="status blue">待揀貨</span></td>
-    `;
-
-    body.prepend(row);
-    return;
-  }
-
-
-  if(record.type==='transfer'){
-
-    const body=
-      document.getElementById('transferTableBody');
-
-    if(!body)return;
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('TR',createdAt)}</td>
-      <td>${escWorkflow(data.item)}</td>
-      <td>${escWorkflow(data.qty)}</td>
-      <td>${escWorkflow(data.from)}</td>
-      <td>${escWorkflow(data.to)}</td>
-      <td>${escWorkflow(data.applicant)}</td>
-      <td><span class="status blue">待調撥</span></td>
-    `;
-
-    body.prepend(row);
-    return;
-  }
-
-
-  if(record.type==='purchase'){
-
-    const body=
-      document.getElementById('purchaseRequestBody');
-
-    if(!body)return;
-
-    row.dataset.purchaseRow='';
-    row.dataset.warehouse=data.warehouse||'';
-    row.dataset.status='待叫貨';
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('PR',createdAt)}</td>
-      <td>${escWorkflow(data.itemNo)}</td>
-      <td>${escWorkflow(data.item)}</td>
-      <td>${escWorkflow(data.warehouse)}</td>
-      <td>—</td>
-      <td>—</td>
-      <td>${escWorkflow(data.qty)}</td>
-      <td><input class="purchase-qty" type="number" min="0" value="${escWorkflow(data.qty)}"></td>
-      <td data-status-cell><span class="status orange">待叫貨</span></td>
-      <td>${escWorkflow(data.source)}</td>
-      <td>
-        <div class="purchase-row-actions">
-          <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
-          <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
-        </div>
-      </td>
-    `;
-
-    body.prepend(row);
-    refreshPurchaseSummary();
-    filterPurchaseTable();
-    return;
-  }
-
-
-  if(record.type==='asset'){
-
-    const body=
-      document.getElementById('assetTableBody');
-
-    if(!body)return;
-
-    row.dataset.assetRow='';
-    row.dataset.location=data.location||'';
-    row.dataset.status='使用中';
-
-    row.innerHTML=`
-      <td class="asset-code">${prototypeRecordNo('AST-',createdAt)}</td>
-      <td>${escWorkflow(data.assetName)}</td>
-      <td>${escWorkflow(data.category)}</td>
-      <td>${escWorkflow(data.location)}</td>
-      <td>${escWorkflow(data.custodian)}</td>
-      <td>${escWorkflow(data.date)}</td>
-      <td><span class="status green">使用中</span></td>
-      <td><span class="status orange">待盤點</span></td>
-      <td>${new Date(createdAt).toLocaleDateString('zh-TW')}</td>
-    `;
-
-    body.prepend(row);
-    filterAssetTable();
-    return;
-  }
-
-
-  if(record.type==='stocktake'){
-
-    const body=
-      document.getElementById('stocktakeTaskBody');
-
-    if(!body)return;
-
-    row.innerHTML=`
-      <td>${prototypeRecordNo('ST',createdAt)}</td>
-      <td>${escWorkflow(data.scope)}</td>
-      <td>${escWorkflow(data.owner)}</td>
-      <td>${escWorkflow(data.date)}</td>
-      <td>0 / 0</td>
-      <td>0</td>
-      <td><span class="status blue">待開始</span></td>
-    `;
-
-    body.prepend(row);
-  }
-
-}
-
-
-function restoreWorkflowRecords(){
-
-  document
-    .querySelectorAll('[data-prototype-created="true"]')
-    .forEach(row=>row.remove());
-
-  readWorkflowRecords()
-    .slice()
-    .reverse()
-    .forEach(renderWorkflowRecord);
-
-}
-
-
 prototypeModalBody?.addEventListener(
   'submit',
   event=>{
 
     const form=
-      event.target.closest('#workflowForm');
+      event.target.closest(
+        '#workflowForm'
+      );
 
     if(!form)return;
 
@@ -9129,35 +8842,43 @@ prototypeModalBody?.addEventListener(
         new FormData(form).entries()
       );
 
-    const record={
-      id:
-        `${type}-${Date.now()}`,
+    const key=
+      'bomb-wms-prototype-created-records';
+
+    let records=[];
+
+    try{
+      records=
+        JSON.parse(
+          localStorage.getItem(key)||'[]'
+        );
+    }catch(error){
+      records=[];
+    }
+
+    if(!Array.isArray(records))records=[];
+    if(type==='inspection' && Number(data.pass)+Number(data.fail)!==Number(data.qty)){showPrototypeToast('合格與不良數量合計必須等於送驗數量');return;}
+    if(['receiving','putaway','outbound','transfer','purchase'].includes(type) && Number(data.qty)<=0){showPrototypeToast('數量必須大於 0');return;}
+    if(type==='transfer' && data.from.trim()===data.to.trim()){showPrototypeToast('來源與目的不可相同');return;}
+    records.unshift({
+      id:Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,8),
       type,
       data,
-      createdAt:
-        new Date().toISOString()
-    };
+      createdAt:new Date().toISOString()
+    });
 
-    const records=
-      readWorkflowRecords();
-
-    records.unshift(record);
-
-    saveWorkflowRecords(records);
-
-    renderWorkflowRecord(record);
+    try { localStorage.setItem(key,JSON.stringify(records)); }
+    catch(error){ showPrototypeToast('儲存失敗，請確認瀏覽器儲存空間'); return; }
+    renderCreatedRecords();
 
     closePrototypeModal();
 
     showPrototypeToast(
-      '新增完成，資料已寫入對應清單'
+      '新增資料已儲存於 Prototype'
     );
 
   }
 );
-
-
-restoreWorkflowRecords();
 
 const themeToggle=document.getElementById('themeToggle');
 
@@ -9195,36 +8916,50 @@ themeToggle?.addEventListener('click',()=>{
   applyTheme(next);
 });
   
+function escapeRecord(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderCreatedRecords(){
+ document.querySelectorAll('[data-created-record]').forEach(row=>row.remove());
+ let records=[];try{records=JSON.parse(localStorage.getItem('bomb-wms-prototype-created-records')||'[]');}catch(e){}
+ if(!Array.isArray(records))return;
+ const selectors={receiving:'[data-inventory-panel="receiving"] tbody',inspection:'[data-inventory-panel="inspection"] tbody',putaway:'[data-inventory-panel="putaway"] tbody',outbound:'[data-inventory-panel="outbound"] tbody',transfer:'[data-inventory-panel="transfer"] tbody',purchase:'#purchaseRequestBody',asset:'#assetTableBody',stocktake:'[data-stocktake-panel="task"] tbody'};
+ const prefixes={receiving:'RC',inspection:'QC',putaway:'IN',outbound:'OUT',transfer:'TR',purchase:'PR',asset:'AST',stocktake:'ST'};
+ records.slice().reverse().forEach((r,index)=>{
+  if(!r||!selectors[r.type]||!r.data||typeof r.data!=='object')return;
+  const d=r.data,body=document.querySelector(selectors[r.type]);if(!body)return;
+  const row=document.createElement('tr');row.dataset.createdRecord=r.id||String(index);
+  const stamp=new Date(r.createdAt);const date=Number.isNaN(stamp.getTime())?'':stamp.toLocaleDateString('zh-TW');
+  const id=prefixes[r.type]+'-'+(r.id||String(index+1));let values=[];let status='';
+  switch(r.type){
+   case 'receiving':values=[id,d.supplier,d.item,d.qty,d.received,date];status='待驗收';break;
+   case 'inspection':values=[id,d.source,d.item,d.qty,d.pass,d.fail];status=d.result;break;
+   case 'putaway':values=[id,d.item,d.qty,d.warehouse,d.location,d.lot];status='待入庫';break;
+   case 'outbound':values=[id,d.department,d.item,d.qty,d.location,date];status='待揀貨';break;
+   case 'transfer':values=[id,d.item,d.qty,d.from,d.to,d.applicant];status='待調撥';break;
+   case 'stocktake':values=[id,d.scope,d.owner,d.date,'0 / 0','0'];status='待開始';break;
+   case 'asset':
+    row.dataset.assetRow='';row.dataset.location=d.location;row.dataset.status='使用中';
+    values=[id,d.assetName,d.category,d.location,d.custodian,d.date,'使用中','待盤點',date];break;
+   case 'purchase':
+    row.dataset.purchaseRow='';row.dataset.warehouse=d.warehouse==='總部主倉'?'主倉':'備品倉';row.dataset.status='待叫貨';
+    row.innerHTML=[id,d.itemNo,d.item,d.warehouse,'—','—',d.qty].map(v=>'<td>'+escapeRecord(v)+'</td>').join('')+
+     '<td><input class="purchase-qty" type="number" min="1" step="1" value="'+escapeRecord(d.qty)+'"></td><td data-status-cell><span class="status orange">待叫貨</span></td><td>'+escapeRecord(d.source)+'</td><td><div class="purchase-row-actions"><button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button><button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button></div></td>';
+    break;
+  }
+  if(r.type!=='purchase')row.innerHTML=values.map(v=>'<td>'+escapeRecord(v)+'</td>').join('')+(status?'<td><span class="status blue">'+escapeRecord(status)+'</span></td>':'');
+  body.prepend(row);
+ });
+ filterInventoryTable();filterPurchaseTable();filterAssetTable();filterStocktakeTable();refreshPurchaseSummary();
+}
+renderCreatedRecords();
+// Keep desktop and mobile navigation in sync regardless of entry point.
+const originalShowPage=showPage;
+showPage=function(page){originalShowPage(page);document.querySelectorAll('[data-page],[data-mobile]').forEach(btn=>btn.classList.toggle('active',(btn.dataset.page||btn.dataset.mobile)===page));};
+// The top search opens stock search; the warehouse selector applies to stock search.
+const globalSearch=document.querySelector('.search input');
+globalSearch?.addEventListener('keydown',e=>{if(e.key==='Enter'){inventoryKeywordFilter.value=globalSearch.value;showPage('inventory');showInventoryTab('stock');filterInventoryTable();}});
+const globalWarehouse=document.querySelector('.warehouse select');
+globalWarehouse?.addEventListener('change',()=>{inventoryWarehouseFilter.value=globalWarehouse.selectedIndex===0?'':globalWarehouse.value;showPage('inventory');showInventoryTab('stock');filterInventoryTable();});
+
 </script>
-
-
-<div class="prototype-modal" id="prototypeModal" aria-hidden="true">
-
-  <div class="prototype-modal-card" role="dialog" aria-modal="true">
-
-    <div class="prototype-modal-head">
-
-      <div class="prototype-modal-title">
-        <strong id="prototypeModalTitle">詳細資料</strong>
-        <small id="prototypeModalSubtitle">BOMB WMS</small>
-      </div>
-
-      <button class="prototype-modal-close" id="prototypeModalClose" type="button" aria-label="關閉">
-        <span class="material-symbols-rounded">close</span>
-      </button>
-
-    </div>
-
-    <div class="prototype-modal-body" id="prototypeModalBody"></div>
-
-  </div>
-
-</div>
-
-<div class="prototype-toast" id="prototypeToast">
-  <span class="material-symbols-rounded">check_circle</span>
-  <span id="prototypeToastText">操作完成</span>
-</div>
-
 </body>
 </html>
