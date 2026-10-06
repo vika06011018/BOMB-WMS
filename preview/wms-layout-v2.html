@@ -3153,6 +3153,864 @@ html[data-theme="dark"] .more-link{
   }
 } 
 
+
+/* =========================================================
+   PREMIUM KPI OVERRIDE
+========================================================= */
+
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:18px;
+  margin-bottom:18px;
+}
+
+.kpi-card{
+  position:relative;
+  overflow:hidden;
+  min-height:142px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:22px 22px 22px 24px;
+  border:1px solid #dbe6f2;
+  border-radius:20px;
+  background:
+    linear-gradient(180deg,#ffffff 0%,#f8fbff 100%);
+  box-shadow:
+    0 10px 28px rgba(31,67,105,.07),
+    inset 0 1px 0 rgba(255,255,255,.95);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease;
+}
+
+.kpi-card:hover{
+  transform:translateY(-2px);
+  border-color:#c8daf0;
+  box-shadow:
+    0 14px 34px rgba(31,67,105,.10),
+    inset 0 1px 0 rgba(255,255,255,.98);
+}
+
+.kpi-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:18px;
+  bottom:18px;
+  width:5px;
+  border-radius:0 999px 999px 0;
+  background:#2379ef;
+}
+
+.kpi-card::after{
+  content:"";
+  position:absolute;
+  right:-34px;
+  top:-34px;
+  width:132px;
+  height:132px;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.kpi-card:nth-child(1)::before{background:#3b82f6;}
+.kpi-card:nth-child(2)::before{background:#22b66a;}
+.kpi-card:nth-child(3)::before{background:#f59a23;}
+.kpi-card:nth-child(4)::before{background:#ef4d55;}
+
+.kpi-card:nth-child(1)::after{background:rgba(59,130,246,.075);}
+.kpi-card:nth-child(2)::after{background:rgba(34,182,106,.075);}
+.kpi-card:nth-child(3)::after{background:rgba(245,154,35,.085);}
+.kpi-card:nth-child(4)::after{background:rgba(239,77,85,.075);}
+
+.kpi-icon{
+  position:relative;
+  z-index:1;
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.92),
+    0 9px 18px rgba(31,67,105,.08);
+}
+
+.kpi-icon .material-symbols-rounded{
+  font-size:30px;
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 600,
+    "GRAD" 0,
+    "opsz" 48;
+}
+
+.kpi-icon.blue{
+  background:linear-gradient(180deg,#ecf5ff 0%,#dcecff 100%);
+  color:#2f76f3;
+}
+
+.kpi-icon.green{
+  background:linear-gradient(180deg,#e9fbf1 0%,#d9f5e5 100%);
+  color:#18a45e;
+}
+
+.kpi-icon.orange{
+  background:linear-gradient(180deg,#fff4e4 0%,#ffe8c3 100%);
+  color:#eb8b12;
+}
+
+.kpi-icon.red{
+  background:linear-gradient(180deg,#ffedef 0%,#ffdce0 100%);
+  color:#ea4d58;
+}
+
+.kpi-card > div:last-child{
+  position:relative;
+  z-index:1;
+  min-width:0;
+}
+
+.kpi-label{
+  margin-bottom:5px;
+  color:#60738a;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.01em;
+}
+
+.kpi-value{
+  margin-top:0;
+  color:#142941;
+  font-size:34px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-.6px;
+}
+
+.kpi-value small{
+  margin-left:5px;
+  color:#8393a7;
+  font-size:10px;
+  font-weight:800;
+}
+
+.kpi-change{
+  margin-top:7px;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.01em;
+}
+
+.kpi-change.orange{color:#f97316;}
+.kpi-change.green{color:#16a34a;}
+.kpi-change.red{color:#ef4444;}
+
+@media(max-width:1200px){
+  .kpi-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:760px){
+  .kpi-grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+
+  .kpi-card{
+    min-height:118px;
+    padding:18px;
+    border-radius:17px;
+  }
+
+  .kpi-icon{
+    width:52px;
+    height:52px;
+    flex-basis:52px;
+    border-radius:16px;
+  }
+
+  .kpi-icon .material-symbols-rounded{
+    font-size:27px;
+  }
+
+  .kpi-value{
+    font-size:28px;
+  }
+}
+
+
+/* =========================================================
+   SITE & INTERNAL REPLENISHMENT
+========================================================= */
+
+.site-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.site-card{
+  min-height:132px;
+  padding:17px 18px;
+  border:1px solid #dfe8f3;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.site-card-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.site-card-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:10px;
+  background:#edf5ff;
+  color:#2379ef;
+}
+
+.site-card-icon .material-symbols-rounded{
+  font-size:21px;
+}
+
+.site-card strong{
+  color:#243950;
+  font-size:13px;
+  font-weight:900;
+}
+
+.site-card p{
+  margin:4px 0 0;
+  color:#8393a6;
+  font-size:9.5px;
+  font-weight:700;
+}
+
+.site-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.site-tag{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  padding:0 9px;
+  border:1px solid #dfe8f3;
+  border-radius:999px;
+  background:#f8fbff;
+  color:#5f738a;
+  font-size:9.5px;
+  font-weight:800;
+}
+
+.flow-card{
+  margin-bottom:16px;
+  padding:18px;
+  border:1px solid #dfe8f3;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.flow-card-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.flow-card-head strong{
+  color:#243950;
+  font-size:14px;
+  font-weight:900;
+}
+
+.flow-card-head span{
+  color:#8292a5;
+  font-size:10px;
+  font-weight:700;
+}
+
+.flow-steps{
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;
+}
+
+.flow-step{
+  position:relative;
+  min-height:112px;
+  padding:14px;
+  border:1px solid #e2ebf4;
+  border-radius:12px;
+  background:#f9fbfe;
+}
+
+.flow-step-no{
+  width:26px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  margin-bottom:10px;
+  border-radius:8px;
+  background:#2379ef;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+}
+
+.flow-step strong{
+  display:block;
+  color:#2c4058;
+  font-size:11.5px;
+  font-weight:900;
+}
+
+.flow-step small{
+  display:block;
+  margin-top:5px;
+  color:#7f90a4;
+  font-size:9.5px;
+  line-height:1.5;
+  font-weight:700;
+}
+
+.internal-request-card{
+  overflow:auto;
+  border:1px solid #dfe8f3;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 5px 16px rgba(31,67,105,.04);
+}
+
+.internal-request-table{
+  width:100%;
+  min-width:1060px;
+  border-collapse:separate;
+  border-spacing:0;
+}
+
+.internal-request-table th{
+  height:44px;
+  padding:0 13px;
+  background:#f4f8fc;
+  border-bottom:1px solid #dfe8f3;
+  color:#6d7f94;
+  font-size:11px;
+  font-weight:800;
+  text-align:left;
+  white-space:nowrap;
+}
+
+.internal-request-table td{
+  padding:11px 13px;
+  border-bottom:1px solid #edf2f7;
+  color:#34475f;
+  font-size:11.5px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.internal-request-table tbody tr:last-child td{
+  border-bottom:0;
+}
+
+.mandatory-tag{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  padding:0 8px;
+  border-radius:999px;
+  background:#fff0e6;
+  color:#e26f14;
+  font-size:9px;
+  font-weight:900;
+}
+
+html[data-theme="dark"] .site-card,
+html[data-theme="dark"] .flow-card,
+html[data-theme="dark"] .internal-request-card{
+  background:#111a28;
+  border-color:#26364b;
+}
+
+html[data-theme="dark"] .site-card strong,
+html[data-theme="dark"] .flow-card-head strong,
+html[data-theme="dark"] .flow-step strong{
+  color:#e4ebf3;
+}
+
+html[data-theme="dark"] .site-card p,
+html[data-theme="dark"] .flow-card-head span,
+html[data-theme="dark"] .flow-step small{
+  color:#8fa1b6;
+}
+
+html[data-theme="dark"] .site-tag,
+html[data-theme="dark"] .flow-step{
+  background:#162132;
+  border-color:#2a3b52;
+  color:#a6b7c9;
+}
+
+html[data-theme="dark"] .internal-request-table th{
+  background:#162132;
+  border-bottom-color:#26364b;
+  color:#90a2b7;
+}
+
+html[data-theme="dark"] .internal-request-table td{
+  color:#d7e1ec;
+  border-bottom-color:#24354a;
+}
+
+@media(max-width:1050px){
+  .site-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .flow-steps{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:760px){
+  .site-grid,
+  .flow-steps{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* =========================================================
+   INTERACTION LAYER
+========================================================= */
+
+.prototype-modal{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(5,18,35,.46);
+  backdrop-filter:blur(7px);
+}
+
+.prototype-modal.active{
+  display:flex;
+}
+
+.prototype-modal-card{
+  width:min(760px,100%);
+  max-height:min(720px,88vh);
+  overflow:auto;
+  border:1px solid #dbe6f2;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 28px 70px rgba(15,39,67,.24);
+}
+
+.prototype-modal-head{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:0 20px;
+  border-bottom:1px solid #e7eef6;
+}
+
+.prototype-modal-title{
+  min-width:0;
+}
+
+.prototype-modal-title strong{
+  display:block;
+  color:#1d324a;
+  font-size:16px;
+  font-weight:900;
+}
+
+.prototype-modal-title small{
+  display:block;
+  margin-top:3px;
+  color:#8494a7;
+  font-size:10px;
+  font-weight:700;
+}
+
+.prototype-modal-close{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  flex:none;
+  border:1px solid #dfe8f2;
+  border-radius:10px;
+  background:#f8fbff;
+  color:#64788f;
+  cursor:pointer;
+}
+
+.prototype-modal-close .material-symbols-rounded{
+  font-size:20px;
+}
+
+.prototype-modal-body{
+  padding:20px;
+}
+
+.modal-info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.modal-info-card{
+  min-height:90px;
+  padding:14px;
+  border:1px solid #e2ebf4;
+  border-radius:12px;
+  background:#f9fbfe;
+}
+
+.modal-info-card span{
+  display:block;
+  margin-bottom:6px;
+  color:#8292a5;
+  font-size:9.5px;
+  font-weight:800;
+}
+
+.modal-info-card strong{
+  color:#2a4058;
+  font-size:12px;
+  font-weight:900;
+  line-height:1.5;
+}
+
+.modal-list{
+  display:grid;
+  gap:9px;
+}
+
+.modal-list-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:12px 13px;
+  border:1px solid #e4ecf5;
+  border-radius:10px;
+  background:#fbfdff;
+}
+
+.modal-list-row strong{
+  color:#31475f;
+  font-size:11px;
+  font-weight:900;
+}
+
+.modal-list-row small{
+  color:#7f91a5;
+  font-size:9.5px;
+  font-weight:700;
+  line-height:1.45;
+}
+
+.modal-chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  padding:0 8px;
+  border-radius:999px;
+  background:#eaf3ff;
+  color:#176bd9;
+  font-size:9px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.prototype-toast{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:1200;
+  min-width:230px;
+  max-width:360px;
+  display:none;
+  align-items:center;
+  gap:9px;
+  padding:12px 14px;
+  border:1px solid #cfe4d8;
+  border-radius:11px;
+  background:#f0fbf5;
+  color:#157b48;
+  box-shadow:0 12px 32px rgba(20,66,44,.16);
+  font-size:11px;
+  font-weight:800;
+}
+
+.prototype-toast.active{
+  display:flex;
+}
+
+.prototype-toast .material-symbols-rounded{
+  font-size:19px;
+}
+
+html[data-theme="dark"] .prototype-modal-card{
+  background:#111a28;
+  border-color:#2a3b52;
+  box-shadow:0 28px 70px rgba(0,0,0,.5);
+}
+
+html[data-theme="dark"] .prototype-modal-head{
+  border-bottom-color:#26364b;
+}
+
+html[data-theme="dark"] .prototype-modal-title strong{
+  color:#eef4fa;
+}
+
+html[data-theme="dark"] .prototype-modal-title small{
+  color:#8799ae;
+}
+
+html[data-theme="dark"] .prototype-modal-close,
+html[data-theme="dark"] .modal-info-card,
+html[data-theme="dark"] .modal-list-row{
+  background:#162132;
+  border-color:#2a3b52;
+  color:#d7e2ee;
+}
+
+html[data-theme="dark"] .modal-info-card strong,
+html[data-theme="dark"] .modal-list-row strong{
+  color:#dfe8f2;
+}
+
+html[data-theme="dark"] .modal-info-card span,
+html[data-theme="dark"] .modal-list-row small{
+  color:#8fa1b6;
+}
+
+@media(max-width:760px){
+  .prototype-modal{
+    align-items:flex-end;
+    padding:0;
+  }
+
+  .prototype-modal-card{
+    width:100%;
+    max-height:86vh;
+    border-radius:18px 18px 0 0;
+  }
+
+  .modal-info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .prototype-toast{
+    left:12px;
+    right:12px;
+    bottom:76px;
+    min-width:0;
+  }
+}
+
+
+/* =========================================================
+   WORKFLOW FORM
+========================================================= */
+
+.workflow-form{
+  display:grid;
+  gap:16px;
+}
+
+.workflow-form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+.workflow-field{
+  min-width:0;
+}
+
+.workflow-field.full{
+  grid-column:1 / -1;
+}
+
+.workflow-field label{
+  display:block;
+  margin-bottom:7px;
+  color:#66798f;
+  font-size:10.5px;
+  font-weight:900;
+}
+
+.workflow-field input,
+.workflow-field select,
+.workflow-field textarea{
+  width:100%;
+  border:1px solid #dbe6f2;
+  border-radius:9px;
+  background:#fff;
+  color:#31465e;
+  font-size:11.5px;
+  font-weight:700;
+  outline:none;
+}
+
+.workflow-field input,
+.workflow-field select{
+  height:40px;
+  padding:0 11px;
+}
+
+.workflow-field textarea{
+  min-height:88px;
+  padding:10px 11px;
+  resize:vertical;
+}
+
+.workflow-field input:focus,
+.workflow-field select:focus,
+.workflow-field textarea:focus{
+  border-color:#8ebaff;
+  box-shadow:0 0 0 3px rgba(35,121,239,.08);
+}
+
+.workflow-form-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:9px;
+  padding-top:4px;
+}
+
+.workflow-save-btn,
+.workflow-cancel-btn{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:0 15px;
+  border-radius:9px;
+  font-size:11px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.workflow-cancel-btn{
+  border:1px solid #dbe6f2;
+  background:#fff;
+  color:#60738a;
+}
+
+.workflow-save-btn{
+  border:1px solid #2379ef;
+  background:#2379ef;
+  color:#fff;
+}
+
+.workflow-save-btn:hover{
+  background:#1768d8;
+}
+
+.workflow-hint{
+  padding:10px 12px;
+  border:1px solid #dce8f5;
+  border-radius:9px;
+  background:#f7fbff;
+  color:#6a7d93;
+  font-size:10px;
+  font-weight:700;
+  line-height:1.55;
+}
+
+html[data-theme="dark"] .workflow-field input,
+html[data-theme="dark"] .workflow-field select,
+html[data-theme="dark"] .workflow-field textarea,
+html[data-theme="dark"] .workflow-cancel-btn{
+  background:#162132;
+  border-color:#2a3b52;
+  color:#d7e2ee;
+}
+
+html[data-theme="dark"] .workflow-field label{
+  color:#91a3b8;
+}
+
+html[data-theme="dark"] .workflow-hint{
+  background:#141f2e;
+  border-color:#2a3b52;
+  color:#91a3b8;
+}
+
+@media(max-width:760px){
+  .workflow-form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .workflow-field.full{
+    grid-column:auto;
+  }
+}
+
+
+/* =========================================================
+   PROTOTYPE DATA / PERSISTENCE
+========================================================= */
+
+.prototype-data-banner{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-bottom:16px;
+  padding:12px 14px;
+  border:1px solid #dbe8f5;
+  border-radius:11px;
+  background:#f7fbff;
+  color:#60748c;
+  font-size:10.5px;
+  font-weight:700;
+  line-height:1.55;
+}
+
+.prototype-data-banner .material-symbols-rounded{
+  flex:none;
+  margin-top:1px;
+  color:#2379ef;
+  font-size:19px;
+}
+
+html[data-theme="dark"] .prototype-data-banner{
+  background:#141f2e;
+  border-color:#2a3b52;
+  color:#91a3b8;
+}
+
 /* =========================================================
    DARK THEME
 ========================================================= */
@@ -3503,6 +4361,35 @@ html[data-theme="dark"] .inventory-page{
   color:#e7edf5;
 }
   
+
+html[data-theme="dark"] .kpi-card{
+  border-color:#26364b;
+  background:
+    linear-gradient(180deg,#121c2a 0%,#0f1724 100%);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+html[data-theme="dark"] .kpi-card:hover{
+  border-color:#35506d;
+  box-shadow:
+    0 16px 34px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+html[data-theme="dark"] .kpi-label{
+  color:#9eb0c4;
+}
+
+html[data-theme="dark"] .kpi-value{
+  color:#f3f7fb;
+}
+
+html[data-theme="dark"] .kpi-value small{
+  color:#8ea2b8;
+}
+
 </style>
 </head>
 
@@ -3618,8 +4505,8 @@ html[data-theme="dark"] .inventory-page{
 
           <select>
             <option>全部倉庫</option>
-            <option>主倉</option>
-            <option>備品倉</option>
+            <option>總部主倉</option>
+            <option>辦公室備品倉</option>
           </select>
         </div>
 
@@ -3641,7 +4528,7 @@ html[data-theme="dark"] .inventory-page{
   </svg>
 </button>
         
-        <button class="notify">
+        <button class="notify" type="button" data-prototype-action="notifications">
        <svg class="svg-icon" viewBox="0 0 24 24">
        <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
        <path d="M10 21h4"/>
@@ -3685,7 +4572,14 @@ html[data-theme="dark"] .inventory-page{
 
 
         <!-- KPI -->
-        <div class="kpi-grid">
+        <div class="prototype-data-banner">
+        <span class="material-symbols-rounded">database</span>
+        <div>
+          此為 BOMB WMS 可操作 Prototype：新增的收貨、驗收、入庫、出庫、調撥、採購需求、資產與盤點資料會保存在此瀏覽器，重新整理後仍會保留並回填到對應清單。
+        </div>
+      </div>
+
+      <div class="kpi-grid">
 
           <article class="kpi-card">
 
@@ -3784,7 +4678,7 @@ html[data-theme="dark"] .inventory-page{
 
             <div class="card-head">
               <h2>我的待辦</h2>
-              <button class="more">查看全部 ›</button>
+              <button class="more" type="button" data-prototype-action="todo-all">查看全部 ›</button>
             </div>
 
             <div class="todo-wrap">
@@ -3867,7 +4761,7 @@ html[data-theme="dark"] .inventory-page{
 
             <div class="card-head">
               <h2>庫存狀態</h2>
-              <button class="more">查看詳情 ›</button>
+              <button class="more" type="button" data-prototype-action="inventory-detail">查看詳情 ›</button>
             </div>
 
             <div class="inventory">
@@ -4022,8 +4916,8 @@ html[data-theme="dark"] .inventory-page{
       <label for="inventoryWarehouseFilter">倉庫</label>
       <select id="inventoryWarehouseFilter">
         <option value="">全部倉庫</option>
-        <option value="主倉">主倉</option>
-        <option value="備品倉">備品倉</option>
+        <option value="主倉">總部主倉</option>
+        <option value="備品倉">辦公室備品倉</option>
       </select>
     </div>
 
@@ -4106,7 +5000,7 @@ html[data-theme="dark"] .inventory-page{
           <td>ITM0001</td>
           <td>電子零件</td>
           <td>A-100</td>
-          <td>主倉</td>
+          <td>總部主倉</td>
           <td>A-01-01</td>
           <td>2,350</td>
           <td>2,180</td>
@@ -4119,7 +5013,7 @@ html[data-theme="dark"] .inventory-page{
           <td>ITM0002</td>
           <td>包裝材料</td>
           <td>B-200</td>
-          <td>主倉</td>
+          <td>總部主倉</td>
           <td>B-02-03</td>
           <td>1,680</td>
           <td>1,540</td>
@@ -4132,7 +5026,7 @@ html[data-theme="dark"] .inventory-page{
           <td>ITM0003</td>
           <td>成品</td>
           <td>B-200</td>
-          <td>主倉</td>
+          <td>總部主倉</td>
           <td>C-01-02</td>
           <td>980</td>
           <td>760</td>
@@ -4145,7 +5039,7 @@ html[data-theme="dark"] .inventory-page{
           <td>ITM0004</td>
           <td>半成品</td>
           <td>C-300</td>
-          <td>備品倉</td>
+          <td>辦公室備品倉</td>
           <td>SP-01-01</td>
           <td>520</td>
           <td>500</td>
@@ -4183,6 +5077,10 @@ html[data-theme="dark"] .inventory-page{
     <div class="operation-card-head">
       <strong>收貨作業清單</strong>
       <span>到貨登記後進入驗收流程</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="receiving">
+        <span class="material-symbols-rounded">add</span>
+        新增收貨
+      </button>
     </div>
     <div class="operation-table-wrap">
       <table class="operation-table">
@@ -4197,7 +5095,7 @@ html[data-theme="dark"] .inventory-page{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="receivingTableBody">
           <tr>
             <td>RC261006001</td>
             <td>宏達材料</td>
@@ -4244,6 +5142,10 @@ html[data-theme="dark"] .inventory-page{
     <div class="operation-card-head">
       <strong>驗收作業清單</strong>
       <span>驗收合格後才可進入入庫</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="inspection">
+        <span class="material-symbols-rounded">add</span>
+        新增驗收
+      </button>
     </div>
     <div class="operation-table-wrap">
       <table class="operation-table">
@@ -4258,7 +5160,7 @@ html[data-theme="dark"] .inventory-page{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="inspectionTableBody">
           <tr>
             <td>QC261006003</td>
             <td>RC261006001</td>
@@ -4305,6 +5207,10 @@ html[data-theme="dark"] .inventory-page{
     <div class="operation-card-head">
       <strong>入庫作業清單</strong>
       <span>依驗收結果分配倉庫與儲位</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="putaway">
+        <span class="material-symbols-rounded">add</span>
+        新增入庫
+      </button>
     </div>
     <div class="operation-table-wrap">
       <table class="operation-table">
@@ -4319,12 +5225,12 @@ html[data-theme="dark"] .inventory-page{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="putawayTableBody">
           <tr>
             <td>IN261006008</td>
             <td>電子零件</td>
             <td>500</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>A-01-02</td>
             <td>LOT261006A</td>
             <td><span class="status blue">待入庫</span></td>
@@ -4333,7 +5239,7 @@ html[data-theme="dark"] .inventory-page{
             <td>IN261006009</td>
             <td>包裝材料</td>
             <td>760</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>B-02-04</td>
             <td>LOT261006B</td>
             <td><span class="status orange">待確認儲位</span></td>
@@ -4366,6 +5272,10 @@ html[data-theme="dark"] .inventory-page{
     <div class="operation-card-head">
       <strong>出庫作業清單</strong>
       <span>確認可用量後執行揀貨與出庫</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="outbound">
+        <span class="material-symbols-rounded">add</span>
+        新增出庫
+      </button>
     </div>
     <div class="operation-table-wrap">
       <table class="operation-table">
@@ -4380,7 +5290,7 @@ html[data-theme="dark"] .inventory-page{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="outboundTableBody">
           <tr>
             <td>OUT261006004</td>
             <td>企劃部</td>
@@ -4427,6 +5337,10 @@ html[data-theme="dark"] .inventory-page{
     <div class="operation-card-head">
       <strong>調撥作業清單</strong>
       <span>跨倉庫移轉時保留來源與目的儲位紀錄</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="transfer">
+        <span class="material-symbols-rounded">add</span>
+        新增調撥
+      </button>
     </div>
     <div class="operation-table-wrap">
       <table class="operation-table">
@@ -4441,13 +5355,13 @@ html[data-theme="dark"] .inventory-page{
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="transferTableBody">
           <tr>
             <td>TR261006002</td>
             <td>包裝材料</td>
             <td>150</td>
-            <td>主倉 / B-02-03</td>
-            <td>備品倉 / SP-01-02</td>
+            <td>總部主倉 / B-02-03</td>
+            <td>辦公室備品倉 / SP-01-02</td>
             <td>OG</td>
             <td><span class="status blue">待調撥</span></td>
           </tr>
@@ -4455,8 +5369,8 @@ html[data-theme="dark"] .inventory-page{
             <td>TR261006003</td>
             <td>半成品</td>
             <td>80</td>
-            <td>備品倉 / SP-01-01</td>
-            <td>主倉 / C-02-01</td>
+            <td>辦公室備品倉 / SP-01-01</td>
+            <td>總部主倉 / C-02-01</td>
             <td>KEN</td>
             <td><span class="status orange">運送中</span></td>
           </tr>
@@ -4545,6 +5459,11 @@ html[data-theme="dark"] .inventory-page{
       供應商
     </button>
 
+    <button class="tab" type="button" data-purchase-tab="internal">
+      <span class="material-symbols-rounded">move_up</span>
+      內部補貨
+    </button>
+
   </div>
 
   <div class="purchase-tab-panel active" data-purchase-panel="request">
@@ -4555,8 +5474,8 @@ html[data-theme="dark"] .inventory-page{
         <label for="purchaseWarehouseFilter">倉庫</label>
         <select id="purchaseWarehouseFilter">
           <option value="">全部倉庫</option>
-          <option value="主倉">主倉</option>
-          <option value="備品倉">備品倉</option>
+          <option value="主倉">總部主倉</option>
+          <option value="備品倉">辦公室備品倉</option>
         </select>
       </div>
 
@@ -4600,6 +5519,11 @@ html[data-theme="dark"] .inventory-page{
       </div>
 
       <div class="purchase-toolbar-actions">
+        <button class="secondary-action-btn" type="button" data-create-workflow="purchase">
+          <span class="material-symbols-rounded">add</span>
+          新增需求
+        </button>
+
         <button class="secondary-action-btn" id="purchaseExportBtn" type="button">
           <span class="material-symbols-rounded">download</span>
           匯出
@@ -4639,7 +5563,7 @@ html[data-theme="dark"] .inventory-page{
             <td>PR261006001</td>
             <td>ITM0003</td>
             <td>成品</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>980</td>
             <td>1,200</td>
             <td>500</td>
@@ -4660,7 +5584,7 @@ html[data-theme="dark"] .inventory-page{
             <td>PR261006002</td>
             <td>ITM0012</td>
             <td>清潔耗材</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>42</td>
             <td>80</td>
             <td>60</td>
@@ -4681,7 +5605,7 @@ html[data-theme="dark"] .inventory-page{
             <td>PR261006003</td>
             <td>ITM0021</td>
             <td>維修備品</td>
-            <td>備品倉</td>
+            <td>辦公室備品倉</td>
             <td>18</td>
             <td>30</td>
             <td>20</td>
@@ -4702,7 +5626,7 @@ html[data-theme="dark"] .inventory-page{
             <td>PR261005006</td>
             <td>ITM0002</td>
             <td>包裝材料</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>1,680</td>
             <td>1,500</td>
             <td>800</td>
@@ -4723,7 +5647,7 @@ html[data-theme="dark"] .inventory-page{
             <td>PR261005009</td>
             <td>ITM0030</td>
             <td>活動耗材</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>120</td>
             <td>100</td>
             <td>0</td>
@@ -4875,6 +5799,112 @@ html[data-theme="dark"] .inventory-page{
 
 </div>
 
+
+  <div class="purchase-tab-panel" data-purchase-panel="internal">
+
+    <div class="flow-card">
+      <div class="flow-card-head">
+        <strong>企劃部 → 總部補貨流程</strong>
+        <span>共用品與低庫存品項使用同一套流程</span>
+      </div>
+
+      <div class="flow-steps">
+
+        <div class="flow-step">
+          <div class="flow-step-no">1</div>
+          <strong>盤點 / 低庫存提示</strong>
+          <small>企劃部依盤點日或安全庫存自動產生需求。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">2</div>
+          <strong>向總部申請</strong>
+          <small>確認品項與數量後送出內部補貨申請。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">3</div>
+          <strong>總部備貨</strong>
+          <small>由總部主倉確認可用量並完成揀貨。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">4</div>
+          <strong>取貨 / 清點</strong>
+          <small>領料人取貨後再次清點實際數量。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">5</div>
+          <strong>上架 / 入庫</strong>
+          <small>完成後更新辦公室或作業區的現有量。</small>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="operation-card">
+      <div class="operation-card-head">
+        <strong>內部補貨申請</strong>
+        <span>共用品不可取消；其餘依權限處理</span>
+      </div>
+
+      <div class="operation-table-wrap">
+        <table class="internal-request-table">
+          <thead>
+            <tr>
+              <th>申請單號</th>
+              <th>申請單位</th>
+              <th>品項</th>
+              <th>申請數量</th>
+              <th>來源倉</th>
+              <th>目的區域</th>
+              <th>需求原因</th>
+              <th>狀態</th>
+              <th>規則</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>IR261006001</td>
+              <td>企劃部</td>
+              <td>衛生紙</td>
+              <td>6 箱</td>
+              <td>總部主倉</td>
+              <td>辦公室</td>
+              <td>定期補貨</td>
+              <td><span class="status blue">待備貨</span></td>
+              <td><span class="mandatory-tag">不可取消</span></td>
+            </tr>
+            <tr>
+              <td>IR261006002</td>
+              <td>企劃部</td>
+              <td>漂白水</td>
+              <td>12 瓶</td>
+              <td>總部主倉</td>
+              <td>作業區</td>
+              <td>低庫存</td>
+              <td><span class="status orange">備貨中</span></td>
+              <td><span class="mandatory-tag">不可取消</span></td>
+            </tr>
+            <tr>
+              <td>IR261006003</td>
+              <td>機台區</td>
+              <td>維修備品</td>
+              <td>4 組</td>
+              <td>總部主倉</td>
+              <td>機台區維修區</td>
+              <td>人工申請</td>
+              <td><span class="status green">已完成</span></td>
+              <td>一般申請</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
 <!-- =====================================================
      ASSET PAGE
 ====================================================== -->
@@ -5005,6 +6035,11 @@ html[data-theme="dark"] .inventory-page{
       </div>
 
       <div class="asset-toolbar-actions">
+        <button class="secondary-action-btn" type="button" data-create-workflow="asset">
+          <span class="material-symbols-rounded">add</span>
+          新增資產
+        </button>
+
         <button class="secondary-action-btn" id="assetExportBtn" type="button">
           <span class="material-symbols-rounded">download</span>
           匯出
@@ -5322,10 +6357,10 @@ html[data-theme="dark"] .inventory-page{
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="stocktakeTaskBody">
             <tr>
               <td>ST261006001</td>
-              <td>主倉 / A 區</td>
+              <td>總部主倉 / A 區</td>
               <td>OG</td>
               <td>2026/10/06</td>
               <td>12 / 20</td>
@@ -5334,7 +6369,7 @@ html[data-theme="dark"] .inventory-page{
             </tr>
             <tr>
               <td>ST261006002</td>
-              <td>備品倉</td>
+              <td>辦公室備品倉</td>
               <td>KEN</td>
               <td>2026/10/06</td>
               <td>4 / 8</td>
@@ -5365,8 +6400,8 @@ html[data-theme="dark"] .inventory-page{
         <label for="stocktakeWarehouseFilter">倉庫</label>
         <select id="stocktakeWarehouseFilter">
           <option value="">全部倉庫</option>
-          <option value="主倉">主倉</option>
-          <option value="備品倉">備品倉</option>
+          <option value="主倉">總部主倉</option>
+          <option value="備品倉">辦公室備品倉</option>
         </select>
       </div>
 
@@ -5398,10 +6433,16 @@ html[data-theme="dark"] .inventory-page{
         <strong>實盤清單</strong>
         <span id="stocktakeResultCount">共 4 筆</span>
       </div>
-      <button class="secondary-action-btn" id="stocktakeExportBtn" type="button">
-        <span class="material-symbols-rounded">download</span>
-        匯出
-      </button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="secondary-action-btn" type="button" data-create-workflow="stocktake">
+          <span class="material-symbols-rounded">add</span>
+          新增盤點
+        </button>
+        <button class="secondary-action-btn" id="stocktakeExportBtn" type="button">
+          <span class="material-symbols-rounded">download</span>
+          匯出
+        </button>
+      </div>
     </div>
 
     <div class="stocktake-table-card">
@@ -5424,7 +6465,7 @@ html[data-theme="dark"] .inventory-page{
           <tr data-stocktake-row data-warehouse="主倉">
             <td>ITM0001</td>
             <td>電子零件</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>A-01-01</td>
             <td data-book-qty>2350</td>
             <td><input class="count-input" type="number" min="0" value="2350"></td>
@@ -5436,7 +6477,7 @@ html[data-theme="dark"] .inventory-page{
           <tr data-stocktake-row data-warehouse="主倉">
             <td>ITM0002</td>
             <td>包裝材料</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>B-02-03</td>
             <td data-book-qty>1680</td>
             <td><input class="count-input" type="number" min="0" value="1668"></td>
@@ -5448,7 +6489,7 @@ html[data-theme="dark"] .inventory-page{
           <tr data-stocktake-row data-warehouse="主倉">
             <td>ITM0003</td>
             <td>成品</td>
-            <td>主倉</td>
+            <td>總部主倉</td>
             <td>C-01-02</td>
             <td data-book-qty>980</td>
             <td><input class="count-input" type="number" min="0" value="985"></td>
@@ -5460,7 +6501,7 @@ html[data-theme="dark"] .inventory-page{
           <tr data-stocktake-row data-warehouse="備品倉">
             <td>ITM0004</td>
             <td>半成品</td>
-            <td>備品倉</td>
+            <td>辦公室備品倉</td>
             <td>SP-01-01</td>
             <td data-book-qty>520</td>
             <td><input class="count-input" type="number" min="0" value="520"></td>
@@ -5508,7 +6549,7 @@ html[data-theme="dark"] .inventory-page{
             </tr>
             <tr>
               <td>ST261001003</td>
-              <td>主倉 / B 區</td>
+              <td>總部主倉 / B 區</td>
               <td>2026/10/01</td>
               <td>32</td>
               <td>2</td>
@@ -5532,8 +6573,123 @@ html[data-theme="dark"] .inventory-page{
 
   <div class="page-head">
     <div class="page-title">
-      <h1>更多功能</h1>
-      <p>倉庫、儲位、通知與異動紀錄等管理工具</p>
+      <h1>場域與管理工具</h1>
+      <p>統一總部、辦公室、作業區與機台區的倉儲位置與管理流程</p>
+    </div>
+  </div>
+
+  <div class="site-grid">
+
+    <section class="site-card">
+      <div class="site-card-head">
+        <div class="site-card-icon">
+          <span class="material-symbols-rounded">corporate_fare</span>
+        </div>
+        <div>
+          <strong>總部</strong>
+          <p>主要庫存與補貨來源</p>
+        </div>
+      </div>
+      <div class="site-tags">
+        <span class="site-tag">總部主倉</span>
+        <span class="site-tag">收貨</span>
+        <span class="site-tag">驗收</span>
+        <span class="site-tag">出貨</span>
+      </div>
+    </section>
+
+    <section class="site-card">
+      <div class="site-card-head">
+        <div class="site-card-icon">
+          <span class="material-symbols-rounded">apartment</span>
+        </div>
+        <div>
+          <strong>辦公室</strong>
+          <p>行政與企劃日常領用</p>
+        </div>
+      </div>
+      <div class="site-tags">
+        <span class="site-tag">企劃部</span>
+        <span class="site-tag">辦公室備品倉</span>
+        <span class="site-tag">共用品</span>
+      </div>
+    </section>
+
+    <section class="site-card">
+      <div class="site-card-head">
+        <div class="site-card-icon">
+          <span class="material-symbols-rounded">precision_manufacturing</span>
+        </div>
+        <div>
+          <strong>作業區</strong>
+          <p>現場作業與耗用品配置</p>
+        </div>
+      </div>
+      <div class="site-tags">
+        <span class="site-tag">洗牌房</span>
+        <span class="site-tag">棚區1 真人</span>
+        <span class="site-tag">棚區2 RB</span>
+        <span class="site-tag">棚區3 MBL</span>
+      </div>
+    </section>
+
+    <section class="site-card">
+      <div class="site-card-head">
+        <div class="site-card-icon">
+          <span class="material-symbols-rounded">build_circle</span>
+        </div>
+        <div>
+          <strong>機台區</strong>
+          <p>機台零件與維修備品</p>
+        </div>
+      </div>
+      <div class="site-tags">
+        <span class="site-tag">倉架 2 層</span>
+        <span class="site-tag">維修區</span>
+        <span class="site-tag">備品管理</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="flow-card">
+    <div class="flow-card-head">
+      <strong>公司倉儲主流程</strong>
+      <span>所有場域共用同一套狀態與單據邏輯</span>
+    </div>
+
+    <div class="flow-steps">
+
+      <div class="flow-step">
+        <div class="flow-step-no">1</div>
+        <strong>需求產生</strong>
+        <small>盤點、低庫存或人工申請。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">2</div>
+        <strong>採購 / 內部補貨</strong>
+        <small>外部採購或向總部主倉申請。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">3</div>
+        <strong>收貨與驗收</strong>
+        <small>到貨登記後先驗收，合格才可入庫。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">4</div>
+        <strong>入庫與上架</strong>
+        <small>指定倉庫、區域與儲位。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">5</div>
+        <strong>領用 / 出庫 / 調撥</strong>
+        <small>完整保留來源、目的與操作紀錄。</small>
+      </div>
+
     </div>
   </div>
 
@@ -5552,16 +6708,16 @@ html[data-theme="dark"] .inventory-page{
 
       <div class="more-list">
         <div class="more-link">
-          <div><strong>主倉</strong><small>　A 區 / B 區 / C 區</small></div>
-          <button type="button">管理</button>
+          <div><strong>總部主倉</strong><small>　A / B / C 區</small></div>
+          <button type="button" data-prototype-action="warehouse-manage">管理</button>
         </div>
         <div class="more-link">
-          <div><strong>備品倉</strong><small>　SP 區</small></div>
-          <button type="button">管理</button>
+          <div><strong>辦公室備品倉</strong><small>　SP 區</small></div>
+          <button type="button" data-prototype-action="warehouse-manage-office">管理</button>
         </div>
         <div class="more-link">
-          <div><strong>位置 / 倉架</strong><small>　儲位編碼與層架</small></div>
-          <button type="button">查看</button>
+          <div><strong>機台區</strong><small>　倉架 2 層 / 維修區</small></div>
+          <button type="button" data-prototype-action="machine-location">查看</button>
         </div>
       </div>
     </section>
@@ -5573,22 +6729,22 @@ html[data-theme="dark"] .inventory-page{
         </div>
         <div>
           <h3>通知中心</h3>
-          <p>庫存、採購、驗收與盤點提醒</p>
+          <p>庫存、補貨、驗收與盤點提醒</p>
         </div>
       </div>
 
       <div class="more-list">
         <div class="more-link">
           <div><strong>低庫存提醒</strong><small>　3 項待處理</small></div>
-          <button type="button">查看</button>
+          <button type="button" data-prototype-action="low-stock">查看</button>
         </div>
         <div class="more-link">
           <div><strong>待驗收提醒</strong><small>　8 單待處理</small></div>
-          <button type="button">查看</button>
+          <button type="button" data-prototype-action="inspection-alert">查看</button>
         </div>
         <div class="more-link">
           <div><strong>盤點差異</strong><small>　3 項待複核</small></div>
-          <button type="button">查看</button>
+          <button type="button" data-prototype-action="stocktake-alert">查看</button>
         </div>
       </div>
     </section>
@@ -5600,22 +6756,22 @@ html[data-theme="dark"] .inventory-page{
         </div>
         <div>
           <h3>異動日誌</h3>
-          <p>追蹤所有重要庫存與資產異動</p>
+          <p>所有重要庫存與資產異動留痕</p>
         </div>
       </div>
 
       <div class="more-list">
         <div class="more-link">
           <div><strong>庫存異動</strong><small>　入庫 / 出庫 / 調撥</small></div>
-          <button type="button">查看</button>
+          <button type="button" data-prototype-action="inventory-log">查看</button>
         </div>
         <div class="more-link">
           <div><strong>資產異動</strong><small>　領用 / 歸還 / 移轉</small></div>
-          <button type="button">查看</button>
+          <button type="button" data-prototype-action="asset-log">查看</button>
         </div>
         <div class="more-link">
-          <div><strong>操作紀錄</strong><small>　使用者與時間</small></div>
-          <button type="button">查看</button>
+          <div><strong>操作紀錄</strong><small>　操作人 / 時間 / 原因</small></div>
+          <button type="button" data-prototype-action="operator-log">查看</button>
         </div>
       </div>
     </section>
@@ -5627,11 +6783,15 @@ html[data-theme="dark"] .inventory-page{
         </div>
         <div>
           <h3>快速入口</h3>
-          <p>手機版與桌機版共用的功能入口</p>
+          <p>跨模組直接進入主要作業</p>
         </div>
       </div>
 
       <div class="more-list">
+        <div class="more-link">
+          <div><strong>內部補貨</strong><small>　企劃部 → 總部</small></div>
+          <button type="button" data-more-page="purchase" data-more-purchase-tab="internal">開啟</button>
+        </div>
         <div class="more-link">
           <div><strong>資產管理</strong><small>　清單 / 異動 / 維修</small></div>
           <button type="button" data-more-page="asset">開啟</button>
@@ -5640,15 +6800,12 @@ html[data-theme="dark"] .inventory-page{
           <div><strong>盤點管理</strong><small>　任務 / 實盤 / 歷史</small></div>
           <button type="button" data-more-page="stocktake">開啟</button>
         </div>
-        <div class="more-link">
-          <div><strong>採購作業</strong><small>　需求 / 採購單 / 供應商</small></div>
-          <button type="button" data-more-page="purchase">開啟</button>
-        </div>
       </div>
     </section>
 
   </div>
 
+</div>
 </div>
 
 </section>
@@ -7074,6 +8231,16 @@ document.querySelectorAll('[data-more-page]')
           );
         });
 
+      const purchaseTab=
+        button.dataset.morePurchaseTab;
+
+      if(
+        target==='purchase'&&
+        purchaseTab
+      ){
+        showPurchaseTab(purchaseTab);
+      }
+
     });
 
   });
@@ -7107,6 +8274,890 @@ document.querySelectorAll('[data-quick-page]')
     });
 
   });
+
+
+const prototypeModal=
+  document.getElementById('prototypeModal');
+
+const prototypeModalTitle=
+  document.getElementById('prototypeModalTitle');
+
+const prototypeModalSubtitle=
+  document.getElementById('prototypeModalSubtitle');
+
+const prototypeModalBody=
+  document.getElementById('prototypeModalBody');
+
+const prototypeModalClose=
+  document.getElementById('prototypeModalClose');
+
+const prototypeToast=
+  document.getElementById('prototypeToast');
+
+const prototypeToastText=
+  document.getElementById('prototypeToastText');
+
+let prototypeToastTimer=null;
+
+
+function showPrototypeToast(message){
+
+  if(!prototypeToast||!prototypeToastText)return;
+
+  prototypeToastText.textContent=message;
+  prototypeToast.classList.add('active');
+
+  clearTimeout(prototypeToastTimer);
+
+  prototypeToastTimer=setTimeout(
+    ()=>{
+      prototypeToast.classList.remove('active');
+    },
+    2200
+  );
+
+}
+
+
+function openPrototypeModal({
+  title='詳細資料',
+  subtitle='BOMB WMS',
+  body=''
+}={}){
+
+  if(
+    !prototypeModal||
+    !prototypeModalTitle||
+    !prototypeModalSubtitle||
+    !prototypeModalBody
+  )return;
+
+  prototypeModalTitle.textContent=title;
+  prototypeModalSubtitle.textContent=subtitle;
+  prototypeModalBody.innerHTML=body;
+
+  prototypeModal.classList.add('active');
+  prototypeModal.setAttribute('aria-hidden','false');
+
+}
+
+
+function closePrototypeModal(){
+
+  if(!prototypeModal)return;
+
+  prototypeModal.classList.remove('active');
+  prototypeModal.setAttribute('aria-hidden','true');
+
+}
+
+
+prototypeModalClose?.addEventListener(
+  'click',
+  closePrototypeModal
+);
+
+
+prototypeModal?.addEventListener(
+  'click',
+  event=>{
+
+    if(event.target===prototypeModal){
+      closePrototypeModal();
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  'keydown',
+  event=>{
+
+    if(event.key==='Escape'){
+      closePrototypeModal();
+    }
+
+  }
+);
+
+
+const modalContentMap={
+
+  notifications:{
+    title:'通知中心',
+    subtitle:'即時待辦與異常提醒',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row">
+          <div>
+            <strong>低庫存提醒</strong>
+            <small>成品 ITM0003 可用量已低於安全庫存。</small>
+          </div>
+          <span class="modal-chip">待處理</span>
+        </div>
+        <div class="modal-list-row">
+          <div>
+            <strong>待驗收</strong>
+            <small>目前共有 8 張驗收單尚未完成。</small>
+          </div>
+          <span class="modal-chip">8 單</span>
+        </div>
+        <div class="modal-list-row">
+          <div>
+            <strong>盤點差異</strong>
+            <small>主倉與備品倉共有 3 項差異待複核。</small>
+          </div>
+          <span class="modal-chip">3 項</span>
+        </div>
+      </div>
+    `
+  },
+
+  'todo-all':{
+    title:'我的待辦',
+    subtitle:'目前需要處理的 WMS 作業',
+    body:`
+      <div class="modal-info-grid">
+        <div class="modal-info-card"><span>待收貨</span><strong>12 單</strong></div>
+        <div class="modal-info-card"><span>待驗收</span><strong>8 單</strong></div>
+        <div class="modal-info-card"><span>待入庫</span><strong>15 單</strong></div>
+        <div class="modal-info-card"><span>庫存異常</span><strong>6 項</strong></div>
+      </div>
+    `
+  },
+
+  'inventory-detail':{
+    title:'庫存狀態摘要',
+    subtitle:'現有量與異常概況',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>成品</strong><small>目前庫存量 5,240</small></div><span class="modal-chip">42%</span></div>
+        <div class="modal-list-row"><div><strong>原物料</strong><small>目前庫存量 3,120</small></div><span class="modal-chip">25%</span></div>
+        <div class="modal-list-row"><div><strong>包裝材料</strong><small>目前庫存量 2,180</small></div><span class="modal-chip">17%</span></div>
+        <div class="modal-list-row"><div><strong>半成品</strong><small>目前庫存量 1,260</small></div><span class="modal-chip">10%</span></div>
+      </div>
+    `
+  },
+
+  'warehouse-manage':{
+    title:'總部主倉',
+    subtitle:'Warehouse → Zone → Location',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>A 區</strong><small>電子零件與高周轉物料</small></div><span class="modal-chip">A-01 ～ A-09</span></div>
+        <div class="modal-list-row"><div><strong>B 區</strong><small>包裝材料與一般耗材</small></div><span class="modal-chip">B-01 ～ B-12</span></div>
+        <div class="modal-list-row"><div><strong>C 區</strong><small>成品與半成品</small></div><span class="modal-chip">C-01 ～ C-08</span></div>
+      </div>
+    `
+  },
+
+  'warehouse-manage-office':{
+    title:'辦公室備品倉',
+    subtitle:'辦公室與企劃部共用品',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>SP 區</strong><small>辦公備品與行政耗材</small></div><span class="modal-chip">SP-01 ～ SP-06</span></div>
+        <div class="modal-list-row"><div><strong>共用品</strong><small>衛生紙、漂白水等固定補貨品項</small></div><span class="modal-chip">不可取消</span></div>
+      </div>
+    `
+  },
+
+  'machine-location':{
+    title:'機台區',
+    subtitle:'倉架與維修區',
+    body:`
+      <div class="modal-info-grid">
+        <div class="modal-info-card"><span>倉架</span><strong>2 層機台備品架</strong></div>
+        <div class="modal-info-card"><span>維修區</span><strong>待修 / 維修中 / 完成</strong></div>
+      </div>
+    `
+  },
+
+  'low-stock':{
+    title:'低庫存提醒',
+    subtitle:'需補貨或採購的品項',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>成品 ITM0003</strong><small>現有量 980，可用量 760，低於安全庫存。</small></div><span class="modal-chip">待叫貨</span></div>
+        <div class="modal-list-row"><div><strong>清潔耗材 ITM0012</strong><small>現有量 42，建議叫貨 60。</small></div><span class="modal-chip">待叫貨</span></div>
+      </div>
+    `
+  },
+
+  'inspection-alert':{
+    title:'待驗收提醒',
+    subtitle:'已收貨但尚未完成驗收',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>RC261006001</strong><small>電子零件 500 PCS</small></div><span class="modal-chip">待驗收</span></div>
+        <div class="modal-list-row"><div><strong>RC261006002</strong><small>包裝材料實收數量與預計數量不一致</small></div><span class="modal-chip">異常</span></div>
+      </div>
+    `
+  },
+
+  'stocktake-alert':{
+    title:'盤點差異',
+    subtitle:'需要複核的實盤結果',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>包裝材料</strong><small>帳面 1,680，實盤 1,668，差異 -12。</small></div><span class="modal-chip">待複核</span></div>
+        <div class="modal-list-row"><div><strong>成品</strong><small>帳面 980，實盤 985，差異 +5。</small></div><span class="modal-chip">待確認</span></div>
+      </div>
+    `
+  },
+
+  'inventory-log':{
+    title:'庫存異動日誌',
+    subtitle:'入庫 / 出庫 / 調撥留痕',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>IN261006008</strong><small>電子零件 +500 / 主倉 A-01-02</small></div><span class="modal-chip">入庫</span></div>
+        <div class="modal-list-row"><div><strong>OUT261006004</strong><small>成品 -120 / 企劃部領用</small></div><span class="modal-chip">出庫</span></div>
+        <div class="modal-list-row"><div><strong>TR261006002</strong><small>包裝材料 150 / 主倉 → 備品倉</small></div><span class="modal-chip">調撥</span></div>
+      </div>
+    `
+  },
+
+  'asset-log':{
+    title:'資產異動日誌',
+    subtitle:'領用 / 歸還 / 移轉',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>AST-0001</strong><small>企劃工作站保管人變更為 OG。</small></div><span class="modal-chip">異動</span></div>
+        <div class="modal-list-row"><div><strong>AST-0006</strong><small>會議平板由 RU 領用。</small></div><span class="modal-chip">領用</span></div>
+      </div>
+    `
+  },
+
+  'operator-log':{
+    title:'操作紀錄',
+    subtitle:'操作人、時間與原因',
+    body:`
+      <div class="modal-list">
+        <div class="modal-list-row"><div><strong>OG</strong><small>2026/10/06 14:10　調整資產保管人。</small></div><span class="modal-chip">資產</span></div>
+        <div class="modal-list-row"><div><strong>KEN</strong><small>2026/10/06 11:25　完成會議平板領用。</small></div><span class="modal-chip">領用</span></div>
+        <div class="modal-list-row"><div><strong>RU</strong><small>2026/10/05 16:40　完成企劃部共用品盤點。</small></div><span class="modal-chip">盤點</span></div>
+      </div>
+    `
+  }
+
+};
+
+
+document.querySelectorAll('[data-prototype-action]')
+  .forEach(button=>{
+
+    button.addEventListener('click',()=>{
+
+      const action=
+        button.dataset.prototypeAction;
+
+      const config=
+        modalContentMap[action];
+
+      if(config){
+        openPrototypeModal(config);
+      }
+
+    });
+
+  });
+
+
+document.querySelectorAll('.purchase-action-btn')
+  .forEach(button=>{
+
+    button.addEventListener('click',()=>{
+
+      if(button.disabled)return;
+
+      showPrototypeToast('採購需求狀態已更新');
+
+    });
+
+  });
+
+
+const workflowDefinitions={
+
+  receiving:{
+    title:'新增收貨',
+    subtitle:'建立到貨登記',
+    fields:[
+      ['supplier','供應商','text','宏達材料'],
+      ['item','品項','text','電子零件'],
+      ['qty','預計數量','number','500'],
+      ['received','實收數量','number','500'],
+      ['warehouse','目的倉庫','select','總部主倉|辦公室備品倉'],
+      ['note','備註','textarea','']
+    ]
+  },
+
+  inspection:{
+    title:'新增驗收',
+    subtitle:'確認送驗數量與驗收結果',
+    fields:[
+      ['source','來源收貨單','text','RC261006001'],
+      ['item','品項','text','電子零件'],
+      ['qty','送驗數量','number','500'],
+      ['pass','合格數量','number','500'],
+      ['fail','不良數量','number','0'],
+      ['result','驗收結果','select','驗收合格|部分異常|驗收不合格']
+    ]
+  },
+
+  putaway:{
+    title:'新增入庫',
+    subtitle:'驗收合格後建立入庫資料',
+    fields:[
+      ['item','品項','text','電子零件'],
+      ['qty','入庫數量','number','500'],
+      ['warehouse','目標倉庫','select','總部主倉|辦公室備品倉'],
+      ['location','儲位','text','A-01-02'],
+      ['lot','批號','text','LOT261006A'],
+      ['note','備註','textarea','']
+    ]
+  },
+
+  outbound:{
+    title:'新增出庫',
+    subtitle:'建立領用或出庫需求',
+    fields:[
+      ['department','需求單位','select','企劃部|辦公室|作業區|機台區'],
+      ['item','品項','text','成品'],
+      ['qty','需求數量','number','120'],
+      ['warehouse','來源倉庫','select','總部主倉|辦公室備品倉'],
+      ['location','揀貨儲位','text','C-01-02'],
+      ['note','用途 / 備註','textarea','']
+    ]
+  },
+
+  transfer:{
+    title:'新增調撥',
+    subtitle:'跨倉庫或儲位移轉',
+    fields:[
+      ['item','品項','text','包裝材料'],
+      ['qty','調撥數量','number','150'],
+      ['from','來源','text','總部主倉 / B-02-03'],
+      ['to','目的','text','辦公室備品倉 / SP-01-02'],
+      ['applicant','申請人','text','OG'],
+      ['note','備註','textarea','']
+    ]
+  },
+
+  purchase:{
+    title:'新增採購需求',
+    subtitle:'建立外部採購或低庫存需求',
+    fields:[
+      ['itemNo','品號','text','ITM0003'],
+      ['item','品名','text','成品'],
+      ['warehouse','需求倉庫','select','總部主倉|辦公室備品倉'],
+      ['qty','叫貨數量','number','500'],
+      ['source','需求來源','select','低庫存自動|人工申請'],
+      ['note','備註','textarea','']
+    ]
+  },
+
+  asset:{
+    title:'新增資產',
+    subtitle:'建立新的資產管理資料',
+    fields:[
+      ['assetName','資產名稱','text','新設備'],
+      ['category','類別','select','電腦設備|行動設備|工具設備|作業設備|其他'],
+      ['location','所在區域','select','辦公室|企劃部|機台區|作業區'],
+      ['custodian','保管人','text','OG'],
+      ['date','取得日期','date','2026-10-06'],
+      ['note','備註','textarea','']
+    ]
+  },
+
+  stocktake:{
+    title:'新增盤點任務',
+    subtitle:'建立盤點範圍與負責人',
+    fields:[
+      ['scope','盤點範圍','select','總部主倉 / A 區|總部主倉 / B 區|總部主倉 / C 區|辦公室備品倉|企劃部共用品|機台區'],
+      ['owner','負責人','text','OG'],
+      ['date','盤點日期','date','2026-10-06'],
+      ['mode','盤點方式','select','例行盤點|低庫存複核|臨時盤點'],
+      ['note','備註','textarea','']
+    ]
+  }
+
+};
+
+
+function workflowFieldHtml(field){
+
+  const [name,label,type,value]=field;
+
+  if(type==='select'){
+
+    const options=
+      String(value)
+        .split('|')
+        .map(option=>
+          `<option value="${option}">${option}</option>`
+        )
+        .join('');
+
+    return `
+      <div class="workflow-field">
+        <label for="wf-${name}">${label}</label>
+        <select id="wf-${name}" name="${name}">
+          ${options}
+        </select>
+      </div>
+    `;
+
+  }
+
+  if(type==='textarea'){
+
+    return `
+      <div class="workflow-field full">
+        <label for="wf-${name}">${label}</label>
+        <textarea id="wf-${name}" name="${name}">${value}</textarea>
+      </div>
+    `;
+
+  }
+
+  return `
+    <div class="workflow-field">
+      <label for="wf-${name}">${label}</label>
+      <input
+        id="wf-${name}"
+        name="${name}"
+        type="${type}"
+        value="${value}"
+        ${type==='number'?'min="0"':''}
+      >
+    </div>
+  `;
+
+}
+
+
+function openWorkflowForm(type){
+
+  const definition=
+    workflowDefinitions[type];
+
+  if(!definition)return;
+
+  const fields=
+    definition.fields
+      .map(workflowFieldHtml)
+      .join('');
+
+  openPrototypeModal({
+    title:definition.title,
+    subtitle:definition.subtitle,
+    body:`
+      <form class="workflow-form" id="workflowForm" data-workflow-type="${type}">
+        <div class="workflow-form-grid">
+          ${fields}
+        </div>
+
+        <div class="workflow-hint">
+          Prototype 目前會將新增資料保存在此瀏覽器 localStorage，方便操作展示；正式版再由後端 API 與資料庫接手。
+        </div>
+
+        <div class="workflow-form-actions">
+          <button class="workflow-cancel-btn" type="button" data-workflow-cancel>
+            取消
+          </button>
+          <button class="workflow-save-btn" type="submit">
+            <span class="material-symbols-rounded">save</span>
+            儲存
+          </button>
+        </div>
+      </form>
+    `
+  });
+
+}
+
+
+document.querySelectorAll('[data-create-workflow]')
+  .forEach(button=>{
+
+    button.addEventListener('click',()=>{
+
+      openWorkflowForm(
+        button.dataset.createWorkflow
+      );
+
+    });
+
+  });
+
+
+prototypeModalBody?.addEventListener(
+  'click',
+  event=>{
+
+    const cancel=
+      event.target.closest(
+        '[data-workflow-cancel]'
+      );
+
+    if(cancel){
+      closePrototypeModal();
+    }
+
+  }
+);
+
+
+const workflowStorageKey=
+  'bomb-wms-prototype-created-records';
+
+
+function readWorkflowRecords(){
+
+  try{
+    const rows=
+      JSON.parse(
+        localStorage.getItem(workflowStorageKey)||'[]'
+      );
+
+    return Array.isArray(rows)?rows:[];
+
+  }catch(error){
+    return [];
+  }
+
+}
+
+
+function saveWorkflowRecords(records){
+
+  localStorage.setItem(
+    workflowStorageKey,
+    JSON.stringify(records)
+  );
+
+}
+
+
+function escWorkflow(value){
+
+  return String(value??'')
+    .replace(
+      /[&<>"']/g,
+      char=>({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[char])
+    );
+
+}
+
+
+function prototypeRecordNo(prefix,createdAt){
+
+  const date=
+    new Date(createdAt||Date.now());
+
+  const yy=
+    String(date.getFullYear()).slice(-2);
+
+  const mm=
+    String(date.getMonth()+1).padStart(2,'0');
+
+  const dd=
+    String(date.getDate()).padStart(2,'0');
+
+  const suffix=
+    String(
+      Math.floor(
+        Math.abs(date.getTime())%1000
+      )
+    ).padStart(3,'0');
+
+  return `${prefix}${yy}${mm}${dd}${suffix}`;
+
+}
+
+
+function renderWorkflowRecord(record){
+
+  if(!record||!record.type)return;
+
+  const data=record.data||{};
+  const createdAt=record.createdAt||new Date().toISOString();
+
+  const row=
+    document.createElement('tr');
+
+  row.dataset.prototypeCreated='true';
+
+  if(record.type==='receiving'){
+
+    const body=
+      document.getElementById('receivingTableBody');
+
+    if(!body)return;
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('RC',createdAt)}</td>
+      <td>${escWorkflow(data.supplier)}</td>
+      <td>${escWorkflow(data.item)}</td>
+      <td>${escWorkflow(data.qty)}</td>
+      <td>${escWorkflow(data.received)}</td>
+      <td>${new Date(createdAt).toLocaleString('zh-TW')}</td>
+      <td><span class="status blue">待驗收</span></td>
+    `;
+
+    body.prepend(row);
+    return;
+  }
+
+
+  if(record.type==='inspection'){
+
+    const body=
+      document.getElementById('inspectionTableBody');
+
+    if(!body)return;
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('QC',createdAt)}</td>
+      <td>${escWorkflow(data.source)}</td>
+      <td>${escWorkflow(data.item)}</td>
+      <td>${escWorkflow(data.qty)}</td>
+      <td>${escWorkflow(data.pass)}</td>
+      <td>${escWorkflow(data.fail)}</td>
+      <td><span class="status ${data.result==='驗收合格'?'green':'orange'}">${escWorkflow(data.result)}</span></td>
+    `;
+
+    body.prepend(row);
+    return;
+  }
+
+
+  if(record.type==='putaway'){
+
+    const body=
+      document.getElementById('putawayTableBody');
+
+    if(!body)return;
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('IN',createdAt)}</td>
+      <td>${escWorkflow(data.item)}</td>
+      <td>${escWorkflow(data.qty)}</td>
+      <td>${escWorkflow(data.warehouse)}</td>
+      <td>${escWorkflow(data.location)}</td>
+      <td>${escWorkflow(data.lot)}</td>
+      <td><span class="status blue">待入庫</span></td>
+    `;
+
+    body.prepend(row);
+    return;
+  }
+
+
+  if(record.type==='outbound'){
+
+    const body=
+      document.getElementById('outboundTableBody');
+
+    if(!body)return;
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('OUT',createdAt)}</td>
+      <td>${escWorkflow(data.department)}</td>
+      <td>${escWorkflow(data.item)}</td>
+      <td>${escWorkflow(data.qty)}</td>
+      <td>${escWorkflow(data.location)}</td>
+      <td>${new Date(createdAt).toLocaleDateString('zh-TW')}</td>
+      <td><span class="status blue">待揀貨</span></td>
+    `;
+
+    body.prepend(row);
+    return;
+  }
+
+
+  if(record.type==='transfer'){
+
+    const body=
+      document.getElementById('transferTableBody');
+
+    if(!body)return;
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('TR',createdAt)}</td>
+      <td>${escWorkflow(data.item)}</td>
+      <td>${escWorkflow(data.qty)}</td>
+      <td>${escWorkflow(data.from)}</td>
+      <td>${escWorkflow(data.to)}</td>
+      <td>${escWorkflow(data.applicant)}</td>
+      <td><span class="status blue">待調撥</span></td>
+    `;
+
+    body.prepend(row);
+    return;
+  }
+
+
+  if(record.type==='purchase'){
+
+    const body=
+      document.getElementById('purchaseRequestBody');
+
+    if(!body)return;
+
+    row.dataset.purchaseRow='';
+    row.dataset.warehouse=data.warehouse||'';
+    row.dataset.status='待叫貨';
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('PR',createdAt)}</td>
+      <td>${escWorkflow(data.itemNo)}</td>
+      <td>${escWorkflow(data.item)}</td>
+      <td>${escWorkflow(data.warehouse)}</td>
+      <td>—</td>
+      <td>—</td>
+      <td>${escWorkflow(data.qty)}</td>
+      <td><input class="purchase-qty" type="number" min="0" value="${escWorkflow(data.qty)}"></td>
+      <td data-status-cell><span class="status orange">待叫貨</span></td>
+      <td>${escWorkflow(data.source)}</td>
+      <td>
+        <div class="purchase-row-actions">
+          <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
+          <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
+        </div>
+      </td>
+    `;
+
+    body.prepend(row);
+    refreshPurchaseSummary();
+    filterPurchaseTable();
+    return;
+  }
+
+
+  if(record.type==='asset'){
+
+    const body=
+      document.getElementById('assetTableBody');
+
+    if(!body)return;
+
+    row.dataset.assetRow='';
+    row.dataset.location=data.location||'';
+    row.dataset.status='使用中';
+
+    row.innerHTML=`
+      <td class="asset-code">${prototypeRecordNo('AST-',createdAt)}</td>
+      <td>${escWorkflow(data.assetName)}</td>
+      <td>${escWorkflow(data.category)}</td>
+      <td>${escWorkflow(data.location)}</td>
+      <td>${escWorkflow(data.custodian)}</td>
+      <td>${escWorkflow(data.date)}</td>
+      <td><span class="status green">使用中</span></td>
+      <td><span class="status orange">待盤點</span></td>
+      <td>${new Date(createdAt).toLocaleDateString('zh-TW')}</td>
+    `;
+
+    body.prepend(row);
+    filterAssetTable();
+    return;
+  }
+
+
+  if(record.type==='stocktake'){
+
+    const body=
+      document.getElementById('stocktakeTaskBody');
+
+    if(!body)return;
+
+    row.innerHTML=`
+      <td>${prototypeRecordNo('ST',createdAt)}</td>
+      <td>${escWorkflow(data.scope)}</td>
+      <td>${escWorkflow(data.owner)}</td>
+      <td>${escWorkflow(data.date)}</td>
+      <td>0 / 0</td>
+      <td>0</td>
+      <td><span class="status blue">待開始</span></td>
+    `;
+
+    body.prepend(row);
+  }
+
+}
+
+
+function restoreWorkflowRecords(){
+
+  document
+    .querySelectorAll('[data-prototype-created="true"]')
+    .forEach(row=>row.remove());
+
+  readWorkflowRecords()
+    .slice()
+    .reverse()
+    .forEach(renderWorkflowRecord);
+
+}
+
+
+prototypeModalBody?.addEventListener(
+  'submit',
+  event=>{
+
+    const form=
+      event.target.closest('#workflowForm');
+
+    if(!form)return;
+
+    event.preventDefault();
+
+    const type=
+      form.dataset.workflowType;
+
+    const data=
+      Object.fromEntries(
+        new FormData(form).entries()
+      );
+
+    const record={
+      id:
+        `${type}-${Date.now()}`,
+      type,
+      data,
+      createdAt:
+        new Date().toISOString()
+    };
+
+    const records=
+      readWorkflowRecords();
+
+    records.unshift(record);
+
+    saveWorkflowRecords(records);
+
+    renderWorkflowRecord(record);
+
+    closePrototypeModal();
+
+    showPrototypeToast(
+      '新增完成，資料已寫入對應清單'
+    );
+
+  }
+);
+
+
+restoreWorkflowRecords();
 
 const themeToggle=document.getElementById('themeToggle');
 
@@ -7145,6 +9196,35 @@ themeToggle?.addEventListener('click',()=>{
 });
   
 </script>
+
+
+<div class="prototype-modal" id="prototypeModal" aria-hidden="true">
+
+  <div class="prototype-modal-card" role="dialog" aria-modal="true">
+
+    <div class="prototype-modal-head">
+
+      <div class="prototype-modal-title">
+        <strong id="prototypeModalTitle">詳細資料</strong>
+        <small id="prototypeModalSubtitle">BOMB WMS</small>
+      </div>
+
+      <button class="prototype-modal-close" id="prototypeModalClose" type="button" aria-label="關閉">
+        <span class="material-symbols-rounded">close</span>
+      </button>
+
+    </div>
+
+    <div class="prototype-modal-body" id="prototypeModalBody"></div>
+
+  </div>
+
+</div>
+
+<div class="prototype-toast" id="prototypeToast">
+  <span class="material-symbols-rounded">check_circle</span>
+  <span id="prototypeToastText">操作完成</span>
+</div>
 
 </body>
 </html>
