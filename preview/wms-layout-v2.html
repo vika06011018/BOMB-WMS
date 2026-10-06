@@ -973,6 +973,59 @@ select{
     font-weight:900;
   }
 }
+
+/* =========================================================
+   SVG ICONS
+========================================================= */
+
+.svg-icon{
+  width:20px;
+  height:20px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.brand-mark .svg-icon{
+  width:22px;
+  height:22px;
+}
+
+.nav-icon{
+  width:25px;
+  display:grid;
+  place-items:center;
+}
+
+.nav-icon .svg-icon{
+  width:19px;
+  height:19px;
+}
+
+.kpi-icon .svg-icon{
+  width:22px;
+  height:22px;
+}
+
+.quick-btn .svg-icon{
+  width:21px;
+  height:21px;
+}
+
+.notify .svg-icon{
+  width:19px;
+  height:19px;
+}
+
+.mobile-bottom .svg-icon{
+  width:19px;
+  height:19px;
+  margin:0 auto 4px;
+}
+  
 </style>
 </head>
 
@@ -984,7 +1037,13 @@ select{
   <aside class="sidebar">
 
     <div class="brand">
-      <div class="brand-mark">◇</div>
+      <div class="brand-mark">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <path d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4Z"/>
+    <path d="m4.5 7.7 7.5 4.4 7.5-4.4"/>
+    <path d="M12 12.1v8.6"/>
+  </svg>
+</div>
 
       <div class="brand-text">
         <div class="brand-title">BOMB WMS</div>
@@ -997,37 +1056,80 @@ select{
 
     <nav class="nav">
 
-      <button class="nav-btn active" data-page="dashboard">
-        <span class="nav-icon">⌂</span>
-        <span class="nav-label">首頁</span>
-      </button>
+  <button class="nav-btn active" data-page="dashboard">
+    <span class="nav-icon">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <path d="m3 11 9-7 9 7"/>
+        <path d="M5.5 9.5V20h13V9.5"/>
+        <path d="M9.5 20v-6h5v6"/>
+      </svg>
+    </span>
+    <span class="nav-label">首頁</span>
+  </button>
 
-      <button class="nav-btn" data-page="inventory">
-        <span class="nav-icon">◇</span>
-        <span class="nav-label">庫存</span>
-      </button>
 
-      <button class="nav-btn">
-        <span class="nav-icon">🛒</span>
-        <span class="nav-label">採購</span>
-      </button>
+  <button class="nav-btn" data-page="inventory">
+    <span class="nav-icon">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <path d="m4 7 8-4 8 4-8 4Z"/>
+        <path d="M4 7v10l8 4 8-4V7"/>
+        <path d="M12 11v10"/>
+      </svg>
+    </span>
+    <span class="nav-label">庫存</span>
+  </button>
 
-      <button class="nav-btn">
-        <span class="nav-icon">▣</span>
-        <span class="nav-label">資產</span>
-      </button>
 
-      <button class="nav-btn">
-        <span class="nav-icon">☑</span>
-        <span class="nav-label">盤點</span>
-      </button>
+  <button class="nav-btn">
+    <span class="nav-icon">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.5L21 7H6"/>
+        <circle cx="9" cy="20" r="1.3"/>
+        <circle cx="18" cy="20" r="1.3"/>
+      </svg>
+    </span>
+    <span class="nav-label">採購</span>
+  </button>
 
-      <button class="nav-btn">
-        <span class="nav-icon">•••</span>
-        <span class="nav-label">更多</span>
-      </button>
 
-    </nav>
+  <button class="nav-btn">
+    <span class="nav-icon">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <rect x="4" y="5" width="16" height="14" rx="2"/>
+        <path d="M8 5V3h8v2"/>
+        <path d="M8 10h8"/>
+        <path d="M8 14h5"/>
+      </svg>
+    </span>
+    <span class="nav-label">資產</span>
+  </button>
+
+
+  <button class="nav-btn">
+    <span class="nav-icon">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <rect x="5" y="3" width="14" height="18" rx="2"/>
+        <path d="M9 3.5h6"/>
+        <path d="m8.5 11 2 2 4.5-5"/>
+        <path d="M9 17h6"/>
+      </svg>
+    </span>
+    <span class="nav-label">盤點</span>
+  </button>
+
+
+  <button class="nav-btn">
+    <span class="nav-icon">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <circle cx="5" cy="12" r="1.5"/>
+        <circle cx="12" cy="12" r="1.5"/>
+        <circle cx="19" cy="12" r="1.5"/>
+      </svg>
+    </span>
+    <span class="nav-label">更多</span>
+  </button>
+
+</nav>
 
     <div class="sidebar-user">
 
@@ -1070,7 +1172,12 @@ select{
           </select>
         </div>
 
-        <button class="notify">♧</button>
+        <button class="notify">
+       <svg class="svg-icon" viewBox="0 0 24 24">
+       <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+       <path d="M10 21h4"/>
+       </svg>
+       </button>
 
         <div class="top-user">
           <div class="top-avatar">OG</div>
@@ -1113,7 +1220,14 @@ select{
 
           <article class="kpi-card">
 
-            <div class="kpi-icon blue">▣</div>
+            <div class="kpi-icon blue">
+            <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M3 6h11v10H3Z"/>
+            <path d="M14 9h4l3 3v4h-7Z"/>
+            <circle cx="7" cy="18" r="2"/>
+            <circle cx="17" cy="18" r="2"/>
+            </svg>
+            </div>
 
             <div>
               <div class="kpi-label">待收貨</div>
@@ -1133,7 +1247,13 @@ select{
 
           <article class="kpi-card">
 
-            <div class="kpi-icon green">✓</div>
+            <div class="kpi-icon green">
+         <svg class="svg-icon" viewBox="0 0 24 24">
+         <rect x="5" y="3" width="14" height="18" rx="2"/>
+         <path d="M9 3.5h6"/>
+         <path d="m8.5 12 2.3 2.3 4.8-5.1"/>
+         </svg>
+         </div>
 
             <div>
               <div class="kpi-label">待驗收</div>
@@ -1153,8 +1273,14 @@ select{
 
           <article class="kpi-card">
 
-            <div class="kpi-icon orange">↑</div>
-
+            <div class="kpi-icon orange">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <path d="m4 8 8-4 8 4-8 4Z"/>
+    <path d="M4 8v9l8 4 8-4V8"/>
+    <path d="M12 20v-8"/>
+    <path d="m9 15 3-3 3 3"/>
+  </svg>
+</div>
             <div>
               <div class="kpi-label">待入庫</div>
 
@@ -1173,7 +1299,13 @@ select{
 
           <article class="kpi-card">
 
-            <div class="kpi-icon red">!</div>
+            <div class="kpi-icon red">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <path d="M12 3 2.8 20h18.4Z"/>
+    <path d="M12 9v5"/>
+    <path d="M12 17.5h.01"/>
+  </svg>
+</div>
 
             <div>
               <div class="kpi-label">庫存異常</div>
@@ -1340,183 +1472,205 @@ select{
         </div>
 
 
-        <!-- QUICK -->
-        <section class="card quick">
+<!-- QUICK -->
+<section class="card quick">
 
-          <div class="quick-title">
-            快速操作
-          </div>
+  <div class="quick-title">
+    快速操作
+  </div>
 
-          <div class="quick-grid">
+  <div class="quick-grid">
 
-            <button class="quick-btn blue">
-              <span>▣</span>
-              收貨
-            </button>
+    <button class="quick-btn blue">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <path d="M3 6h11v10H3Z"/>
+        <path d="M14 9h4l3 3v4h-7Z"/>
+        <circle cx="7" cy="18" r="2"/>
+        <circle cx="17" cy="18" r="2"/>
+      </svg>
+      收貨
+    </button>
 
-            <button class="quick-btn green">
-              <span>✓</span>
-              驗收
-            </button>
+    <button class="quick-btn green">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <rect x="5" y="3" width="14" height="18" rx="2"/>
+        <path d="M9 3.5h6"/>
+        <path d="m8.5 12 2.3 2.3 4.8-5.1"/>
+      </svg>
+      驗收
+    </button>
 
-            <button class="quick-btn orange">
-              <span>↑</span>
-              入庫
-            </button>
+    <button class="quick-btn orange">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <path d="m4 8 8-4 8 4-8 4Z"/>
+        <path d="M4 8v9l8 4 8-4V8"/>
+        <path d="M12 20v-8"/>
+        <path d="m9 15 3-3 3 3"/>
+      </svg>
+      入庫
+    </button>
 
-            <button class="quick-btn purple">
-              <span>↓</span>
-              出庫
-            </button>
+    <button class="quick-btn purple">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <path d="m4 8 8-4 8 4-8 4Z"/>
+        <path d="M4 8v9l8 4 8-4V8"/>
+        <path d="M12 12v8"/>
+        <path d="m9 17 3 3 3-3"/>
+      </svg>
+      出庫
+    </button>
 
-            <button class="quick-btn cyan">
-              <span>⌕</span>
-              庫存查詢
-            </button>
+    <button class="quick-btn cyan">
+      <svg class="svg-icon" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="m15.5 15.5 5 5"/>
+        <path d="M8 8h5"/>
+        <path d="M8 11h4"/>
+      </svg>
+      庫存查詢
+    </button>
 
-          </div>
+  </div>
 
-        </section>
+</section>
 
-      </div>
-
-
-      <!-- =====================================================
-           INVENTORY PAGE
-      ====================================================== -->
-
-      <div class="inventory-page" id="inventoryPage">
-
-        <div class="page-head">
-
-          <div class="page-title">
-            <h1>庫存作業</h1>
-            <p>查詢與管理各項庫存資料</p>
-          </div>
-
-        </div>
-
-
-        <div class="sub-tabs">
-
-          <button class="tab active">庫存查詢</button>
-          <button class="tab">收貨</button>
-          <button class="tab">驗收</button>
-          <button class="tab">入庫</button>
-          <button class="tab">出庫</button>
-          <button class="tab">調撥</button>
-
-        </div>
+</div>
 
 
-        <div class="filter-card">
+<!-- =====================================================
+     INVENTORY PAGE
+====================================================== -->
 
-          <select>
-            <option>全部倉庫</option>
-            <option>主倉</option>
-            <option>備品倉</option>
-          </select>
+<div class="inventory-page" id="inventoryPage">
 
-          <input
-            type="search"
-            placeholder="搜尋品名或品號..."
-          >
+  <div class="page-head">
 
-          <select>
-            <option>全部狀態</option>
-            <option>正常</option>
-            <option>低庫存</option>
-          </select>
+    <div class="page-title">
+      <h1>庫存作業</h1>
+      <p>查詢與管理各項庫存資料</p>
+    </div>
 
-          <button class="primary-btn">
-            查詢
-          </button>
+  </div>
 
-        </div>
+  <div class="sub-tabs">
+
+    <button class="tab active">庫存查詢</button>
+    <button class="tab">收貨</button>
+    <button class="tab">驗收</button>
+    <button class="tab">入庫</button>
+    <button class="tab">出庫</button>
+    <button class="tab">調撥</button>
+
+  </div>
+
+  <div class="filter-card">
+
+    <select>
+      <option>全部倉庫</option>
+      <option>主倉</option>
+      <option>備品倉</option>
+    </select>
+
+    <input
+      type="search"
+      placeholder="搜尋品名或品號..."
+    >
+
+    <select>
+      <option>全部狀態</option>
+      <option>正常</option>
+      <option>低庫存</option>
+    </select>
+
+    <button class="primary-btn">
+      查詢
+    </button>
+
+  </div>
 
 
-        <div class="stock-card">
+  <div class="stock-card">
 
-          <table class="stock-table">
+    <table class="stock-table">
 
-            <thead>
-              <tr>
-                <th>料號</th>
-                <th>品名</th>
-                <th>規格</th>
-                <th>倉庫</th>
-                <th>庫存數量</th>
-                <th>單位</th>
-                <th>狀態</th>
-                <th>更新時間</th>
-              </tr>
-            </thead>
+      <thead>
+        <tr>
+          <th>料號</th>
+          <th>品名</th>
+          <th>規格</th>
+          <th>倉庫</th>
+          <th>庫存數量</th>
+          <th>單位</th>
+          <th>狀態</th>
+          <th>更新時間</th>
+        </tr>
+      </thead>
 
-            <tbody>
+      <tbody>
 
-              <tr>
-                <td>ITM0001</td>
-                <td>電子零件</td>
-                <td>A-100</td>
-                <td>主倉</td>
-                <td>2,350</td>
-                <td>PCS</td>
-                <td>
-                  <span class="status green">正常</span>
-                </td>
-                <td>2026/10/06 10:24</td>
-              </tr>
+        <tr>
+          <td>ITM0001</td>
+          <td>電子零件</td>
+          <td>A-100</td>
+          <td>主倉</td>
+          <td>2,350</td>
+          <td>PCS</td>
+          <td>
+            <span class="status green">正常</span>
+          </td>
+          <td>2026/10/06 10:24</td>
+        </tr>
 
-              <tr>
-                <td>ITM0002</td>
-                <td>包裝材料</td>
-                <td>B-200</td>
-                <td>主倉</td>
-                <td>1,680</td>
-                <td>PCS</td>
-                <td>
-                  <span class="status green">正常</span>
-                </td>
-                <td>2026/10/06 09:17</td>
-              </tr>
+        <tr>
+          <td>ITM0002</td>
+          <td>包裝材料</td>
+          <td>B-200</td>
+          <td>主倉</td>
+          <td>1,680</td>
+          <td>PCS</td>
+          <td>
+            <span class="status green">正常</span>
+          </td>
+          <td>2026/10/06 09:17</td>
+        </tr>
 
-              <tr>
-                <td>ITM0003</td>
-                <td>成品</td>
-                <td>B-200</td>
-                <td>主倉</td>
-                <td>980</td>
-                <td>PCS</td>
-                <td>
-                  <span class="status orange">低庫存</span>
-                </td>
-                <td>2026/10/06 16:32</td>
-              </tr>
+        <tr>
+          <td>ITM0003</td>
+          <td>成品</td>
+          <td>B-200</td>
+          <td>主倉</td>
+          <td>980</td>
+          <td>PCS</td>
+          <td>
+            <span class="status orange">低庫存</span>
+          </td>
+          <td>2026/10/06 16:32</td>
+        </tr>
 
-              <tr>
-                <td>ITM0004</td>
-                <td>半成品</td>
-                <td>C-300</td>
-                <td>備品倉</td>
-                <td>520</td>
-                <td>PCS</td>
-                <td>
-                  <span class="status green">正常</span>
-                </td>
-                <td>2026/10/06 14:08</td>
-              </tr>
+        <tr>
+          <td>ITM0004</td>
+          <td>半成品</td>
+          <td>C-300</td>
+          <td>備品倉</td>
+          <td>520</td>
+          <td>PCS</td>
+          <td>
+            <span class="status green">正常</span>
+          </td>
+          <td>2026/10/06 14:08</td>
+        </tr>
 
-            </tbody>
+      </tbody>
 
-          </table>
+    </table>
 
-        </div>
+  </div>
 
-      </div>
+</div>
 
-    </section>
+</section>
 
-  </main>
+</main>
 
 </div>
 
