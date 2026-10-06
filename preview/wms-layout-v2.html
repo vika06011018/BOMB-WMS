@@ -1,0 +1,1066 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOMB WMS｜介面架構 V2</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#f4f7fb;
+  --panel:#ffffff;
+  --panel-soft:#f8fafc;
+  --line:#e2e8f0;
+  --text:#0f172a;
+  --muted:#64748b;
+  --primary:#2563eb;
+  --primary-soft:#eff6ff;
+  --sidebar:#0f172a;
+  --sidebar-soft:#1e293b;
+  --success:#16a34a;
+  --warning:#d97706;
+  --danger:#dc2626;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:
+    "Microsoft JhengHei",
+    "Noto Sans TC",
+    Arial,
+    sans-serif;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+/* ===== APP ===== */
+
+.app{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:250px 1fr;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar{
+  position:fixed;
+  inset:0 auto 0 0;
+  width:250px;
+  display:flex;
+  flex-direction:column;
+  background:var(--sidebar);
+  color:#fff;
+  z-index:50;
+}
+
+.brand{
+  height:72px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.brand-logo{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#2563eb;
+  font-weight:900;
+}
+
+.brand-name{
+  font-size:18px;
+  font-weight:800;
+}
+
+.brand-sub{
+  margin-top:2px;
+  color:#94a3b8;
+  font-size:11px;
+}
+
+.nav{
+  flex:1;
+  overflow:auto;
+  padding:14px 10px 24px;
+}
+
+.nav-section{
+  margin-bottom:5px;
+}
+
+.nav-btn{
+  width:100%;
+  border:0;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 12px;
+  border-radius:10px;
+  background:transparent;
+  color:#cbd5e1;
+  text-align:left;
+  cursor:pointer;
+}
+
+.nav-btn:hover{
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+.nav-btn.active{
+  background:#2563eb;
+  color:#fff;
+}
+
+.nav-icon{
+  width:22px;
+  text-align:center;
+}
+
+.nav-arrow{
+  margin-left:auto;
+  opacity:.7;
+}
+
+.subnav{
+  display:none;
+  padding:5px 0 8px 34px;
+}
+
+.nav-section.open .subnav{
+  display:block;
+}
+
+.subnav button{
+  width:100%;
+  border:0;
+  padding:9px 12px;
+  border-radius:8px;
+  background:transparent;
+  color:#94a3b8;
+  text-align:left;
+  cursor:pointer;
+}
+
+.subnav button:hover,
+.subnav button.active{
+  color:#fff;
+  background:rgba(255,255,255,.06);
+}
+
+.sidebar-bottom{
+  padding:14px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.user-mini{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#334155;
+  font-size:13px;
+  font-weight:800;
+}
+
+.user-mini strong{
+  display:block;
+  font-size:13px;
+}
+
+.user-mini small{
+  color:#94a3b8;
+}
+
+/* ===== MAIN ===== */
+
+.main{
+  grid-column:2;
+  min-width:0;
+}
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:30;
+  height:72px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:0 26px;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+
+.menu-toggle{
+  display:none;
+  border:0;
+  background:transparent;
+  font-size:24px;
+  cursor:pointer;
+}
+
+.search{
+  position:relative;
+  width:min(460px,50vw);
+}
+
+.search input{
+  width:100%;
+  height:42px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:0 16px 0 40px;
+  outline:none;
+  background:#f8fafc;
+}
+
+.search span{
+  position:absolute;
+  left:14px;
+  top:10px;
+}
+
+.top-actions{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:9px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  cursor:pointer;
+}
+
+.page{
+  padding:28px;
+}
+
+/* ===== HEADER ===== */
+
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  margin-bottom:24px;
+}
+
+.page-header h1{
+  margin:0 0 6px;
+  font-size:26px;
+}
+
+.page-header p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.warehouse-filter{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.warehouse-filter label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.warehouse-filter select{
+  height:40px;
+  padding:0 34px 0 12px;
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#fff;
+}
+
+/* ===== KPI ===== */
+
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.kpi{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+}
+
+.kpi-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+
+.kpi-title{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.kpi-icon{
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:var(--primary-soft);
+}
+
+.kpi-value{
+  font-size:28px;
+  font-weight:900;
+}
+
+.kpi-note{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ===== CONTENT ===== */
+
+.dashboard-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:20px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.card-head{
+  min-height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 18px;
+  border-bottom:1px solid var(--line);
+}
+
+.card-head h2{
+  margin:0;
+  font-size:16px;
+}
+
+.card-head a{
+  color:var(--primary);
+  font-size:13px;
+  text-decoration:none;
+}
+
+.task-list{
+  padding:6px 18px;
+}
+
+.task{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid #f1f5f9;
+}
+
+.task:last-child{
+  border-bottom:0;
+}
+
+.task-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  flex:none;
+  border-radius:10px;
+  background:#f1f5f9;
+}
+
+.task-main{
+  min-width:0;
+  flex:1;
+}
+
+.task-main strong{
+  display:block;
+  margin-bottom:3px;
+  font-size:14px;
+}
+
+.task-main small{
+  color:var(--muted);
+}
+
+.badge{
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.badge.warning{
+  color:#92400e;
+  background:#fef3c7;
+}
+
+.badge.danger{
+  color:#991b1b;
+  background:#fee2e2;
+}
+
+.badge.success{
+  color:#166534;
+  background:#dcfce7;
+}
+
+/* ===== INVENTORY ===== */
+
+.inventory-wrap{
+  padding:18px;
+}
+
+.inventory-summary{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.inventory-box{
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#f8fafc;
+}
+
+.inventory-box small{
+  display:block;
+  margin-bottom:7px;
+  color:var(--muted);
+}
+
+.inventory-box strong{
+  font-size:21px;
+}
+
+.progress{
+  height:9px;
+  margin-top:18px;
+  overflow:hidden;
+  border-radius:999px;
+  background:#e2e8f0;
+}
+
+.progress > span{
+  display:block;
+  width:72%;
+  height:100%;
+  background:var(--primary);
+}
+
+.alert-box{
+  margin-top:14px;
+  padding:13px;
+  border-radius:10px;
+  background:#fff7ed;
+  color:#9a3412;
+  font-size:13px;
+}
+
+/* ===== QUICK ACTION ===== */
+
+.quick-title{
+  margin:26px 0 12px;
+  font-size:16px;
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:12px;
+}
+
+.quick-btn{
+  min-height:92px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:#fff;
+  cursor:pointer;
+}
+
+.quick-btn:hover{
+  border-color:#93c5fd;
+  box-shadow:0 5px 20px rgba(15,23,42,.06);
+}
+
+.quick-btn span{
+  display:block;
+  margin-bottom:8px;
+  font-size:25px;
+}
+
+.quick-btn strong{
+  font-size:13px;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:1100px){
+  .kpi-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:800px){
+  .app{
+    display:block;
+  }
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+    box-shadow:10px 0 30px rgba(0,0,0,.18);
+  }
+
+  .sidebar.show{
+    transform:translateX(0);
+  }
+
+  .main{
+    display:block;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .topbar{
+    height:64px;
+    padding:0 15px;
+  }
+
+  .search{
+    width:auto;
+    flex:1;
+  }
+
+  .page{
+    padding:18px 14px;
+  }
+
+  .page-header{
+    display:block;
+  }
+
+  .warehouse-filter{
+    margin-top:15px;
+  }
+
+  .kpi-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .dashboard-grid{
+    grid-template-columns:1fr;
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:480px){
+  .search{
+    display:none;
+  }
+
+  .page-header h1{
+    font-size:22px;
+  }
+
+  .kpi{
+    padding:14px;
+  }
+
+  .kpi-value{
+    font-size:23px;
+  }
+
+  .inventory-summary{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">B</div>
+
+      <div>
+        <div class="brand-name">BOMB WMS</div>
+        <div class="brand-sub">Warehouse Management System</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+
+      <div class="nav-section">
+        <button class="nav-btn active">
+          <span class="nav-icon">⌂</span>
+          營運總覽
+        </button>
+      </div>
+
+      <div class="nav-section open">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">▦</span>
+          庫存作業
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>庫存查詢</button>
+          <button>收貨</button>
+          <button>驗收</button>
+          <button>入庫上架</button>
+          <button>領用</button>
+          <button>補貨</button>
+          <button>調撥</button>
+          <button>位置移轉</button>
+          <button>庫存異動紀錄</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">▣</span>
+          採購管理
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>採購需求</button>
+          <button>詢價／比價</button>
+          <button>採購單</button>
+          <button>到貨追蹤</button>
+          <button>退貨</button>
+          <button>採購紀錄</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">◇</span>
+          資產設備
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>資產清單</button>
+          <button>設備配置</button>
+          <button>借用／歸還</button>
+          <button>維修／保養</button>
+          <button>故障／停用</button>
+          <button>報廢</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">✓</span>
+          盤點管理
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>建立盤點</button>
+          <button>盤點作業</button>
+          <button>盤點差異</button>
+          <button>差異確認</button>
+          <button>盤點紀錄</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">☑</span>
+          工作中心
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>我的待辦</button>
+          <button>通知中心</button>
+          <button>待我核准</button>
+          <button>異常處理</button>
+          <button>作業紀錄</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">▤</span>
+          報表查詢
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>庫存報表</button>
+          <button>進出庫報表</button>
+          <button>採購報表</button>
+          <button>盤點報表</button>
+          <button>資產報表</button>
+          <button>異動日誌</button>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <button class="nav-btn nav-parent">
+          <span class="nav-icon">⚙</span>
+          系統設定
+          <span class="nav-arrow">⌄</span>
+        </button>
+
+        <div class="subnav">
+          <button>品項管理</button>
+          <button>倉庫／儲位設定</button>
+          <button>組織／人員</button>
+          <button>角色與權限</button>
+          <button>流程／規則</button>
+          <button>編碼規則</button>
+          <button>匯入／匯出</button>
+          <button>系統設定</button>
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="user-mini">
+        <div class="avatar">OG</div>
+
+        <div>
+          <strong>OG</strong>
+          <small>系統管理者</small>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+
+    <header class="topbar">
+
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <div class="search">
+        <span>⌕</span>
+        <input
+          type="search"
+          placeholder="搜尋品項、單號、資產編號..."
+        >
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-btn">🔔</button>
+        <button class="icon-btn">☾</button>
+      </div>
+
+    </header>
+
+    <section class="page">
+
+      <div class="page-header">
+
+        <div>
+          <h1>營運總覽</h1>
+          <p>查看今日待辦、庫存狀態與需要處理的異常事項。</p>
+        </div>
+
+        <div class="warehouse-filter">
+          <label>倉庫</label>
+
+          <select>
+            <option>全部倉庫</option>
+            <option>第一倉</option>
+            <option>備品倉</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- KPI -->
+      <div class="kpi-grid">
+
+        <article class="kpi">
+          <div class="kpi-top">
+            <span class="kpi-title">待收貨</span>
+            <span class="kpi-icon">📦</span>
+          </div>
+
+          <div class="kpi-value">12</div>
+          <div class="kpi-note">3 筆預計今日到貨</div>
+        </article>
+
+        <article class="kpi">
+          <div class="kpi-top">
+            <span class="kpi-title">待驗收</span>
+            <span class="kpi-icon">✓</span>
+          </div>
+
+          <div class="kpi-value">7</div>
+          <div class="kpi-note">其中 2 筆已逾時</div>
+        </article>
+
+        <article class="kpi">
+          <div class="kpi-top">
+            <span class="kpi-title">待入庫</span>
+            <span class="kpi-icon">↳</span>
+          </div>
+
+          <div class="kpi-value">5</div>
+          <div class="kpi-note">等待分配儲位</div>
+        </article>
+
+        <article class="kpi">
+          <div class="kpi-top">
+            <span class="kpi-title">庫存異常</span>
+            <span class="kpi-icon">!</span>
+          </div>
+
+          <div class="kpi-value">4</div>
+          <div class="kpi-note">低庫存與盤點差異</div>
+        </article>
+
+      </div>
+
+      <!-- MAIN DASHBOARD -->
+      <div class="dashboard-grid">
+
+        <article class="card">
+
+          <div class="card-head">
+            <h2>我的待辦</h2>
+            <a href="#">查看全部</a>
+          </div>
+
+          <div class="task-list">
+
+            <div class="task">
+              <div class="task-icon">📦</div>
+
+              <div class="task-main">
+                <strong>3 筆到貨等待收貨</strong>
+                <small>採購到貨作業</small>
+              </div>
+
+              <span class="badge warning">待處理</span>
+            </div>
+
+            <div class="task">
+              <div class="task-icon">✓</div>
+
+              <div class="task-main">
+                <strong>2 筆商品等待驗收</strong>
+                <small>請確認數量與品質</small>
+              </div>
+
+              <span class="badge danger">逾時</span>
+            </div>
+
+            <div class="task">
+              <div class="task-icon">▦</div>
+
+              <div class="task-main">
+                <strong>今日盤點任務</strong>
+                <small>完成進度 18 / 25</small>
+              </div>
+
+              <span class="badge success">進行中</span>
+            </div>
+
+            <div class="task">
+              <div class="task-icon">⚒</div>
+
+              <div class="task-main">
+                <strong>1 台設備等待維修確認</strong>
+                <small>資產設備管理</small>
+              </div>
+
+              <span class="badge warning">待處理</span>
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="card">
+
+          <div class="card-head">
+            <h2>庫存狀態</h2>
+            <a href="#">庫存查詢</a>
+          </div>
+
+          <div class="inventory-wrap">
+
+            <div class="inventory-summary">
+
+              <div class="inventory-box">
+                <small>庫存品項</small>
+                <strong>1,248</strong>
+              </div>
+
+              <div class="inventory-box">
+                <small>低庫存品項</small>
+                <strong>18</strong>
+              </div>
+
+              <div class="inventory-box">
+                <small>庫存總量</small>
+                <strong>36,540</strong>
+              </div>
+
+              <div class="inventory-box">
+                <small>待處理異常</small>
+                <strong>4</strong>
+              </div>
+
+            </div>
+
+            <div class="progress">
+              <span></span>
+            </div>
+
+            <div class="alert-box">
+              ⚠ 目前有 18 個品項低於安全庫存，建議確認補貨或採購需求。
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+      <!-- QUICK ACTION -->
+      <h2 class="quick-title">常用作業</h2>
+
+      <div class="quick-grid">
+
+        <button class="quick-btn">
+          <span>📥</span>
+          <strong>收貨</strong>
+        </button>
+
+        <button class="quick-btn">
+          <span>✓</span>
+          <strong>驗收</strong>
+        </button>
+
+        <button class="quick-btn">
+          <span>📦</span>
+          <strong>入庫上架</strong>
+        </button>
+
+        <button class="quick-btn">
+          <span>↔</span>
+          <strong>調撥</strong>
+        </button>
+
+        <button class="quick-btn">
+          <span>▦</span>
+          <strong>盤點</strong>
+        </button>
+
+        <button class="quick-btn">
+          <span>⌕</span>
+          <strong>庫存查詢</strong>
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+<script>
+document.querySelectorAll('.nav-parent').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    btn.closest('.nav-section').classList.toggle('open');
+  });
+});
+
+const sidebar=document.getElementById('sidebar');
+const menuToggle=document.getElementById('menuToggle');
+
+menuToggle.addEventListener('click',()=>{
+  sidebar.classList.toggle('show');
+});
+
+document.addEventListener('click',e=>{
+  if(
+    window.innerWidth<=800 &&
+    sidebar.classList.contains('show') &&
+    !sidebar.contains(e.target) &&
+    !menuToggle.contains(e.target)
+  ){
+    sidebar.classList.remove('show');
+  }
+});
+</script>
+
+</body>
+</html>
