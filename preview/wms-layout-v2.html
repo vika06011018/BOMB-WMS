@@ -1023,6 +1023,17 @@ select{
   height:18px;
 }
 
+.search-icon{
+  display:grid;
+  place-items:center;
+}
+
+.search-icon .svg-icon{
+  width:17px;
+  height:17px;
+  stroke-width:2;
+}
+  
 .kpi-icon .svg-icon{
   width:23px;
   height:23px;
@@ -1758,7 +1769,12 @@ select{
     <header class="topbar">
 
       <div class="search">
-        <span>⌕</span>
+        <span class="search-icon">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="6.5"/>
+    <path d="m16 16 4.5 4.5"/>
+  </svg>
+</span>
         <input
           type="search"
           placeholder="搜尋單號、品名、關鍵字..."
