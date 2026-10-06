@@ -2916,7 +2916,8 @@ html[data-theme="dark"] .inventory-page{
     <th>規格</th>
     <th>倉庫</th>
     <th>儲位</th>
-    <th>庫存數量</th>
+    <th>現有量</th>
+    <th>可用量</th>
     <th>單位</th>
     <th>狀態</th>
     <th>更新時間</th>
@@ -2932,6 +2933,7 @@ html[data-theme="dark"] .inventory-page{
     <td>主倉</td>
     <td>A-01-01</td>
     <td>2,350</td>
+    <td>2,180</td>
     <td>PCS</td>
     <td>
       <span class="status green">正常</span>
@@ -2946,6 +2948,7 @@ html[data-theme="dark"] .inventory-page{
     <td>主倉</td>
     <td>B-02-03</td>
     <td>1,680</td>
+    <td>1,540</td>
     <td>PCS</td>
     <td>
       <span class="status green">正常</span>
@@ -2960,6 +2963,7 @@ html[data-theme="dark"] .inventory-page{
     <td>主倉</td>
     <td>C-01-02</td>
     <td>980</td>
+    <td>760</td>
     <td>PCS</td>
     <td>
       <span class="status orange">低庫存</span>
@@ -2974,6 +2978,7 @@ html[data-theme="dark"] .inventory-page{
     <td>備品倉</td>
     <td>SP-01-01</td>
     <td>520</td>
+    <td>500</td>
     <td>PCS</td>
     <td>
       <span class="status green">正常</span>
@@ -3147,7 +3152,7 @@ function filterInventoryTable(){
 
     const cells=row.querySelectorAll('td');
 
-    if(cells.length<9)return;
+    if(cells.length<10)return;
 
     const itemNo=
       String(cells[0]?.textContent||'')
@@ -3168,7 +3173,7 @@ function filterInventoryTable(){
       String(cells[3]?.textContent||'').trim();
 
     const rowStatus=
-  String(cells[7]?.textContent||'').trim();
+  String(cells[8]?.textContent||'').trim();
 
     const matchWarehouse=
       !warehouse||rowWarehouse===warehouse;
@@ -3204,7 +3209,7 @@ function filterInventoryTable(){
       emptyRow.id='inventoryEmptyRow';
 
       emptyRow.innerHTML=`
-        <td colspan="9" style="
+        <td colspan="10" style="
           height:110px;
           text-align:center;
           color:#8a99ab;
