@@ -1,0 +1,1811 @@
+<!doctype html>
+<html lang="zh-Hant" data-session="out">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOMB WMS｜營運總覽</title>
+
+
+
+
+<link rel="stylesheet" href="./assets/wms-layout-v2.css">
+</head>
+
+<body>
+
+<section id="wmsLogin" class="wms-login" aria-labelledby="loginTitle">
+  <div class="login-theme" role="group" aria-label="介面色彩模式"><button type="button" data-login-theme="light" aria-label="淺色模式">☀</button><button type="button" data-login-theme="dark" aria-label="深色模式">☾</button></div>
+  <div class="login-card">
+    <div class="login-brand"><span id="loginLogo"></span><strong>BOMB WMS</strong></div>
+    <span class="login-eyebrow">倉儲管理系統</span>
+    <h1 id="loginTitle">開始今天的倉儲作業</h1>
+    <p class="login-intro">管理庫存與位置，讓每一次收貨、領用與歸還都有紀錄。</p>
+    <form id="wmsLoginForm">
+      <fieldset class="login-roles"><legend>選擇原型身分</legend>
+        <label><input type="radio" name="role" value="manager" checked><span><strong>管理者</strong><small>審核與倉儲設定</small></span></label>
+        <label><input type="radio" name="role" value="employee"><span><strong>員工</strong><small>查看待辦與作業</small></span></label>
+      </fieldset>
+      <label class="login-field" for="loginId">人員編號<input id="loginId" name="profileId" autocomplete="username" placeholder="輸入人員編號" maxlength="60" required></label>
+      <label class="login-field" for="loginName">顯示名稱<input id="loginName" name="profileName" autocomplete="name" placeholder="輸入你的姓名" maxlength="60" required></label>
+      <p id="loginError" class="login-error" role="alert" hidden></p>
+      <button type="submit" class="login-submit">進入原型</button>
+    </form>
+    <p class="login-caption">原型體驗入口，尚未接正式帳號與密碼驗證。</p>
+  </div>
+  <p class="login-footer">BOMB WMS · 據點、區域與實際位置由企業自行設定</p>
+</section>
+<div class="app" hidden>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-mark"><svg class="ui-icon" viewBox="0 0 40 44" aria-hidden="true"><path d="m20 2 17 9-7 4-10-6-10 6-7-4Z" fill="#c3dbef"/><path d="m3 14 12 7v19L3 33Z" fill="#0089ff"/><path d="m37 14-12 7v19l12-7Z" fill="#1876dd"/><path d="m20 16 7 4-7 4-7-4Z" fill="#94cfff"/><path d="M17 27v13l3 2 3-2V27l-3 2Z" fill="#d4e9fa"/><path d="m3 14 5 3v10l7 4v9L3 33ZM37 14l-5 3v10l-7 4v9l12-7Z" fill="#0874bd"/></svg></div>
+
+      <div class="brand-text">
+        <div class="brand-title">BOMB WMS</div>
+        
+      </div>
+    </div>
+
+ <nav class="nav">
+
+  <button class="nav-btn active" data-page="dashboard">
+    <span class="nav-icon">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="8" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="3" y="15" width="7" height="6" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/></svg>
+    </span>
+    <span class="nav-label">首頁</span>
+  </button>
+
+  <button class="nav-btn" data-page="inventory">
+    <span class="nav-icon">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4v11l-9 4-9-4Z"/><path d="m3 7 9 4 9-4M12 11v11M8 5l9 4v5"/></svg>
+    </span>
+    <span class="nav-label">庫存</span>
+  </button>
+
+  <button class="nav-btn" data-page="purchase">
+    <span class="nav-icon">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l3 13h11l2-9H6M9 11h10"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+    </span>
+    <span class="nav-label">採購</span>
+  </button>
+
+  <button class="nav-btn" data-page="asset">
+    <span class="nav-icon">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
+    </span>
+    <span class="nav-label">資產</span>
+  </button>
+
+  <button class="nav-btn" data-page="stocktake">
+    <span class="nav-icon">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
+    </span>
+    <span class="nav-label">盤點</span>
+  </button>
+
+  <button class="nav-btn" data-page="more">
+    <span class="nav-icon">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="15" y="3" width="6" height="6" rx="2"/><rect x="3" y="15" width="6" height="6" rx="2"/><rect x="15" y="15" width="6" height="6" rx="2"/></svg>
+    </span>
+    <span class="nav-label">更多</span>
+  </button>
+
+</nav>   
+
+    <div class="sidebar-user">
+
+      <div class="user-row">
+        <div class="user-avatar">OG</div>
+
+        <div class="user-info">
+          <strong>管理者</strong>
+          <small>BOMB Warehouse</small>
+        </div>
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <header class="topbar">
+
+      <div class="search">
+        <span class="search-icon">
+  <svg class="svg-icon" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="6.5"/>
+    <path d="m16 16 4.5 4.5"/>
+  </svg>
+</span>
+        <input
+          type="search"
+          placeholder="搜尋單號、品名、關鍵字..."
+        >
+      </div>
+
+      <div class="top-actions">
+
+        <div class="warehouse">
+          <label>倉庫：</label>
+
+          <select>
+            <option>全部倉庫</option>
+            <option>A1</option>
+            <option>B1</option>
+          </select>
+        </div>
+
+<div class="theme-options" role="group" aria-label="介面色彩模式"><button type="button" class="theme-option" data-set-theme="light" aria-label="淺色模式" title="淺色模式"><svg class="svg-icon theme-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4"/>
+    <path d="M12 2v2"/>
+    <path d="M12 20v2"/>
+    <path d="M4.93 4.93l1.41 1.41"/>
+    <path d="M17.66 17.66l1.41 1.41"/>
+    <path d="M2 12h2"/>
+    <path d="M20 12h2"/>
+    <path d="M4.93 19.07l1.41-1.41"/>
+    <path d="M17.66 6.34l1.41-1.41"/>
+  </svg></button><button type="button" class="theme-option" data-set-theme="dark" aria-label="深色模式" title="深色模式"><svg class="svg-icon theme-moon" viewBox="0 0 24 24">
+    <path d="M20 15.2A8 8 0 0 1 8.8 4a8 8 0 1 0 11.2 11.2Z"/>
+  </svg></button></div>
+        
+        <button class="notify" type="button" data-prototype-action="notifications">
+       <svg class="svg-icon" viewBox="0 0 24 24">
+       <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+       <path d="M10 21h4"/>
+       </svg>
+       </button>
+
+        <div class="top-user">
+          <div class="top-avatar">OG</div>
+
+          <div class="top-user-text">
+            <strong>OG</strong>
+            <small>系統管理員</small>
+          </div>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <section class="page">
+
+      <!-- =====================================================
+           DASHBOARD
+      ====================================================== -->
+
+      <div class="dashboard-page" id="dashboardPage">
+
+        <div class="page-head">
+
+          <div class="page-title">
+            <h1>營運總覽</h1>
+            <p>即時掌握倉儲作業與庫存狀態</p>
+          </div>
+
+          <div class="update">
+            最近更新：剛剛
+          </div>
+
+        </div>
+
+
+        <!-- KPI -->
+        <div class="kpi-grid">
+
+          <article class="kpi-card">
+
+           <div class="kpi-icon blue">
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+</div>
+
+            <div>
+              <div class="kpi-label">待收貨</div>
+
+              <div class="kpi-value">
+                12
+                <small>單</small>
+              </div>
+
+              <div class="kpi-change orange">
+                較昨日 +3 ▲
+              </div>
+            </div>
+
+          </article>
+
+
+          <article class="kpi-card">
+
+            <div class="kpi-icon green">
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="3"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 3 3 5-6"/></svg>
+</div>
+
+            <div>
+              <div class="kpi-label">待驗收</div>
+
+              <div class="kpi-value">
+                8
+                <small>單</small>
+              </div>
+
+              <div class="kpi-change green">
+                較昨日 -2 ▼
+              </div>
+            </div>
+
+          </article>
+
+
+          <article class="kpi-card">
+
+  <div class="kpi-icon orange">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 2v12m-4-4 4 4 4-4"/></svg>
+  </div>
+
+  <div>
+    <div class="kpi-label">待入庫</div>
+
+    <div class="kpi-value">
+      15
+      <small>單</small>
+    </div>
+
+    <div class="kpi-change orange">
+      較昨日 +6 ▲
+    </div>
+  </div>
+
+</article>
+
+
+          <article class="kpi-card">
+
+            <div class="kpi-icon red">
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
+</div>
+
+            <div>
+              <div class="kpi-label">庫存異常</div>
+
+              <div class="kpi-value">
+                6
+                <small>項</small>
+              </div>
+
+              <div class="kpi-change red">
+                待處理
+              </div>
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <div class="content-grid">
+
+          <!-- TODO -->
+          <section class="card">
+
+            <div class="card-head">
+              <h2>我的待辦</h2>
+              <button class="more" type="button" data-prototype-action="todo-all">查看全部 ›</button>
+            </div>
+
+            <div class="todo-wrap">
+
+              <table class="todo-table">
+
+                <thead>
+                  <tr>
+                    <th style="width:82px;">日期</th>
+                    <th style="width:94px;">單號</th>
+                    <th>作業類型</th>
+                    <th>相關品項</th>
+                    <th style="width:70px;">狀態</th>
+                  </tr>
+                </thead>
+
+                <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+
+              </table>
+
+            </div>
+
+          </section>
+
+
+          <!-- INVENTORY -->
+          <section class="card">
+
+            <div class="card-head">
+              <h2>庫存狀態</h2>
+              <button class="more" type="button" data-prototype-action="inventory-detail">查看詳情 ›</button>
+            </div>
+
+            <div class="inventory">
+
+              <div class="donut-box">
+
+                <div class="donut"></div>
+
+                <div class="donut-text">
+                  <strong>12,580</strong>
+                  <small>總庫存量</small>
+                </div>
+
+              </div>
+
+              <div class="legend">
+
+                <div class="legend-row">
+                  <span class="legend-dot blue"></span>
+                  <span class="legend-name">成品</span>
+                  <span class="legend-value">5,240</span>
+                </div>
+
+                <div class="legend-row">
+                  <span class="legend-dot green"></span>
+                  <span class="legend-name">原物料</span>
+                  <span class="legend-value">3,120</span>
+                </div>
+
+                <div class="legend-row">
+                  <span class="legend-dot orange"></span>
+                  <span class="legend-name">包裝材料</span>
+                  <span class="legend-value">2,180</span>
+                </div>
+
+                <div class="legend-row">
+                  <span class="legend-dot purple"></span>
+                  <span class="legend-name">半成品</span>
+                  <span class="legend-value">1,260</span>
+                </div>
+
+                <div class="legend-row">
+                  <span class="legend-dot gray"></span>
+                  <span class="legend-name">其他</span>
+                  <span class="legend-value">780</span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+<!-- QUICK -->
+<section class="card quick">
+
+  <div class="quick-title">
+    快速操作
+  </div>
+
+  <div class="quick-grid">
+
+    <button class="quick-btn blue" type="button" data-quick-page="inventory" data-quick-inventory-tab="receiving">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+      收貨
+    </button>
+
+    <button class="quick-btn green" type="button" data-quick-page="inventory" data-quick-inventory-tab="inspection">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
+      驗收
+    </button>
+
+    <button class="quick-btn orange" type="button" data-quick-page="inventory" data-quick-inventory-tab="putaway">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 2v12m-4-4 4 4 4-4"/></svg>
+      入庫
+    </button>
+
+    <button class="quick-btn purple" type="button" data-quick-page="inventory" data-quick-inventory-tab="outbound">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 14V2m-4 4 4-4 4 4"/></svg>
+      出庫
+    </button>
+
+    <button class="quick-btn cyan" type="button" data-quick-page="inventory" data-quick-inventory-tab="stock">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
+      庫存查詢
+    </button>
+
+  </div>
+
+</section>
+
+</div>
+
+
+<!-- =====================================================
+     INVENTORY PAGE
+====================================================== -->
+
+<div class="inventory-page" id="inventoryPage">
+
+  <div class="page-head">
+
+    <div class="page-title">
+      <h1>庫存作業</h1>
+      <p>查詢與管理各項庫存資料</p>
+    </div>
+
+  </div>
+
+ <div class="sub-tabs">
+
+  <button class="tab active" type="button" data-inventory-tab="stock">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4v11l-9 4-9-4Z"/><path d="m3 7 9 4 9-4M12 11v11M8 5l9 4v5"/></svg>
+    庫存查詢
+  </button>
+
+  <button class="tab" type="button" data-inventory-tab="receiving">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+    收貨
+  </button>
+
+  <button class="tab" type="button" data-inventory-tab="inspection">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
+    驗收
+  </button>
+
+  <button class="tab" type="button" data-inventory-tab="putaway">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 2v12m-4-4 4 4 4-4"/></svg>
+    入庫
+  </button>
+
+  <button class="tab" type="button" data-inventory-tab="outbound">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11 2 18v3h20v-3l-2-7M3 17h5l2 3h4l2-3h5M12 14V2m-4 4 4-4 4 4"/></svg>
+    出庫
+  </button>
+
+  <button class="tab" type="button" data-inventory-tab="transfer">
+    <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h17m-4-4 4 4-4 4M21 16H4m4-4-4 4 4 4"/></svg>
+    調撥
+  </button>
+
+</div>
+
+<div class="inventory-tab-panel active" data-inventory-panel="stock">
+
+  <div class="filter-card">
+
+    <div class="filter-field">
+      <label for="inventoryWarehouseFilter">倉庫</label>
+      <select id="inventoryWarehouseFilter">
+        <option value="">全部倉庫</option>
+        
+        
+      </select>
+    </div>
+
+    <div class="filter-field filter-search">
+      <label for="inventoryKeywordFilter">品項搜尋</label>
+      <input
+        id="inventoryKeywordFilter"
+        type="search"
+        placeholder="輸入品名、品號或關鍵字"
+      >
+    </div>
+
+    <div class="filter-field">
+      <label for="inventoryStatusFilter">庫存狀態</label>
+      <select id="inventoryStatusFilter">
+        <option value="">全部狀態</option>
+        <option value="正常">正常</option>
+        <option value="低庫存">低庫存</option>
+      </select>
+    </div>
+
+    <div class="filter-actions">
+      <button
+        class="primary-btn"
+        id="inventorySearchBtn"
+        type="button"
+      >
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
+        查詢
+      </button>
+    </div>
+
+  </div>
+
+  <div class="inventory-toolbar">
+
+    <div class="inventory-toolbar-title">
+      <strong>庫存清單</strong>
+      <span
+        class="inventory-result-count"
+        id="inventoryResultCount"
+      >
+        共 4 筆
+      </span>
+    </div>
+
+    <button
+      class="inventory-export-btn"
+      id="inventoryExportBtn"
+      type="button"
+    >
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
+      匯出
+    </button>
+
+  </div>
+
+  <div class="stock-card">
+
+    <table class="stock-table">
+
+      <thead>
+        <tr>
+          <th>料號</th>
+          <th>品名</th>
+          <th>規格</th>
+          <th>倉庫</th>
+          <th>儲位</th>
+          <th>現有量</th>
+          <th>可用量</th>
+          <th>單位</th>
+          <th>狀態</th>
+          <th>更新時間</th>
+        </tr>
+      </thead>
+
+      <tbody id="inventoryTableBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+
+    </table>
+
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="receiving">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>今日待收貨</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已收貨</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>異常待處理</span>
+      <strong>0</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>收貨作業清單</strong>
+      <span>到貨登記後進入驗收流程</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="receiving">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        新增收貨
+      </button>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>收貨單號</th>
+            <th>供應商</th>
+            <th>品項</th>
+            <th>預計數量</th>
+            <th>實收數量</th>
+            <th>到貨時間</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="inspection">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待驗收</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日合格</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>驗收異常</span>
+      <strong>0</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>驗收作業清單</strong>
+      <span>驗收合格後才可進入入庫</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="inspection">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        新增驗收
+      </button>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>驗收單號</th>
+            <th>來源收貨單</th>
+            <th>品項</th>
+            <th>送驗數量</th>
+            <th>合格數量</th>
+            <th>不良數量</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="putaway">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待入庫</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已入庫</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>待分配儲位</span>
+      <strong>0</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>入庫作業清單</strong>
+      <span>依驗收結果分配倉庫與儲位</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="putaway">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        新增入庫
+      </button>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>入庫單號</th>
+            <th>品項</th>
+            <th>數量</th>
+            <th>目標倉庫</th>
+            <th>建議儲位</th>
+            <th>批號</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="outbound">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待出庫</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已出庫</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>揀貨中</span>
+      <strong>0</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>出庫作業清單</strong>
+      <span>確認可用量後執行揀貨與出庫</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="outbound">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        新增出庫
+      </button>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>出庫單號</th>
+            <th>需求單位</th>
+            <th>品項</th>
+            <th>需求數量</th>
+            <th>揀貨儲位</th>
+            <th>預計出庫</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<div class="inventory-tab-panel" data-inventory-panel="transfer">
+
+  <div class="operation-summary">
+    <div class="operation-summary-card">
+      <span>待調撥</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>今日已完成</span>
+      <strong>0</strong><small>單</small>
+    </div>
+    <div class="operation-summary-card">
+      <span>運送中</span>
+      <strong>0</strong><small>單</small>
+    </div>
+  </div>
+
+  <div class="operation-card">
+    <div class="operation-card-head">
+      <strong>調撥作業清單</strong>
+      <span>跨倉庫移轉時保留來源與目的儲位紀錄</span>
+      <button class="secondary-action-btn" type="button" data-create-workflow="transfer">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        新增調撥
+      </button>
+    </div>
+    <div class="operation-table-wrap">
+      <table class="operation-table">
+        <thead>
+          <tr>
+            <th>調撥單號</th>
+            <th>品項</th>
+            <th>數量</th>
+            <th>來源</th>
+            <th>目的</th>
+            <th>申請人</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- =====================================================
+     PURCHASE PAGE
+====================================================== -->
+
+<div class="purchase-page" id="purchasePage">
+
+  <div class="page-head">
+
+    <div class="page-title">
+      <h1>採購作業</h1>
+      <p>從低庫存需求、叫貨、採購單到供應商進度集中管理</p>
+    </div>
+
+    <div class="update">
+      採購作業
+    </div>
+
+  </div>
+
+  <div class="purchase-summary">
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
+        待叫貨
+      </div>
+      <strong id="purchaseNeedCount">3</strong>
+      <small>低庫存與人工申請</small>
+    </div>
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h2l3 13h11l2-9H6M9 11h10"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        已叫貨
+      </div>
+      <strong id="purchaseOrderedCount">2</strong>
+      <small>等待供應商到貨</small>
+    </div>
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+        本週到貨
+      </div>
+      <strong>0</strong>
+      <small>採購單預計到貨</small>
+    </div>
+
+    <div class="purchase-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
+        異常
+      </div>
+      <strong>0</strong>
+      <small>數量或交期需確認</small>
+    </div>
+
+  </div>
+
+  <div class="sub-tabs">
+
+    <button class="tab active" type="button" data-purchase-tab="request">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h12M3 10h12M3 15h6M17 12v10M12 17h10"/></svg>
+      採購需求
+    </button>
+
+    <button class="tab" type="button" data-purchase-tab="order">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2v20l3-2 4 2 4-2 3 2V2l-3 2-4-2-4 2ZM9 8h6M9 12h6M9 16h4"/></svg>
+      採購單
+    </button>
+
+    <button class="tab" type="button" data-purchase-tab="supplier">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v11h16V10M2 10l3-7h14l3 7M2 10c0 4 5 4 5 0 0 4 5 4 5 0 0 4 5 4 5 0 0 4 5 4 5 0M9 21v-6h6v6"/></svg>
+      供應商
+    </button>
+
+    <button class="tab" type="button" data-purchase-tab="internal">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18V6h12m-4-4 4 4-4 4M10 14h11M10 18h11M10 22h11"/></svg>
+      內部補貨
+    </button>
+
+  </div>
+
+  <div class="purchase-tab-panel active" data-purchase-panel="request">
+
+    <div class="filter-card">
+
+      <div class="filter-field">
+        <label for="purchaseWarehouseFilter">倉庫</label>
+        <select id="purchaseWarehouseFilter">
+          <option value="">全部倉庫</option>
+          
+          
+        </select>
+      </div>
+
+      <div class="filter-field filter-search">
+        <label for="purchaseKeywordFilter">品項搜尋</label>
+        <input
+          id="purchaseKeywordFilter"
+          type="search"
+          placeholder="輸入品名、品號或關鍵字"
+        >
+      </div>
+
+      <div class="filter-field">
+        <label for="purchaseStatusFilter">叫貨狀態</label>
+        <select id="purchaseStatusFilter">
+          <option value="">全部狀態</option>
+          <option value="待叫貨">待叫貨</option>
+          <option value="已叫貨">已叫貨</option>
+          <option value="無須叫貨">無須叫貨</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button
+          class="primary-btn"
+          id="purchaseSearchBtn"
+          type="button"
+        >
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
+          查詢
+        </button>
+      </div>
+
+    </div>
+
+    <div class="purchase-toolbar">
+
+      <div class="purchase-toolbar-left">
+        <strong>採購需求清單</strong>
+        <span id="purchaseResultCount">共 5 筆</span>
+      </div>
+
+      <div class="purchase-toolbar-actions">
+        <button class="secondary-action-btn" type="button" data-create-workflow="purchase">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          新增需求
+        </button>
+
+        <button class="secondary-action-btn" id="purchaseExportBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
+          匯出
+        </button>
+
+        <button class="secondary-action-btn" id="purchaseResetBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
+          清除篩選
+        </button>
+      </div>
+
+    </div>
+
+    <div class="purchase-table-card">
+
+      <table class="purchase-table">
+
+        <thead>
+          <tr>
+            <th>需求單號</th>
+            <th>品號</th>
+            <th>品名</th>
+            <th>倉庫</th>
+            <th>現有量</th>
+            <th>安全庫存</th>
+            <th>建議叫貨</th>
+            <th>叫貨數量</th>
+            <th>狀態</th>
+            <th>來源</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+
+        <tbody id="purchaseRequestBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+
+      </table>
+
+    </div>
+
+    <div class="purchase-note">
+      低於安全庫存的品項可自動進入採購需求；一旦標記為「已叫貨」，不再顯示「需採購」狀態，避免同一品項重複叫貨。
+    </div>
+
+  </div>
+
+  <div class="purchase-tab-panel" data-purchase-panel="order">
+
+    <div class="operation-card">
+
+      <div class="operation-card-head">
+        <strong>採購單追蹤</strong>
+        <span>已叫貨項目與預計到貨進度</span>
+      </div>
+
+      <div class="operation-table-wrap">
+
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>採購單號</th>
+              <th>供應商</th>
+              <th>品項</th>
+              <th>數量</th>
+              <th>下單日期</th>
+              <th>預計到貨</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="purchase-tab-panel" data-purchase-panel="supplier">
+
+    <div class="operation-card">
+
+      <div class="operation-card-head">
+        <strong>供應商清單</strong>
+        <span>採購來源與交貨表現</span>
+      </div>
+
+      <div class="operation-table-wrap">
+
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>供應商</th>
+              <th>主要供應</th>
+              <th>聯絡窗口</th>
+              <th>平均交期</th>
+              <th>準時率</th>
+              <th>未完成採購單</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+  <div class="purchase-tab-panel" data-purchase-panel="internal">
+
+    <div class="flow-card">
+      <div class="flow-card-head">
+        <strong>內部補貨流程</strong>
+        <span>共用品與低庫存品項使用同一套流程</span>
+      </div>
+
+      <div class="flow-steps">
+
+        <div class="flow-step">
+          <div class="flow-step-no">1</div>
+          <strong>盤點 / 低庫存提示</strong>
+          <small>使用區依盤點日或安全庫存自動產生需求。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">2</div>
+          <strong>向來源據點申請</strong>
+          <small>確認品項與數量後送出內部補貨申請。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">3</div>
+          <strong>來源位置備貨</strong>
+          <small>由來源人員確認可用量並完成揀貨。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">4</div>
+          <strong>取貨 / 清點</strong>
+          <small>領料人取貨後再次清點實際數量。</small>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-step-no">5</div>
+          <strong>上架 / 入庫</strong>
+          <small>完成後更新使用區或倉儲區的現有量。</small>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="operation-card">
+      <div class="operation-card-head">
+        <strong>內部補貨申請</strong>
+        <span>共用品不可取消；其餘依權限處理</span>
+      </div>
+
+      <div class="operation-table-wrap">
+        <table class="internal-request-table">
+          <thead>
+            <tr>
+              <th>申請單號</th>
+              <th>申請單位</th>
+              <th>品項</th>
+              <th>申請數量</th>
+              <th>來源倉</th>
+              <th>目的區域</th>
+              <th>需求原因</th>
+              <th>狀態</th>
+              <th>規則</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+<!-- =====================================================
+     ASSET PAGE
+====================================================== -->
+
+<div class="asset-page" id="assetPage">
+
+  <div class="page-head">
+
+    <div class="page-title">
+      <h1>資產管理</h1>
+      <p>管理公司資產、領用狀態、保管人與異動紀錄</p>
+    </div>
+
+    <div class="update">
+      資產作業
+    </div>
+
+  </div>
+
+  <div class="asset-summary">
+
+    <div class="asset-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4v11l-9 4-9-4Z"/><path d="m3 7 9 4 9-4M12 11v11M8 5l9 4v5"/></svg>
+        資產總數
+      </div>
+      <strong id="assetTotalCount">6</strong>
+      <small>目前登錄資產</small>
+    </div>
+
+    <div class="asset-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M2 21v-3a7 7 0 0 1 12-5m1 5 2 2 5-5"/></svg>
+        使用中
+      </div>
+      <strong id="assetUsingCount">3</strong>
+      <small>已領用或配置</small>
+    </div>
+
+    <div class="asset-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
+        維修中
+      </div>
+      <strong id="assetRepairCount">1</strong>
+      <small>暫不可使用</small>
+    </div>
+
+    <div class="asset-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
+        待盤點
+      </div>
+      <strong id="assetCheckCount">2</strong>
+      <small>需確認位置或保管人</small>
+    </div>
+
+  </div>
+
+  <div class="sub-tabs">
+
+    <button class="tab active" type="button" data-asset-tab="list">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M3 10h18M3 15h18"/></svg>
+      資產清單
+    </button>
+
+    <button class="tab" type="button" data-asset-tab="movement">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h17m-4-4 4 4-4 4M21 16H4m4-4-4 4 4 4"/></svg>
+      異動紀錄
+    </button>
+
+    <button class="tab" type="button" data-asset-tab="maintenance">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
+      維修紀錄
+    </button>
+
+  </div>
+
+  <div class="asset-tab-panel active" data-asset-panel="list">
+
+    <div class="filter-card">
+
+      <div class="filter-field">
+        <label for="assetLocationFilter">所在區域</label>
+        <select id="assetLocationFilter">
+          <option value="">全部區域</option>
+          <option value="使用區">使用區</option>
+          <option value="使用區">使用區</option>
+          <option value="設備區">設備區</option>
+          <option value="倉儲區">倉儲區</option>
+        </select>
+      </div>
+
+      <div class="filter-field filter-search">
+        <label for="assetKeywordFilter">資產搜尋</label>
+        <input
+          id="assetKeywordFilter"
+          type="search"
+          placeholder="輸入資產編號、名稱或保管人"
+        >
+      </div>
+
+      <div class="filter-field">
+        <label for="assetStatusFilter">資產狀態</label>
+        <select id="assetStatusFilter">
+          <option value="">全部狀態</option>
+          <option value="使用中">使用中</option>
+          <option value="閒置">閒置</option>
+          <option value="維修中">維修中</option>
+          <option value="待盤點">待盤點</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button class="primary-btn" id="assetSearchBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
+          查詢
+        </button>
+      </div>
+
+    </div>
+
+    <div class="asset-toolbar">
+
+      <div class="asset-toolbar-left">
+        <strong>0</strong>
+        <span id="assetResultCount">共 6 筆</span>
+      </div>
+
+      <div class="asset-toolbar-actions">
+        <button class="secondary-action-btn" type="button" data-create-workflow="asset">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          新增資產
+        </button>
+
+        <button class="secondary-action-btn" id="assetExportBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
+          匯出
+        </button>
+
+        <button class="secondary-action-btn" id="assetResetBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
+          清除篩選
+        </button>
+      </div>
+
+    </div>
+
+    <div class="asset-table-card">
+
+      <table class="asset-table">
+
+        <thead>
+          <tr>
+            <th>資產編號</th>
+            <th>資產名稱</th>
+            <th>類別</th>
+            <th>所在區域</th>
+            <th>保管人</th>
+            <th>取得日期</th>
+            <th>狀態</th>
+            <th>盤點狀態</th>
+            <th>最後異動</th>
+          </tr>
+        </thead>
+
+        <tbody id="assetTableBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+
+      </table>
+
+    </div>
+
+    <div class="asset-note">
+      資產與一般庫存分開管理；資產重點保留資產編號、所在位置、保管人、異動與維修紀錄，方便盤點與責任追蹤。
+    </div>
+
+  </div>
+
+  <div class="asset-tab-panel" data-asset-panel="movement">
+
+    <div class="operation-card">
+      <div class="operation-card-head">
+        <strong>資產異動紀錄</strong>
+        <span>領用、歸還、移轉與位置變更</span>
+      </div>
+
+      <div class="operation-table-wrap">
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>異動時間</th>
+              <th>資產編號</th>
+              <th>資產名稱</th>
+              <th>異動類型</th>
+              <th>原位置 / 保管人</th>
+              <th>新位置 / 保管人</th>
+              <th>操作人</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="asset-tab-panel" data-asset-panel="maintenance">
+
+    <div class="operation-card">
+      <div class="operation-card-head">
+        <strong>維修紀錄</strong>
+        <span>維修原因、送修時間與處理狀態</span>
+      </div>
+
+      <div class="operation-table-wrap">
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>維修單號</th>
+              <th>資產編號</th>
+              <th>資產名稱</th>
+              <th>故障描述</th>
+              <th>送修日期</th>
+              <th>預計完成</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<!-- =====================================================
+     STOCKTAKE PAGE
+====================================================== -->
+
+<div class="stocktake-page" id="stocktakePage">
+
+  <div class="page-head">
+    <div class="page-title">
+      <h1>盤點管理</h1>
+      <p>建立盤點任務、輸入實盤數量並追蹤差異</p>
+    </div>
+    <div class="update">盤點作業</div>
+  </div>
+
+  <div class="stocktake-summary">
+
+    <div class="stocktake-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
+        進行中
+      </div>
+      <strong>0</strong>
+      <small>目前盤點任務</small>
+    </div>
+
+    <div class="stocktake-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
+        待盤品項
+      </div>
+      <strong>0</strong>
+      <small>尚未完成實盤</small>
+    </div>
+
+    <div class="stocktake-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M12 5v6M8 16h8"/></svg>
+        差異品項
+      </div>
+      <strong>0</strong>
+      <small>需複核或調整</small>
+    </div>
+
+    <div class="stocktake-summary-card">
+      <div class="label">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg>
+        本月完成
+      </div>
+      <strong>0</strong>
+      <small>已結案盤點</small>
+    </div>
+
+  </div>
+
+  <div class="sub-tabs">
+
+    <button class="tab active" type="button" data-stocktake-tab="task">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
+      盤點任務
+    </button>
+
+    <button class="tab" type="button" data-stocktake-tab="count">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M8 6h8M8 11h1M14 11h2M8 15h1M14 15h2M8 19h1M14 19h2"/></svg>
+      實盤作業
+    </button>
+
+    <button class="tab" type="button" data-stocktake-tab="history">
+      <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
+      歷史紀錄
+    </button>
+
+  </div>
+
+  <div class="stocktake-tab-panel active" data-stocktake-panel="task">
+
+    <div class="operation-card">
+      <div class="operation-card-head">
+        <strong>盤點任務</strong>
+        <span>依倉庫、區域或儲位建立盤點範圍</span>
+<button class="secondary-action-btn" type="button" data-create-workflow="stocktake"><svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> 新增盤點任務</button>
+      </div>
+
+      <div class="operation-table-wrap">
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>盤點單號</th>
+              <th>盤點範圍</th>
+              <th>負責人</th>
+              <th>建立日期</th>
+              <th>完成進度</th>
+              <th>差異數</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stocktake-tab-panel" data-stocktake-panel="count">
+
+    <div class="filter-card">
+
+      <div class="filter-field">
+        <label for="stocktakeWarehouseFilter">倉庫</label>
+        <select id="stocktakeWarehouseFilter">
+          <option value="">全部倉庫</option>
+          
+          
+        </select>
+      </div>
+
+      <div class="filter-field filter-search">
+        <label for="stocktakeKeywordFilter">品項搜尋</label>
+        <input id="stocktakeKeywordFilter" type="search" placeholder="輸入品名、品號或儲位">
+      </div>
+
+      <div class="filter-field">
+        <label for="stocktakeVarianceFilter">差異狀態</label>
+        <select id="stocktakeVarianceFilter">
+          <option value="">全部</option>
+          <option value="一致">一致</option>
+          <option value="有差異">有差異</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button class="primary-btn" id="stocktakeSearchBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="m16 16 5 5"/></svg>
+          查詢
+        </button>
+      </div>
+
+    </div>
+
+    <div class="stocktake-toolbar">
+      <div class="stocktake-toolbar-left">
+        <strong>實盤清單</strong>
+        <span id="stocktakeResultCount">共 4 筆</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="secondary-action-btn" type="button" data-create-workflow="stocktake">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          新增盤點
+        </button>
+        <button class="secondary-action-btn" id="stocktakeExportBtn" type="button">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></svg>
+          匯出
+        </button>
+      </div>
+    </div>
+
+    <div class="stocktake-table-card">
+      <table class="stocktake-table">
+        <thead>
+          <tr>
+            <th>料號</th>
+            <th>品名</th>
+            <th>倉庫</th>
+            <th>儲位</th>
+            <th>帳面量</th>
+            <th>實盤量</th>
+            <th>差異</th>
+            <th>結果</th>
+            <th>備註</th>
+          </tr>
+        </thead>
+        <tbody id="stocktakeTableBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="stocktake-tab-panel" data-stocktake-panel="history">
+
+    <div class="operation-card">
+      <div class="operation-card-head">
+        <strong>歷史盤點紀錄</strong>
+        <span>保留盤點結果與差異處理紀錄</span>
+      </div>
+
+      <div class="operation-table-wrap">
+        <table class="operation-table">
+          <thead>
+            <tr>
+              <th>盤點單號</th>
+              <th>盤點範圍</th>
+              <th>完成日期</th>
+              <th>品項數</th>
+              <th>差異數</th>
+              <th>結案人</th>
+              <th>狀態</th>
+            </tr>
+          </thead>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     MORE PAGE
+====================================================== -->
+
+<div class="more-page" id="morePage">
+
+  <div class="page-head">
+    <div class="page-title">
+      <h1>場域與管理工具</h1>
+      <p>依企業設定管理據點、區域與實際位置</p>
+    </div>
+  </div>
+
+  <div class="flow-card">
+    <div class="flow-card-head">
+      <strong>公司倉儲主流程</strong>
+      <span>所有場域共用同一套狀態與單據邏輯</span>
+    </div>
+
+    <div class="flow-steps">
+
+      <div class="flow-step">
+        <div class="flow-step-no">1</div>
+        <strong>需求產生</strong>
+        <small>盤點、低庫存或人工申請。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">2</div>
+        <strong>採購 / 內部補貨</strong>
+        <small>外部採購或內部補貨。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">3</div>
+        <strong>收貨與驗收</strong>
+        <small>到貨登記後先驗收，合格才可入庫。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">4</div>
+        <strong>入庫與上架</strong>
+        <small>指定倉庫、區域與儲位。</small>
+      </div>
+
+      <div class="flow-step">
+        <div class="flow-step-no">5</div>
+        <strong>領用 / 出庫 / 調撥</strong>
+        <small>完整保留來源、目的與操作紀錄。</small>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="more-grid">
+
+    <section class="more-card">
+      <div class="more-card-head">
+        <div class="more-card-icon">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 10-5 10 5v13H2ZM7 21V11h10v10M7 15h10M7 18h10"/></svg>
+        </div>
+        <div>
+          <h3>倉庫與儲位</h3>
+          <p>Warehouse → Zone → Location</p>
+        </div>
+      </div>
+
+      <div class="more-list">
+        <div class="more-link"><div><strong>據點與位置設定</strong><small>　名稱由企業自行建立</small></div><button type="button" data-prototype-action="warehouse-manage">管理</button></div>
+    </section>
+
+    <section class="more-card">
+      <div class="more-card-head">
+        <div class="more-card-icon">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0v6l3 3H3l3-3ZM10 21h4"/></svg>
+        </div>
+        <div>
+          <h3>通知中心</h3>
+          <p>庫存、補貨、驗收與盤點提醒</p>
+        </div>
+      </div>
+
+      <div class="more-list">
+        <div class="more-link">
+          <div><strong>低庫存提醒</strong><small>　3 項待處理</small></div>
+          <button type="button" data-prototype-action="low-stock">查看</button>
+        </div>
+        <div class="more-link">
+          <div><strong>待驗收提醒</strong><small>　8 單待處理</small></div>
+          <button type="button" data-prototype-action="inspection-alert">查看</button>
+        </div>
+        <div class="more-link">
+          <div><strong>盤點差異</strong><small>　3 項待複核</small></div>
+          <button type="button" data-prototype-action="stocktake-alert">查看</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="more-card">
+      <div class="more-card-head">
+        <div class="more-card-icon">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 1 8M3 4v6h6M12 7v5l4 2"/></svg>
+        </div>
+        <div>
+          <h3>異動日誌</h3>
+          <p>所有重要庫存與資產異動留痕</p>
+        </div>
+      </div>
+
+      <div class="more-list">
+        <div class="more-link">
+          <div><strong>庫存異動</strong><small>　入庫 / 出庫 / 調撥</small></div>
+          <button type="button" data-prototype-action="inventory-log">查看</button>
+        </div>
+        <div class="more-link">
+          <div><strong>資產異動</strong><small>　領用 / 歸還 / 移轉</small></div>
+          <button type="button" data-prototype-action="asset-log">查看</button>
+        </div>
+        <div class="more-link">
+          <div><strong>操作紀錄</strong><small>　操作人 / 時間 / 原因</small></div>
+          <button type="button" data-prototype-action="operator-log">查看</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="more-card">
+      <div class="more-card-head">
+        <div class="more-card-icon">
+          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="2"/><rect x="15" y="3" width="6" height="6" rx="2"/><rect x="3" y="15" width="6" height="6" rx="2"/><rect x="15" y="15" width="6" height="6" rx="2"/></svg>
+        </div>
+        <div>
+          <h3>快速入口</h3>
+          <p>跨模組直接進入主要作業</p>
+        </div>
+      </div>
+
+      <div class="more-list">
+        <div class="more-link">
+          <div><strong>內部補貨</strong><small>　目的位置 → 來源位置</small></div>
+          <button type="button" data-more-page="purchase" data-more-purchase-tab="internal">開啟</button>
+        </div>
+        <div class="more-link">
+          <div><strong>資產管理</strong><small>　清單 / 異動 / 維修</small></div>
+          <button type="button" data-more-page="asset">開啟</button>
+        </div>
+        <div class="more-link">
+          <div><strong>盤點管理</strong><small>　任務 / 實盤 / 歷史</small></div>
+          <button type="button" data-more-page="stocktake">開啟</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</div>
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<!-- MOBILE BOTTOM -->
+<nav class="mobile-bottom">
+
+  <button class="active" data-mobile="dashboard">
+    <svg class="svg-icon" viewBox="0 0 24 24">
+      <path d="m3 11 9-7 9 7"/>
+      <path d="M5.5 9.5V20h13V9.5"/>
+      <path d="M9.5 20v-6h5v6"/>
+    </svg>
+    首頁
+  </button>
+
+  <button data-mobile="inventory">
+    <svg class="svg-icon" viewBox="0 0 24 24">
+      <path d="m4 7 8-4 8 4-8 4Z"/>
+      <path d="M4 7v10l8 4 8-4V7"/>
+      <path d="M12 11v10"/>
+    </svg>
+    庫存
+  </button>
+
+  <button data-mobile="purchase">
+    <svg class="svg-icon" viewBox="0 0 24 24">
+      <path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.5L21 7H6"/>
+      <circle cx="9" cy="20" r="1.3"/>
+      <circle cx="18" cy="20" r="1.3"/>
+    </svg>
+    採購
+  </button>
+
+  <button data-mobile="more">
+    <svg class="svg-icon" viewBox="0 0 24 24">
+      <circle cx="5" cy="12" r="1.5"/>
+      <circle cx="12" cy="12" r="1.5"/>
+      <circle cx="19" cy="12" r="1.5"/>
+    </svg>
+    更多
+  </button>
+
+</nav>
+
+
+
+
+
+<div class="prototype-modal" id="prototypeModal" aria-hidden="true">
+
+  <div class="prototype-modal-card" role="dialog" aria-modal="true">
+
+    <div class="prototype-modal-head">
+
+      <div class="prototype-modal-title">
+        <strong id="prototypeModalTitle">詳細資料</strong>
+        <small id="prototypeModalSubtitle">BOMB WMS</small>
+      </div>
+
+      <button class="prototype-modal-close" id="prototypeModalClose" type="button" aria-label="關閉">
+        <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+
+    </div>
+
+    <div class="prototype-modal-body" id="prototypeModalBody"></div>
+
+  </div>
+
+</div>
+
+<div class="prototype-toast" id="prototypeToast">
+  <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg>
+  <span id="prototypeToastText">操作完成</span>
+</div>
+
+<script src="./assets/wms-layout-v2.js"></script>
+</body>
+</html>
