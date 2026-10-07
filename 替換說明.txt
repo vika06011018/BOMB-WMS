@@ -1,0 +1,14 @@
+上傳到 BOMB-WMS 儲存庫根目錄：index.html 與整個 preview 資料夾。TXT 資料夾與本說明不用上傳。
+新版唯一網站入口：https://vika06011018.github.io/BOMB-WMS/
+本機：解壓縮後開啟 index.html，不移動其他檔案。
+完整必要檔案：
+index.html
+preview/wms-layout-v2.html
+preview/assets/wms-layout-v2.css
+preview/assets/wms-layout-v2.js
+preview/assets/fonts/（全部字型）
+先覆蓋並確認網站能開啟，再刪除根目錄舊 assets/，及 preview/ 裡其他舊 HTML；保留上述必要檔案。不刪除 GitHub 設定、工作流程、README 或自訂網域設定。
+保留相同網站來源、localStorage 鍵值與最新報廢版本。不同網址的瀏覽器資料不會自動互通。
+管理者／員工首頁尚未重整，此包整理檔案與入口。
+Commit：整理WMS完整檔案並統一首頁入口
+未由 Codex 執行 Commit 或部署。
