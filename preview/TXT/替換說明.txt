@@ -1,0 +1,10 @@
+BOMB WMS 完整拆檔版
+
+將 ZIP 中 preview 資料夾內的所有檔案上傳到 BOMB-WMS 儲存庫根目錄，保留路徑。
+替換 preview/wms-layout-v2.html，新增 preview/assets/wms-layout-v2.css、preview/assets/wms-layout-v2.js 與 preview/assets/fonts/ 內全部 36 個字型檔案。
+請一起上傳並 Commit；不要只替換 HTML。
+TXT 檔是完整程式內容副本，不需上傳到儲存庫。
+預覽路徑：/preview/wms-layout-v2.html
+既有 localStorage 資料鍵與資料格式保留。
+Commit 訊息：拆分WMS介面樣式功能與字型檔案
+尚未代為 Commit 或部署。
