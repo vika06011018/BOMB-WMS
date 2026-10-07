@@ -293,59 +293,7 @@
                   </tr>
                 </thead>
 
-                <tbody>
-
-                  <tr>
-                    <td>2026/10/06</td>
-                    <td>RC261006001</td>
-                    <td>收貨</td>
-                    <td>電子零件</td>
-                    <td>
-                      <span class="status blue">待處理</span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>2026/10/06</td>
-                    <td>PO261006003</td>
-                    <td>驗收</td>
-                    <td>包裝材料</td>
-                    <td>
-                      <span class="status orange">進行中</span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>2026/10/06</td>
-                    <td>IN261006008</td>
-                    <td>入庫</td>
-                    <td>電子零件</td>
-                    <td>
-                      <span class="status blue">待處理</span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>2026/10/06</td>
-                    <td>OUT261006004</td>
-                    <td>出庫</td>
-                    <td>成品</td>
-                    <td>
-                      <span class="status green">已完成</span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>2026/10/06</td>
-                    <td>TR261006002</td>
-                    <td>調撥</td>
-                    <td>包裝材料</td>
-                    <td>
-                      <span class="status blue">待處理</span>
-                    </td>
-                  </tr>
-
-                </tbody>
+                <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
 
               </table>
 
@@ -514,8 +462,8 @@
       <label for="inventoryWarehouseFilter">倉庫</label>
       <select id="inventoryWarehouseFilter">
         <option value="">全部倉庫</option>
-        <option value="A1">A1</option>
-        <option value="B1">B1</option>
+        
+        
       </select>
     </div>
 
@@ -592,61 +540,7 @@
         </tr>
       </thead>
 
-      <tbody id="inventoryTableBody">
-
-        <tr>
-          <td>ITM0001</td>
-          <td>電子零件</td>
-          <td>A-100</td>
-          <td>A1</td>
-          <td>A-01-01</td>
-          <td>2,350</td>
-          <td>2,180</td>
-          <td>PCS</td>
-          <td><span class="status green">正常</span></td>
-          <td>2026/10/06 10:24</td>
-        </tr>
-
-        <tr>
-          <td>ITM0002</td>
-          <td>包裝材料</td>
-          <td>B-200</td>
-          <td>A1</td>
-          <td>B-02-03</td>
-          <td>1,680</td>
-          <td>1,540</td>
-          <td>PCS</td>
-          <td><span class="status green">正常</span></td>
-          <td>2026/10/06 09:17</td>
-        </tr>
-
-        <tr>
-          <td>ITM0003</td>
-          <td>成品</td>
-          <td>B-200</td>
-          <td>A1</td>
-          <td>C-01-02</td>
-          <td>980</td>
-          <td>760</td>
-          <td>PCS</td>
-          <td><span class="status orange">低庫存</span></td>
-          <td>2026/10/06 16:32</td>
-        </tr>
-
-        <tr>
-          <td>ITM0004</td>
-          <td>半成品</td>
-          <td>C-300</td>
-          <td>B1</td>
-          <td>SP-01-01</td>
-          <td>520</td>
-          <td>500</td>
-          <td>PCS</td>
-          <td><span class="status green">正常</span></td>
-          <td>2026/10/06 14:08</td>
-        </tr>
-
-      </tbody>
+      <tbody id="inventoryTableBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
 
     </table>
 
@@ -659,15 +553,15 @@
   <div class="operation-summary">
     <div class="operation-summary-card">
       <span>今日待收貨</span>
-      <strong>12</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>今日已收貨</span>
-      <strong>28</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>異常待處理</span>
-      <strong>2</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
   </div>
 
@@ -693,26 +587,7 @@
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>RC261006001</td>
-            <td>宏達材料</td>
-            <td>電子零件</td>
-            <td>500</td>
-            <td>500</td>
-            <td>10/06 09:20</td>
-            <td><span class="status blue">待驗收</span></td>
-          </tr>
-          <tr>
-            <td>RC261006002</td>
-            <td>協成包材</td>
-            <td>包裝材料</td>
-            <td>800</td>
-            <td>780</td>
-            <td>10/06 10:45</td>
-            <td><span class="status orange">數量異常</span></td>
-          </tr>
-        </tbody>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -724,15 +599,15 @@
   <div class="operation-summary">
     <div class="operation-summary-card">
       <span>待驗收</span>
-      <strong>8</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>今日合格</span>
-      <strong>21</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>驗收異常</span>
-      <strong>3</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
   </div>
 
@@ -758,26 +633,7 @@
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>QC261006003</td>
-            <td>RC261006001</td>
-            <td>電子零件</td>
-            <td>500</td>
-            <td>500</td>
-            <td>0</td>
-            <td><span class="status green">驗收合格</span></td>
-          </tr>
-          <tr>
-            <td>QC261006004</td>
-            <td>RC261006002</td>
-            <td>包裝材料</td>
-            <td>780</td>
-            <td>760</td>
-            <td>20</td>
-            <td><span class="status orange">部分異常</span></td>
-          </tr>
-        </tbody>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -789,15 +645,15 @@
   <div class="operation-summary">
     <div class="operation-summary-card">
       <span>待入庫</span>
-      <strong>15</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>今日已入庫</span>
-      <strong>34</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>待分配儲位</span>
-      <strong>4</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
   </div>
 
@@ -823,26 +679,7 @@
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>IN261006008</td>
-            <td>電子零件</td>
-            <td>500</td>
-            <td>A1</td>
-            <td>A-01-02</td>
-            <td>LOT261006A</td>
-            <td><span class="status blue">待入庫</span></td>
-          </tr>
-          <tr>
-            <td>IN261006009</td>
-            <td>包裝材料</td>
-            <td>760</td>
-            <td>A1</td>
-            <td>B-02-04</td>
-            <td>LOT261006B</td>
-            <td><span class="status orange">待確認儲位</span></td>
-          </tr>
-        </tbody>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -854,15 +691,15 @@
   <div class="operation-summary">
     <div class="operation-summary-card">
       <span>待出庫</span>
-      <strong>9</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>今日已出庫</span>
-      <strong>26</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>揀貨中</span>
-      <strong>5</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
   </div>
 
@@ -888,26 +725,7 @@
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>OUT261006004</td>
-            <td>使用區</td>
-            <td>成品</td>
-            <td>120</td>
-            <td>C-01-02</td>
-            <td>10/06 15:00</td>
-            <td><span class="status blue">待揀貨</span></td>
-          </tr>
-          <tr>
-            <td>OUT261006005</td>
-            <td>倉儲區</td>
-            <td>包裝材料</td>
-            <td>200</td>
-            <td>B-02-03</td>
-            <td>10/06 16:00</td>
-            <td><span class="status orange">揀貨中</span></td>
-          </tr>
-        </tbody>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -919,15 +737,15 @@
   <div class="operation-summary">
     <div class="operation-summary-card">
       <span>待調撥</span>
-      <strong>6</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>今日已完成</span>
-      <strong>11</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
     <div class="operation-summary-card">
       <span>運送中</span>
-      <strong>3</strong><small>單</small>
+      <strong>0</strong><small>單</small>
     </div>
   </div>
 
@@ -953,26 +771,7 @@
             <th>狀態</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>TR261006002</td>
-            <td>包裝材料</td>
-            <td>150</td>
-            <td>A1 / B-02-03</td>
-            <td>B1 / SP-01-02</td>
-            <td>OG</td>
-            <td><span class="status blue">待調撥</span></td>
-          </tr>
-          <tr>
-            <td>TR261006003</td>
-            <td>半成品</td>
-            <td>80</td>
-            <td>B1 / SP-01-01</td>
-            <td>A1 / C-02-01</td>
-            <td>KEN</td>
-            <td><span class="status orange">運送中</span></td>
-          </tr>
-        </tbody>
+        <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -995,7 +794,7 @@
     </div>
 
     <div class="update">
-      採購資料已同步
+      採購作業
     </div>
 
   </div>
@@ -1025,7 +824,7 @@
         <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="12" height="12" rx="2"/><path d="M14 9h4l4 4v4h-8M18 9v4h4M5 9h5"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
         本週到貨
       </div>
-      <strong>5</strong>
+      <strong>0</strong>
       <small>採購單預計到貨</small>
     </div>
 
@@ -1034,7 +833,7 @@
         <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 4-8 14a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L14 4a2 2 0 0 0-4 0Z"/><path d="M12 9v5M12 17h.01"/></svg>
         異常
       </div>
-      <strong>1</strong>
+      <strong>0</strong>
       <small>數量或交期需確認</small>
     </div>
 
@@ -1072,8 +871,8 @@
         <label for="purchaseWarehouseFilter">倉庫</label>
         <select id="purchaseWarehouseFilter">
           <option value="">全部倉庫</option>
-          <option value="A1">A1</option>
-          <option value="B1">B1</option>
+          
+          
         </select>
       </div>
 
@@ -1155,114 +954,7 @@
           </tr>
         </thead>
 
-        <tbody id="purchaseRequestBody">
-
-          <tr data-purchase-row data-warehouse="A1" data-status="待叫貨">
-            <td>PR261006001</td>
-            <td>ITM0003</td>
-            <td>成品</td>
-            <td>A1</td>
-            <td>980</td>
-            <td>1,200</td>
-            <td>500</td>
-            <td>
-              <input class="purchase-qty" type="number" min="0" value="500">
-            </td>
-            <td data-status-cell><span class="status orange">待叫貨</span></td>
-            <td>低庫存自動</td>
-            <td>
-              <div class="purchase-row-actions">
-                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
-                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr data-purchase-row data-warehouse="A1" data-status="待叫貨">
-            <td>PR261006002</td>
-            <td>ITM0012</td>
-            <td>清潔耗材</td>
-            <td>A1</td>
-            <td>42</td>
-            <td>80</td>
-            <td>60</td>
-            <td>
-              <input class="purchase-qty" type="number" min="0" value="60">
-            </td>
-            <td data-status-cell><span class="status orange">待叫貨</span></td>
-            <td>低庫存自動</td>
-            <td>
-              <div class="purchase-row-actions">
-                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
-                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr data-purchase-row data-warehouse="B1" data-status="待叫貨">
-            <td>PR261006003</td>
-            <td>ITM0021</td>
-            <td>維修備品</td>
-            <td>B1</td>
-            <td>18</td>
-            <td>30</td>
-            <td>20</td>
-            <td>
-              <input class="purchase-qty" type="number" min="0" value="20">
-            </td>
-            <td data-status-cell><span class="status orange">待叫貨</span></td>
-            <td>人工申請</td>
-            <td>
-              <div class="purchase-row-actions">
-                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
-                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr data-purchase-row data-warehouse="A1" data-status="已叫貨">
-            <td>PR261005006</td>
-            <td>ITM0002</td>
-            <td>包裝材料</td>
-            <td>A1</td>
-            <td>1,680</td>
-            <td>1,500</td>
-            <td>800</td>
-            <td>
-              <input class="purchase-qty" type="number" min="0" value="800">
-            </td>
-            <td data-status-cell><span class="status blue">已叫貨</span></td>
-            <td>人工申請</td>
-            <td>
-              <div class="purchase-row-actions">
-                <button class="purchase-action-btn primary" type="button" data-order-action disabled>已叫貨</button>
-                <button class="purchase-action-btn muted" type="button" data-no-order-action>無須叫貨</button>
-              </div>
-            </td>
-          </tr>
-
-          <tr data-purchase-row data-warehouse="A1" data-status="無須叫貨">
-            <td>PR261005009</td>
-            <td>ITM0030</td>
-            <td>活動耗材</td>
-            <td>A1</td>
-            <td>120</td>
-            <td>100</td>
-            <td>0</td>
-            <td>
-              <input class="purchase-qty" type="number" min="0" value="0">
-            </td>
-            <td data-status-cell><span class="status green">無須叫貨</span></td>
-            <td>人工確認</td>
-            <td>
-              <div class="purchase-row-actions">
-                <button class="purchase-action-btn primary" type="button" data-order-action>標記已叫貨</button>
-                <button class="purchase-action-btn muted" type="button" data-no-order-action disabled>無須叫貨</button>
-              </div>
-            </td>
-          </tr>
-
-        </tbody>
+        <tbody id="purchaseRequestBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
 
       </table>
 
@@ -1297,35 +989,7 @@
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>PO261006003</td>
-              <td>協成包材</td>
-              <td>包裝材料</td>
-              <td>800</td>
-              <td>2026/10/06</td>
-              <td>2026/10/08</td>
-              <td><span class="status blue">已叫貨</span></td>
-            </tr>
-            <tr>
-              <td>PO261005008</td>
-              <td>宏達材料</td>
-              <td>電子零件</td>
-              <td>500</td>
-              <td>2026/10/05</td>
-              <td>2026/10/07</td>
-              <td><span class="status orange">待到貨</span></td>
-            </tr>
-            <tr>
-              <td>PO261004012</td>
-              <td>聯盛工業</td>
-              <td>維修備品</td>
-              <td>40</td>
-              <td>2026/10/04</td>
-              <td>2026/10/06</td>
-              <td><span class="status red">交期異常</span></td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
 
       </div>
@@ -1357,35 +1021,7 @@
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>宏達材料</td>
-              <td>電子零件</td>
-              <td>王先生</td>
-              <td>2 天</td>
-              <td>96%</td>
-              <td>1</td>
-              <td><span class="status green">正常</span></td>
-            </tr>
-            <tr>
-              <td>協成包材</td>
-              <td>包裝材料</td>
-              <td>林小姐</td>
-              <td>3 天</td>
-              <td>93%</td>
-              <td>1</td>
-              <td><span class="status green">正常</span></td>
-            </tr>
-            <tr>
-              <td>聯盛工業</td>
-              <td>維修備品</td>
-              <td>陳先生</td>
-              <td>5 天</td>
-              <td>84%</td>
-              <td>1</td>
-              <td><span class="status orange">需注意</span></td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
 
       </div>
@@ -1402,7 +1038,7 @@
 
     <div class="flow-card">
       <div class="flow-card-head">
-        <strong>使用區 → 示範據點補貨流程</strong>
+        <strong>內部補貨流程</strong>
         <span>共用品與低庫存品項使用同一套流程</span>
       </div>
 
@@ -1416,14 +1052,14 @@
 
         <div class="flow-step">
           <div class="flow-step-no">2</div>
-          <strong>向示範據點申請</strong>
+          <strong>向來源據點申請</strong>
           <small>確認品項與數量後送出內部補貨申請。</small>
         </div>
 
         <div class="flow-step">
           <div class="flow-step-no">3</div>
-          <strong>示範據點備貨</strong>
-          <small>由A1確認可用量並完成揀貨。</small>
+          <strong>來源位置備貨</strong>
+          <small>由來源人員確認可用量並完成揀貨。</small>
         </div>
 
         <div class="flow-step">
@@ -1462,41 +1098,7 @@
               <th>規則</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>IR261006001</td>
-              <td>使用區</td>
-              <td>衛生紙</td>
-              <td>6 箱</td>
-              <td>A1</td>
-              <td>使用區</td>
-              <td>定期補貨</td>
-              <td><span class="status blue">待備貨</span></td>
-              <td><span class="mandatory-tag">不可取消</span></td>
-            </tr>
-            <tr>
-              <td>IR261006002</td>
-              <td>使用區</td>
-              <td>漂白水</td>
-              <td>12 瓶</td>
-              <td>A1</td>
-              <td>倉儲區</td>
-              <td>低庫存</td>
-              <td><span class="status orange">備貨中</span></td>
-              <td><span class="mandatory-tag">不可取消</span></td>
-            </tr>
-            <tr>
-              <td>IR261006003</td>
-              <td>設備區</td>
-              <td>維修備品</td>
-              <td>4 組</td>
-              <td>A1</td>
-              <td>設備區維修區</td>
-              <td>人工申請</td>
-              <td><span class="status green">已完成</span></td>
-              <td>一般申請</td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -1517,7 +1119,7 @@
     </div>
 
     <div class="update">
-      資產資料已同步
+      資產作業
     </div>
 
   </div>
@@ -1628,7 +1230,7 @@
     <div class="asset-toolbar">
 
       <div class="asset-toolbar-left">
-        <strong>資產清單</strong>
+        <strong>0</strong>
         <span id="assetResultCount">共 6 筆</span>
       </div>
 
@@ -1669,81 +1271,7 @@
           </tr>
         </thead>
 
-        <tbody id="assetTableBody">
-
-          <tr data-asset-row data-location="使用區" data-status="使用中">
-            <td class="asset-code">AST-0001</td>
-            <td>企劃工作站</td>
-            <td>電腦設備</td>
-            <td>使用區</td>
-            <td>OG</td>
-            <td>2026/03/15</td>
-            <td><span class="status green">使用中</span></td>
-            <td><span class="status green">已盤點</span></td>
-            <td>2026/10/05</td>
-          </tr>
-
-          <tr data-asset-row data-location="使用區" data-status="使用中">
-            <td class="asset-code">AST-0002</td>
-            <td>27 吋螢幕</td>
-            <td>電腦設備</td>
-            <td>使用區</td>
-            <td>KEN</td>
-            <td>2026/04/02</td>
-            <td><span class="status green">使用中</span></td>
-            <td><span class="status orange">待盤點</span></td>
-            <td>2026/10/01</td>
-          </tr>
-
-          <tr data-asset-row data-location="設備區" data-status="維修中">
-            <td class="asset-code">AST-0003</td>
-            <td>維修工具組 A</td>
-            <td>工具設備</td>
-            <td>設備區</td>
-            <td>肉肉</td>
-            <td>2026/01/20</td>
-            <td><span class="status orange">維修中</span></td>
-            <td><span class="status green">已盤點</span></td>
-            <td>2026/10/06</td>
-          </tr>
-
-          <tr data-asset-row data-location="倉儲區" data-status="待盤點">
-            <td class="asset-code">AST-0004</td>
-            <td>手持掃描器</td>
-            <td>作業設備</td>
-            <td>倉儲區</td>
-            <td>弦</td>
-            <td>2026/05/18</td>
-            <td><span class="status red">待盤點</span></td>
-            <td><span class="status red">待確認</span></td>
-            <td>2026/09/28</td>
-          </tr>
-
-          <tr data-asset-row data-location="使用區" data-status="閒置">
-            <td class="asset-code">AST-0005</td>
-            <td>備用筆電</td>
-            <td>電腦設備</td>
-            <td>使用區</td>
-            <td>—</td>
-            <td>2025/12/10</td>
-            <td><span class="status blue">閒置</span></td>
-            <td><span class="status green">已盤點</span></td>
-            <td>2026/09/30</td>
-          </tr>
-
-          <tr data-asset-row data-location="使用區" data-status="使用中">
-            <td class="asset-code">AST-0006</td>
-            <td>會議平板</td>
-            <td>行動設備</td>
-            <td>使用區</td>
-            <td>RU</td>
-            <td>2026/06/21</td>
-            <td><span class="status green">使用中</span></td>
-            <td><span class="status orange">待盤點</span></td>
-            <td>2026/10/03</td>
-          </tr>
-
-        </tbody>
+        <tbody id="assetTableBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
 
       </table>
 
@@ -1776,35 +1304,7 @@
               <th>操作人</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>2026/10/05 14:10</td>
-              <td>AST-0001</td>
-              <td>企劃工作站</td>
-              <td>保管人變更</td>
-              <td>使用區 / —</td>
-              <td>使用區 / OG</td>
-              <td>OG</td>
-            </tr>
-            <tr>
-              <td>2026/10/03 11:25</td>
-              <td>AST-0006</td>
-              <td>會議平板</td>
-              <td>領用</td>
-              <td>使用區 / —</td>
-              <td>使用區 / RU</td>
-              <td>KEN</td>
-            </tr>
-            <tr>
-              <td>2026/09/30 16:42</td>
-              <td>AST-0005</td>
-              <td>備用筆電</td>
-              <td>歸還</td>
-              <td>使用區 / 鬼</td>
-              <td>使用區 / —</td>
-              <td>OG</td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -1832,26 +1332,7 @@
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>MT261006001</td>
-              <td>AST-0003</td>
-              <td>維修工具組 A</td>
-              <td>電動工具異音</td>
-              <td>2026/10/06</td>
-              <td>2026/10/08</td>
-              <td><span class="status orange">維修中</span></td>
-            </tr>
-            <tr>
-              <td>MT260928004</td>
-              <td>AST-0005</td>
-              <td>備用筆電</td>
-              <td>電池健康度異常</td>
-              <td>2026/09/28</td>
-              <td>2026/09/30</td>
-              <td><span class="status green">已完成</span></td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -1872,7 +1353,7 @@
       <h1>盤點管理</h1>
       <p>建立盤點任務、輸入實盤數量並追蹤差異</p>
     </div>
-    <div class="update">盤點資料已同步</div>
+    <div class="update">盤點作業</div>
   </div>
 
   <div class="stocktake-summary">
@@ -1882,7 +1363,7 @@
         <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="m7 8 1 1 2-2m-3 7 1 1 2-2M13 8h4M13 14h4M7 18h10"/></svg>
         進行中
       </div>
-      <strong>2</strong>
+      <strong>0</strong>
       <small>目前盤點任務</small>
     </div>
 
@@ -1891,7 +1372,7 @@
         <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6M9 18h3"/></svg>
         待盤品項
       </div>
-      <strong>18</strong>
+      <strong>0</strong>
       <small>尚未完成實盤</small>
     </div>
 
@@ -1900,7 +1381,7 @@
         <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M12 5v6M8 16h8"/></svg>
         差異品項
       </div>
-      <strong>3</strong>
+      <strong>0</strong>
       <small>需複核或調整</small>
     </div>
 
@@ -1909,7 +1390,7 @@
         <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/></svg>
         本月完成
       </div>
-      <strong>9</strong>
+      <strong>0</strong>
       <small>已結案盤點</small>
     </div>
 
@@ -1956,35 +1437,7 @@
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>ST261006001</td>
-              <td>A1 / A 區</td>
-              <td>OG</td>
-              <td>2026/10/06</td>
-              <td>12 / 20</td>
-              <td>2</td>
-              <td><span class="status orange">進行中</span></td>
-            </tr>
-            <tr>
-              <td>ST261006002</td>
-              <td>B1</td>
-              <td>KEN</td>
-              <td>2026/10/06</td>
-              <td>4 / 8</td>
-              <td>1</td>
-              <td><span class="status orange">進行中</span></td>
-            </tr>
-            <tr>
-              <td>ST261005004</td>
-              <td>示範消耗品</td>
-              <td>RU</td>
-              <td>2026/10/05</td>
-              <td>16 / 16</td>
-              <td>0</td>
-              <td><span class="status green">已完成</span></td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -1999,8 +1452,8 @@
         <label for="stocktakeWarehouseFilter">倉庫</label>
         <select id="stocktakeWarehouseFilter">
           <option value="">全部倉庫</option>
-          <option value="A1">A1</option>
-          <option value="B1">B1</option>
+          
+          
         </select>
       </div>
 
@@ -2059,57 +1512,7 @@
             <th>備註</th>
           </tr>
         </thead>
-        <tbody id="stocktakeTableBody">
-
-          <tr data-stocktake-row data-warehouse="A1">
-            <td>ITM0001</td>
-            <td>電子零件</td>
-            <td>A1</td>
-            <td>A-01-01</td>
-            <td data-book-qty>2350</td>
-            <td><input class="count-input" type="number" min="0" value="2350"></td>
-            <td data-variance class="variance-zero">0</td>
-            <td data-result><span class="status green">一致</span></td>
-            <td>—</td>
-          </tr>
-
-          <tr data-stocktake-row data-warehouse="A1">
-            <td>ITM0002</td>
-            <td>包裝材料</td>
-            <td>A1</td>
-            <td>B-02-03</td>
-            <td data-book-qty>1680</td>
-            <td><input class="count-input" type="number" min="0" value="1668"></td>
-            <td data-variance class="variance-negative">-12</td>
-            <td data-result><span class="status red">有差異</span></td>
-            <td>待複核</td>
-          </tr>
-
-          <tr data-stocktake-row data-warehouse="A1">
-            <td>ITM0003</td>
-            <td>成品</td>
-            <td>A1</td>
-            <td>C-01-02</td>
-            <td data-book-qty>980</td>
-            <td><input class="count-input" type="number" min="0" value="985"></td>
-            <td data-variance class="variance-positive">+5</td>
-            <td data-result><span class="status orange">有差異</span></td>
-            <td>待確認入庫單</td>
-          </tr>
-
-          <tr data-stocktake-row data-warehouse="B1">
-            <td>ITM0004</td>
-            <td>半成品</td>
-            <td>B1</td>
-            <td>SP-01-01</td>
-            <td data-book-qty>520</td>
-            <td><input class="count-input" type="number" min="0" value="520"></td>
-            <td data-variance class="variance-zero">0</td>
-            <td data-result><span class="status green">一致</span></td>
-            <td>—</td>
-          </tr>
-
-        </tbody>
+        <tbody id="stocktakeTableBody"><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
       </table>
     </div>
 
@@ -2136,26 +1539,7 @@
               <th>狀態</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>ST261005004</td>
-              <td>示範消耗品</td>
-              <td>2026/10/05</td>
-              <td>16</td>
-              <td>0</td>
-              <td>RU</td>
-              <td><span class="status green">已結案</span></td>
-            </tr>
-            <tr>
-              <td>ST261001003</td>
-              <td>A1 / B 區</td>
-              <td>2026/10/01</td>
-              <td>32</td>
-              <td>2</td>
-              <td>OG</td>
-              <td><span class="status green">已結案</span></td>
-            </tr>
-          </tbody>
+          <tbody><tr><td colspan="10" class="workspace-empty">尚無資料</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -2173,82 +1557,8 @@
   <div class="page-head">
     <div class="page-title">
       <h1>場域與管理工具</h1>
-      <p>統一示範據點、使用區、倉儲區與設備區的倉儲位置與管理流程</p>
+      <p>依企業設定管理據點、區域與實際位置</p>
     </div>
-  </div>
-
-  <div class="site-grid">
-
-    <section class="site-card">
-      <div class="site-card-head">
-        <div class="site-card-icon">
-          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h12v18M16 9h4v12M8 7h1M12 7h1M8 11h1M12 11h1M8 15h1M12 15h1M9 21v-3h3v3"/></svg>
-        </div>
-        <div>
-          <strong>示範據點</strong>
-          <p>主要庫存與補貨來源</p>
-        </div>
-      </div>
-      <div class="site-tags">
-        <span class="site-tag">A1</span>
-        <span class="site-tag">收貨</span>
-        <span class="site-tag">驗收</span>
-        <span class="site-tag">出貨</span>
-      </div>
-    </section>
-
-    <section class="site-card">
-      <div class="site-card-head">
-        <div class="site-card-icon">
-          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V3h12v18M16 9h4v12M8 7h1M12 7h1M8 11h1M12 11h1M8 15h1M12 15h1M9 21v-3h3v3"/></svg>
-        </div>
-        <div>
-          <strong>使用區</strong>
-          <p>行政與企劃日常領用</p>
-        </div>
-      </div>
-      <div class="site-tags">
-        <span class="site-tag">使用區</span>
-        <span class="site-tag">B1</span>
-        <span class="site-tag">共用品</span>
-      </div>
-    </section>
-
-    <section class="site-card">
-      <div class="site-card-head">
-        <div class="site-card-icon">
-          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M7 21v-5l5-5-4-5 3-3 6 7-3 6v5M17 9h4v5l-3 2"/><circle cx="12" cy="11" r="2"/></svg>
-        </div>
-        <div>
-          <strong>倉儲區</strong>
-          <p>現場作業與耗用品配置</p>
-        </div>
-      </div>
-      <div class="site-tags">
-        <span class="site-tag">示範位置 F</span>
-        <span class="site-tag">示範位置 C</span>
-        <span class="site-tag">示範位置 D</span>
-        <span class="site-tag">示範位置 E</span>
-      </div>
-    </section>
-
-    <section class="site-card">
-      <div class="site-card-head">
-        <div class="site-card-icon">
-          <svg class="material-symbols-rounded wms-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6a5 5 0 0 0-6 6L3 17a3 3 0 0 0 4 4l5-5a5 5 0 0 0 6-6l-3 3-4-4Z"/></svg>
-        </div>
-        <div>
-          <strong>設備區</strong>
-          <p>機台零件與維修備品</p>
-        </div>
-      </div>
-      <div class="site-tags">
-        <span class="site-tag">示範貨架</span>
-        <span class="site-tag">維修區</span>
-        <span class="site-tag">備品管理</span>
-      </div>
-    </section>
-
   </div>
 
   <div class="flow-card">
@@ -2268,7 +1578,7 @@
       <div class="flow-step">
         <div class="flow-step-no">2</div>
         <strong>採購 / 內部補貨</strong>
-        <small>外部採購或向A1申請。</small>
+        <small>外部採購或內部補貨。</small>
       </div>
 
       <div class="flow-step">
@@ -2306,19 +1616,7 @@
       </div>
 
       <div class="more-list">
-        <div class="more-link">
-          <div><strong>A1</strong><small>　A / B / C 區</small></div>
-          <button type="button" data-prototype-action="warehouse-manage">管理</button>
-        </div>
-        <div class="more-link">
-          <div><strong>B1</strong><small>　SP 區</small></div>
-          <button type="button" data-prototype-action="warehouse-manage-office">管理</button>
-        </div>
-        <div class="more-link">
-          <div><strong>設備區</strong><small>　示範貨架 / 維修區</small></div>
-          <button type="button" data-prototype-action="machine-location">查看</button>
-        </div>
-      </div>
+        <div class="more-link"><div><strong>據點與位置設定</strong><small>　名稱由企業自行建立</small></div><button type="button" data-prototype-action="warehouse-manage">管理</button></div>
     </section>
 
     <section class="more-card">
@@ -2388,7 +1686,7 @@
 
       <div class="more-list">
         <div class="more-link">
-          <div><strong>內部補貨</strong><small>　使用區 → 示範據點</small></div>
+          <div><strong>內部補貨</strong><small>　目的位置 → 來源位置</small></div>
           <button type="button" data-more-page="purchase" data-more-purchase-tab="internal">開啟</button>
         </div>
         <div class="more-link">
