@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-session="out">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,7 +13,28 @@
 
 <body>
 
-<div class="app">
+<section id="wmsLogin" class="wms-login" aria-labelledby="loginTitle">
+  <div class="login-theme" role="group" aria-label="介面色彩模式"><button type="button" data-login-theme="light" aria-label="淺色模式">☀</button><button type="button" data-login-theme="dark" aria-label="深色模式">☾</button></div>
+  <div class="login-card">
+    <div class="login-brand"><span id="loginLogo"></span><strong>BOMB WMS</strong></div>
+    <span class="login-eyebrow">倉儲管理系統</span>
+    <h1 id="loginTitle">開始今天的倉儲作業</h1>
+    <p class="login-intro">管理庫存與位置，讓每一次收貨、領用與歸還都有紀錄。</p>
+    <form id="wmsLoginForm">
+      <fieldset class="login-roles"><legend>選擇原型身分</legend>
+        <label><input type="radio" name="role" value="manager" checked><span><strong>管理者</strong><small>審核與倉儲設定</small></span></label>
+        <label><input type="radio" name="role" value="employee"><span><strong>員工</strong><small>查看待辦與作業</small></span></label>
+      </fieldset>
+      <label class="login-field" for="loginId">人員編號<input id="loginId" name="profileId" autocomplete="username" placeholder="輸入人員編號" maxlength="60" required></label>
+      <label class="login-field" for="loginName">顯示名稱<input id="loginName" name="profileName" autocomplete="name" placeholder="輸入你的姓名" maxlength="60" required></label>
+      <p id="loginError" class="login-error" role="alert" hidden></p>
+      <button type="submit" class="login-submit">進入原型</button>
+    </form>
+    <p class="login-caption">原型體驗入口，尚未接正式帳號與密碼驗證。</p>
+  </div>
+  <p class="login-footer">BOMB WMS · 據點、區域與實際位置由企業自行設定</p>
+</section>
+<div class="app" hidden>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
