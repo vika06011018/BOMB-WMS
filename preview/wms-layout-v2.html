@@ -4728,6 +4728,11 @@ html[data-theme="light"] body{background:var(--canvas)!important;color:var(--ink
 
 html[data-theme="dark"] .recent-row>span.teal{color:#8eb7d4}
 @media(max-width:600px){html[data-theme] .home-heading .generic-scope{display:grid;grid-template-columns:1fr;gap:8px;width:100%}html[data-theme] .home-heading .generic-scope label{display:flex;align-items:center;gap:10px}html[data-theme] .home-heading .generic-scope select{width:100%;min-width:0;flex:1}html[data-theme] .calendar-count{font-size:10px;padding:2px 3px}html[data-theme] .page{padding-bottom:92px!important}}
+
+html[data-theme] .theme-toggle{width:112px;min-width:112px;height:36px;padding:0;display:block;flex-shrink:0;position:relative;gap:0}
+html[data-theme] .theme-toggle .theme-sun,html[data-theme] .theme-toggle .theme-moon{position:absolute;top:50%;transform:translateY(-50%);width:20px;height:20px;margin:0}
+html[data-theme] .theme-toggle .theme-sun{left:0;right:auto}html[data-theme] .theme-toggle .theme-moon{left:auto;right:0}
+html[data-theme] .theme-toggle::after{left:34px;width:44px;height:24px}html[data-theme] .theme-toggle::before{left:37px;width:18px;height:18px}html[data-theme="dark"] .theme-toggle::before{left:57px}
 </style>
 </head>
 
