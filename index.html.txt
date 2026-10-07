@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BOMB WMS</title>
+<script>
+location.replace('./preview/wms-layout-v2.html'+location.search+location.hash);
+</script>
+</head>
+<body><p><a href="./preview/wms-layout-v2.html">開啟 BOMB WMS</a></p></body>
+</html>
