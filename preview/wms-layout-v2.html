@@ -4733,6 +4733,14 @@ html[data-theme] .theme-toggle{width:112px;min-width:112px;height:36px;padding:0
 html[data-theme] .theme-toggle .theme-sun,html[data-theme] .theme-toggle .theme-moon{position:absolute;top:50%;transform:translateY(-50%);width:20px;height:20px;margin:0}
 html[data-theme] .theme-toggle .theme-sun{left:0;right:auto}html[data-theme] .theme-toggle .theme-moon{left:auto;right:0}
 html[data-theme] .theme-toggle::after{left:34px;width:44px;height:24px}html[data-theme] .theme-toggle::before{left:37px;width:18px;height:18px}html[data-theme="dark"] .theme-toggle::before{left:57px}
+
+.theme-options{display:flex;align-items:center;gap:4px;flex-shrink:0}
+html[data-theme] .theme-option{display:flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--secondary);cursor:pointer}
+html[data-theme] .theme-option .svg-icon{display:block!important;width:20px;height:20px;color:inherit}
+html[data-theme="light"] .theme-option[aria-pressed="true"]{background:#e4eef6;color:#497b9f;border-color:#d2e2ee}
+html[data-theme="dark"] .theme-option[aria-pressed="true"]{background:#304b62;color:#b7d7ee;border-color:#45647c}
+html[data-theme] .theme-option:hover{color:var(--accent);border-color:var(--edge)}
+.theme-option:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 </style>
 </head>
 
@@ -4844,8 +4852,7 @@ html[data-theme] .theme-toggle::after{left:34px;width:44px;height:24px}html[data
           </select>
         </div>
 
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="切換深色模式">
-  <svg class="svg-icon theme-sun" viewBox="0 0 24 24">
+<div class="theme-options" role="group" aria-label="介面色彩模式"><button type="button" class="theme-option" data-set-theme="light" aria-label="淺色模式" title="淺色模式"><svg class="svg-icon theme-sun" viewBox="0 0 24 24">
     <circle cx="12" cy="12" r="4"/>
     <path d="M12 2v2"/>
     <path d="M12 20v2"/>
@@ -4855,12 +4862,9 @@ html[data-theme] .theme-toggle::after{left:34px;width:44px;height:24px}html[data
     <path d="M20 12h2"/>
     <path d="M4.93 19.07l1.41-1.41"/>
     <path d="M17.66 6.34l1.41-1.41"/>
-  </svg>
-
-  <svg class="svg-icon theme-moon" viewBox="0 0 24 24">
+  </svg></button><button type="button" class="theme-option" data-set-theme="dark" aria-label="深色模式" title="深色模式"><svg class="svg-icon theme-moon" viewBox="0 0 24 24">
     <path d="M20 15.2A8 8 0 0 1 8.8 4a8 8 0 1 0 11.2 11.2Z"/>
-  </svg>
-</button>
+  </svg></button></div>
         
         <button class="notify" type="button" data-prototype-action="notifications">
        <svg class="svg-icon" viewBox="0 0 24 24">
@@ -9236,42 +9240,17 @@ prototypeModalBody?.addEventListener(
   }
 );
 
-const themeToggle=document.getElementById('themeToggle');
-
 function applyTheme(theme){
-  document.documentElement.dataset.theme=theme;
-
-  const isDark=theme==='dark';
-
-  document.querySelector('.theme-sun')?.style.setProperty(
-    'display',
-    isDark?'none':'block'
-  );
-
-  document.querySelector('.theme-moon')?.style.setProperty(
-    'display',
-    isDark?'block':'none'
-  );
-
-  themeToggle?.setAttribute(
-    'aria-label',
-    isDark?'切換淺色模式':'切換深色模式'
-  );
+ document.documentElement.dataset.theme=theme;
+ document.querySelectorAll('[data-set-theme]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.setTheme===theme)));
 }
+applyTheme(localStorage.getItem('bomb-wms-theme')||'light');
+document.querySelectorAll('[data-set-theme]').forEach(button=>button.addEventListener('click',()=>{
+ const theme=button.dataset.setTheme;
+ localStorage.setItem('bomb-wms-theme',theme);
+ applyTheme(theme);
+}));
 
-const savedTheme=localStorage.getItem('bomb-wms-theme')||'light';
-applyTheme(savedTheme);
-
-themeToggle?.addEventListener('click',()=>{
-  const current=
-    document.documentElement.dataset.theme||'light';
-
-  const next=current==='dark'?'light':'dark';
-
-  localStorage.setItem('bomb-wms-theme',next);
-  applyTheme(next);
-});
-  
 function escapeRecord(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function renderCreatedRecords(){
  document.querySelectorAll('[data-created-record]').forEach(row=>row.remove());
