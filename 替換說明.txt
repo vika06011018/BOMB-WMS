@@ -1,10 +1,11 @@
-解壓後將 preview 資料夾覆蓋到專案根目錄，替換：
+解壓後將 preview 資料夾覆蓋到專案根目錄。替換：
 preview/wms-layout-v2.html
 preview/assets/wms-layout-v2.css
 preview/assets/wms-layout-v2.js
-字型位於 preview/assets/fonts/
-TXT/ 內含完整對應文字檔。
-修正所有共用視窗：背景點擊不關閉，避免選字拖曳誤關閉；固定標題與儲存／取消；細捲動條。
-保留現有分類下拉及 localStorage 資料，沒有清除資料。
-Commit 訊息：修正共用視窗拖曳誤關閉，固定操作列並改善捲動條
-已完成本地畫面與操作測試，未執行 Commit 或部署。
+字型：preview/assets/fonts/
+TXT/ 內為完整對應文字檔。
+據點與位置改為可展開階層清單；新增按鈕明確標示區域或位置，直接帶入上層；編輯視窗可設定啟用／停用。
+保留已有資料、異動紀錄、分類下拉與共用視窗修正。不清除 localStorage。
+預覽為測試資料，不會加入你的系統。
+Commit 訊息：據點與位置改為階層清單，整合新增與編輯操作
+已完成本地畫面與基本操作測試；未執行 Commit 或部署。
