@@ -1475,6 +1475,18 @@ function openPrototypeModal({
   prototypeModalTitle.textContent=title;
   prototypeModalSubtitle.textContent=subtitle;
   prototypeModalBody.innerHTML=body;
+  // Keep form actions outside the scroll area without changing form submission.
+  prototypeModalBody.classList.remove('has-modal-form');
+  const form=prototypeModalBody.querySelector(':scope > form');
+  const actions=form?.querySelector(':scope > .workflow-form-actions');
+  if(form && actions){
+    const content=document.createElement('div');
+    content.className='modal-form-content';
+    Array.from(form.childNodes).forEach(node=>{if(node!==actions)content.appendChild(node);});
+    form.insertBefore(content,actions);
+    prototypeModalBody.classList.add('has-modal-form');
+  }
+  prototypeModalBody.scrollTop=0;
 
   prototypeModal.classList.add('active');
   prototypeModal.setAttribute('aria-hidden','false');
@@ -1498,17 +1510,8 @@ prototypeModalClose?.addEventListener(
 );
 
 
-prototypeModal?.addEventListener(
-  'click',
-  event=>{
-
-    if(event.target===prototypeModal){
-      closePrototypeModal();
-    }
-
-  }
-);
-
+// Backdrop clicks never dismiss a dialog: text selection may end outside it.
+// Close through the visible X, Cancel, or Escape controls.
 
 document.addEventListener(
   'keydown',

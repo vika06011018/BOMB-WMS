@@ -4808,3 +4808,21 @@ html[data-theme="dark"] .simple-stats>button{background:#23394b!important;color:
 .category-bar-actions{display:flex;gap:8px;flex-shrink:0}.category-bar-actions button{white-space:nowrap}@media(max-width:600px){.category-tabbar{flex-wrap:wrap}.category-bar-actions{margin-left:auto}.category-tabbar .category-choices{flex-basis:100%}}
 
 .category-single{position:relative;overflow:visible}.category-dropdown{position:relative}.category-dropdown summary{cursor:pointer;list-style:none;display:flex!important;align-items:center;gap:14px}.category-dropdown summary::-webkit-details-marker{display:none}.category-dropdown summary span{color:var(--secondary)}.category-dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;z-index:20;min-width:220px;max-width:min(320px,80vw);padding:8px;background:var(--surface);border:1px solid var(--edge);border-radius:12px;box-shadow:0 16px 40px #0004;display:flex;flex-direction:column;gap:4px}.category-dropdown-menu button{font:inherit;text-align:left;padding:12px 14px;border:0;border-radius:8px;background:transparent;color:var(--ink);cursor:pointer;overflow-wrap:anywhere}.category-dropdown-menu button:hover,.category-dropdown-menu button:focus-visible,.category-dropdown-menu button.selected{background:#568fb72b}.category-dropdown summary:focus-visible{outline:2px solid #568fb7;outline-offset:3px}
+
+/* Shared dialogs: stable header/actions and quiet, theme-aware scrollbars. */
+.prototype-modal-card{display:flex;flex-direction:column;overflow:hidden;max-height:min(720px,calc(100dvh - 48px))}
+.prototype-modal-head{flex:none}
+.prototype-modal-body{min-height:0;overflow:auto;overscroll-behavior:contain}
+.prototype-modal-body.has-modal-form{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.prototype-modal-body.has-modal-form > :not(form){flex:none;margin:12px 20px}
+.prototype-modal-body.has-modal-form > form{display:flex;flex-direction:column;min-height:0;margin:0;overflow:hidden}
+.modal-form-content{min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px}
+.prototype-modal-body.has-modal-form .workflow-form-actions{flex:none;margin:0;padding:14px 20px;border-top:1px solid var(--edge,#dbe6f2);background:var(--surface,#fff)}
+.prototype-modal-body,.modal-form-content{scrollbar-width:thin;scrollbar-color:#9aaab9 transparent;scrollbar-gutter:stable}
+.prototype-modal-body::-webkit-scrollbar,.modal-form-content::-webkit-scrollbar{width:7px;height:7px}
+.prototype-modal-body::-webkit-scrollbar-track,.modal-form-content::-webkit-scrollbar-track{background:transparent}
+.prototype-modal-body::-webkit-scrollbar-thumb,.modal-form-content::-webkit-scrollbar-thumb{background:#9aaab9;border:2px solid transparent;background-clip:padding-box;border-radius:10px}
+.prototype-modal-body::-webkit-scrollbar-button,.modal-form-content::-webkit-scrollbar-button{display:none;width:0;height:0}
+html[data-theme="dark"] .prototype-modal-body,html[data-theme="dark"] .modal-form-content{scrollbar-color:#546679 transparent}
+html[data-theme="dark"] .prototype-modal-body::-webkit-scrollbar-thumb,html[data-theme="dark"] .modal-form-content::-webkit-scrollbar-thumb{background-color:#546679}
+@media(max-width:640px){.prototype-modal-card{max-height:calc(100dvh - 32px)}.modal-form-content{padding:16px}.prototype-modal-body.has-modal-form .workflow-form-actions{padding:12px 16px}}

@@ -1,10 +1,10 @@
-完整替換以下路徑：
+解壓後將 preview 資料夾覆蓋到專案根目錄，替換：
 preview/wms-layout-v2.html
 preview/assets/wms-layout-v2.css
 preview/assets/wms-layout-v2.js
-字型保留 preview/assets/fonts/。
-操作：點電腦設備旁下拉箭頭，選筆記型電腦，再點品項清單右側新增品項。
-新增細分類：管理分類 → 電腦設備右側新增細分類。
-分類資料、品項、批次分類與 localStorage 保留；測試圖片資料不會寫入你的瀏覽器。
-建議 Commit：分類改為單排下拉選單，整合分類管理入口
-尚未 Commit 或部署，第7章尚未全部完成。
+字型位於 preview/assets/fonts/
+TXT/ 內含完整對應文字檔。
+修正所有共用視窗：背景點擊不關閉，避免選字拖曳誤關閉；固定標題與儲存／取消；細捲動條。
+保留現有分類下拉及 localStorage 資料，沒有清除資料。
+Commit 訊息：修正共用視窗拖曳誤關閉，固定操作列並改善捲動條
+已完成本地畫面與操作測試，未執行 Commit 或部署。
