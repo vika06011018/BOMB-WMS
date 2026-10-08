@@ -1,11 +1,14 @@
-BOMB WMS 系統工作台首頁修正版
-請使用本包取代 BOMB-WMS-operation-home.zip。
-根目錄相對替換路徑：
+BOMB WMS 簡化首頁與六個作業入口
+請使用本包取代先前首頁版本。
+GitHub 根目錄相對替換路徑：
 preview/wms-layout-v2.html
 preview/assets/wms-layout-v2.css
 preview/assets/wms-layout-v2.js
-完整 TXT 位於 TXT/ 對應路徑。字型沿用 preview/assets/fonts/。
-首頁：摘要、常用功能、月曆、當日待辦、庫存提醒、最近異動。四區流程移至作業流程頁。異動日誌保留獨立入口。
-第7章尚未全部完成；流程按鈕導向既有作業頁。
-建議 Commit：修正 WMS 首頁為系統工作台並分離作業流程
+TXT/ 內為相同路徑的完整可替換文字。
+字型沿用 preview/assets/fonts/，完整字型亦附於本包。
+首頁顯示摘要、今日待辦、庫存提醒、最近異動；右上查看月曆。
+左側六個入口：首頁、收貨入庫、領用調撥、庫存管理、基礎設定、異動日誌。
+採購等既有功能保留於各作業區內，既有 localStorage 資料沿用。
+第7章尚未全部完成；牌盒、球盒入口仍為流程待整合說明。
+建議 Commit：簡化 WMS 首頁與六個作業入口，保留月曆及異動日誌
 未執行 Commit 或部署。
