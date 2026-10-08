@@ -4790,3 +4790,6 @@ html[data-session=out] .app,html[data-session=out] .mobile-bottom{display:none!i
 .sidebar .nav{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:16px}
 .sidebar .nav-btn{flex-shrink:0;min-height:46px}
 html[data-home-role="employee"] .nav-btn[data-direct-view="config"]{display:none}
+
+.category-checks{display:flex;flex-wrap:wrap;gap:8px}.category-checks label{display:flex;align-items:center;gap:5px;padding:6px;border:1px solid var(--edge);border-radius:6px;font-size:13px}#categoryEditor [data-category-field]{grid-column:1/-1}#categoryEditor input[type=number]{appearance:textfield}#categoryEditor input::-webkit-inner-spin-button{appearance:none}
+#categoryEditor .category-checks label{flex-direction:row;white-space:nowrap;gap:6px;font-size:13px;padding:8px 10px}#categoryEditor .category-checks input[type=checkbox]{width:16px;height:16px;min-height:0;padding:0;margin:0;flex:0 0 16px}#categoryEditor .category-checks{gap:8px}#categoryEditor input[readonly]{background:var(--canvas)}

@@ -1,9 +1,7 @@
-解壓後依原路徑覆蓋：
-preview/wms-layout-v2.html
-preview/assets/wms-layout-v2.css
-preview/assets/wms-layout-v2.js
-preview/assets/fonts/（原有字型保留）
-TXT/ 提供完整文字版。請勿清除瀏覽器 localStorage。
-Commit 訊息：改善 WMS 常用功能入口，直接顯示分類品項與據點位置
+依原路徑覆蓋 preview/wms-layout-v2.html、preview/assets/wms-layout-v2.css、preview/assets/wms-layout-v2.js。
+保留 preview/assets/fonts/ 與瀏覽器 localStorage。
+TXT/ 內為完整文字版。
+本次補齊分類設定欄位與條件驗證、儲存。既有分類代碼保留；新建父4碼、子6碼。已有品項的分類不允許更換階層。
+採購、保養及到貨序號流程連動尚未完成；牌盒球盒特殊報廢流程尚待修正。
+Commit：補齊 WMS 分類設定欄位與條件儲存驗證
 未代為 Commit 或部署。
-第7章尚未全部完成，牌盒與球盒特殊流程待修。
