@@ -1,6 +1,11 @@
-此次只需替換 preview/assets/wms-layout-v2.js
-完整 TXT 位於 TXT/preview/assets/wms-layout-v2.js.txt
-分類與細分類拆為連動欄位，保留既有資料。
-本包也附完整 HTML、CSS、字型供完整替換。
-建議 Commit：改善品項分類選擇，拆分分類與細分類連動欄位
-尚未 Commit 或部署。
+BOMB WMS 系統工作台首頁修正版
+請使用本包取代 BOMB-WMS-operation-home.zip。
+根目錄相對替換路徑：
+preview/wms-layout-v2.html
+preview/assets/wms-layout-v2.css
+preview/assets/wms-layout-v2.js
+完整 TXT 位於 TXT/ 對應路徑。字型沿用 preview/assets/fonts/。
+首頁：摘要、常用功能、月曆、當日待辦、庫存提醒、最近異動。四區流程移至作業流程頁。異動日誌保留獨立入口。
+第7章尚未全部完成；流程按鈕導向既有作業頁。
+建議 Commit：修正 WMS 首頁為系統工作台並分離作業流程
+未執行 Commit 或部署。
