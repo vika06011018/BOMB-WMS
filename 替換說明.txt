@@ -1,7 +1,13 @@
-依原路徑覆蓋 preview/wms-layout-v2.html、preview/assets/wms-layout-v2.css、preview/assets/wms-layout-v2.js。
-保留 preview/assets/fonts/ 與瀏覽器 localStorage。
-TXT/ 內為完整文字版。
-本次補齊分類設定欄位與條件驗證、儲存。既有分類代碼保留；新建父4碼、子6碼。已有品項的分類不允許更換階層。
-採購、保養及到貨序號流程連動尚未完成；牌盒球盒特殊報廢流程尚待修正。
-Commit：補齊 WMS 分類設定欄位與條件儲存驗證
-未代為 Commit 或部署。
+BOMB WMS 分類名稱修正版
+
+完整替換以下檔案：
+preview/wms-layout-v2.html
+preview/assets/wms-layout-v2.css
+preview/assets/wms-layout-v2.js
+保留 preview/assets/fonts/ 字型資料夾。
+本包包含既有分類設定及常用功能入口改善。
+保留既有 localStorage 資料，不需清除瀏覽器儲存。
+
+建議 Commit 訊息：統一 WMS 分類介面名稱，移除父子層級字樣
+此為建議訊息，尚未執行 Commit 或部署。
+第7章流程連動仍未全部完成。
