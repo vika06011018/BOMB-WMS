@@ -1,9 +1,10 @@
-完整替換以下檔案：
+完整替換以下路徑：
 preview/wms-layout-v2.html
 preview/assets/wms-layout-v2.css
 preview/assets/wms-layout-v2.js
 字型保留 preview/assets/fonts/。
-此版含簡化首頁；分類改為每排固定新增／管理，保留批次分類與 localStorage。
-測試圖中的分類為獨立測試資料，不會寫入你的瀏覽器。
-建議 Commit：簡化分類操作，改用固定新增與管理入口
-尚未 Commit 或部署；第7章尚未全部完成。
+操作：點電腦設備旁下拉箭頭，選筆記型電腦，再點品項清單右側新增品項。
+新增細分類：管理分類 → 電腦設備右側新增細分類。
+分類資料、品項、批次分類與 localStorage 保留；測試圖片資料不會寫入你的瀏覽器。
+建議 Commit：分類改為單排下拉選單，整合分類管理入口
+尚未 Commit 或部署，第7章尚未全部完成。
