@@ -1,13 +1,6 @@
-BOMB WMS 分類名稱修正版
-
-完整替換以下檔案：
-preview/wms-layout-v2.html
-preview/assets/wms-layout-v2.css
-preview/assets/wms-layout-v2.js
-保留 preview/assets/fonts/ 字型資料夾。
-本包包含既有分類設定及常用功能入口改善。
-保留既有 localStorage 資料，不需清除瀏覽器儲存。
-
-建議 Commit 訊息：統一 WMS 分類介面名稱，移除父子層級字樣
-此為建議訊息，尚未執行 Commit 或部署。
-第7章流程連動仍未全部完成。
+此次只需替換 preview/assets/wms-layout-v2.js
+完整 TXT 位於 TXT/preview/assets/wms-layout-v2.js.txt
+分類與細分類拆為連動欄位，保留既有資料。
+本包也附完整 HTML、CSS、字型供完整替換。
+建議 Commit：改善品項分類選擇，拆分分類與細分類連動欄位
+尚未 Commit 或部署。
