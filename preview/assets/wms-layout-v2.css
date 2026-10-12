@@ -4881,3 +4881,12 @@ html[data-theme="dark"] .prototype-modal-body::-webkit-scrollbar-thumb,html[data
 .location-workspace button:disabled{opacity:.4;cursor:default}
 @media(max-width:1050px){.location-workspace{grid-template-columns:minmax(220px,32%) minmax(0,1fr)}.location-nav-head{flex-wrap:wrap;gap:6px}.location-detail{padding:20px}}
 @media(max-width:700px){.location-workspace{grid-template-columns:1fr;min-height:0}.location-navigator{border-right:0;border-bottom:1px solid var(--edge)}.location-nav-head{flex-wrap:nowrap;padding:14px 16px}.location-nav-list{max-height:240px;padding:8px}.location-detail{padding:18px 14px}.location-detail-head h2{font-size:21px}.location-detail-meta{margin:18px 0;gap:10px}.location-detail-section{padding:16px 0 12px}.location-detail-empty{min-height:150px}.location-detail-table table{min-width:0}.location-detail-table th,.location-detail-table td{padding:10px 6px;font-size:13px}.location-detail-actions{flex-wrap:wrap;gap:6px 10px}}
+
+/* Keep location arrows, icons and names on one centered row. */
+.location-workspace .location-nav-row{display:flex;flex-flow:row nowrap;align-items:center;gap:4px}
+.location-workspace .location-expand{display:flex;align-items:center;justify-content:center;flex:0 0 24px;width:24px;height:36px;min-height:36px;margin:0;padding:0;line-height:1;align-self:center}
+.location-workspace .location-chevron{display:block;width:14px;height:14px;flex:none;transform:rotate(0deg);transition:transform .15s ease}
+.location-workspace .location-expand[aria-expanded="true"] .location-chevron{transform:rotate(90deg)}
+.location-workspace .location-select{display:flex;flex-flow:row nowrap;align-items:center;align-self:center;gap:9px;margin:0;min-height:36px;line-height:1.4}
+.location-workspace .location-select>.ui-icon{display:block;width:19px;height:19px;flex:0 0 19px;margin:0;align-self:center}
+.location-workspace .location-nav-spacer{display:block;flex:0 0 24px;width:24px;height:36px;align-self:center}
