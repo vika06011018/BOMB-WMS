@@ -2204,16 +2204,38 @@ hub.innerHTML=header()+itemTabs()+stockEntryMenu()+'<div class="hub-filters gene
 }
 const collapsedLocations=new Set();
 function renderConfig(){
-if(!db.sites.some(x=>x.id===site)){site=db.sites[0]?.id||'';zone='';location='';}
-const chosenLocation=db.locations.find(x=>x.id===location);
+if(!db.sites.some(x=>x.id===site)){site=db.sites[0]?.id||'';zone=db.zones.find(x=>x.site===site)?.id||'';location='';}
+let chosenLocation=db.locations.find(x=>x.id===location);
 if(chosenLocation){zone=chosenLocation.zone;site=db.zones.find(x=>x.id===zone)?.site||site;}
-const edit=(kind,x)=>'<button type="button" data-g-edit="'+kind+'" data-id="'+esc(x.id)+'">編輯</button>';
-const status=x=>x.enabled===false?'<span class="location-state">已停用</span>':'';
-const add=(kind,x,allowed)=>'<button type="button" data-location-add="'+kind+'" data-id="'+esc(x.id)+'" '+(!allowed?'disabled':'')+'>＋新增'+(kind==='zone'?'區域':'位置')+'</button>';
-const branch=(kind,x,content,actions)=>'<details class="location-branch '+kind+'" data-location-branch="'+esc(kind+':'+x.id)+'" '+(!collapsedLocations.has(kind+':'+x.id)?'open':'')+'><summary><span class="location-label"><strong>'+esc(x.name)+'</strong>'+status(x)+'</span></summary><div class="location-actions">'+actions+edit(kind,x)+'</div><div class="location-children">'+content+'</div></details>';
-const tree=db.sites.map(s=>branch('site',s,db.zones.filter(z=>z.site===s.id).map(z=>branch('zone',z,db.locations.filter(l=>l.zone===z.id).map(l=>'<div class="location-leaf '+(l.id===location?'selected':'')+'"><div class="location-label"><strong>'+esc(l.name)+'</strong><small>'+esc(l.type||'實際位置')+'</small>'+status(l)+(s.enabled===false||z.enabled===false?'<span class="location-state">上層已停用</span>':'')+'</div><div class="location-actions"><button type="button" data-hierarchy="location" data-id="'+esc(l.id)+'">查看品項</button>'+edit('location',l)+'</div></div>').join('')||'<p class="location-empty">尚無實際位置，點「＋新增位置」。</p>',add('location',z,s.enabled!==false&&z.enabled!==false))).join('')||'<p class="location-empty">尚無區域，點「＋新增區域」。</p>',add('zone',s,s.enabled!==false))).join('');
-const path=chosenLocation?[siteName(site),zoneName(zone),chosenLocation.name].join(' → '):'';
-hub.innerHTML=header()+'<section class="hub-card location-tree"><div class="hub-card-head"><div><h2>據點與位置</h2><p>展開據點查看區域，展開區域查看實際位置。</p></div><button class="primary-btn" data-g-create="site">＋新增據點</button></div><div class="location-tree-content">'+(tree||'<div class="hub-empty">尚無據點，點「＋新增據點」開始。</div>')+'</div></section>'+(chosenLocation?'<section class="hub-card hierarchy-detail"><div class="hub-card-head"><div><h2>此位置的品項</h2><p>'+esc(path)+'</p></div><button class="primary-btn" data-g-create="item" '+(!enabledLocation(chosenLocation)?'disabled':'')+'>新增品項</button></div>'+ (db.items.filter(x=>x.location===location).map(x=>'<div class="hierarchy-item"><strong>'+esc(x.name)+'</strong><span>'+esc(x.category||'未分類')+' · '+(x.quantityPending?'數量待確認':x.qty+' '+esc(x.unit))+(x.enabled===false?' · 已停用':'')+'</span></div>').join('')||'<div class="hub-empty">此位置尚無品項，可點「新增品項」。</div>')+'</section>':'')+'<button class="secondary-action-btn location-backup" data-clean-backup>下載清空前資料備份</button>';
+else location='';
+let chosenZone=db.zones.find(x=>x.id===zone);
+if(chosenZone){site=chosenZone.site;}else zone='';
+const chosenSite=db.sites.find(x=>x.id===site);
+const kind=chosenLocation?'location':chosenZone?'zone':'site';
+const selected=chosenLocation||chosenZone||chosenSite;
+const state=x=>x.enabled===false?'<span class="location-state">已停用</span>':'';
+const icon=type=>homeIcon(type==='site'?'settings':type==='zone'?'box':'shelf');
+const node=(type,x,depth,children)=>{
+ const key=type+':'+x.id,open=!collapsedLocations.has(key),active=kind===type&&selected?.id===x.id;
+ return '<div class="location-nav-node"><div class="location-nav-row '+(active?'selected':'')+'" style="--depth:'+depth+'">'+(type==='location'?'<span class="location-nav-spacer"></span>':'<button type="button" class="location-expand" data-location-expand="'+esc(key)+'" aria-expanded="'+open+'" aria-label="'+(open?'收合':'展開')+esc(x.name)+'">'+(open?'⌄':'›')+'</button>')+'<button type="button" class="location-select" data-hierarchy="'+type+'" data-id="'+esc(x.id)+'" '+(active?'aria-current="true"':'')+'>'+icon(type)+'<span>'+esc(x.name)+'</span>'+state(x)+'</button></div>'+(type!=='location'&&open?'<div class="location-nav-children">'+children+'</div>':'')+'</div>';
+};
+const tree=db.sites.map(s=>node('site',s,0,db.zones.filter(z=>z.site===s.id).map(z=>node('zone',z,1,db.locations.filter(l=>l.zone===z.id).map(l=>node('location',l,2,'')).join(''))).join(''))).join('');
+const edit=(type,x)=>'<button type="button" class="secondary-action-btn" data-g-edit="'+type+'" data-id="'+esc(x.id)+'">編輯</button>';
+const allowed=kind==='site'?chosenSite?.enabled!==false:kind==='zone'?chosenSite?.enabled!==false&&chosenZone?.enabled!==false:!!chosenLocation&&enabledLocation(chosenLocation);
+const add=selected?(kind==='location'?'<button type="button" class="primary-btn" data-g-create="item" '+(!allowed?'disabled':'')+'>＋新增品項</button>':'<button type="button" class="primary-btn" data-location-add="'+(kind==='site'?'zone':'location')+'" data-id="'+esc(selected.id)+'" '+(!allowed?'disabled':'')+'>＋新增'+(kind==='site'?'區域':'位置')+'</button>'):'';
+const path=selected?[chosenSite?.name,kind!=='site'?chosenZone?.name:'',kind==='location'?chosenLocation.name:''].filter(Boolean).join(' / '):'';
+let content='';
+if(selected){
+ if(kind==='location'){
+  const items=db.items.filter(x=>x.location===location);
+  content=items.length?'<div class="location-detail-table"><table><thead><tr><th>品項名稱</th><th>分類</th><th>可用數量</th><th>操作</th></tr></thead><tbody>'+items.map(x=>'<tr><td><strong>'+esc(x.name)+'</strong>'+state(x)+'</td><td>'+esc(x.category||'未分類')+'</td><td>'+(x.quantityPending?'數量待確認':esc(x.qty)+' '+esc(x.unit))+'</td><td>'+edit('item',x)+'</td></tr>').join('')+'</tbody></table></div>':'<div class="location-detail-empty">'+homeIcon('box')+'<strong>此位置尚無品項</strong><p>點「＋新增品項」建立此位置的品項資料。</p></div>';
+ }else{
+  const type=kind==='site'?'zone':'location',children=kind==='site'?db.zones.filter(x=>x.site===site):db.locations.filter(x=>x.zone===zone);
+  content=children.length?'<div class="location-detail-table"><table><thead><tr><th>名稱</th>'+(type==='location'?'<th>位置類型</th>':'')+'<th>操作</th></tr></thead><tbody>'+children.map(x=>'<tr><td><button type="button" class="location-name-link" data-hierarchy="'+type+'" data-id="'+esc(x.id)+'">'+esc(x.name)+'</button>'+state(x)+'</td>'+(type==='location'?'<td>'+esc(x.type||'其他')+'</td>':'')+'<td><div class="location-detail-actions"><button type="button" data-hierarchy="'+type+'" data-id="'+esc(x.id)+'">'+(type==='location'?'查看品項':'查看位置')+'</button>'+edit(type,x)+'</div></td></tr>').join('')+'</tbody></table></div>':'<div class="location-detail-empty">'+homeIcon('shelf')+'<strong>尚未建立'+(kind==='site'?'區域':'實際位置')+'</strong><p>'+(kind==='site'?'新增區域後，即可建立其實際位置。':'建立後即可設定品項的存放位置。')+'</p></div>';
+ }
+}
+const detail=selected?'<div class="location-detail-head"><div><h2>'+esc(selected.name)+state(selected)+'</h2><p>'+esc(path)+'</p></div>'+edit(kind,selected)+'</div><dl class="location-detail-meta">'+(kind!=='site'?'<div><dt>所屬據點</dt><dd>'+esc(chosenSite?.name||'未指定')+'</dd></div>':'')+(kind==='location'?'<div><dt>所屬區域</dt><dd>'+esc(chosenZone?.name||'未指定')+'</dd></div><div><dt>位置類型</dt><dd>'+esc(chosenLocation.type||'其他')+'</dd></div>':'')+'</dl><div class="location-detail-section"><h3>'+({site:'區域',zone:'實際位置',location:'此位置的品項'}[kind])+'</h3>'+add+'</div>'+(!allowed?'<p class="location-detail-notice">此位置或上層已停用，仍可查看資料與編輯。</p>':'')+content:'<div class="location-detail-empty">'+homeIcon('settings')+'<strong>開始建立你的據點</strong><p>點左側「＋新增據點」，建立企業自己的位置階層。</p></div>';
+hub.innerHTML=header()+'<section class="location-workspace"><nav class="location-navigator" aria-label="據點與位置階層"><div class="location-nav-head"><h2>位置清單</h2><button type="button" data-g-create="site">＋新增據點</button></div><div class="location-nav-list">'+(tree||'<p class="location-nav-empty">尚無據點</p>')+'</div></nav><section class="location-detail" aria-label="選取位置的明細">'+detail+'</section></section><button class="secondary-action-btn location-backup" data-clean-backup>下載清空前資料備份</button>';
 }
 hub.addEventListener('toggle',e=>{const key=e.target.dataset.locationBranch;if(key){if(e.target.open)collapsedLocations.delete(key);else collapsedLocations.add(key);}},true);
 hub.addEventListener('click',e=>{const b=e.target.closest('[data-location-add]');if(!b)return;const kind=b.dataset.locationAdd;if(kind==='zone'){site=b.dataset.id;zone='';location='';}else{zone=b.dataset.id;site=db.zones.find(x=>x.id===zone)?.site||'';location='';}collapsedLocations.delete((kind==='zone'?'site:':'zone:')+b.dataset.id);openEditor(kind);});
@@ -2306,9 +2328,10 @@ for(const [target,label,icon] of simpleEntries){for(const container of [nav,mobi
 
 hub.addEventListener('change',ev=>{if(ev.target.id==='gSite'){site=ev.target.value;zone='';location='';render();}if(ev.target.id==='gZone'){zone=ev.target.value;location='';render();}if(ev.target.id==='gLocation'){location=ev.target.value;render();}});
 hub.addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;
+if(b.dataset.locationExpand){const key=b.dataset.locationExpand;if(collapsedLocations.has(key))collapsedLocations.delete(key);else collapsedLocations.add(key);render();return;}
 if(b.hasAttribute('data-clean-backup')){const raw=localStorage.getItem('bomb-wms-clean-backup-v1');if(raw){const url=URL.createObjectURL(new Blob([raw],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='BOMB-WMS-清空前備份.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}else showPrototypeToast('沒有清空前備份');}
 
-if(b.dataset.hierarchy){if(b.dataset.hierarchy==='site'){site=b.dataset.id;zone='';location='';}else if(b.dataset.hierarchy==='zone'){zone=b.dataset.id;location='';}else location=b.dataset.id;render();return;}
+if(b.dataset.hierarchy){if(b.dataset.hierarchy==='site'){site=b.dataset.id;zone='';location='';}else if(b.dataset.hierarchy==='zone'){zone=b.dataset.id;site=db.zones.find(x=>x.id===zone)?.site||'';location='';collapsedLocations.delete('site:'+site);}else{location=b.dataset.id;const a=lineage(location);zone=a.z?.id||'';site=a.s?.id||'';collapsedLocations.delete('site:'+site);collapsedLocations.delete('zone:'+zone);}render();return;}
 if(b.dataset.gView){view=b.dataset.gView;render();}if(b.dataset.gCreate)openEditor(b.dataset.gCreate);if(b.dataset.gEdit)openEditor(b.dataset.gEdit,b.dataset.id);
 if(b.dataset.gToggle){const arr=db[{site:'sites',zone:'zones',location:'locations',item:'items'}[b.dataset.gToggle]],x=arr.find(v=>v.id===b.dataset.id);transact(()=>{x.enabled=x.enabled===false;log(x.enabled?'啟用':'停用',x.name);});}
 if(b.hasAttribute('data-item-search')){selectedItems.clear();itemKeyword=document.getElementById('itemKeyword').value.trim();itemState=document.getElementById('itemState').value;render();}
